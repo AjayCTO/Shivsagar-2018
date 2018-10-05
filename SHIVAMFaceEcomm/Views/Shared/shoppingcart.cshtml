@@ -1,0 +1,56 @@
+﻿ 
+
+@{
+    ViewBag.Title = "Error";
+    Layout = null;
+}
+<style>
+    .alldel{
+        border-radius:20px;
+    }
+</style>
+<a class="cart-btn cart_anchor" id="cart">
+    <i class="fa fa-shopping-basket"></i>
+    <span class="hidden-xs">
+        <sup>{{CartProductsCounter}}</sup>
+    </span>
+</a>
+
+
+
+<div class="shopping-cart">
+
+
+    <div class="cart-header">
+        <h4>Cart List <span class="pull-right"><a ng-click="DeleteAllCarttolist()" class="btn btn-danger alldel"> <i class="fa fa-trash"></i>Clear ALL</a> <i class="fa fa-angle-double-right"></i> </span> </h4>
+    </div>
+
+    <ul class="cart-list" >
+        <li ng-repeat="item in AllCartItems track by $index" class="">
+            <div class="row">
+                <div class="col-md-3">
+                    <img ng-hide="item.Image==null || item.Image==''" class="responsive-img" style="width:50px;height:50px;" src="@SHIVAMFaceEcomm.MvcApplication.GlobalImageAssetUrl/ProductImages/{{item.Image}}">
+
+                    <img ng-show="item.Image==null || item.Image==''" class="responsive-img" style="width:50px;height:50px;" src="/Content/images/no-image.png">
+                </div>
+                <div class="col-md-9">
+                    <h5>{{item.ProductName}}</h5>
+                    <p style="font-family:cursive">${{item.Cost}}</p>
+                    <a class="trash" ng-click="DeleteCarttolist(item)"> <i class="fa fa-trash"></i>   </a>
+
+                </div>
+            </div>
+        </li>
+
+    </ul>
+   
+
+    <div class="cart-footer">
+        <a href="/ShoppingCart" ng-if="AllCartItems.length!=0" class="btn btn-danger"> <i class="fa fa-sign-out"></i> Checkout</a>
+        <a ng-if="AllCartItems.length==0" class="btn btn-danger disabled"> <i class="fa fa-sign-out"></i> Checkout</a>
+
+        <a href="/Home/Checkout" class="btn btn-success"> <i class="fa fa-shopping-cart"></i> View cart</a>
+    </div>
+
+
+</div>

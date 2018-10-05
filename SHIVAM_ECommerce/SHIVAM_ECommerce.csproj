@@ -1,0 +1,1159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6E2C219C-66C8-4F4D-AD9B-2F3BC3FD6A99}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SHIVAM_ECommerce</RootNamespace>
+    <AssemblyName>SHIVAM_ECommerce</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>0</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=1.0.1803.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExporterWordExcelPDF.1.0.1.0\lib\DocumentFormat.OpenXml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EmailService">
+      <HintPath>..\EmailService\bin\EmailService.dll</HintPath>
+    </Reference>
+    <Reference Include="ExporterObjects, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExporterWordExcelPDF.1.0.1.0\lib\ExporterObjects.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ExportImplementation, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExporterWordExcelPDF.1.0.1.0\lib\ExportImplementation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itextsharp, Version=4.1.2.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca">
+      <HintPath>..\packages\ExporterWordExcelPDF.1.0.1.0\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LinqToExcel, Version=1.11.0.0, Culture=neutral, PublicKeyToken=9c8ea65a58f03f1f, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.11.0\lib\LinqToExcel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.RegistrationByConvention, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MvcSiteMapProvider, Version=4.6.22.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcSiteMapProvider.MVC5.Core.4.6.22\lib\net45\MvcSiteMapProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MvcSiteMapProvider.WebActivator, Version=4.6.22.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcSiteMapProvider.MVC5.4.6.22\lib\net45\MvcSiteMapProvider.WebActivator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.7.6.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.7.6\lib\net45\RazorEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Remotion, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.11.0\lib\Remotion.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.11.0\lib\Remotion.Data.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Remotion.Interfaces, Version=1.13.52.2, Culture=neutral, PublicKeyToken=0669cf0452175907, processorArchitecture=MSIL">
+      <HintPath>..\packages\LinqToExcel.1.11.0\lib\Remotion.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Syncfusion.Compression.Base, Version=14.3450.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Core, Version=12.2400.0.36, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Syncfusion.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.DocIO.Base, Version=14.3450.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Syncfusion.DocIO.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.EJ, Version=14.3450.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Syncfusion.EJ.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.EJ.Export, Version=14.3450.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Syncfusion.EJ.Export.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.EJ.MVC, Version=14.3500.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Syncfusion.EJ.MVC.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.ExcelToPDFConverter.Base, Version=14.3450.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Syncfusion.ExcelToPDFConverter.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Mvc, Version=12.2400.0.36, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Syncfusion.Pdf.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.XlsIO.Base, Version=14.3450.0.52, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Syncfusion.XlsIO.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mvc4, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc4.1.6.0.0\lib\net45\Unity.Mvc4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0.1\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamasoft.JsonClassGenerator, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExporterWordExcelPDF.1.0.1.0\lib\Xamasoft.JsonClassGenerator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.1.0.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.0.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.2.0.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.2.0.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.2.0.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.0.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.0.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.0.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Attributes\ClaimsAuthorize.cs" />
+    <Compile Include="Attributes\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Attributes\DeleteFilter.cs" />
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AllImagesController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\EmailRecordsController.cs" />
+    <Compile Include="Controllers\EmailSendersController.cs" />
+    <Compile Include="Controllers\FeaturedSupplierController.cs" />
+    <Compile Include="Controllers\FeaturesController.cs" />
+    <Compile Include="Controllers\ManageClaimsController.cs" />
+    <Compile Include="Controllers\PlanController.cs" />
+    <Compile Include="Controllers\ProductStatusController.cs" />
+    <Compile Include="Controllers\ThresholdController.cs" />
+    <Compile Include="Controllers\UserClaimsController.cs" />
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\emailrecord.cs" />
+    <Compile Include="Models\EmailSender.cs" />
+    <Compile Include="Models\FeaturedSupplier.cs" />
+    <Compile Include="Models\Features.cs" />
+    <Compile Include="Models\ImageListViewModel.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageUsersController.cs" />
+    <Compile Include="Controllers\ManufacturersController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProductAttributesController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\SupplierController.cs" />
+    <Compile Include="Controllers\SupplierUserController.cs" />
+    <Compile Include="Controllers\UnitOfMeasuresController.cs" />
+    <Compile Include="Extensions\NotificationExtensions.cs" />
+    <Compile Include="Functions\CommonMethods.cs" />
+    <Compile Include="Functions\ExportToExcel.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\GetProducts.ashx.cs">
+      <DependentUpon>GetProducts.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AllProductImages.cs" />
+    <Compile Include="Models\BaseClass.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Claims.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerAddress.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ImportProductVM.cs" />
+    <Compile Include="Models\Log .cs" />
+    <Compile Include="Models\Manufacturer.cs" />
+    <Compile Include="Models\OrderDetails.cs" />
+    <Compile Include="Models\OrderItems.cs" />
+    <Compile Include="Models\Orders.cs" />
+    <Compile Include="Models\OrderStatus.cs" />
+    <Compile Include="Models\Payment.cs" />
+    <Compile Include="Models\Plans.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductImages.cs" />
+    <Compile Include="Models\ProductStatus.cs" />
+    <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Models\SupplierCategory.cs" />
+    <Compile Include="Models\Tax.cs" />
+    <Compile Include="Models\ThreshHold.cs" />
+    <Compile Include="Models\WishList.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CurrentUserContext.cs" />
+    <Compile Include="ViewModels\CustomClaims.cs" />
+    <Compile Include="ViewModels\CustomRoles.cs" />
+    <Compile Include="ViewModels\EmailDetail.cs" />
+    <Compile Include="ViewModels\PlanViewModel.cs" />
+    <Compile Include="ViewModels\ProductImageModel.cs" />
+    <Compile Include="ViewModels\ProductAttributeModel.cs" />
+    <Compile Include="ViewModels\ProductViewmodel.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CategoryImage\ComponentListIssue.png" />
+    <Content Include="CategoryImage\LoginCase.png" />
+    <Content Include="CategoryImage\no-image.png" />
+    <Content Include="CategoryImage\Shivam_1.jpg" />
+    <Content Include="CategoryImage\Shivam_14.jpg" />
+    <Content Include="CategoryImage\Shivam_21.jpg" />
+    <Content Include="CategoryImage\Shivam_29.jpg" />
+    <Content Include="CategoryImage\Shivam_46.jpg" />
+    <Content Include="Content\AdminLTE.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\buttons.dataTables.min.css" />
+    <Content Include="Content\css.css" />
+    <Content Include="Content\dataTables.bootstrap.min.css" />
+    <Content Include="Content\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\emailsender\jquery-ui-1.10.4.custom.min.css" />
+    <Content Include="Content\emailsender\jquery.autocomplete.multiselect.js" />
+    <Content Include="Content\emailsender\log-clearly-inventory-logo-d-380-74-v01.png" />
+    <Content Include="Content\emailsender\main.css" />
+    <Content Include="Content\emailsender\main.js" />
+    <Content Include="Content\emailsender\modernizr-2.6.2.min.js" />
+    <Content Include="Content\emailsender\normalize.min.css" />
+    <Content Include="Content\emailsender\style.min.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\logo.png" />
+    <Content Include="Content\responsive.bootstrap4.min.css" />
+    <Content Include="Content\responsive.dataTables.min.css" />
+    <Content Include="Content\rowGroup.dataTables.min.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\TabularTheme\assets\css\dashboard.css" />
+    <Content Include="Content\TabularTheme\assets\fonts\feather\feather-webfont.svg" />
+    <Content Include="Content\TabularTheme\assets\images\browsers\android-browser.svg" />
+    <Content Include="Content\TabularTheme\assets\images\browsers\aol-explorer.svg" />
+    <Content Include="Content\TabularTheme\assets\images\browsers\blackberry.svg" />
+    <Content Include="Content\TabularTheme\assets\images\browsers\camino.svg" />
+    <Content Include="Content\TabularTheme\assets\images\browsers\chrome.svg" />
+    <Content Include="Content\TabularTheme\assets\images\browsers\chromium.svg" />
+    <Content Include="Content\TabularTheme\assets\images\browsers\dolphin.svg" />
+    <Content Include="Content\TabularTheme\assets\images\browsers\edge.svg" />
+    <Content Include="Content\TabularTheme\assets\images\browsers\firefox.svg" />
+    <Content Include="Content\TabularTheme\assets\images\browsers\ie.svg" />
+    <Content Include="Content\TabularTheme\assets\images\browsers\maxthon.svg" />
+    <Content Include="Content\TabularTheme\assets\images\browsers\mozilla.svg" />
+    <Content Include="Content\TabularTheme\assets\images\browsers\netscape.svg" />
+    <Content Include="Content\TabularTheme\assets\images\browsers\opera.svg" />
+    <Content Include="Content\TabularTheme\assets\images\browsers\safari.svg" />
+    <Content Include="Content\TabularTheme\assets\images\browsers\sleipnir.svg" />
+    <Content Include="Content\TabularTheme\assets\images\browsers\uc-browser.svg" />
+    <Content Include="Content\TabularTheme\assets\images\browsers\vivaldi.svg" />
+    <Content Include="Content\TabularTheme\assets\images\crypto-currencies\bitcoin.svg" />
+    <Content Include="Content\TabularTheme\assets\images\crypto-currencies\cardano.svg" />
+    <Content Include="Content\TabularTheme\assets\images\crypto-currencies\dash.svg" />
+    <Content Include="Content\TabularTheme\assets\images\crypto-currencies\eos.svg" />
+    <Content Include="Content\TabularTheme\assets\images\crypto-currencies\ethereum.svg" />
+    <Content Include="Content\TabularTheme\assets\images\crypto-currencies\litecoin.svg" />
+    <Content Include="Content\TabularTheme\assets\images\crypto-currencies\nem.svg" />
+    <Content Include="Content\TabularTheme\assets\images\crypto-currencies\ripple.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ad.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ae.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\af.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ag.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ai.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\al.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\am.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ao.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\aq.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ar.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\as.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\at.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\au.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\aw.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ax.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\az.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ba.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\bb.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\bd.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\be.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\bf.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\bg.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\bh.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\bi.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\bj.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\bl.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\bm.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\bn.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\bo.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\bq.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\br.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\bs.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\bt.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\bv.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\bw.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\by.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\bz.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ca.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\cc.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\cd.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\cf.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\cg.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ch.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ci.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ck.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\cl.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\cm.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\cn.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\co.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\cr.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\cu.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\cv.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\cw.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\cx.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\cy.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\cz.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\de.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\dj.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\dk.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\dm.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\do.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\dz.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ec.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ee.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\eg.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\eh.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\er.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\es.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\et.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\eu.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\fi.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\fj.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\fk.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\fm.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\fo.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\fr.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ga.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gb-eng.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gb-nir.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gb-sct.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gb-wls.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gb.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gd.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ge.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gf.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gg.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gh.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gi.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gl.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gm.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gn.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gp.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gq.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gr.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gs.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gt.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gu.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gw.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\gy.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\hk.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\hm.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\hn.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\hr.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ht.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\hu.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\id.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ie.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\il.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\im.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\in.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\io.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\iq.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ir.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\is.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\it.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\je.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\jm.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\jo.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\jp.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ke.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\kg.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\kh.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ki.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\km.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\kn.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\kp.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\kr.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\kw.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ky.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\kz.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\la.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\lb.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\lc.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\li.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\lk.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\lr.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ls.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\lt.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\lu.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\lv.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ly.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ma.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\mc.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\md.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\me.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\mf.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\mg.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\mh.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\mk.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ml.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\mm.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\mn.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\mo.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\mp.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\mq.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\mr.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ms.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\mt.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\mu.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\mv.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\mw.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\mx.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\my.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\mz.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\na.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\nc.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ne.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\nf.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ng.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ni.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\nl.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\no.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\np.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\nr.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\nu.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\nz.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\om.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\pa.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\pe.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\pf.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\pg.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ph.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\pk.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\pl.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\pm.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\pn.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\pr.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ps.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\pt.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\pw.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\py.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\qa.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\re.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ro.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\rs.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ru.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\rw.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\sa.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\sb.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\sc.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\sd.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\se.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\sg.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\sh.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\si.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\sj.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\sk.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\sl.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\sm.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\sn.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\so.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\sr.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ss.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\st.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\sv.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\sx.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\sy.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\sz.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\tc.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\td.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\tf.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\tg.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\th.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\tj.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\tk.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\tl.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\tm.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\tn.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\to.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\tr.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\tt.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\tv.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\tw.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\tz.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ua.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ug.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\um.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\un.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\us.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\uy.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\uz.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\va.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\vc.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ve.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\vg.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\vi.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\vn.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\vu.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\wf.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ws.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\ye.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\yt.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\za.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\zm.svg" />
+    <Content Include="Content\TabularTheme\assets\images\flags\zw.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\2checkout-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\2checkout.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\alipay-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\alipay.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\amazon-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\amazon.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\americanexpress-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\americanexpress.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\applepay-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\applepay.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\bancontact-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\bancontact.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\bitcoin-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\bitcoin.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\bitpay-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\bitpay.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\cirrus-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\cirrus.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\clickandbuy-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\clickandbuy.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\coinkite-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\coinkite.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\dinersclub-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\dinersclub.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\directdebit-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\directdebit.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\discover-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\discover.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\dwolla-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\dwolla.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\ebay-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\ebay.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\eway-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\eway.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\giropay-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\giropay.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\googlewallet-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\googlewallet.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\ingenico-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\ingenico.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\jcb-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\jcb.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\klarna-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\klarna.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\laser-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\laser.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\maestro-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\maestro.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\mastercard-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\mastercard.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\monero-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\monero.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\neteller-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\neteller.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\ogone-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\ogone.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\okpay-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\okpay.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\paybox-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\paybox.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\paymill-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\paymill.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\payone-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\payone.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\payoneer-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\payoneer.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\paypal-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\paypal.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\paysafecard-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\paysafecard.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\payu-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\payu.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\payza-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\payza.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\ripple-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\ripple.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\sage-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\sage.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\sepa-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\sepa.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\shopify-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\shopify.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\skrill-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\skrill.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\solo-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\solo.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\square-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\square.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\stripe-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\stripe.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\switch-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\switch.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\ukash-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\ukash.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\unionpay-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\unionpay.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\verifone-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\verifone.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\verisign-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\verisign.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\visa-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\visa.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\webmoney-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\webmoney.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\westernunion-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\westernunion.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\worldpay-dark.svg" />
+    <Content Include="Content\TabularTheme\assets\images\payments\worldpay.svg" />
+    <Content Include="Content\TabularTheme\assets\js\core.js" />
+    <Content Include="Content\TabularTheme\assets\js\dashboard.js" />
+    <Content Include="Content\TabularTheme\assets\js\require.min.js" />
+    <Content Include="Content\TabularTheme\assets\js\vendors\bootstrap.bundle.min.js" />
+    <Content Include="Content\TabularTheme\assets\js\vendors\chart.bundle.min.js" />
+    <Content Include="Content\TabularTheme\assets\js\vendors\circle-progress.min.js" />
+    <Content Include="Content\TabularTheme\assets\js\vendors\jquery-3.2.1.min.js" />
+    <Content Include="Content\TabularTheme\assets\js\vendors\jquery-3.2.1.slim.min.js" />
+    <Content Include="Content\TabularTheme\assets\js\vendors\jquery-jvectormap-2.0.3.min.js" />
+    <Content Include="Content\TabularTheme\assets\js\vendors\jquery-jvectormap-de-merc.js" />
+    <Content Include="Content\TabularTheme\assets\js\vendors\jquery-jvectormap-world-mill.js" />
+    <Content Include="Content\TabularTheme\assets\js\vendors\jquery.sparkline.min.js" />
+    <Content Include="Content\TabularTheme\assets\js\vendors\jquery.tablesorter.min.js" />
+    <Content Include="Content\TabularTheme\assets\js\vendors\selectize.min.js" />
+    <Content Include="Content\TabularTheme\assets\plugins\charts-c3\js\c3.min.js" />
+    <Content Include="Content\TabularTheme\assets\plugins\charts-c3\js\d3.v3.min.js" />
+    <Content Include="Content\TabularTheme\assets\plugins\charts-c3\plugin.css" />
+    <Content Include="Content\TabularTheme\assets\plugins\charts-c3\plugin.js" />
+    <Content Include="Content\TabularTheme\assets\plugins\charts-c3\plugin.min.css" />
+    <Content Include="Content\TabularTheme\assets\plugins\fullcalendar\js\fullcalendar.min.js" />
+    <Content Include="Content\TabularTheme\assets\plugins\fullcalendar\js\moment.min.js" />
+    <Content Include="Content\TabularTheme\assets\plugins\fullcalendar\plugin.css" />
+    <Content Include="Content\TabularTheme\assets\plugins\fullcalendar\plugin.js" />
+    <Content Include="Content\TabularTheme\assets\plugins\fullcalendar\plugin.min.css" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\fonts\materialdesignicons\materialdesignicons-webfont.svg" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\fonts\simple-line-icons\Simple-Line-Icons.svg" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\fonts\themify\themify.svg" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\fonts\weathericons\weathericons-regular-webfont.svg" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\plugin.css" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\plugin.min.css" />
+    <Content Include="Content\TabularTheme\assets\plugins\input-mask\js\jquery.mask.min.js" />
+    <Content Include="Content\TabularTheme\assets\plugins\input-mask\plugin.js" />
+    <Content Include="Content\TabularTheme\assets\plugins\maps-google\plugin.css" />
+    <Content Include="Content\TabularTheme\assets\plugins\maps-google\plugin.js" />
+    <Content Include="Content\TabularTheme\assets\plugins\maps-google\plugin.min.css" />
+    <Content Include="Content\TabularTheme\assets\plugins\prismjs\js\prism.pack.js" />
+    <Content Include="Content\TabularTheme\assets\plugins\prismjs\plugin.css" />
+    <Content Include="Content\TabularTheme\assets\plugins\prismjs\plugin.js" />
+    <Content Include="Content\TabularTheme\assets\plugins\prismjs\plugin.min.css" />
+    <Content Include="Content\toaster.css" />
+    <Content Include="Content\toaster.min.css" />
+    <Content Include="EmailTemplates\addcustomer.html" />
+    <Content Include="EmailTemplates\addnewcustomer.html" />
+    <Content Include="EmailTemplates\ForAdmin.html" />
+    <Content Include="EmailTemplates\SupplierRegistration.html" />
+    <Content Include="EmailTemplates\NewTemplate.html" />
+    <Content Include="EmailTemplates\ResetPasswordTemplate.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="FeaturedImages\no-image.png" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="images\loading.gif" />
+    <Content Include="images\loading_io.gif" />
+    <Content Include="Newtheme\CSS\animate.css" />
+    <Content Include="Newtheme\CSS\bootstrap.min.css" />
+    <Content Include="Newtheme\CSS\helper.css" />
+    <Content Include="Newtheme\CSS\owl.carousel.min.css" />
+    <Content Include="Newtheme\CSS\owl.theme.default.min.css" />
+    <Content Include="Newtheme\CSS\pignose.calendar.min.css" />
+    <Content Include="Newtheme\CSS\semantic.ui.min.css" />
+    <Content Include="Newtheme\CSS\spinners.css" />
+    <Content Include="Newtheme\CSS\style.css" />
+    <Content Include="Newtheme\JS\bootstrap.min.js" />
+    <Content Include="Newtheme\JS\custom.min.js" />
+    <Content Include="Newtheme\JS\dashboard1-init.js" />
+    <Content Include="Newtheme\JS\jquery.min.js" />
+    <Content Include="Newtheme\JS\jquery.slimscroll.js" />
+    <Content Include="Newtheme\JS\moment.latest.min.js" />
+    <Content Include="Newtheme\JS\morris.js" />
+    <Content Include="Newtheme\JS\owl.carousel-init.js" />
+    <Content Include="Newtheme\JS\owl.carousel.min.js" />
+    <Content Include="Newtheme\JS\pignose.calendar.min.js" />
+    <Content Include="Newtheme\JS\pignose.init.js" />
+    <Content Include="Newtheme\JS\popper.min.js" />
+    <Content Include="Newtheme\JS\prism.min.js" />
+    <Content Include="Newtheme\JS\raphael-min.js" />
+    <Content Include="Newtheme\JS\scripts.js" />
+    <Content Include="Newtheme\JS\semantic.ui.min.js" />
+    <Content Include="Newtheme\JS\sidebarmenu.js" />
+    <Content Include="Newtheme\JS\sticky-kit.min.js" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\bootbox.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\TabularTheme\assets\fonts\feather\feather-webfont.eot" />
+    <Content Include="Content\TabularTheme\assets\fonts\feather\feather-webfont.ttf" />
+    <Content Include="Content\TabularTheme\assets\fonts\feather\feather-webfont.woff" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\fonts\materialdesignicons\materialdesignicons-webfont.eot" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\fonts\materialdesignicons\materialdesignicons-webfont.ttf" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\fonts\materialdesignicons\materialdesignicons-webfont.woff" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\fonts\materialdesignicons\materialdesignicons-webfont.woff2" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\fonts\simple-line-icons\Simple-Line-Icons.eot" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\fonts\simple-line-icons\Simple-Line-Icons.ttf" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\fonts\simple-line-icons\Simple-Line-Icons.woff" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\fonts\simple-line-icons\Simple-Line-Icons.woff2" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\fonts\themify\themify.eot" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\fonts\themify\themify.ttf" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\fonts\themify\themify.woff" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\fonts\weathericons\weathericons-regular-webfont.eot" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\fonts\weathericons\weathericons-regular-webfont.ttf" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\fonts\weathericons\weathericons-regular-webfont.woff" />
+    <Content Include="Content\TabularTheme\assets\plugins\iconfonts\fonts\weathericons\weathericons-regular-webfont.woff2" />
+    <Content Include="Mvc.sitemap" />
+    <Content Include="Content\toaster.scss" />
+    <Content Include="Handler\GetProducts.ashx" />
+    <None Include="MvcSiteMapSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Scripts\angular.min.js.map" />
+    <None Include="Properties\PublishProfiles\BackEnd.pubxml" />
+    <None Include="Properties\PublishProfiles\test.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\controllers\AssignProductImages.js" />
+    <Content Include="Scripts\controllers\ProductDetails.js" />
+    <Content Include="Scripts\controllers\SupplierAttribute.js" />
+    <Content Include="Scripts\controllers\Product.js" />
+    <Content Include="Scripts\dataTables.bootstrap4.min.js" />
+    <Content Include="Scripts\dataTables.responsive.min.js" />
+    <Content Include="Scripts\dataTables.rowGroup.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.12.4.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery.dataTables.min.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\JsBarcode.all.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\state.js" />
+    <Content Include="Scripts\toaster.js" />
+    <Content Include="Scripts\toaster.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Sql\dbo.AGetProductsCount.sql" />
+    <Content Include="Sql\dbo.BGetProductsDetail.sql" />
+    <Content Include="Sql\dbo.CInsertProduct.sql" />
+    <Content Include="Sql\dbo.DInsertProductAttributes.sql" />
+    <Content Include="Sql\dbo.ESP_GetAllSortedProducts.sql" />
+    <Content Include="Sql\dbo.FSP_GetAllSortedProductsFrontFace.sql" />
+    <Content Include="Sql\dbo.GFunction1.sql" />
+    <Content Include="Sql\dbo.HFunction2.sql" />
+    <Content Include="Sql\dbo.IGetAllUsersemail1.sql" />
+    <Content Include="Sql\dbo.JGetAllEmails2.sql" />
+    <Content Include="Sql\dbo.KProductAttribute_view3.sql" />
+    <Content Include="Sql\dbo.LGetAttributes4.sql" />
+    <Content Include="Sql\dbo.MProductValues_view5.sql" />
+    <Content Include="SupplierImage\images.jpg" />
+    <Content Include="SupplierImage\images.png" />
+    <Content Include="SupplierImage\logo.png" />
+    <Content Include="SupplierImage\no-image.png" />
+    <Content Include="SupplierImage\reebok.jpg" />
+    <Content Include="Unity.Mvc4.README.txt" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveAccountPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Category\Create.cshtml" />
+    <Content Include="Views\Category\Delete.cshtml" />
+    <Content Include="Views\Category\Details.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Home\Users.cshtml" />
+    <Content Include="Views\Home\Indexc.cshtml" />
+    <Content Include="Views\ManageUsers\Index.cshtml" />
+    <Content Include="Views\ManageUsers\Edit.cshtml" />
+    <Content Include="Views\ManageUsers\EditRoles.cshtml" />
+    <Content Include="Views\Supplier\Create.cshtml" />
+    <Content Include="Views\Supplier\Delete.cshtml" />
+    <Content Include="Views\Supplier\Details.cshtml" />
+    <Content Include="Views\Supplier\Edit.cshtml" />
+    <Content Include="Views\Supplier\Index.cshtml" />
+    <Content Include="Views\SupplierUser\Create.cshtml" />
+    <Content Include="Views\SupplierUser\Delete.cshtml" />
+    <Content Include="Views\SupplierUser\Details.cshtml" />
+    <Content Include="Views\SupplierUser\Edit.cshtml" />
+    <Content Include="Views\SupplierUser\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutTheme.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\UnitOfMeasures\Create.cshtml" />
+    <Content Include="Views\UnitOfMeasures\Delete.cshtml" />
+    <Content Include="Views\UnitOfMeasures\Details.cshtml" />
+    <Content Include="Views\UnitOfMeasures\Edit.cshtml" />
+    <Content Include="Views\UnitOfMeasures\Index.cshtml" />
+    <Content Include="Views\ProductAttributes\Create.cshtml" />
+    <Content Include="Views\ProductAttributes\Delete.cshtml" />
+    <Content Include="Views\ProductAttributes\Details.cshtml" />
+    <Content Include="Views\ProductAttributes\Edit.cshtml" />
+    <Content Include="Views\ProductAttributes\Index.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Shared\_Notifications.cshtml" />
+    <Content Include="Views\Manufacturers\Create.cshtml" />
+    <Content Include="Views\Manufacturers\Delete.cshtml" />
+    <Content Include="Views\Manufacturers\Details.cshtml" />
+    <Content Include="Views\Manufacturers\Edit.cshtml" />
+    <Content Include="Views\Manufacturers\Index.cshtml" />
+    <Content Include="Views\Product\ImportExport.cshtml" />
+    <Content Include="Views\ProductAttributes\AddAttributesForSupplier.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\Customer\Delete.cshtml" />
+    <Content Include="Views\Customer\Details.cshtml" />
+    <Content Include="Views\Customer\Edit.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Product\GetAllProducts.cshtml" />
+    <Content Include="Views\Order\Create.cshtml" />
+    <Content Include="Views\Order\Delete.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Order\Edit.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\OrderItems.cshtml" />
+    <Content Include="Views\AllImages\Index.cshtml" />
+    <Content Include="Views\Product\AssignProductImages.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
+    <Content Include="Views\Shared\_LayoutEmpty.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ResetLink.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Plan\Create.cshtml" />
+    <Content Include="Views\Plan\Delete.cshtml" />
+    <Content Include="Views\Plan\Edit.cshtml" />
+    <Content Include="Views\Plan\Index.cshtml" />
+    <Content Include="Views\ProductStatus\Create.cshtml" />
+    <Content Include="Views\ProductStatus\Delete.cshtml" />
+    <Content Include="Views\ProductStatus\Details.cshtml" />
+    <Content Include="Views\ProductStatus\Edit.cshtml" />
+    <Content Include="Views\ProductStatus\Index.cshtml" />
+    <Content Include="Views\Threshold\Create.cshtml" />
+    <Content Include="Views\Threshold\Delete.cshtml" />
+    <Content Include="Views\Threshold\Details.cshtml" />
+    <Content Include="Views\Threshold\Edit.cshtml" />
+    <Content Include="Views\Threshold\Index.cshtml" />
+    <Content Include="Views\Home\PlanExpire.cshtml" />
+    <Content Include="Views\EmailRecords\Create.cshtml" />
+    <Content Include="Views\EmailRecords\Delete.cshtml" />
+    <Content Include="Views\EmailRecords\Details.cshtml" />
+    <Content Include="Views\EmailRecords\Edit.cshtml" />
+    <Content Include="Views\EmailRecords\Index.cshtml" />
+    <Content Include="Views\Plan\Details.cshtml" />
+    <Content Include="Views\Features\Create.cshtml" />
+    <Content Include="Views\Features\Delete.cshtml" />
+    <Content Include="Views\Features\Details.cshtml" />
+    <Content Include="Views\Features\Edit.cshtml" />
+    <Content Include="Views\Features\Index.cshtml" />
+    <Content Include="Views\FeaturedSupplier\Create.cshtml" />
+    <Content Include="Views\FeaturedSupplier\Delete.cshtml" />
+    <Content Include="Views\FeaturedSupplier\Details.cshtml" />
+    <Content Include="Views\FeaturedSupplier\Edit.cshtml" />
+    <Content Include="Views\FeaturedSupplier\Index.cshtml" />
+    <Content Include="Views\ManageClaims\Create.cshtml" />
+    <Content Include="Views\ManageClaims\Delete.cshtml" />
+    <Content Include="Views\ManageClaims\Details.cshtml" />
+    <Content Include="Views\ManageClaims\Edit.cshtml" />
+    <Content Include="Views\ManageClaims\Index.cshtml" />
+    <Content Include="Views\UserClaims\Create.cshtml" />
+    <Content Include="Views\UserClaims\Delete.cshtml" />
+    <Content Include="Views\UserClaims\Details.cshtml" />
+    <Content Include="Views\UserClaims\Edit.cshtml" />
+    <Content Include="Views\UserClaims\Index.cshtml" />
+    <Content Include="Views\Supplier\CreateNew.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel - Copy.cshtml" />
+    <Content Include="Views\Product\ProductDetails.cshtml" />
+    <Content Include="Views\EmailSenders\Create.cshtml" />
+    <Content Include="Views\EmailSenders\Delete.cshtml" />
+    <Content Include="Views\EmailSenders\Details.cshtml" />
+    <Content Include="Views\EmailSenders\Edit.cshtml" />
+    <Content Include="Views\EmailSenders\Forward.cshtml" />
+    <Content Include="Views\EmailSenders\Index.cshtml" />
+    <Content Include="Views\EmailSenders\parital.cshtml" />
+    <Content Include="Views\EmailSenders\Reply.cshtml" />
+    <Content Include="Views\EmailSenders\UniqueDetailView.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModelMobile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="DownloadedFiles\" />
+    <Folder Include="ProductImages\" />
+    <Folder Include="Repository\Category\" />
+    <Folder Include="SpandView\Stored_Procedure\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\Manage\" />
+    <Folder Include="Views\PaytmPayment\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1498</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:7080/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <title>@ViewBag.Title - Shivam ECommerce</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Language" content="en" />
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#4188c9">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
+
+
+ 
+    <link href="~/Newtheme/CSS/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+
+    <link href="~/Newtheme/CSS/semantic.ui.min.css" rel="stylesheet" />
+
+    <link href="~/Newtheme/CSS/pignose.calendar.min.css" rel="stylesheet" />
+
+    <link href="~/Newtheme/CSS/owl.carousel.min.css" rel="stylesheet" />
+
+    <link href="~/Newtheme/CSS/owl.theme.default.min.css" rel="stylesheet" />
+
+    <link href="~/Newtheme/CSS/helper.css" rel="stylesheet" />
+    <link href="~/Newtheme/CSS/style.css" rel="stylesheet" />
+    <link href="~/Content/toaster.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/dataTableStyles")
+    @Styles.Render("~/Content/JqueryUiCSS")
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .btn-danger .fa-trash {
+            color: white;
+        }
+
+        #myTable {
+            width: 100% !important;
+        }
+
+        .slimscrolldiv {
+            position: absolute !important;
+            overflow: visible;
+            width: 200px;
+            height: 100%;
+            z-index: 100;
+            background: #f2f2f2;
+           
+        }
+    </style>
+  
+</head>
+<body class="fix-header fix-sidebar">
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+
+
+  
+
+
+    <div id="main-wrapper">
+
+        <div class="header">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <!-- Logo -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">
+                        <!-- Logo icon -->
+                        <b>
+                            <img src="/Content/logo.png" class="dark-logo" style="width: 34px;" alt="SHIVAM ITCS">
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text -->
+                        <span>SHIVAM ITCS</span>
+                    </a>
+                </div>
+                <!-- End Logo -->
+                <div class="navbar-collapse">
+
+                    @Html.MvcSiteMap().Menu("MenuHelperModel")
+                    
+                    <!-- User profile and search -->
+                    <ul style="position:absolute; right:15px;" class="navbar-nav my-lg-0">
+
+                        <!-- Search -->
+                        <li class="nav-item hidden-sm-down search-box">
+                            <a class="nav-link hidden-sm-down text-muted  " href="javascript:void(0)"><i class="ti-search"></i></a>
+                            <form class="app-search">
+                                <input type="text" class="form-control" placeholder="Search here"> <a class="srh-btn"><i class="ti-close"></i></a>
+                            </form>
+                        </li>
+                        @*<!-- Comment -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-bell"></i>
+                                <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn">
+                                <ul>
+                                    <li>
+                                        <div class="drop-title">Notifications</div>
+                                    </li>
+                                    <li>
+                                        <div class="message-center">
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-danger btn-circle m-r-10"><i class="fa fa-link"></i></div>
+                                                <div class="mail-contnet">
+                                                    <h5>This is title</h5> <span class="mail-desc">Just see the my new admin!</span> <span class="time">9:30 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-success btn-circle m-r-10"><i class="ti-calendar"></i></div>
+                                                <div class="mail-contnet">
+                                                    <h5>This is another title</h5> <span class="mail-desc">Just a reminder that you have event</span> <span class="time">9:10 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-info btn-circle m-r-10"><i class="ti-settings"></i></div>
+                                                <div class="mail-contnet">
+                                                    <h5>This is title</h5> <span class="mail-desc">You can customize this template as you want</span> <span class="time">9:08 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="btn btn-primary btn-circle m-r-10"><i class="ti-user"></i></div>
+                                                <div class="mail-contnet">
+                                                    <h5>This is another title</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-center" href="javascript:void(0);"> <strong>Check all notifications</strong> <i class="fa fa-angle-right"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!-- End Comment -->
+                        <!-- Messages -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted  " href="#" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-envelope"></i>
+                                <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn" aria-labelledby="2">
+                                <ul>
+                                    <li>
+                                        <div class="drop-title">You have 4 new messages</div>
+                                    </li>
+                                    <li>
+                                        <div class="message-center">
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img"> <img src="https://colorlib.com/polygon/elaadmin/images/users/5.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                                <div class="mail-contnet">
+                                                    <h5>Michael Qin</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:30 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img"> <img src="https://colorlib.com/polygon/elaadmin/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                                                <div class="mail-contnet">
+                                                    <h5>John Doe</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img"> <img src="https://colorlib.com/polygon/elaadmin/images/users/3.jpg" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
+                                                <div class="mail-contnet">
+                                                    <h5>Mr. John</h5> <span class="mail-desc">I am a singer!</span> <span class="time">9:08 AM</span>
+                                                </div>
+                                            </a>
+                                            <!-- Message -->
+                                            <a href="#">
+                                                <div class="user-img"> <img src="https://colorlib.com/polygon/elaadmin/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                                                <div class="mail-contnet">
+                                                    <h5>Michael Qin</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-center" href="javascript:void(0);"> <strong>See all e-Mails</strong> <i class="fa fa-angle-right"></i> </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>*@
+                        <!-- End Messages -->
+                        <!-- Profile -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i></a>
+                            @Html.Partial("_LoginPartial")
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+
+     
+
+
+        @*<!-- Left Sidebar  -->
+        <div class="left-sidebar">
+            <!-- Sidebar scroll-->
+
+            <!-- End Sidebar scroll-->
+        </div>*@
+
+        <div class="page-wrapper">
+
+            @Html.Partial("_Notifications")
+
+
+            @RenderBody()
+
+
+            <footer class="footer"> © 2018 All rights reserved <a href="#">SHIVAM ITCS</a></footer>
+
+
+            </div>
+
+        </div>
+
+ 
+
+
+
+  
+  
+ 
+   
+
+    @*<script src="~/Newtheme/JS/jquery.min.js"></script>*@
+
+    <script src="~/Scripts/jquery-1.12.4.js"></script>
+
+    <script src="~/Scripts/jquery-ui.js"></script>
+
+    <script src="~/Scripts/bootbox.min.js"></script>
+
+
+    <script src="~/Scripts/toastr.js"></script>
+    @Scripts.Render("~/bundles/dataTableScripts")
+
+
+    <!-- Bootstrap tether Core JavaScript -->
+ 
+    <script src="~/Newtheme/JS/popper.min.js"></script>
+
+  
+    <script src="~/Newtheme/JS/bootstrap.min.js"></script>
+
+    <!-- slimscrollbar scrollbar JavaScript -->
+  
+    <script src="~/Newtheme/JS/jquery.slimscroll.js"></script>
+
+    <!--Menu sidebar -->
+    <script src="~/Newtheme/JS/sidebarmenu.js"></script>
+    
+    <!--stickey kit -->
+
+    <script src="~/Newtheme/JS/sticky-kit.min.js"></script>
+   
+    <!--Custom JavaScript -->
+    <!-- Amchart -->
+    @*<script src="~/Newtheme/JS/raphael-min.js"></script>
+    <script src="~/Newtheme/JS/morris.js"></script>
+
+    <script src="~/Newtheme/JS/dashboard1-init.js"></script>
+
+    <script src="~/Newtheme/JS/moment.latest.min.js"></script>
+
+
+    <script src="~/Newtheme/JS/semantic.ui.min.js"></script>*@
+    @*<!-- scripit init-->
+
+    <script src="~/Newtheme/JS/prism.min.js"></script>
+    <!-- scripit init-->
+
+    <script src="~/Newtheme/JS/pignose.calendar.min.js"></script>
+    <!-- scripit init-->
+    <script src="~/Newtheme/JS/pignose.init.js"></script>*@
+    <!-- scripit init-->
+  
+    @*<script src="~/Newtheme/JS/owl.carousel.min.js"></script>
+
+    <script src="~/Newtheme/JS/owl.carousel-init.js"></script>*@
+
+    <script src="~/Newtheme/JS/scripts.js"></script>
+  
+    <!-- scripit init-->
+
+   
+    <script src="~/Newtheme/JS/custom.min.js"></script>
+
+
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @RenderSection("scripts", required: false)
+
+
+
+</body>
+
+</html>

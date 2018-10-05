@@ -1,0 +1,214 @@
+﻿@model IEnumerable<SHIVAM_ECommerce.Models.AllProductImages>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">All Images</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li class="breadcrumb-item active">All Images</li>
+        </ol>
+    </div>
+</div>
+<div class="container-fluid">
+
+    <div class="card">
+        <div class="card-body">
+            <form action="/AllImages/Index" id="UploadImageForm" method="post" enctype="multipart/form-data">
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="custom-file">
+                            <input type="file" multiple class="custom-file-input" name="files" id="file1" accept="image/*">
+                            <label class="custom-file-label">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <button class="btn btn-primary" type="submit" id="uploadImages" value="Upload" disabled>
+                            <i class="fa fa-upload"></i>
+                            Upload
+                        </button>
+                        <button type="button" class="btn btn-danger" id="delete"> <i class="fa fa-trash"></i> Delete </button>
+
+                    </div>
+                </div>
+
+                <div class="gallery"></div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="row row-cards">
+
+        @foreach (var item in Model)
+    {
+
+            @*<img src="~/ProductImages/thumb/@item.ImagePath" />*@
+
+
+
+
+            <div class="col-sm-6 col-lg-2">
+                <div class="card p-3">
+                    <a style="text-align:center;" href="javascript:void(0)" class="mb-3">
+                        <img src="~/ProductImages/thumb/@item.ImagePath" alt="Photo by Nathan Guerrero" class="rounded">
+                    </a>
+                    <div class="d-flex align-items-center px-2">
+                        <label class="custom-control custom-checkbox custom-control-inline">
+                            <input type="checkbox" class="custom-control-input" name="example-inline-checkbox1" value="@item.Id">
+                            <span class="custom-control-label">Select</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+    }
+    </div>
+
+</div>
+
+
+
+@section scripts{
+
+<script>
+    $(document).ready(function () {
+        $('input:file').change(function () {
+                if ($(this).val()) {
+                    $('button:submit').attr('disabled', false);
+                    //$('input:submit').removeAttr('disabled'); 
+                }
+            });
+
+        $("#uploadImages").click(function () {
+         
+
+                $("#uploadImages").attr("disabled", "disabled")
+                $("#uploadImages").find("i").addClass("fa-spin");
+                $("#UploadImageForm").submit();
+        });
+
+
+    });
+
+    function RemoveCheck(id)
+    {
+        var _tempArray = selectedIDs;
+        for (var i = 0; i < _tempArray.length; i++) {
+            if(_tempArray[i]==id)
+            {
+                selectedIDs.splice(i, 1);
+            }
+        }
+    }
+
+    var selectedIDs = new Array();
+    $('input:checkbox.custom-control-input').click(function () {
+        if ($(this).prop('checked')) {
+            selectedIDs.push($(this).val());
+        }
+        else {
+            RemoveCheck($(this).val());
+        }
+
+
+        if (selectedIDs.length != 0) {
+            $("#delete").show()
+        }
+        else {
+            $("#delete").hide()
+        }
+
+    });
+
+   
+    $("#delete").click(function () {
+
+      
+        if (selectedIDs.length > 0) {
+
+
+            $.ajax({
+                url: "/AllImages/DeleteAll",
+                data: JSON.stringify(selectedIDs),
+                type: 'POST',
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function (result) {
+
+                    window.location.reload();
+
+                },
+                error: function (req, status, error) {
+                    alert(error);
+                }
+            });
+
+        }
+
+    })
+
+
+  
+
+
+
+  
+
+    $(function () {
+        // Multiple images preview in browser
+        var imagesPreview = function (input, placeToInsertImagePreview) {
+
+
+            var files = $('#file1')[0].files;
+
+
+
+            if (input.files) {
+                var filesAmount = input.files.length;
+
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (event) {
+                        $($.parseHTML('<img style="height:50px; width:50px; margin-right:10px; margin-top:5px;">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                    }
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+
+        };
+
+        $('#file1').on('change', function () {
+            imagesPreview(this, 'div.gallery');
+        });
+    });
+</script>
+}
+
+<style>
+    #delete {
+
+ 
+        display:none;
+        
+    }
+</style>
+
+
+
+
+
+
+
+

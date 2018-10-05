@@ -1,0 +1,55 @@
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.dll.config
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.pdb
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.csprojResolveAssemblyReference.cache
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.Migrations.initial.resources
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.csproj.GenerateResource.Cache
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.pdb
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.dll.config
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.pdb
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.csprojResolveAssemblyReference.cache
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.Migrations.initial.resources
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.csproj.GenerateResource.Cache
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.pdb
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.dll.config
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.pdb
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.csprojResolveAssemblyReference.cache
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.Migrations.initial.resources
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.csproj.GenerateResource.Cache
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.pdb
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.dll.config
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.pdb
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.csprojResolveAssemblyReference.cache
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.Migrations.initial.resources
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.csproj.GenerateResource.Cache
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.pdb
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.dll.config
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.pdb
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.Migrations.initial.resources
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.csproj.GenerateResource.Cache
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.pdb
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.csprojResolveAssemblyReference.cache
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.dll.config
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.pdb
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.Migrations.initial.resources
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.csproj.GenerateResource.Cache
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.pdb
+E:\28Sept - Copy\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.dll.config
+E:\28Sept - Copy\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAMFaceEcomm\bin\SHIVAMFaceEcomm.pdb
+E:\28Sept - Copy\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.csprojResolveAssemblyReference.cache
+E:\28Sept - Copy\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.Migrations.initial.resources
+E:\28Sept - Copy\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.csproj.GenerateResource.Cache
+E:\28Sept - Copy\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAMFaceEcomm\obj\Debug\SHIVAMFaceEcomm.pdb

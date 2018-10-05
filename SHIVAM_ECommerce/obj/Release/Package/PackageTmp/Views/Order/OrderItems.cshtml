@@ -1,0 +1,76 @@
+﻿@model IEnumerable<SHIVAM_ECommerce.Models.OrderItems>
+
+@{
+    Layout = null;
+}
+
+
+
+<table class="table table-hover table-outline table-vcenter text-nowrap card-table">
+
+    <thead>  
+    <tr>
+        <th>
+            <span class="text-muted">   @Html.DisplayNameFor(model => model.Order.OrderNumber) </span>
+        </th>
+        <th>
+        Product Name
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Discount)
+        </th>
+        <th>
+            Price
+        </th>
+        
+
+    </tr>
+        </thead>
+
+  
+    <tbody>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order.OrderNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductAttributeWithQuantity.Product.ProductName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td>
+            <td>
+                ₹ @Html.DisplayFor(modelItem => item.TotalPrice) 
+            </td>
+         
+
+
+        </tr>
+    }
+
+
+        <tr style="background:#ccc;">
+            <td colspan="4"></td>
+            <td> <b> TOTAL </b></td>
+            <td> <b> ₹ @Model.Sum(i => i.TotalPrice) </b></td>
+        </tr>
+</tbody>
+</table>
+

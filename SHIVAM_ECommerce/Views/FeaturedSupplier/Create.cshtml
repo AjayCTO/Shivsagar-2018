@@ -1,0 +1,97 @@
+﻿@model SHIVAM_ECommerce.Models.FeaturedSupplier
+
+@{
+    ViewBag.Title = "Create";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/FeaturedSupplier">Featured Supplier</a>
+    </li>
+    <li class="breadcrumb-item active">Featured Supplier Create</li>
+</ol>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa fa-plus"></i> Create New Featured Supplier</h3>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm("Create", "FeaturedSupplier", FormMethod.Post,
+                            new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SupplierID, "SupplierID", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("SupplierID", String.Empty)
+                        @Html.ValidationMessageFor(model => model.SupplierID)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">  Offer Message </label>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.OfferMessage, new { @class = "form-control col-md-5" })
+                        @Html.ValidationMessageFor(model => model.OfferMessage)
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <label class="control-label col-md-2">  Image Path </label>
+
+                    <div class="col-md-4">
+                        @*<input type="file" name="ImagePath" id="ImagePath" value=" " />*@
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input form-control" name="ImagePath" id="ImagePath" accept="image/*">
+                            <label class="custom-file-label">Choose file</label>
+                        </div>
+                        <div class="gallery"></div>
+                        @Html.ValidationMessageFor(model => model.ImagePath)
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Description, new { @class = "form-control col-md-5" })
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Notes, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Notes, new { @class = "form-control col-md-5" })
+                        @Html.ValidationMessageFor(model => model.Notes)
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary btn-space"><i class="fa fa-check"></i> Create</button>
+                        <a class="btn btn-secondary btn-gray" href="/FeaturedSupplier"><i class="fa fa-times"></i> Cancel</a>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
+
+@section Scripts {
+
+
+    <script>
+        $("select").addClass("form-control col-md-5")
+    </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+}

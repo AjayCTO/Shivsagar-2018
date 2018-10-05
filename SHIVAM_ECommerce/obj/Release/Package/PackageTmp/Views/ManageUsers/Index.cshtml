@@ -1,0 +1,78 @@
+﻿@model IEnumerable<SHIVAM_ECommerce.Models.ApplicationUser>
+@{
+    ViewBag.Title = "Manage Users";
+}
+
+
+
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Manage Users</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li class="breadcrumb-item active">ManageUsers</li>
+        </ol>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <table id="myTable" class="table table-striped table-bordered dt-responsive">
+                        <thead>
+                            <tr>
+                                <th>User Name</th>                                
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{   
+
+    <script>
+        var _dataTable = "";       
+        $(document).ready(function () {
+            _dataTable = $("#myTable").DataTable({
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "ajax": {
+                    "url": "/ManageUsers/LoadData",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "fnDrawCallback": function (oSettings) {                    
+                },
+                "columns": [
+                        {
+
+                            "data": "UserName", "name": "UserName", "autoWidth": true
+                        },                       
+                        {
+                             "orderable": false,
+                             "mRender": function (data, type, row) {
+                                 var _a = '';
+                                 return '<a href="/ManageUsers/Edit?id=' + row.Id + '" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-pencil"  align="center"></i></a>  ' + _a;
+                             }
+                         },
+                ]
+            });
+        });
+
+       
+    </script>
+}
+
+
+
+

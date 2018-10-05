@@ -1,0 +1,171 @@
+﻿@model SHIVAM_ECommerce.Models.Claims
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">User Claim Create</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/ManageClaims">User Claim</a></li>
+            <li class="breadcrumb-item active">User Claim Create</li>
+        </ol>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card">
+          
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fa fa-plus"></i> Create New User Claims</h3>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+
+                                @Html.ValidationSummary(true)
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Claim Type*</label>
+                                   
+                                                @Html.TextBoxFor(model => model.ClaimType, new { @class = "form-control Requiredfield" })
+                                                @Html.ValidationMessageFor(model => model.ClaimType)
+                                        
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label class="control-label">Claim Value*</label>
+                                       
+                                                @Html.TextBoxFor(model => model.ClaimValue, new { @class = "form-control Requiredfield" })
+                                                @Html.ValidationMessageFor(model => model.ClaimValue)
+                                         
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                       
+                                            <label class="control-label">Title*</label>
+                                                @Html.TextBoxFor(model => model.Title, new { @class = "form-control Requiredfield" })
+                                                @Html.ValidationMessageFor(model => model.Title)
+                                   
+                                        </div>
+                                    </div>
+                              
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                       
+                                            <label class="control-label">Discription*</label>
+                                                @Html.TextBoxFor(model => model.Description, new { @class = "form-control Requiredfield" })
+                                                @Html.ValidationMessageFor(model => model.Description)
+                                         
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                    
+                                            <label class="control-label">Notes*</label>
+                                                @Html.TextBoxFor(model => model.Notes, new { @class = "form-control Requiredfield" })
+                                                @Html.ValidationMessageFor(model => model.Notes)
+                                       
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Claim Group*</label>
+                                       
+                                                @Html.TextBoxFor(model => model.ClaimGroup, new { @class = "form-control Requiredfield" })
+                                                @Html.ValidationMessageFor(model => model.ClaimGroup)
+                                     
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+
+                                            <label class="control-label">Select  Role*</label>
+
+                                            @Html.DropDownList("Role", new SelectList(ViewBag.Roles, "Name", "Name"), "-- Please select Role--", new { @class = "form-control Requiredfield", @name = "Role", @id = "Role" })
+                                         @Html.ValidationMessageFor(model=>model.Role)
+
+                                       </div>
+                                    </div>
+                           
+                                    </div>
+                           
+                      
+                  
+
+                            
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="custom-control custom-checkbox">
+                                                    @Html.CheckBoxFor(model => model.IsActive, new Dictionary<string, object> { { "class", "custom-control-input" } })
+                                                    <span class="custom-control-label">Active</span>
+                                                </label>
+                                                @Html.ValidationMessageFor(model => model.IsActive)
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="submit" value="Create" class="btn btn-primary">
+                                                <i class="fa fa-check"></i>
+                                                Save
+                                            </button>
+                                            <a href="/UserClaims" class="btn btn-secondary btn-gray">
+                                                <i class="fa fa-times"></i>
+                                                Cancel
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                        }
+                    </div>
+     
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+@Scripts.Render("~/bundles/jqueryval")
+<script>
+    $(document).ready(function(){
+        $.validator.addMethod('Requiredfield', function (value) {
+            debugger;
+            if ($.trim(value) != "") {
+                return true;
+            }
+
+         
+        },"Field is Required");
+  
+
+
+        });
+
+    </script>
+
+    }
+
+
+
+
+

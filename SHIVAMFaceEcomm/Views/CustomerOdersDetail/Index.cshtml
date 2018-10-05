@@ -1,0 +1,170 @@
+﻿@{
+    ViewBag.Title = "OrderdDetails";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+
+    }
+
+
+    <div class="card">
+        <div class="card-header">
+
+            <h4 class="card-title"><i class="fa fa-list"></i> Orders Details</h4>
+
+        </div>
+        <div class="card-body">
+            <table style="width:100%;" id="myTable" class="table table-striped table-bordered dt-responsive">
+                <thead>
+                    <tr>
+                        <th>Order Number</th>
+                        <th>Order Date</th>
+                        <th>Ship Date</th>
+                        <th>Payment</th>
+                        <th>Total Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+
+
+        </div>
+    </div>
+
+
+<div id="OrderItems" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Order Items</h4>
+                <button type="button" class="close" data-dismiss="modal"></button>
+
+            </div>
+            <div class="modal-body">
+                <table id="table1"class="table table-striped table-bordered dt-responsive">
+                  <thead>
+                      <tr>
+                          <th>ProductName</th>
+                           <th>Quantity</th>
+                          <th>Price</th>
+                      </tr>
+                  </thead>
+                 <tbody id="tbody1">
+
+                 </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+    @section scripts{
+
+
+        <script>
+
+
+            $(document).ready(function () {
+                _myTableData = $("#myTable").DataTable({
+                    responsive: true,
+                    "processing": true, // for show progress bar
+                    "serverSide": true, // for process server side
+                    "filter": true, // this is for disable filter (search box)
+                    "orderMulti": false, // for disable multiple column at once
+                    "ajax": {
+                        "url": "/CustomerOdersDetail/OrderdDetails",
+                        "type": "POST",
+                        "datatype": "json",
+
+
+                    },
+                    "columns": [
+                         {
+
+                             "data": "OrderNumber", "name": "OrderNumber", "autoWidth": true
+                         },
+                          {
+
+                              "data": "OrderDate", "name": "OrderDate", "autoWidth": true, "render": function (value) {
+                                  if (value === null || value == undefined) return "";
+
+                                  var pattern = /Date\(([^)]+)\)/;
+                                  var results = pattern.exec(value);
+                                  var dt = new Date(parseFloat(results[1]));
+
+                                  return dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear() + " " + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+                              }
+                          },
+                             {
+
+                                 "data": "ShipDate", "name": "ShipDate", "autoWidth": true, "render": function (value) {
+                                     if (value === null || value == undefined) return "";
+
+                                     var pattern = /Date\(([^)]+)\)/;
+                                     var results = pattern.exec(value);
+                                     var dt = new Date(parseFloat(results[1]));
+
+                                     return dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear();
+                                 }
+                             },
+                               {
+
+                                   "data": "Paid", "name": "Paid", "autoWidth": true
+                               },
+                            {
+
+                                "data": "TotalPrice", "name": "TotalPrice", "autoWidth": true, "render": function (value) {
+
+
+                                    return "₹ " + value;
+                                }
+                            },
+
+
+                             {
+                                 "orderable": false,
+                                 "mRender": function (data, type, row) {
+                                      return '<a href="#" class="btn btn-primary" onclick="GetOrderItems(' + row.Id + ')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Order Items"><i class="fa fa-list" align="center"></i></a>  ';
+                                 }
+                             },
+                    ]
+                });
+
+
+            });
+
+
+
+
+    
+
+
+            function GetOrderItems(id) {
+                $("#tbody1").empty();
+                debugger
+                $.ajax({
+                    type:"Get",
+                    url: "/CustomerOdersDetail/GetOrderItems?orderID=" + id,
+                    success: function (data) {
+
+                        for(var i=0; i<data.length;i++)
+                        {
+
+                            $("#OrderItems").find(".modal-body table tbody").append("<tr><td>" + data[i].ProductName + "</td>" +
+                                "<td>" + data[i].Quantity + "</td>" +
+                                 "<td> $" + data[i].UnitPrice + "</td>" +
+                                        "</tr>");
+                         
+                        }
+                        console.log(data);
+                        $("#OrderItems").modal('show');
+                    }
+                });
+            }
+        </script>
+    }

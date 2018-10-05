@@ -1,0 +1,21 @@
+Name	ProductCode	Description	categoryName	UnitOfMeasure	ManuFacturer	HighQuantityThreshold	LowQuantityThreshold	IsFeatured	ProductStatus	Color	Size	Quantity	Cost
+Product1	CODE1	test	cat1	ea	m1	200	100		test	red	m	3	32
+Product2	CODE2	test	cat2	ea	m2	200	100		test	red	m	3	32
+Product3	CODE3	test	cat3	ea	m3	200	100		test	red	m	3	32
+Product4	CODE4	test	cat4	ea	m4	200	100		test	red	m	3	32
+Product5	CODE5	test	cat5	ea	m5	200	100		test	red	m	3	32
+Product6	CODE6	test	cat6	ea	m6	200	100		test	red	m	3	32
+Product7	CODE7	test	cat7	ea	m7	200	100		test	red	m	3	32
+Product8	CODE8	test	cat8	ea	m8	200	100		test	red	m	3	32
+Product9	CODE9	test	cat9	ea	m9	200	100		test	red	m	3	32
+Product10	CODE10	test	cat10	ea	m10	200	100		test	red	m	3	32
+Product11	CODE11	test	cat11	ea	m11	200	100		test	red	m	3	32
+Product12	CODE12	test	cat12	ea	m12	200	100		test	red	m	3	32
+Product13	CODE13	test	cat13	ea	m13	200	100		test	red	m	3	32
+Product14	CODE14	test	cat14	ea	m14	200	100		test	red	m	3	32
+Product15	CODE15	test	cat15	ea	m15	200	100		test	red	m	3	32
+Product16	CODE16	test	cat16	ea	m16	200	100		test	red	m	3	32
+Product17	CODE17	test	cat17	ea	m17	200	100		test	red	m	3	32
+Product18	CODE18	test	cat18	ea	m18	200	100		test	red	m	3	32
+Product19	CODE19	test	cat19	ea	m19	200	100		test	red	m	3	32
+Product20	CODE20	test	cat20	ea	m20	200	100		test	red	m	3	32

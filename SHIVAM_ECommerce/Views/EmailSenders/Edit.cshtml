@@ -1,0 +1,227 @@
+﻿@model SHIVAM_ECommerce.Models.EmailSender
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+            @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+    <!-- start: Content -->
+
+    <div class="row inbox">
+
+        <div class="col-md-3">
+
+            <div class="panel panel-default">
+
+                <div class="panel-body inbox-menu">
+
+                    <a href="/EmailSenders/Create" class="btn btn-danger btn-block">New Email</a>
+                    <ul>
+                        <li>
+                            <a href="/EmailSenders/Index"><i class="fa fa-inbox"></i> Inbox </a>
+                        </li>
+
+                        <li>
+                            <a href="page-inbox-compose.html#"><i class="fa fa-rocket"></i> Sent</a>
+                        </li>
+                        <li>
+                            <a href="page-inbox-compose.html#"><i class="fa fa-trash-o"></i> Trash</a>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+        </div><!--/.col-->
+
+        <div class="col-md-9">
+
+            <div class="panel panel-default">
+
+                <div class="panel-body message">
+
+                    <p class="text-center">New Message</p>
+
+
+                    <div class="form-group">
+
+
+                        <label for="to" class="col-sm-1 control-label">To:</label>
+                        <div class="col-lg-11">
+                            <input type="text" id="SenderId" name="SenderId" class="form-control">
+                            @Html.ValidationMessageFor(model => model.SenderId)
+                        </div>
+                    </div>
+                    <select class="myselect" multiple="multiple" style="width:300px"></select>
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">Subject:</label>
+                        <div class="col-md-11">
+                            @Html.TextBoxFor(model => model.Subject, new { @class = "form-control", placeholder = "Type Subject" })
+                            @Html.ValidationMessageFor(model => model.Subject)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            <input type="file" id="Attachment" name="Attachment" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+
+                        <label class="col-sm-3 control-label">Is Attachment:</label>
+                        <div class="col-md-11">
+                            @Html.EditorFor(model => model.IsAttachment)
+                            @Html.ValidationMessageFor(model => model.IsAttachment)
+                        </div>
+                    </div>
+                    <br />
+
+
+
+
+                    <div class="form-group">
+                        <label class="col-sm-1 control-label">Message:</label>
+                        <div class="col-md-11">
+                            @Html.TextAreaFor(model => model.ContentMsg, new { @class = "form-control", placeholder = "Click here to reply", rows = "12" })
+                            @Html.ValidationMessageFor(model => model.ContentMsg)
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <button type="submit" id="submit" class="btn btn-success">Send</button>
+
+                        <button type="reset" class="btn btn-danger">Discard</button>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div><!--/.col-->
+
+    </div><!--/row-->
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>EmailSender</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Receiver, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Receiver)
+                @Html.ValidationMessageFor(model => model.Receiver)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SenderId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SenderId)
+                @Html.ValidationMessageFor(model => model.SenderId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Subject, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Subject)
+                @Html.ValidationMessageFor(model => model.Subject)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ContentMsg, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ContentMsg)
+                @Html.ValidationMessageFor(model => model.ContentMsg)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsAttachment, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsAttachment)
+                @Html.ValidationMessageFor(model => model.IsAttachment)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Attachment, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Attachment)
+                @Html.ValidationMessageFor(model => model.Attachment)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsRead, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsRead)
+                @Html.ValidationMessageFor(model => model.IsRead)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SendingDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SendingDate)
+                @Html.ValidationMessageFor(model => model.SendingDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@

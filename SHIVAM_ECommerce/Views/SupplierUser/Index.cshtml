@@ -1,0 +1,131 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Supplier User</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li class="breadcrumb-item active">Supplier User</li>
+        </ol>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+
+
+            <div class="card">
+                <div class="container-fluid">
+
+
+                    <a href="/SupplierUser/Create" class="btn btn-success"> <i class="fa fa-plus"></i> Add New Suppliers User</a>
+                </div>
+
+                <div class="card-body">
+                    <table style="width:100%;" id="myTable" class="table table-striped table-bordered dt-responsive">
+                        <thead>
+                            <tr>
+                                <th>Company Name</th>
+                                <th>First Name</th>
+                                <th>Contact No</th>
+                                <th>Address</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        
+
+
+    @section scripts{
+
+
+
+        <script>
+
+
+
+            $(document).ready(function () {
+                $("#myTable").DataTable({
+                    "processing": true, // for show progress bar
+                    "serverSide": true, // for process server side
+                    "filter": true, // this is for disable filter (search box)
+                    "orderMulti": false, // for disable multiple column at once
+                    "ajax": {
+                        "url": "/SupplierUser/LoadData",
+                        "type": "POST",
+                        "datatype": "json"
+                    },
+                    "columns": [
+
+                            {
+
+                                "data": "CompanyName", "name": "CompanyName", "autoWidth": true
+                            },
+                              {
+
+                                  "data": "FirstName", "name": "FirstName", "autoWidth": true
+                              },
+                                {
+
+                                    "data": "Phone", "name": "CompanyName", "Phone": true
+                                },
+                                  {
+
+                                      "data": "Address", "name": "Address", "City": true
+                                  },
+                                {
+                                    "orderable": false,
+                                    "mRender": function (data, type, row) {
+                                        debugger;
+                                        var _a = '<a style="color:#fff; display:none" onclick="DeleteSupplierUser(' + row.Id + ')"  class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" ><i class="fa fa-trash"  align="center"></i></a>';
+                                        return '<a href="/Home/Profile/' + row.Id + '" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-pencil"  align="center"></i></a>  ' + _a;
+                                    }
+                                },
+                    ]
+                });
+            });
+
+            function DeleteSupplierUser(Id) {
+                var _confirm = confirm("Are you sure you want to delete this SupplierUser ?");
+                if (_confirm) {
+
+                    $.ajax({
+                        url: "/SupplierUser/DeleteConfirmed?id=" + Id,
+
+                        type: 'GET',
+                        contentType: 'application/json',
+                        dataType: 'json',
+                        success: function (result) {
+                            if (result.Success === true) {
+                                toastr.success("Deleted Successfully");
+
+                                $("#myTable").DataTable().clear().draw();
+                            } else {
+                                alert("error occurred during operation.");
+                            }
+                        },
+                        error: function (req, status, error) {
+                            alert(error);
+                        }
+                    });
+                }
+            }
+
+
+        </script>
+    }
+
+

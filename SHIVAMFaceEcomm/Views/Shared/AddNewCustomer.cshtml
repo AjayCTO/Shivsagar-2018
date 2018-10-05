@@ -1,0 +1,343 @@
+﻿@{
+    ViewBag.Title = "AddNewCustomer";
+    Layout = null;
+}
+
+<!-- Steps form -->
+<!-- Steps form -->
+
+<div class="container-fluid">
+
+
+    <div class="row">
+        <div class="col-md-12 order-md-1">
+
+            <h6 class="subtitle">Billing address</h6>
+
+
+            <form class="needs-validation form-horizontal" name='form1'ng-submit="Continue()" novalidate>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+
+                        <div class="form-group">
+                            <label for="firstName">First name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="firstName" name="firstName" ng-model="CustomerDetails.firstName" placeholder="First Name" required value="">
+                            <span ng-show="form1.firstName.$error.required">The First Name is required!</span>
+                        </div>
+
+
+
+                    </div>
+                    <div class="col-md-6 mb-3">
+
+                        <div class="form-group">
+                            <label for="lastName">Last name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="lastName" name="lastName" placeholder="LastName" ng-model="CustomerDetails.lastName" value="" required>
+                            <span ng-show="form1.lastName.$error.required">The Last Name is required!</span>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <div class="form-group">
+                                    <label for="username">Username <span class="text-danger">*</span></label>
+                                    <div>
+
+                                        <input type="text" class="form-control" id="username" name="username" ng-model="CustomerDetails.userName" placeholder="Username" required>
+                                        <span ng-show="form1.username.$error.required">The UserName is required!</span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <div class="form-group">
+                                    <label for="username">Password <span class="text-danger">*</span></label>
+                                    <div>
+
+                                        <input type="password" class="form-control" id="password" name="password" ng-model="CustomerDetails.password" placeholder="password" required>
+                                        <span ng-show="form1.password.$error.required">The Passward is required!</span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                }
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+
+                            <div class="form-group">
+                                <label for="email">Email <span class="text-muted">(Optional)</span></label>
+                                <input type="email" class="form-control" id="email" ng-pattern="emailvalidation" required name="email" ng-model="CustomerDetails.email" placeholder="you@example.com">
+                                <span ng-show="form1.email.$error.required">The Email is required!</span>
+                                <span ng-show="form1.email.$error.pattern">The Email is not valid!</span>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+
+                            <div class="form-group">
+                                <label for="Phone">Phone <span class="text-muted">(Optional)</span></label>
+                                <input type="text" class="form-control"  ng-model="CustomerDetails.phone" placeholder="phone">
+                                <span ng-show="form1.email.$error.required">Phone Number  is required!</span>
+                             
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="mb-3">
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea class="form-control" id="address" ng-model="CustomerAddress.address1" placeholder="1234 Main St" required></textarea>
+                    </div>
+                </div>
+
+                @*<div class="mb-3">
+                <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+                <input type="text" class="form-control" ng-model="CustomerAddress.address2" id="address2" placeholder="Apartment or suite">
+            </div>*@
+
+                @*<div class="row">
+                <div class="col-md-5 mb-3">
+                    <label for="country">Country</label>
+                    <select class="custom-select d-block w-100" ng-model="CustomerAddress.country" id="country" required>
+                        <option value="">Choose...</option>
+                        <option>United States</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a valid country.
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="state">State</label>
+                    <select class="custom-select d-block w-100" ng-model="CustomerAddress.state" id="state" required>
+                        <option value="">Choose...</option>
+                        <option>California</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please provide a valid state.
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="zip">Zip</label>
+                    <input type="text" class="form-control" id="zip" ng-model="CustomerAddress.region" placeholder="" required>
+                    <div class="invalid-feedback">
+                        Zip code required.
+                    </div>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="same-address">
+                <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
+            </div>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="save-info">
+                <label class="custom-control-label" for="save-info">Save this information for next time</label>
+            </div>
+            <hr class="mb-4">*@
+
+                <br />
+                <h6 class="subtitle">Payment Info</h6>
+
+
+                <div class="row">
+                    <div class="col-md-3">
+
+
+
+
+                        <div class="custom-control custom-radio">
+                            <input id="credit" value="0" ng-model="CustomerDetails.cardType" name="paymentMethod" type="radio" class="custom-control-input" required checked="checked">
+
+                            <label class=" custom-control-label" for="credit">Credit card</label>
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="custom-control custom-radio">
+                            <input id="debit" value="1" ng-model="CustomerDetails.cardType" name="paymentMethod" type="radio" class="custom-control-input" required>
+                            <label class="custom-control-label" for="debit">Debit card</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="custom-control custom-radio">
+                            <input id="paypal" ng-model="CustomerDetails.cardType" value="2" name="paymentMethod" type="radio" class="custom-control-input" required>
+                            <label class="custom-control-label" for="paypal">Paypal</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="custom-control custom-radio">
+                            <input id="cashond" name="paymentMethod" ng-model="CustomerDetails.cardType" value="3" type="radio" class="custom-control-input"  required>
+                            <label class="custom-control-label" for="cashond">Cash On Delivery</label>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="d-block my-3">
+
+                    <br />
+
+
+                </div>
+
+                <div ng-if="CustomerDetails.cardType==='0'||CustomerDetails.cardType==='1'">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+
+                            <div class="form-group">
+                                <label for="cc-name">Name on card <span class="text-danger"></span></label>
+                                <input type="text" class="form-control" id="cc-name" name="cnumber1" placeholder="Enter Name on Card"/>
+                              
+                            </div>
+
+
+
+
+
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="form-group">
+                                <label for="cc-number">Credit card number <span class="text-danger">*</span></label>
+                                <div class="row">
+                                    <div class="col-md-1">
+                                        <span><i style="font-size:30px;color:green;" class="{{ccinfo.type}}"></i></span>
+                                    </div>
+                                    <div class="col-md-11">
+                                        <input type="text" class="form-control " id="cc-number" name="cnumber" ng-model="CustomerDetails.CreditCard" placeholder="Ender Card Number" data-credit-card-type
+                                               data-ng-pattern="/^[0-9]+$/"
+                                               data-ng-minlength="15"
+                                               maxlength="19" required />
+
+                                        <span ng-show="form1.cnumber.$error.pattern">Credit card must consist of only numbers</span>
+                                        <span ng-show="form1.cnumber.$error.invalid">Credit card must be a valid</span>
+                                        <span ng-show="form1.cnumber.$error.minlength">Credit card must be 15-19 digits</span>
+                                        <span ng-show="form1.cnumber.$error.required">Credit card required</span>
+                                    </div>
+                                </div>
+                                </div>
+                            
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <div class="form-group">
+                                <label for="cc-expiration">Expiration month <span class="text-danger">*</span></label>
+                                @*<input type="hidden" class="form-control" id="cc-expiration" placeholder="" required>*@
+
+                                <select id='selectedMonth' ng-model="CustomerDetails.CardExpMo" name="selectedMonth" class="form-control" required>
+                                    <option selected value=''>--Select Month--</option>
+                                    <option value='1'>01</option>
+                                    <option value='2'>02</option>
+                                    <option value='3'>03</option>
+                                    <option value='4'>04</option>
+                                    <option value='5'>05</option>
+                                    <option value='6'>06</option>
+                                    <option value='7'>07</option>
+                                    <option value='8'>08</option>
+                                    <option value='9'>09</option>
+                                    <option value='10'>10</option>
+                                    <option value='11'>11</option>
+                                    <option value='12'>12</option>
+                                </select>
+                                <span ng-show="form1.selectedMonth.$error.required">Select Expiration Month</span>
+                            </div>
+
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="form-group">
+                                <label for="cc-expiration">Expiration year <span class="text-danger">*</span></label>
+                                <select ng-init='loadyear()' id="selectedYear" name="selectedYear" ng-model="CustomerDetails.CardExpYr" ng-options="year for year in years" class="form-control" required>
+                                  
+                                </select>
+                                <span ng-show="form1.selectedYear.$error.required">Select Expiration Year</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 mb-3">
+
+                            <div class="form-group">
+                                <label for="cc-expiration">CVV <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="cc-cvv" name="cvv" placeholder="" required/>
+
+                                <span ng-show="form1.cvv.$error.required">Please Enter CVV Code</span>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" ng-disabled=!form1.$valid type="submit">Continue to checkout</button>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+@section scripts
+{
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+
+}
+
+<style>
+    .form-horizontal .form-group {
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>

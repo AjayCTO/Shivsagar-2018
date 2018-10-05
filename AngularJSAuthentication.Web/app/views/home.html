@@ -1,0 +1,455 @@
+﻿<style>
+    section.hero .item {
+        padding: 150px 0;
+        background-repeat: no-repeat !important;
+        background-size: contain !important;
+        background-position: center !important;
+        background-color: #000 !important;
+    }
+
+    section.hero.hero-home h1 {
+        text-shadow: 8px 2px 7px rgba(0,0,0,0.8);
+
+        font-size:50px;
+        font-family:cursive;
+        margin-top:32px;
+    }
+
+    .top-bar {
+        background: #4361D5;
+        color: #fff;
+        font-size: 0.85em;
+        padding: 15px 1rem;
+        font-weight: 300;
+    }
+
+    .lead {
+     
+        font-size: 21px;
+        font-weight: 300;
+ 
+        width: fit-content;
+        padding: 10px;
+        color: #e5e5e5;
+    }
+
+    .img-fluid {
+        max-height:100%;
+    }
+
+    .timeline-item
+    {
+        background:#fff;
+    }
+</style>
+
+
+
+<div ng-show="loadallcat==false" class="" style=" background: url(img/BlurBG.jpg); min-height: 300px !important; background-size: cover !important; filter: blur(8px); -webkit-filter: blur(8px);">
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-6">
+                <img style="width:300px;" src="../img/Tshirt.png" />
+            </div>
+
+            <div class="col-lg-6 text-white">
+                <h1 class="ng-binding">Shirt</h1>
+                <p class="lead ng-binding">Offer limited for five days buy soon !!</p>
+
+            </div>
+
+            
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<section class="hero hero-home no-padding">
+    <!-- Hero Slider-->
+    <div class="owl-carousel owl-theme hero-slider">
+
+
+
+
+        <div style=" background: url(img/banner.jpg); min-height: 300px !important; max-height:400px; background-size: cover !important;" ng-repeat=" xyz in searchcategoriesslider" class="item d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-6 text-white">
+                        <img style="max-height: 300px; box-shadow: 0px 0px 8px #000;" src="{{GetcatBgImage(xyz.categoryImage)}}" alt="Alternate Text" />
+
+                    </div>
+
+                    <div class="col-lg-6 text-white">
+                        <h1>{{xyz.categoryName}}</h1>
+                        <p class="lead">{{xyz.description}}</p>
+                        <!--<a href="/Home/GetAllProducts/?CategoryId={{xyz.Id}}" class="btn btn-template wide shop-now">Shop Now<i class="icon-bag"></i></a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+<!-- Categories Section-->
+<!--<section class="categories">
+    <div class="container">
+        <header class="text-center">
+            <h2 class="text-uppercase"><small>Top for this month</small>Our Featured Picks</h2>
+        </header>
+        <div class="row text-left">
+            <div class="col-lg-4" ng-repeat="x in pagedItems">
+                <a href="index.html#">
+                    <div style="background-image: url({{GetProductImage(x[2])}});" class="item d-flex align-items-end">
+                        <div class="content">
+                            <h3 class="h5">{{x[3]}}</h3><span>New Collection</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+</section>-->
+
+<!-- Men's Collection -->
+<section class="men-collection gray-bg">
+    <div class="container">
+        <header class="text-center">
+            <h2 class="text-uppercase">Our Featured Picks</h2>
+        </header>
+
+        <div ng-show="loadfeatured==false" class="loadingjunk">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="timeline-wrapper">
+                        <div class="timeline-item">
+                            <div class="animated-background facebook">
+                                <div class="background-masker header-top"></div>
+                                <div class="background-masker header-left"></div>
+                                <div class="background-masker header-right"></div>
+                                <div class="background-masker header-bottom"></div>
+                                <div class="background-masker subheader-left"></div>
+                                <div class="background-masker subheader-right"></div>
+                                <div class="background-masker subheader-bottom"></div>
+                                <div class="background-masker content-top"></div>
+                                <div class="background-masker content-first-end"></div>
+                                <div class="background-masker content-second-line"></div>
+                                <div class="background-masker content-second-end"></div>
+                                <div class="background-masker content-third-line"></div>
+                                <div class="background-masker content-third-end"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="timeline-wrapper">
+                        <div class="timeline-item">
+                            <div class="animated-background facebook">
+                                <div class="background-masker header-top"></div>
+                                <div class="background-masker header-left"></div>
+                                <div class="background-masker header-right"></div>
+                                <div class="background-masker header-bottom"></div>
+                                <div class="background-masker subheader-left"></div>
+                                <div class="background-masker subheader-right"></div>
+                                <div class="background-masker subheader-bottom"></div>
+                                <div class="background-masker content-top"></div>
+                                <div class="background-masker content-first-end"></div>
+                                <div class="background-masker content-second-line"></div>
+                                <div class="background-masker content-second-end"></div>
+                                <div class="background-masker content-third-line"></div>
+                                <div class="background-masker content-third-end"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Products Slider-->
+        <div class="owl-carousel owl-theme products-slider">
+            <!-- item-->
+            <div class="item" ng-repeat="x in pagedItems">
+                <div class="product">
+                    <div class="image d-flex align-items-center justify-content-center" id="products-slider-{{x[8]}}">
+                        <img src="{{GetProductImage(x[2])}}" alt="product" class="img-fluid">
+                        <div class="hover-overlay d-flex align-items-center justify-content-center">
+                            <div class="CTA d-flex align-items-center justify-content-center">
+                                <a ng-click="AddToCartGlobal(x[8],x,'products-slider-')" class="add-to-cart"><i class="fa fa-shopping-cart"></i></a><a ng-click="SetProduct(x)" class="visit-product active"><i class="icon-search"></i>View</a>
+                                <a ng-click="getProductDetail(x)" class="quick-view"><i class="fa fa-arrows-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="title">
+                        <a href="#">
+                            <h3 class="h6 text-uppercase no-margin-bottom">{{x[3]}}</h3>
+                        </a><span class="price text-muted">{{x[4]|currency}}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="women-collection">
+    <!-- Divider Section-->
+    <div class="container">
+        <header class="text-center">
+            <h2 class="text-uppercase">Top Rated Picks</h2>
+        </header>
+
+        <div ng-show="loadtop==false" class="loadingjunk">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="timeline-wrapper">
+                        <div class="timeline-item">
+                            <div class="animated-background facebook">
+                                <div class="background-masker header-top"></div>
+                                <div class="background-masker header-left"></div>
+                                <div class="background-masker header-right"></div>
+                                <div class="background-masker header-bottom"></div>
+                                <div class="background-masker subheader-left"></div>
+                                <div class="background-masker subheader-right"></div>
+                                <div class="background-masker subheader-bottom"></div>
+                                <div class="background-masker content-top"></div>
+                                <div class="background-masker content-first-end"></div>
+                                <div class="background-masker content-second-line"></div>
+                                <div class="background-masker content-second-end"></div>
+                                <div class="background-masker content-third-line"></div>
+                                <div class="background-masker content-third-end"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="timeline-wrapper">
+                        <div class="timeline-item">
+                            <div class="animated-background facebook">
+                                <div class="background-masker header-top"></div>
+                                <div class="background-masker header-left"></div>
+                                <div class="background-masker header-right"></div>
+                                <div class="background-masker header-bottom"></div>
+                                <div class="background-masker subheader-left"></div>
+                                <div class="background-masker subheader-right"></div>
+                                <div class="background-masker subheader-bottom"></div>
+                                <div class="background-masker content-top"></div>
+                                <div class="background-masker content-first-end"></div>
+                                <div class="background-masker content-second-line"></div>
+                                <div class="background-masker content-second-end"></div>
+                                <div class="background-masker content-third-line"></div>
+                                <div class="background-masker content-third-end"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="owl-carousel owl-theme topRated-slider">
+            <div class="item" ng-repeat="x in TopRatedItems">
+                <div class="product">
+                    <div style="background:#f2f2f2;" class="image d-flex align-items-center justify-content-center" id="topRated-slider-{{x[8]}}">
+                        <img src="{{GetProductImage(x[2])}}" alt="product" class="img-fluid">
+                        <div class="hover-overlay d-flex align-items-center justify-content-center">
+                            <div class="CTA d-flex align-items-center justify-content-center">
+                                <a ng-click="AddToCartGlobal(x[8],x,'topRated-slider-')" class="add-to-cart"><i class="fa fa-shopping-cart"></i></a><a ng-click="SetProduct(x)" class="visit-product active"><i class="icon-search"></i>View</a>
+                                <a ng-click="getProductDetail(x)" class="quick-view"><i class="fa fa-arrows-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="title">
+                        <a href="#">
+                            <h3 class="h6 text-uppercase no-margin-bottom">{{x[3]}}</h3>
+                        </a><span class="price text-muted">{{x[4]|currency}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Women's Collection -->
+<section class="women-collection gray-bg">
+    <div class="container">
+        <header class="text-center">
+            <h2 class="text-uppercase">Most Saled Picks</h2>
+        </header>
+
+        <div ng-show="loadmostsale==false" class="loadingjunk">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="timeline-wrapper">
+                        <div class="timeline-item">
+                            <div class="animated-background facebook">
+                                <div class="background-masker header-top"></div>
+                                <div class="background-masker header-left"></div>
+                                <div class="background-masker header-right"></div>
+                                <div class="background-masker header-bottom"></div>
+                                <div class="background-masker subheader-left"></div>
+                                <div class="background-masker subheader-right"></div>
+                                <div class="background-masker subheader-bottom"></div>
+                                <div class="background-masker content-top"></div>
+                                <div class="background-masker content-first-end"></div>
+                                <div class="background-masker content-second-line"></div>
+                                <div class="background-masker content-second-end"></div>
+                                <div class="background-masker content-third-line"></div>
+                                <div class="background-masker content-third-end"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="timeline-wrapper">
+                        <div class="timeline-item">
+                            <div class="animated-background facebook">
+                                <div class="background-masker header-top"></div>
+                                <div class="background-masker header-left"></div>
+                                <div class="background-masker header-right"></div>
+                                <div class="background-masker header-bottom"></div>
+                                <div class="background-masker subheader-left"></div>
+                                <div class="background-masker subheader-right"></div>
+                                <div class="background-masker subheader-bottom"></div>
+                                <div class="background-masker content-top"></div>
+                                <div class="background-masker content-first-end"></div>
+                                <div class="background-masker content-second-line"></div>
+                                <div class="background-masker content-second-end"></div>
+                                <div class="background-masker content-third-line"></div>
+                                <div class="background-masker content-third-end"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Products Slider-->
+        <div class="owl-carousel owl-theme mostsaled-slider">
+            <!-- item-->
+
+            <div class="item" ng-repeat="x in MostSaledItems">
+                <div class="product">
+                    <div class="image d-flex align-items-center justify-content-center" id="mostsaled-slider-{{x[8]}}">
+                        <img src="{{GetProductImage(x[2])}}" alt="product" class="img-fluid">
+                        <div class="hover-overlay d-flex align-items-center justify-content-center">
+                            <div class="CTA d-flex align-items-center justify-content-center">
+                                <a ng-click="AddToCartGlobal(x[8],x,'mostsaled-slider-')" class="add-to-cart"><i class="fa fa-shopping-cart"></i></a><a ng-click="SetProduct(x)" class="visit-product active"><i class="icon-search"></i>View</a>
+                                <a ng-click="getProductDetail(x)" data-toggle="modal" data-target="#exampleModal" class="quick-view"><i class="fa fa-arrows-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="title">
+                        <a href="#">
+                            <h3 class="h6 text-uppercase no-margin-bottom">{{x[3]}}</h3>
+                        </a><span class="price text-muted">{{x[4]|currency}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blog Section-->
+<section class="blog">
+    <div class="container">
+        <header class="text-center">
+            <h2 class="text-uppercase"><small>Made it hard way</small>Latest from the blog</h2>
+        </header>
+        <div class="row">
+            <!-- post-->
+            <div class="col-lg-6">
+                <div class="post post-gray d-flex align-items-center flex-md-row flex-column">
+                    <div class="thumbnail d-flex-align-items-center justify-content-center"><img src="https://d19m59y37dris4.cloudfront.net/hub/1-4-0/img/blog-1.jpg" alt="..."></div>
+                    <div class="info">
+                        <h4 class="h5"> <a href="post.html">Newest photo apps          </a></h4><span class="date"><i class="fa fa-clock-o"></i>May 10th 2016</span>
+                        <p>ellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Aenean ultricies mi vitae est. </p><a href="post.html" class="read-more">Read More<i class="fa fa-long-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- /end post-->
+            <!-- post-->
+            <div class="col-lg-6">
+                <div class="post post-gray d-flex align-items-center flex-md-row flex-column">
+                    <div class="thumbnail d-flex-align-items-center justify-content-center"><img src="https://d19m59y37dris4.cloudfront.net/hub/1-4-0/img/blog-2.jpg" alt="..."></div>
+                    <div class="info">
+                        <h4 class="h5"> <a href="post.html">Best books about Photography          </a></h4><span class="date"><i class="fa fa-clock-o"></i>May 10th 2016</span>
+                        <p>Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.  Mauris placerat eleifend leo.</p><a href="post.html" class="read-more">Read More<i class="fa fa-long-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- /end post-->
+        </div>
+    </div>
+</section>
+<!-- Brands Section-->
+<section class="brands gray-bg ">
+    <div class="container">
+        <!-- Brands Slider-->
+        <div class="owl-carousel owl-theme brands-slider">
+            <!-- item-->
+            <div ng-repeat="seller in Suppliers" class="item d-flex align-items-center justify-content-center">
+
+
+
+                <div class="brand d-flex align-items-center"><img src="{{GetSupplierImage(seller.logo)}}" alt="..." class="img-fluid"></div>
+            </div>
+            <!-- item-->
+
+
+        </div>
+    </div>
+</section>
+<!-- Overview Popup    -->
+<div id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade overview">
+    <div role="document" class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"><i class="icon-close"></i></span></button>
+            <div class="modal-body">
+                
+                <div class="row d-flex align-items-center">
+                    <div class="image col-lg-5"><img src="{{GetProductImage(ProductDetail[2])}}" alt="..." class="img-fluid d-block"></div>
+                    <div class="details col-lg-7">
+                        <h2>{{ProductDetail[3]}}</h2>
+                        <ul class="price list-inline">
+                            <li class="list-inline-item current">${{ProductDetail[8]}}</li>
+                        </ul>
+                        <p>{{ProductDetail[12]}}</p>
+                        
+                        <ul class="CTAs list-inline">
+                            <li class="list-inline-item"><a ng-click="AddToCartGlobal(ProductDetail[8],ProductDetail,'mostsaled-slider-')" class="btn btn-template wide"> <i class="fa fa-shopping-cart"></i>Add to Cart</a></li>
+                            <li class="list-inline-item"><a  class="visit-product active btn btn-template-outlined wide" ng-click="addTowishList(ProductDetail[8])"> <i class="{{iconclass}}"></i>Add to wishlist</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .angel.icon-heart{
+        color:#b14cee;
+    }
+</style>
+<script src="js/front.js"></script>
+<script>
+    $("html, body").animate({ scrollTop: 0 }, 0);
+</script>
+
+<!--<script>
+    $(document).ready(function () {
+        $(window).scrollTop(5);
+    });
+</script>-->

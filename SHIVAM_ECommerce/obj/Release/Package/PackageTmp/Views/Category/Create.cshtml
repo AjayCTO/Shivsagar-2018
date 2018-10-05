@@ -1,0 +1,231 @@
+﻿@model SHIVAM_ECommerce.Models.Category
+
+@{
+    ViewBag.Title = "Create";
+}
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Category Create</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/Category">Category</a></li>
+            <li class="breadcrumb-item active">Category Create</li>
+        </ol>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card">
+       
+                <div class="card-body">
+                    @using (Html.BeginForm("Create", "Category", FormMethod.Post,
+                            new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+
+                            @Html.ValidationSummary(true)
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Category Name</label>
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.CategoryName, new { @class = "form-control col-md-5 UniqueCategory" })
+                                    @Html.ValidationMessageFor(model => model.CategoryName)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Parent Category</label>
+                                <div class="col-md-10">
+
+                                    @Html.DropDownList("ParentCategory", String.Empty)
+
+                                    @Html.ValidationMessageFor(model => model.ParentCategory)
+                                </div>
+                            </div>
+                            @*<div class="form-group">
+                                             <div class="col-md-10">
+                                                 <label class="custom-control custom-checkbox">
+                                                     @Html.CheckBoxFor(model => model.IsTopCategory,
+                                new Dictionary<string, object> { { "class", "custom-control-input" } })
+
+
+                                                     <span class="custom-control-label">Show at home</span>
+                                                 </label>
+                                             </div>
+                                         </div>*@
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label class="custom-control custom-checkbox">
+                                                @Html.CheckBoxFor(model => model.IsTopCategory, new Dictionary<string, object> { { "class", "custom-control-input" } })
+
+
+                                                <span class="custom-control-label">Show at home</span>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label class="custom-control custom-checkbox">
+                                                @Html.CheckBoxFor(model => model.IsActive, new Dictionary<string, object> { { "class", "custom-control-input" } })
+                                                <span class="custom-control-label">Is Active</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="form-group">
+                                    @Html.LabelFor(model => model.IsActive, new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.IsActive)
+                                        @Html.ValidationMessageFor(model => model.IsActive)
+                                    </div>
+                                </div>*@
+
+                            <div class="form-group">
+
+                                <div class="col-md-4">
+                                    <label for="file">Upload Image:</label>
+                                    @*<input type="file" name="file" id="file" style="width: 100%;" />*@
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input form-control" name="file" id="file" accept="image/*">
+                                        <label class="custom-file-label">Choose file</label>
+                                    </div>
+                                    <div class="gallery"></div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control col-md-5" })
+                                    @Html.ValidationMessageFor(model => model.Description)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary btn-space"><i class="fa fa-check"></i> Create</button>
+                                    <a class="btn btn-secondary btn-gray" href="/Category"><i class="fa fa-times"></i> Cancel</a>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+         
+
+
+
+    @section Scripts {
+
+<script>
+    var current = location.pathname;
+    $('.nav li a').each(function () {
+        var $this = $(this);
+        // if the current path is like this link, make it active
+        if ($this.attr('href').indexOf(current) !== -1) {
+            if (current != "/") {
+                $this.addClass('active');
+
+            }
+        }
+    })
+    var imagesPreview = function (input, placeToInsertImagePreview) {
+
+        if (input.files) {
+            var filesAmount = input.files.length;
+
+            for (i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+
+                reader.onload = function (event) {
+                    var _multiple = $.trim($(input).attr("multiple"));
+                    if (_multiple == "") { $(placeToInsertImagePreview).html(""); }
+                    $($.parseHTML('<img style="height:50px; width:50px; margin-right:10px; margin-top:5px;">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                }
+
+                reader.readAsDataURL(input.files[i]);
+            }
+        }
+
+    };
+    $('.custom-file-input').on('change', function () {
+        imagesPreview(this, 'div.gallery');
+    });
+
+    $(document).on("keypress", ".customColumnData", function (evt) {
+
+        var keycode = evt.charCode || evt.keyCode;
+        if (keycode == 35 || keycode == 64) { //Enter key's keycode
+            return false;
+        }
+    });
+</script>
+
+        <script>
+            $("#ParentCategory").addClass("form-control col-md-5")
+        </script>
+
+        @Scripts.Render("~/bundles/jqueryval")
+
+
+
+        <script>
+            $(document).ready(function () {
+
+
+                $.validator.addMethod('UniqueCategory', function (value) {
+
+
+                    if ($.trim(value) != "") {
+                        return UniqeCategories(value);
+                    }
+                    else {
+                        return true;
+                    }
+
+                }, "Please enter a different Category Name ! It's already exist");
+
+            });
+            function UniqeCategories(value) {
+                var _x = true;
+                $.ajax({
+                    url: "/Category/UniqueCategory",
+                    data: JSON.stringify({ CategoryName: value }),
+                    type: 'POST',
+                    async: false,
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    success: function (result) {
+                        _x = !result.IsAlreadyExist;
+                    },
+                    error: function (req, status, error) {
+                        alert(error);
+                    }
+                });
+
+                return _x;
+            }
+
+        </script>
+    }

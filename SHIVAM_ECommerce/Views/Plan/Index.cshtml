@@ -1,0 +1,253 @@
+﻿@{
+}
+
+
+
+
+    <!-- display errors -->
+    <!-- display warnings -->
+    <!-- display success -->
+    <!-- display success -->
+
+    <div class="row page-titles">
+
+
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-primary">Plan</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+                <li class="breadcrumb-item active">Plan</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="container-fluid">
+
+
+                        <a href="/Plan/Create" class="btn btn-success"> <i class="fa fa-plus"></i> Add Plan</a>
+
+                    </div>
+                    <div class="card-body">
+                        <table id="myTable" class="table table-striped table-bordered dt-responsive">
+                            <thead>
+                                <tr>
+                                    <th>Plan Name</th>
+                                    <th>Plan Code</th>
+                                    <th>Description</th>
+                                    <th>Plan Frequency</th>
+                                    <th>Monthly Price</th>
+                                    <th>Yearly Price</th>
+                                    <th>Active</th>
+                                    <th>Products</th>
+                                    <th>Users</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    @*<ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Plans</a>
+        </li>
+        <li class="breadcrumb-item active">Plan List</li>
+    </ol>
+
+    <div class="card">
+        <div class="card-header">
+
+            <h3 class="card-title"><i class="fa fa-list"></i> Plans </h3>
+            <div class="flex-fill text-right">
+                <a href="/Plan/Create" class="btn btn-success"> <i class="fa fa-plus"></i> Add Plan</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <table id="myTable" class="table table-striped table-bordered dt-responsive">
+                <thead>
+                    <tr>
+                        <th>Plan Name</th>
+                        <th>Plan Code</th>
+                        <th>Description</th>
+                        <th>Plan Frequency</th>
+                        <th>Monthly Price</th>
+                        <th>Yearly Price</th>
+                        <th>Active</th>
+                        <th>Products</th>
+                        <th>Users</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+            </table>
+
+        </div>
+    </div>*@
+
+
+
+
+
+
+
+
+
+
+
+@section scripts{
+
+
+
+    <script>
+
+
+        var _datatable = "";
+
+        $(document).ready(function () {
+            _datatable = $("#myTable").DataTable({
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "ajax": {
+                    "url": "/Plan/LoadData",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "columns": [
+
+                        {
+
+                            "data": "PlanName", "name": "PlanName", "autoWidth": true
+                        },
+                          {
+
+                              "data": "Plancode", "name": "Plancode", "autoWidth": true
+                          },
+                           {
+
+                               "data": "Description", "name": "Description", "autoWidth": true
+                           },
+                            {
+
+                                "data": "PlanFrequency", "name": "PlanFrequency", "autoWidth": true
+                            },
+                            {
+
+                                "data": "TotalMonthlyPrice", "name": "TotalMonthlyPrice", "autoWidth": true
+                            },
+                            {
+
+                                "data": "TotalYearlyPrice", "name": "TotalYearlyPrice", "autoWidth": true
+                            },
+                             {
+
+                                 "data": "IsActive", "name": "IsActive", "autoWidth": true
+                             },
+                            {
+
+                                "data": "ProductBucketCount", "name": "ProductBucketCount", "autoWidth": true
+                            },
+                              {
+
+                                  "data": "UserBucketCount", "name": "UserBucketCount", "autoWidth": true
+                              },
+                         {
+                             "orderable": false,
+                             "mRender": function (data, type, row) {
+                                 var _a = '<a href="/Plan/Details?id=' + row.Id + '"  class="dropdown-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Details" ><i class="fa fa-list"  align="center"></i> Details</a>';
+                                 var _b = '<a onclick="UpdatePlanStatus(' + row.Id + ')" href="#"  class="dropdown-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Toggle plan" ><i class="fa fa-check"  align="center"></i> Toggle plan</a>';
+                                 var _c = '<a href="/Plan/Edit?id=' + row.Id + '" class="dropdown-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-pencil"  align="center"></i> Edit plan</a>  '
+                                 var _d = '<a onclick="DeletePlan(' + row.Id + ')" href="#"  class="dropdown-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-trash"  align="center"></i> Delete plan</a>  '
+
+
+                                 return '<div class="item-action dropdown"><a href="javascript:void(0)" data-toggle="dropdown" class="icon" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a><div class="dropdown-menu dropdown-menu-right" x-placement="top-end" style="position: absolute; transform: translate3d(-177px, -139px, 0px); top: 0px; left: 0px; will-change: transform;">' + _c + _a + _b + _d + '</div></div>';
+                             }
+                         },
+                ]
+            });
+        });
+
+     
+
+        function UpdatePlanStatus(Id) {
+            bootbox.confirm("Are you sure you want to toggle this plan ?", function (result) {
+
+                if (result) {
+
+                    $.ajax({
+                        url: "/Plan/TogglePlan",
+                        data: JSON.stringify({ ID: Id }),
+                        type: 'POSt',
+                        contentType: 'application/json',
+                        dataType: 'json',
+                        success: function (result) {
+                            if (result.Success === true) {
+                                _datatable.clear().draw();
+                                toastr.success("Status changed Successfully");
+                            } else {
+                                bootbox.alert("error occurred during operation." + result.ex);
+                            }
+                        },
+                        error: function (req, status, error) {
+                            bootbox.alert(error);
+                        }
+                    });
+
+                }
+
+
+
+
+            });
+
+        }
+        function DeletePlan(Id) {
+
+            bootbox.confirm("Are you sure you want to delete this plan ?", function (result) {
+
+                if (result) {
+                    $.ajax({
+                        url: "/Plan/Delete",
+                        data: JSON.stringify({ ID: Id }),
+                        type: 'POSt',
+                        contentType: 'application/json',
+                        dataType: 'json',
+                        success: function (result) {
+                            if (result.Success === true) {
+                                _datatable.clear().draw();
+                                toastr.success("Deleted Successfully");
+                            } else {
+                                bootbox.alert("error occurred during operation." + result.ex);
+                            }
+                        },
+                        error: function (req, status, error) {
+                            bootbox.alert(error);
+                        }
+                    });
+
+                }
+
+
+
+
+            });
+
+        }
+
+    </script>
+}

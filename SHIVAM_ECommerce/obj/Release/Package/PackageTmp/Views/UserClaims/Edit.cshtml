@@ -1,0 +1,114 @@
+﻿@model SHIVAM_ECommerce.Models.Claims
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/UserClaims">User Claims</a>
+    </li>
+    <li class="breadcrumb-item active">Update Claims</li>
+</ol>
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa fa-pencil"></i> Update Claim</h3>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">             
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.Id)
+
+                @Html.HiddenFor(model => model.CreatedDate)
+
+                @Html.HiddenFor(model => model.UpdatedDate)
+
+                @Html.HiddenFor(model => model.Sort)
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ClaimType, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ClaimType, new { @class = "form-control col-md-10" })
+                        @Html.ValidationMessageFor(model => model.ClaimType)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ClaimValue, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ClaimValue, new { @class = "form-control col-md-10" })
+                        @Html.ValidationMessageFor(model => model.ClaimValue)
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+
+                    <div class="col-md-10">
+                        <label class="custom-control custom-checkbox">
+                            @Html.CheckBoxFor(model => model.IsActive,
+       new Dictionary<string, object> { { "class", "custom-control-input" } })
+
+
+                            <span class="custom-control-label">Active</span>
+                        </label>
+                        @Html.ValidationMessageFor(model => model.IsActive)
+                    </div>
+                </div>              
+
+                
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Role, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @*@Html.TextBoxFor(model => model.Role, new { @class = "form-control col-md-10" })*@
+                        @Html.DropDownList("Role", new SelectList(ViewBag.Roles, "Name", "Name"), new { @class = "form-control col-md-10", @name = "Role" })
+                        @Html.ValidationMessageFor(model => model.Role)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Notes">Display Label</label>
+                    @*@Html.LabelFor(model => model.Notes, new { @class = "control-label col-md-2" })*@
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Notes, new { @class = "form-control col-md-10" })
+                        @Html.ValidationMessageFor(model => model.Notes)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="submit" value="Create" class="btn btn-primary">
+                            <i class="fa fa-check"></i>
+                            Save
+                        </button>
+                        <a href="/UserClaims" class="btn btn-gray">
+                            <i class="fa fa-times"></i>
+                            Cancel
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>       
+
+
+
+
+@section Scripts {
+
+    <script>
+        $("#ParentCategory").addClass("form-control col-md-10")
+    </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+}

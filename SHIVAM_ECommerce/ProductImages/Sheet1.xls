@@ -1,0 +1,15 @@
+Name	ProductCode	Description	categoryName	UnitOfMeasure	ManuFacturer	HighQuantityThreshold	LowQuantityThreshold	IsFeatured	ProductStatus	Model	Color	Size	Quantity	Cost
+Casual	C1		Shirt	pices	Remond	200	10	TRUE	Available	mo1	Red	XL	20	499
+Casual	C2		Shirt	pices	Remond	200	10	TRUE	Available	mo2	Green	XL	20	499
+Casual	C3		Shirt	pices	Remond	200	10	TRUE	Available	mo3	Blue	XL	20	499
+Casual	C4		Shirt	pices	Remond	200	10	TRUE	Available	mo4	Black	XL	20	499
+Casual	C5		Shirt	pices	Remond	200	10	TRUE	Available	mo5	Yellow	XL	20	499
+Casual	C6		Shirt	pices	Remond	200	10	TRUE	Available	mo6	Orange	XL	20	499
+Casual	C7		Shirt	pices	Remond	200	10	TRUE	Available	mo7	White	XL	20	499
+Casual	C8		Shirt	pices	Remond	200	10	TRUE	Available	mo8	Red	XXL	20	499
+Casual	C9		Shirt	pices	Remond	200	10	TRUE	Available	mo9	Green	XXL	20	499
+Casual	C10		Shirt	pices	Remond	200	10	TRUE	Available	mo10	Blue	XXL	20	499
+Casual	C11		Shirt	pices	Remond	200	10	TRUE	Available	mo11	Black	XXL	20	499
+Casual	C12		Shirt	pices	Remond	200	10	TRUE	Available	mo12	Yellow	XXL	20	499
+Casual	C13		Shirt	pices	Remond	200	10	TRUE	Available	mo13	Orange	XXL	20	499
+Casual	C14		Shirt	pices	Remond	200	10	TRUE	Available	mo14	White	XXL	20	499

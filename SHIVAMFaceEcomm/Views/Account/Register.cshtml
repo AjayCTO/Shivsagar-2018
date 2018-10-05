@@ -1,0 +1,158 @@
+﻿@model SHIVAMFaceEcomm.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+
+<!-- start section -->
+<section class="section white-backgorund">
+    <div class="container">
+        <div class="row">
+            <!-- start sidebar -->
+            <div class="col-sm-3">
+                <div class="widget">
+                    <h6 class="subtitle">New Collection</h6>
+                    <figure>
+                        <a href="javascript:void(0);">
+                            <img src="http://diamondcreative.net/plus-v1.3.0/img/products/men_06.jpg" alt="collection">
+                        </a>
+                    </figure>
+                </div><!-- end widget -->
+            </div><!-- end col -->
+            <!-- end sidebar -->
+            <div class="col-sm-9">
+                <div class="row">
+                    <div class="col-sm-12 text-left">
+                        <h2 class="title">Create an account</h2>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+
+                <hr class="spacer-5"><hr class="spacer-20 no-border">
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-10 col-lg-8">
+                        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="form-group">
+                                <label for="email" class="col-sm-3 control-label">First Name <span class="text-danger">*</span></label>
+                                <div class="col-sm-9">
+
+                                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+
+
+                                </div>
+                            </div><!-- end form-group -->
+                                <div class="form-group">
+                                <label for="email" class="col-sm-3 control-label">Last Name <span class="text-danger">*</span></label>
+                                <div class="col-sm-9">
+
+                                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-sm-3 control-label">Email <span class="text-danger">*</span></label>
+                                <div class="col-sm-9">
+
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+
+                                </div>
+                            </div><!-- end form-group -->
+                            <div class="form-group">
+                                <label for="password" class="col-sm-3 control-label">User Name<span class="text-danger">*</span></label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control UniqueUserName" })
+                                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="password" class="col-sm-3 control-label">Password <span class="text-danger">*</span></label>
+                                <div class="col-sm-9">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div><!-- end form-group -->
+
+                            <div class="form-group">
+                                <label for="password" class="col-sm-3 control-label">Confirm Pass<span class="text-danger">*</span></label>
+                                <div class="col-sm-9">
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                               <div class="form-group">
+                                <label for="password" class="col-sm-3 control-label">Phone<span class="text-danger">*</span></label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                            <!-- end form-group -->
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <input type="submit" class="btn btn-default" value="Register" />
+                                </div>
+                            </div><!-- end form-group -->
+                        }
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end col -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section>
+<!-- end section -->
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+
+
+            $.validator.addMethod('UniqueUserName', function (value) {
+
+
+                if ($.trim(value) != "") {
+                    return CheckUniqueUserName(value);
+                }
+                else {
+                    return true;
+                }
+
+            }, "Please enter a unique username value");
+        });
+
+        function CheckUniqueUserName(value) {
+            var _x = true;
+            $.ajax({
+                url: "/Account/UniqueUserName",
+                data: JSON.stringify({ UserName: value }),
+                type: 'POST',
+                async: false,
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function (result) {
+                    _x = !result.IsAlreadyExist;
+                },
+                error: function (req, status, error) {
+                    alert(error);
+                }
+            });
+
+            return _x;
+        }
+    </script>
+}

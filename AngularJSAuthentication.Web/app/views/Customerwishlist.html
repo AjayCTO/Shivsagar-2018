@@ -1,0 +1,92 @@
+﻿
+<section id="customerwishlistscroll"class="hero hero-page gray-bg padding-small">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-lg-9 order-2 order-lg-1">
+                <h3>Wishlist ({{CurrentWishList.length}})</h3><p class="lead text-muted"></p>
+            </div>
+            <div class="col-lg-3 text-right order-1 order-lg-2">
+                <ul class="breadcrumb justify-content-lg-end">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Wish List</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="product-description no-padding">
+    <div class="container-fluid">
+
+        <div class="tab-content">
+            <div id="description" role="tabpanel" class="tab-pane">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. LOLUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. LOLDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. LOLUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. LOLDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+
+            <div id="reviews" role="tabpanel" class="tab-pane active show">
+
+           
+                    <div class="row">
+                        <div ng-show="CurrentWishList.length==0" class="col-xl-12 wishscroll align-items-center">
+
+                                    <h4 class="text-center">WISHLIST EMPTY</h4> 
+                            <p class="text-center">Save your favorite item in one place. Add now, buy later.</p>
+                            <div class="text-center"><img src="../../img/emptyWishlist.png"  height="150" /></div>
+                            <div class="text-center"><a href="#/Product" class="btn btn-template wide">Continue Shopping</a></div>
+                        </div>
+     
+                            <div class="col-xl-12 wishscroll">
+
+                                <div class="row review" ng-repeat="x in CurrentWishList">
+                                    <div class="col-lg-2 text-right"><img src="{{GetProductImage(x.image)}}" alt="Han Solo" class="imgproduct"></div>
+                                    <div class="col-lg-6">
+                                        <h6>{{x.productName}}</h6>
+
+                                        <p class="text-muted text-small">{{x.productDescription}}</p>
+                                    </div>
+                                    <div class="col-lg-2 text-center">
+                                        <p>{{x.productPrice|currency}}</p>
+                                    </div>
+                                    <div class="col-lg-2 text-center">
+                                        <a class="btn btn-template" ng-click="AddToCartGlobal(x.id,x,'_productId')"> <i class="icon-cart"></i>Add to Cart</a>
+
+                                        <a href="" ng-click="RemoveFromwishList(x.id)"><p>Remove</p></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="share-product gray-bg d-flex align-items-center justify-content-center flex-column flex-md-row">
+            <strong class="text-uppercase">Share this on</strong>
+            <ul class="list-inline text-center">
+                <li class="list-inline-item"><a href="#" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></li>
+                <li class="list-inline-item"><a href="#" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></li>
+                <li class="list-inline-item"><a href="#" target="_blank" title="instagram"><i class="fa fa-instagram"></i></a></li>
+                <li class="list-inline-item"><a href="#" target="_blank" title="pinterest"><i class="fa fa-pinterest"></i></a></li>
+                <li class="list-inline-item"><a href="#" target="_blank" title="vimeo"><i class="fa fa-vimeo"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    
+</section>
+
+
+<style>
+    .imgproduct{
+        width:70px;
+        height:80px;
+    
+    }
+  
+</style>
+
+<script>
+    $('html, body').animate({
+        scrollTop: $("#customerwishlistscroll").offset().top
+    }, 1000);
+  
+</script>

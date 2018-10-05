@@ -1,0 +1,274 @@
+﻿<section  class="hero hero-page gray-bg padding-small">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-lg-9 order-2 order-lg-1">
+                <h3>{{product.product.product.productName}}</h3>
+            </div>
+            <div class="col-lg-3 text-right order-1 order-lg-2">
+                <ul class="breadcrumb justify-content-lg-end">
+                    <li class="breadcrumb-item"><a>Home</a></li>
+                    <li class="breadcrumb-item"><a>Shop</a></li>
+                    <li class="breadcrumb-item active">{{product.product.product.productName}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="productdetailscroll" class="product-details">
+    <div class="container">
+        <div class="row">
+            <div class="product-images col-lg-6">
+                <div class="ribbon-info text-uppercase">Fresh</div>
+                <div data-slider-id="1" class="owl-carousel items-slider owl-drag">
+                    <div ng-show="obj.imagePath != null" class="item" ng-repeat="obj in Images">
+
+                        <img src="{{GetProductImage(obj.imagePath)}}" alt="shirt">
+
+
+                    </div>
+
+                </div>
+                <div data-slider-id="1" class="owl-thumbs d-flex align-items-center justify-content-center" ng-show="obj.imagePath!=null||obj.imagePath!=' '">
+
+                    <button ng-show="obj.imagePath != null" class="owl-thumb-item" ng-repeat="obj in Images"><img src="{{GetProductImage(obj.imagePath)}}" alt="shirt"></button>
+
+                    <!--<button class="owl-thumb-item"><img src="https://d19m59y37dris4.cloudfront.net/hub/1-4-0/img/shirt-green-small.png" alt="shirt"></button>
+                    <button class="owl-thumb-item"><img src="https://d19m59y37dris4.cloudfront.net/hub/1-4-0/img/shirt-red-small.png" alt="shirt"></button>-->
+                </div>
+            </div>
+            <div class="details col-lg-6">
+                <div class="d-flex align-items-center justify-content-between flex-column flex-sm-row">
+                    <ul class="price list-inline no-margin">
+                        <li class="list-inline-item current">$ <span id="Productprice"> 65.00</span></li>
+                    </ul>
+                    <div class="review d-flex align-items-center">
+                        <ul class="rate list-inline">
+                            <li class="list-inline-item"><i class="fa fa-star text-primary"></i></li>
+                            <li class="list-inline-item"><i class="fa fa-star text-primary"></i></li>
+                            <li class="list-inline-item"><i class="fa fa-star text-primary"></i></li>
+                            <li class="list-inline-item"><i class="fa fa-star text-primary"></i></li>
+                            <li class="list-inline-item"><i class="fa fa-star-o text-primary"></i></li>
+                        </ul><span class="text-muted">{{reviews.length}} reviews</span>
+                    </div>
+                </div>
+                <p>{{product.product.product.description}}</p>
+                <div class="d-flex align-items-center justify-content-center justify-content-lg-start">
+                    <div class="quantity d-flex align-items-center">
+                        <div class="dec-btn">-</div>
+                        <input type="text" value="1" class="quantity-no">
+                        <div class="inc-btn">+</div>
+                    </div>
+
+                    <div class="col-md-3 col-sm-6 col-xs-12" ng-repeat="obj in AttributesName track by $index">
+                        <dl class="param param-feature">
+                            <dt>{{obj.Label}}</dt>
+
+                            <dd>
+                                <select class="form-control" ng-model="obj.Value" ng-change="GetPrice(obj.Value,obj.Label)" id="attribute{{$index+1}}" attributename="{{obj.Label}}">
+
+                                    <option value="{{innerobject}}" ng-repeat="innerobject in GetAttributesData(obj.Label) track by $index"> {{innerobject}} </option>
+
+
+                                </select>
+                            </dd>
+                        </dl>  <!-- item-property-hor .// -->
+                    </div>
+
+                </div>
+                <ul class="CTAs list-inline">
+                    <li class="list-inline-item"><a ng-click="AddToCartGlobal(product.product.product.id,product.product.product,'products-slider-')" class="btn btn-template wide"> <i class="icon-cart"></i>Add to Cart</a></li>
+                    <li class="list-inline-item"><a class="btn btn-template-outlined wide {{checkisinwishlist(x[8])}}" ng-click="addTowishList(product.product.product.id)"> <i class="fa fa-heart-o"></i>Add to wishlist</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="product-description no-padding">
+    <div class="container">
+        <ul role="tablist" class="nav nav-tabs flex-column flex-sm-row">
+            <li class="nav-item"><a data-toggle="tab" id="descriptiontab" data-target="#description" role="tab" class="nav-link">Description</a></li>
+            <li class="nav-item"><a data-toggle="tab" data-target="#additional-information" role="tab" class="nav-link">Additional Information</a></li>
+            <li class="nav-item"><a data-toggle="tab" data-target="#reviews" role="tab" class="nav-link">Reviews</a></li>
+
+        </ul>
+        <div class="tab-content">
+            <div id="description" role="tabpanel" class="tab-pane">
+                <p>{{product.product.product.description}}</p>
+            </div>
+            <div id="additional-information" role="tabpanel" class="tab-pane">
+                <table class="table">
+                    <tbody>
+                        <tr ng-repeat="obj in AttributesName">
+                            <th class="border-0">{{obj.Label}}:</th>
+                            <td class="border-0">
+                                <span ng-repeat="_childobj in GetAttributesData(obj.Label)">
+                                    {{_childobj}} <span ng-if="GetAttributesData(obj.Label).length>1 && $index<GetAttributesData(obj.Label).length-1">,</span>
+                                </span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+
+
+            <div id="reviews" role="tabpanel" class="tab-pane">
+                <div class="row">
+                    <div class="col-xl-5">
+                        <form name='form1' ng-submit="">
+                            <!-- Invoice Address-->
+                            <div class="block-header mb-5">
+                                <h6>{{reviews.length}} Review for {{product.product.product.productName}} </h6>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <label for="ReviewName" class="form-label">Rating :</label>
+                                    <i class="fa fa-star {{GetSelectedClass(1)}}" ng-click="review.Rating=1"></i>
+                                    <i class="fa fa-star {{GetSelectedClass(2)}}" ng-click="review.Rating=2"></i>
+                                    <i class="fa fa-star {{GetSelectedClass(3)}}" ng-click="review.Rating=3"></i>
+                                    <i class="fa fa-star {{GetSelectedClass(4)}}" ng-click="review.Rating=4"></i>
+                                    <i class="fa fa-star {{GetSelectedClass(5)}}" ng-click="review.Rating=5"></i>
+                                    </div>
+                                </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-12">
+                                            <label for="ReviewName" class="form-label">Name<span class="star">*</span></label>
+                                            <input id="ReviewName" ng-model="review.Name" type="text" name="ReviewName" placeholder="Enter you first name" class="form-control" required>
+
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="ReviewEmail" class="form-label">Email<span class="star">*</span></label>
+                                            <input id="ReviewEmail" type="text" name="ReviewEmail" ng-pattern="emailvalidation" ng-model="review.Email" placeholder="Enter your last name" class="form-control" required>
+                                            <span class="errormessage" ng-show="form1.Email.$error.pattern">Email is not valid!</span>
+
+                                        </div>
+                                        <div class="form-group col-md-12">
+                                            <label for="ReviewDetails" class="form-label">Review<span class="star">*</span></label>
+                                            <textarea id="ReviewDetails" name="ReviewDetails" ng-model="review.Review" placeholder="enter your email address" class="form-control" required></textarea>
+                                        </div>
+
+                                    </div>
+                                    <div class="CTAs d-flex justify-content-between flex-column flex-lg-row"><button type="submit" ng-click="AddReview()" ng-disabled=!form1.$valid class="btn btn-template wide next">Submit<i class="fa fa-angle-right"></i></button></div>
+
+                        </form>
+                    </div>
+                    <div class="col-xl-7 mainreview">
+                        <div class="row review" ng-repeat="y in reviews">
+                            <div class="col-9 review-text">
+                                <h6>{{y.name}}</h6>
+                                <div class="mb-2">
+                                  
+                                </div>
+                                <p class="text-muted text-small">{{y.review}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="share-product gray-bg d-flex align-items-center justify-content-center flex-column flex-md-row">
+            <strong class="text-uppercase">Share this on</strong>
+            <ul class="list-inline text-center">
+                <li class="list-inline-item"><a target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></li>
+                <li class="list-inline-item"><a target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></li>
+                <li class="list-inline-item"><a target="_blank" title="instagram"><i class="fa fa-instagram"></i></a></li>
+                <li class="list-inline-item"><a target="_blank" title="pinterest"><i class="fa fa-pinterest"></i></a></li>
+                <li class="list-inline-item"><a target="_blank" title="vimeo"><i class="fa fa-vimeo"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="related-products">
+    <div class="container">
+        <header class="text-center">
+            <h2><small>Similar Items</small>You may also like</h2>
+        </header>
+        <div class="owl-carousel owl-theme GetRelatedPrdoucts">
+            <!-- item-->
+            <div class="item" ng-repeat="x in RelatedProducts">
+                <div class="product">
+                    <div class="image d-flex align-items-center justify-content-center" id="RelatedProduct-{{x.productID}}">
+                        <img src="{{GetProductImage(x.)}}" alt="product" class="img-fluid">
+                        <div class="hover-overlay d-flex align-items-center justify-content-center">
+                            <div class="CTA d-flex align-items-center justify-content-center">
+                                <a ng-click="AddToCartGlobal(x.productID,x,'products-slider-')" class="add-to-cart"><i class="fa fa-shopping-cart"></i></a><a href="detail.html" class="visit-product active"><i class="icon-search"></i>View</a>
+                                <a ng-click="getProductDetail(x)" class="quick-view"><i class="fa fa-arrows-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="title">
+                        <a href="#">
+                            <h3 class="h6 text-uppercase no-margin-bottom">{{x.productName}}</h3>
+                        </a><span class="price text-muted">{{x.productPrice}}</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Overview Popup    -->
+<div id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade overview">
+    <div role="document" class="modal-dialog">
+        <div class="modal-content">
+            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"><i class="icon-close"></i></span></button>
+            <div class="modal-body">
+                <div class="ribbon-primary text-uppercase">Sale</div>
+                <div class="row d-flex align-items-center">
+                    <div class="image col-lg-5"><img src="https://d19m59y37dris4.cloudfront.net/hub/1-4-0/img/shirt.png" alt="..." class="img-fluid d-block"></div>
+                    <div class="details col-lg-7">
+                        <h2>Lose Oversized Shirt</h2>
+                        <ul class="price list-inline">
+                            <li class="list-inline-item current">$65.00</li>
+                            <li class="list-inline-item original">$90.00</li>
+                        </ul>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
+                        <div class="d-flex align-items-center">
+                            <div class="quantity d-flex align-items-center">
+                                <div class="dec-btn">-</div>
+                                <input type="text" value="1" class="quantity-no">
+                                <div class="inc-btn">+</div>
+                            </div>
+                            <select id="size" class="bs-select">
+                                <option value="small">Small</option>
+                                <option value="meduim">Medium</option>
+                                <option value="large">Large</option>
+                                <option value="x-large">X-Large</option>
+                            </select>
+                        </div>
+
+                        <ul class="CTAs list-inline">
+                            <li class="list-inline-item"><a ng-click="AddToCartGlobal(x.productID,x,'products-slider-')"  class="btn btn-template wide"> <i class="fa fa-shopping-cart"></i>Add to Cart</a></li>
+                            <li class="list-inline-item"><a class="visit-product active btn btn-template-outlined wide" ng-click="addTowishList(product.product.product.id)"><i class="icon-heart"></i>Add to wishlist</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    select.form-control {
+        padding: 0px;
+        padding-left: 4px;
+    }
+
+    .mainreview {
+        overflow-y: scroll;
+        height:600px
+    }
+</style>
+
+<script>
+    $('html, body').animate({
+        scrollTop: $("#productdetailscroll").offset().top
+    }, 2000);
+</script>

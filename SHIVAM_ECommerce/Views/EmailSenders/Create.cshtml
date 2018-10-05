@@ -1,0 +1,315 @@
+﻿@model SHIVAM_ECommerce.Models.EmailSender
+
+@{
+    ViewBag.Title = "Create";
+
+}
+
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Email Send</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/EmailSenders/Index">Inbox</a></li>
+            <li class="breadcrumb-item active">Compose</li>
+        </ol>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card">
+
+                @using (Html.BeginForm("Create", "EmailSenders", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    
+                        @Html.HiddenFor(model => model.ReceiverIDs, new { @class = "form-control" })
+                       <input type="hidden" name="ReceiverIDs" id="ReceiverIDs" />
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+
+                    <div class="row">
+
+  
+
+                        <div class="col-md-9">
+
+                            <div class="panel panel-default">
+                                <div class="panel-body message">
+                                    <div class="form-group">
+                                        <div class="col-md-2">
+                                            <label class="control-label">To:</label>
+                                            </div>
+                                            <div class="col-md-5">
+
+
+                                                <select class="form-control myselect" data-val="true" data-val-required="ReceiverName is required" multiple="multiple" id="ReceiverId" name="ReceiverId"></select>
+                                                @Html.ValidationMessageFor(model => model.ReceiverId)
+                                            </div>
+                                        </div>
+
+                   
+                                    <div class="form-group">
+                                        <div class="col-md-2">
+                                            <label class="control-label">Subject:</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                @Html.TextBoxFor(model => model.Subject, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Subject)
+                                            </div>
+                                        </div>
+                                    <div class="form-group">
+                                        <div class="col-md-2">
+                                            <label class="control-label">Attachment:</label>
+                                            </div>
+                                        <div class="col-md-5">
+                                            <div class="custom-file" style="width:300px">
+
+                                                <input type="file" class="custom-file-input form-control" name="file" id="file">
+                                                <label class="custom-file-label">Choose file</label>
+
+                                            </div>
+
+                                            <div class="gallery"></div>
+                                        </div>
+                                            </div>
+
+
+                                    @*<div class="form-group">
+                                       <button type="button" id="get_file" class="btn  bg-unique"><span class="fa fa-paperclip"></span></button><span></span>
+                                        <input type="file" id="Attachment" name="Attachment">
+                                         <span class="testlabel"> </span>
+                                      
+                                    </div>*@
+                                    <div class="form-group">
+                                        <div class="col-md-2">
+                                            <label class="control-label">Message:</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                @Html.TextAreaFor(model => model.ContentMsg, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.ContentMsg)
+                                            </div>
+                                        </div>
+                                      
+                                        <div class="form-group">
+                                            <div class="col-md-5">
+                                                <button type="submit" id="submit" class="btn btn-primary btn-space"><i class="fa fa-check"></i> Send</button>
+                                                <a class="btn btn-secondary btn-gray" href="/EmailSenders/Index"><i class="fa fa-times"></i> Discard</a>
+
+                                                </div>
+                                            </div>
+
+
+                                    </div>
+
+
+                            </div>
+                        </div><!--/.col-->
+                    </div><!--/row-->
+
+
+                }
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<link href="~/Content/AdminLTE.min.css" rel="stylesheet" />
+@section scripts{
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+    <script>
+        var allSelectedMembers = "";
+        $(document).ready(function () {
+            $(".myselect").select2({
+                allowClear: true,
+                minimumInputLength: 1,
+                ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
+
+                    url: "/EmailSenders/GetUser",
+                    dataType: 'json',
+                    quietMillis: 250,
+                    type: "Post",
+                    data: function (param, page) {
+                        return {
+                            term: param.term, // search term
+                        };
+                    },
+
+                    processResults: function (data, page) { // parse the results into the format expected by Select2.
+
+
+                        // since we are using custom formatting functions we do not need to alter the remote JSON data
+                        return {
+                            results: $.map(data, function (item) {
+                                return {
+                                    id: item.Id,
+                                    text: item.UserName
+                                };
+                            })
+                        };
+
+
+                    },
+                    cache: true
+                },
+
+                formatResult: {}, // omitted for brevity, see the source of this page
+                formatSelection: {},  // omitted for brevity, see the source of this page
+                escapeMarkup: function (m) {
+                    return m;
+                } // we do not want to escape markup since we are displaying html in results
+            });
+            debugger;
+            $('.myselect').on('select2:select', function (e) {
+                allowClear:true
+                debugger;
+                var data = e.params.data;
+                if (allSelectedMembers == "") {
+                    allSelectedMembers = data.id;
+                } else {
+                    allSelectedMembers += "," + data.id;
+                }
+
+
+
+                $("#ReceiverIDs").val('');
+                $("#ReceiverIDs").val(allSelectedMembers);
+
+
+
+            });
+
+
+
+            //$("ul li .select2-selection__choice__remove").on("click", function () {
+            //    alert("in");
+            //    debugger;
+
+            //});
+
+        });
+    </script>
+<script>
+    var current = location.pathname;
+    $('.nav li a').each(function () {
+
+        var $this = $(this);
+        // if the current path is like this link, make it active
+        if ($this.attr('href').indexOf(current) !== -1) {
+            if (current != "/") {
+                $this.addClass('active');
+
+            }
+        }
+    })
+    var imagesPreview = function (input, placeToInsertImagePreview) {
+        debugger;
+
+        var extension = input.files[0].name.replace(/^.*\./, '');
+
+        if (input.files) {
+            var filesAmount = input.files.length;
+
+            for (i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+
+                reader.onload = function (event) {
+                    var _multiple = $.trim($(input).attr("multiple"));
+                    if (_multiple == "") { $(placeToInsertImagePreview).html(""); }
+
+
+                    if (extension == input.files[0].name) {
+                        extension = '';
+                    } else {
+
+                        extension = extension.toLowerCase();
+                    }
+                    switch (extension) {
+
+                        case 'jpg':
+                        case 'jpeg':
+                        case 'png':
+                        case 'bmp':
+                            {
+
+                                $($.parseHTML('<img style="height:50px; width:50px; margin-right:10px; margin-top:5px;">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+
+                                break;
+                            }
+
+                        case 'txt':
+                            $($.parseHTML("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon'><i class='fa fa fa-file-text'></i></span><div class='mailbox-attachment-info'>"+input.files[0].name + "</div></li></ul>")).appendTo(placeToInsertImagePreview);
+
+                            break;
+                        case 'pdf':
+                            $($.parseHTML("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon'><i class='fa fa-file-pdf-o'></i></span><div class='mailbox-attachment-info'>" + input.files[0].name + "</div></li></ul>")).appendTo(placeToInsertImagePreview);
+
+                            break;
+                        case 'docx':
+                            $($.parseHTML("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon'><i class='fa fa-file-word-o'></i></span><div class='mailbox-attachment-info'>" + input.files[0].name + "</div></li></ul>")).appendTo(placeToInsertImagePreview);
+                            break;
+                        case 'xlsx':
+                            $($.parseHTML("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon'><i class='fa fa-file-excel-o'></i></span><div class='mailbox-attachment-info'>" + input.files[0].name + "</div></li></ul>")).appendTo(placeToInsertImagePreview);
+                            break;
+                    
+                          
+                    }
+                }
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+
+     
+
+    };
+    $('.custom-file-input').on('change', function () {
+        imagesPreview(this, 'div.gallery');
+    });
+
+    $(document).on("keypress", ".customColumnData", function (evt) {
+
+        var keycode = evt.charCode || evt.keyCode;
+        if (keycode == 35 || keycode == 64) { //Enter key's keycode
+            return false;
+        }
+    });
+</script>
+
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-36251023-1']);
+        _gaq.push(['_setDomainName', 'jqueryscript.net']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+    @*@Scripts.Render("~/bundles/jqueryval")
+        <script>
+        $.validator.addMethod("ReceiverId", function(value, element, arg){
+                      return arg != value;
+                 }, "Value must not equal arg.");
+        </script>*@
+
+
+}
+
+
+

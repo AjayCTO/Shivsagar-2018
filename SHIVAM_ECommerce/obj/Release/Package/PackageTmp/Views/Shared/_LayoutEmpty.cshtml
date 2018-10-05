@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <title>@ViewBag.Title - Shivam ECommerce</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Language" content="en" />
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#4188c9">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
+
+
+
+    <link href="~/Newtheme/CSS/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+
+    <link href="~/Newtheme/CSS/semantic.ui.min.css" rel="stylesheet" />
+
+    <link href="~/Newtheme/CSS/pignose.calendar.min.css" rel="stylesheet" />
+
+    <link href="~/Newtheme/CSS/owl.carousel.min.css" rel="stylesheet" />
+
+    <link href="~/Newtheme/CSS/owl.theme.default.min.css" rel="stylesheet" />
+
+    <link href="~/Newtheme/CSS/helper.css" rel="stylesheet" />
+    <link href="~/Newtheme/CSS/style.css" rel="stylesheet" />
+    <link href="~/Content/toaster.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/dataTableStyles")
+    @Styles.Render("~/Content/JqueryUiCSS")
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body class="fix-header fix-sidebar">
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+
+
+
+
+
+    <div id="main-wrapper">
+
+
+
+
+
+
+
+
+        
+
+       
+
+
+            @Html.Partial("_Notifications")
+
+
+            @RenderBody()
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <script src="~/Scripts/jquery-1.12.4.js"></script>
+
+    <script src="~/Scripts/jquery-ui.js"></script>
+
+    <script src="~/Scripts/bootbox.min.js"></script>
+
+
+    <script src="~/Scripts/toastr.js"></script>
+    @Scripts.Render("~/bundles/dataTableScripts")
+
+
+    <!-- Bootstrap tether Core JavaScript -->
+
+    <script src="~/Newtheme/JS/popper.min.js"></script>
+
+
+    <script src="~/Newtheme/JS/bootstrap.min.js"></script>
+
+    <!-- slimscrollbar scrollbar JavaScript -->
+
+    <script src="~/Newtheme/JS/jquery.slimscroll.js"></script>
+
+    <!--Menu sidebar -->
+    <script src="~/Newtheme/JS/sidebarmenu.js"></script>
+
+    <!--stickey kit -->
+
+    <script src="~/Newtheme/JS/sticky-kit.min.js"></script>
+
+
+
+    @*<script src="~/Newtheme/JS/semantic.ui.min.js"></script>*@
+ 
+
+    <script src="~/Newtheme/JS/scripts.js"></script>
+
+    <!-- scripit init-->
+
+
+    <script src="~/Newtheme/JS/custom.min.js"></script>
+
+
+    @RenderSection("scripts", required: false)
+
+
+
+</body>
+
+</html>

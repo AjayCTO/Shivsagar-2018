@@ -1,0 +1,307 @@
+﻿@model  SHIVAM_ECommerce.ViewModels.SupplierVM
+@{
+    ViewBag.Title = "Create New Account";
+    Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
+    var allplans = ViewBag.allplans as List<SHIVAM_ECommerce.Models.Plans>;
+}
+
+<style>
+    .modal-dialog {
+        max-width: 1000px;
+    }
+
+
+    .modal-body .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .modal-body .card {
+        padding: 0;
+        margin-right: 10px;
+    }
+
+    .display-3 {
+        font-size: 18px;
+    }
+
+    .modal-footer {
+        background-color: #eeeaea;
+    }
+
+    .modal-body .card-body {
+        padding-bottom: 15px;
+    }
+
+    .modal-body .card-header {
+        background: #5c4ac7;
+        color: #fff;
+        font-size: 18px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+  
+
+    .btn-green {
+        background-color: #26dad2;
+    }
+
+    .choosePlan{
+        color:white;
+    }
+</style>
+<div id="myModal" class="modal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Select Your Plan</h4>
+
+                <button type="button" class="close" data-dismiss="modal">x</button>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="row">
+                    @foreach (var items in allplans)
+                    {
+                        <div class="col-sm-6 col-lg-3 card">
+
+                            <div class="card-header bg-indigo">
+                                <div class="card-category getname_@items.Id">@items.PlanName</div>
+                            </div>
+
+                            <div>
+                                <input type="hidden" class="getid_@items.Id" value="@items.Id" />
+                                <div id="plans_@items.Id" class="status"></div>
+                                <div class="card-body text-center">
+
+                                    <div class="display-3 my-4">@items.YearlyPrice</div>
+                                    <ul class="list-unstyled leading-loose">
+                                        <li> <b> Features</b></li>
+
+                                        @foreach (var item1 in items.Features)
+                                        {
+                                            <li><i class="fe fe-check text-success mr-2" aria-hidden="true"></i> @item1.Feature.Title</li>
+                                        }
+
+
+
+                                    </ul>
+                                    <div class="text-center mt-6">
+
+                                    </div>
+                                </div>
+
+                                <div class="card-footer">
+                                    <input type="button" class="btn btn-green btn-block choosePlan" data-plan="@items.PlanName" btnname=" @items.Id " value=" choose plan" />
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="unix-login" style=" margin-top: -80px;">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-4">
+                <div class="login-content card">
+                    <div class="login-form" style="padding-top:0px">
+                        <div class="row">
+
+                            <div class="col-md-12 text-center">
+                                <img src="~/Content/Logo.png" class="img-circle img-thumbnail" height="50" width="50" />
+
+                            </div>
+                        </div>
+                        <h4 style="margin-bottom: 0px; margin-top: 10px;">Create new account</h4>
+
+                        @using (Html.BeginForm("CreateNew", "Supplier", FormMethod.Post, new {@id="SupplierForm", @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="card-body p-6">
+                                <div class="form-group">
+                                    <label class="form-label">Name</label>
+                                    @Html.HiddenFor(model => model.PlanID, new { @class = "" })
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control requiredfield" })
+                                    @Html.ValidationMessageFor(model => model.Name)
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email address</label>
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control UniqueEmail UniqueEmailvalid" })
+                                    @Html.ValidationMessageFor(model => model.Email)
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">User Name</label>
+                                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control minUserNameLength UniqueUserName" })
+                                    @Html.ValidationMessageFor(model => model.UserName)
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Password</label>
+                                    @Html.PasswordFor(model => model.Password, new { @class = "form-control minPasswordLength" })
+                                    @Html.ValidationMessageFor(model => model.Password)
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Address</label>
+                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Address)
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Choose Plan</label>
+                                    <span></span>
+                                    <a href="#" data-toggle="modal" class="btn btn-success" data-target="#myModal" id="PlanName">Select Plan</a>
+
+                                </div>
+
+                                <div class="form-footer">
+                                    <button type="submit" id="createNewAccount" disabled class="btn btn-primary btn-block"><i class="fa fa-user"></i> Create new account</button>
+                                </div>
+                            </div>
+                        }
+                        <div class="text-center text-muted">
+                            Already have account? <a href="/Account/login">Sign in</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+
+        $("#PlanID").change(function () {
+            if ($.trim($(this).val()) != "") {
+                $("#createNewAccount").removeAttr("disabled");
+            }
+            else {
+                $("#createNewAccount").attr("disabled", "disabled");
+            }
+        });
+
+        $("#createNewAccount").click(function () {
+            if ($("#SupplierForm").valid()) {
+                $("#createNewAccount").attr("disabled","disabled")
+                $("#createNewAccount").find("i").addClass("fa-spin");
+                $("#SupplierForm").submit();
+            }
+        });
+        
+
+        $(".choosePlan").click(function () {
+            $("#PlanName").html($(this).attr("data-plan"));
+            $("#PlanID").val($(this).attr("btnname"));
+            $("#PlanID").trigger("change");
+            $(".close").trigger("click");
+        })
+
+        $.validator.addMethod("UniqueEmailvalid", function (value, element) {
+
+            return /^\b[A-Z0-9._%-]+@@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i.test(value);
+        }, "Please Enter Valid Email.");
+
+
+        $.validator.addMethod('UniqueEmail', function (value) {
+
+            if ($.trim(value) != "") {
+
+                return CheckUniqueEmail(value);
+            }
+            else {
+                return true;
+            }
+
+        }, "Please eneter a unique Email ! It's already Exist");
+        $.validator.addMethod('UniqueUserName', function (value) {
+
+
+            if ($.trim(value) != "") {
+                return CheckUniqueUserName(value);
+            }
+            else {
+                return true;
+            }
+
+        }, "Please enter a unique username value");
+        $.validator.addMethod('minPasswordLength', function (value) {
+
+
+            if ($.trim(value) != "") {
+                return value.length >= 7 ? true : false;
+            }
+            else {
+                return true;
+            }
+
+        }, "Please enter at least 7 characters for password");
+        $.validator.addMethod('minUserNameLength', function (value) {
+
+
+            if ($.trim(value) != "") {
+                return value.length >= 8 ? true : false;
+            }
+            else {
+                return true;
+            }
+
+        }, "Please enter at least 8 characters for username");
+        function CheckUniqueEmail(value) {
+            var _x = true;
+            $.ajax({
+                url: "/Supplier/UniqueEmail",
+                data: JSON.stringify({ Email: value }),
+                type: 'POST',
+                async: false,
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function (result) {
+                    _x = !result.IsAlreadyExist;
+                },
+                error: function (req, status, error) {
+                    alert(error);
+                }
+            });
+
+            return _x;
+        }
+        function CheckUniqueUserName(value) {
+            var _x = true;
+            $.ajax({
+                url: "/Supplier/UniqueUserName",
+                data: JSON.stringify({ UserName: value }),
+                type: 'POST',
+                async: false,
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function (result) {
+                    _x = !result.IsAlreadyExist;
+                },
+                error: function (req, status, error) {
+                    alert(error);
+                }
+            });
+
+            return _x;
+        }
+    </script>
+}

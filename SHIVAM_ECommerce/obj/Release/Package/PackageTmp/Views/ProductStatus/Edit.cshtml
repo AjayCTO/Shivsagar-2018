@@ -1,0 +1,143 @@
+﻿@model SHIVAM_ECommerce.Models.ProductStatus
+
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Product Status Edit</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/ProductStatus">Product Status</a></li>
+            <li class="breadcrumb-item active">Product Status Edit</li>
+        </ol>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card">
+
+                <div class="card-body">
+                    @using (Html.BeginForm("Edit", "ProductStatus", FormMethod.Post,
+                            new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true)
+                            @Html.HiddenFor(model => model.Id)
+                            @Html.HiddenFor(model => model.CreatedDate)
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-3" })
+                                        <div class="col-md-10">
+                                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control col-md-10 UniqueStatus" })
+                                            @Html.ValidationMessageFor(model => model.Name)
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-10">
+                                            <label class="custom-control custom-checkbox">
+                                                @Html.CheckBoxFor(model => model.IsActive,
+       new Dictionary<string, object> { { "class", "custom-control-input" } })
+
+
+                                                <span class="custom-control-label">Active</span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+
+                                    <button type="submit" class="btn btn-primary btn-space"><i class="fa fa-check"></i> Update</button>
+                                    <a href="/ProductStatus" class="btn btn-secondary btn-gray"><i class="fa fa-times"></i> Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+@section Scripts {
+
+
+    <script>
+        $("#ParentCategory").addClass("form-control col-md-10")
+    </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+
+            var Productstatus = '@Model.Name';
+            $.validator.addMethod('UniqueStatus', function (value) {
+                if (value.toLowerCase() == Productstatus.toLowerCase()) {
+                    return true;
+                }
+
+                if ($.trim(value) != "") {
+                    return UniqeProductStatus(value);
+                }
+                else {
+                    return true;
+                }
+
+            }, "Please enter a different Status Name ! It's already exist");
+
+        });
+        function UniqeProductStatus(value) {
+            var _x = true;
+            $.ajax({
+                url: "/ProductStatus/UniqueStatus",
+                data: JSON.stringify({ Status: value }),
+                type: 'POST',
+                async: false,
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function (result) {
+                    _x = !result.IsAlreadyExist;
+                },
+                error: function (req, status, error) {
+                    alert(error);
+                }
+            });
+
+            return _x;
+        }
+
+    </script>
+}
+
+
+
+

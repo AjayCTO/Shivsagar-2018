@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNet.Identity
+@using System.Configuration;
+@using SHIVAM_ECommerce.ViewModels
+@{
+    var _CurrentUser = Session["CurrentUserContext"] as CurrentUserContext;
+}
+@if (Request.IsAuthenticated)
+{
+
+    
+
+    <div class="dropdown-menu dropdown-menu-right animated zoomIn">
+                                <ul class="dropdown-user">
+                                    @if (_CurrentUser.SupplierID != -1)
+                                    {
+                                        
+                                    <li><a href="/Home/Profile/@_CurrentUser.SupplierID"><i class="ti-user"></i> Profile</a></li>
+                                    }
+                                    <li><a href="/Account/Manage"><i class="ti-settings"></i> Setting</a></li>
+                                    <li><a href="/Account/logOff"><i class="ti-settings"></i> Logout</a></li>
+                                </ul>
+                            </div>
+
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })</li>
+    </ul>
+}

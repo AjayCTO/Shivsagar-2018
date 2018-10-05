@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <title>@ViewBag.Title - Shivam ECommerce</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Language" content="en" />
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#4188c9">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <link rel="icon" href="~/favicon.ico" type="image/x-icon" />
+
+
+    @Styles.Render("~/Content/dataTableStyles")
+    @Styles.Render("~/Content/JqueryUiCSS")
+
+
+    @*<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
+        <link href="https://cdn.datatables.net/responsive/2.2.0/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+
+        <link href="https://cdn.datatables.net/rowgroup/1.0.2/css/rowGroup.dataTables.min.css" rel="stylesheet" />
+
+        <link href="https://cdn.datatables.net/responsive/2.2.1/css/responsive.dataTables.min.css" rel="stylesheet" />
+        <link href="~/Content/jquery-ui.css" rel="stylesheet" />*@
+
+    @* Load DataTable js here *@
+
+
+    @Scripts.Render("~/bundles/JqueryJS")
+    @Scripts.Render("~/bundles/bootstrap")
+    @*<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="~/Scripts/jquery-ui.js"></script>*@
+
+
+
+    @Scripts.Render("~/bundles/dataTableScripts")
+
+    @*<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://cdn.datatables.net/rowgroup/1.0.2/js/dataTables.rowGroup.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>*@
+
+    @Styles.Render("~/Content/RandomCSS")
+
+
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
+        <script src="~/Content/TabularTheme/assets/js/require.min.js"></script>*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+   
+
+    @Styles.Render("~/Content/TabularThemeAssetsCSS")
+    @Scripts.Render("~/bundles/TabularThemeAssetsJS")
+
+
+    <script>
+        requirejs.config({
+            baseUrl: '.'
+        });
+    </script> 
+
+    <!-- Dashboard Core -->
+    @*<link href="~/Content/TabularTheme/assets/css/dashboard.css" rel="stylesheet" />
+
+        <script src="~/Content/TabularTheme/assets/js/dashboard.js"></script>
+        <!-- c3.js Charts Plugin -->
+        <link href="~/Content/TabularTheme/assets/plugins/charts-c3/plugin.css" rel="stylesheet" />
+        <script src="~/Content/TabularTheme/assets/plugins/charts-c3/plugin.js"></script>
+        <!-- Google Maps Plugin -->
+        <link href="~/Content/TabularTheme/assets/plugins/maps-google/plugin.css" rel="stylesheet" />
+        <script src="~/Content/TabularTheme/assets/plugins/maps-google/plugin.js"></script>
+        <!-- Input Mask Plugin -->
+        <script src="~/Content/TabularTheme/assets/plugins/input-mask/plugin.js"></script>*@
+
+    <style>
+        .field-validation-error {
+            width: 100%;
+            margin-top: 0.25rem;
+            font-size: 87.5%;
+            color: #cd201f;
+        }
+
+        .header .d-flex {
+            color: white;
+        }
+
+        .btn .fa {
+            color: white !important;
+        }
+
+        .nav-submenu{
+            z-index:11 !important;
+        }
+    </style>
+</head>
+<body class="">
+    <div class="page">
+        <div class="page-main">
+            <div class="header bg-indigo">
+                <div class="container">
+                    <div class="d-flex">
+                        <a class="header-brand" href="/Home/index">
+                            <img src="~/Content/logo.png" class="header-brand-img" alt="SHIVAM ITCS"> SHIVAM ITCS
+                        </a>
+
+                        <div class="d-flex order-lg-2 ml-auto">
+
+
+
+                            @Html.Partial("_LoginPartial")
+                            <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
+                                <span class="header-toggler-icon"></span>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            @Html.MvcSiteMap().Menu("MenuHelperModel")
+
+            <div class="page-content">
+                <div class="container">
+
+                    @Html.Partial("_Notifications")
+                    @RenderBody()
+
+
+                </div>
+
+            </div>
+
+            <footer class="footer">
+                <div class="container">
+                    <div class="row align-items-center flex-row-reverse">
+                        <div class="col-auto ml-lg-auto">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <ul class="list-inline list-inline-dots mb-0">
+                                        <li class="list-inline-item"><a href="/Home/Contact">Contact Us</a></li>
+                                        <li class="list-inline-item"><a href="/Home/Aboutus">About US</a></li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
+                            Copyright © 2018 <a href="http://shivamitconsultancy.com">SHIVAM ITCS</a>. Developed by <a href="https://SHIVAMITCS.in" target="_blank">SHIVAM ITCS</a> All rights reserved.
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @RenderSection("scripts", required: false)
+
+    <script>
+        var current = location.pathname;
+        $('.nav li a').each(function () {
+            var $this = $(this);
+            // if the current path is like this link, make it active
+            if ($this.attr('href').indexOf(current) !== -1) {
+                if (current != "/") {
+                    $this.addClass('active');
+
+                }
+            }
+        })
+        var imagesPreview = function (input, placeToInsertImagePreview) {
+
+            if (input.files) {
+                var filesAmount = input.files.length;
+
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (event) {
+                        var _multiple = $.trim($(input).attr("multiple"));
+                        if (_multiple == "") { $(placeToInsertImagePreview).html(""); }
+                        $($.parseHTML('<img style="height:50px; width:50px; margin-right:10px; margin-top:5px;">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                    }
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+
+        };
+        $('.custom-file-input').on('change', function () {
+            imagesPreview(this, 'div.gallery');
+        });
+
+        $(document).on("keypress", ".customColumnData", function (evt) {
+
+            var keycode = evt.charCode || evt.keyCode;
+            if (keycode == 35 || keycode == 64) { //Enter key's keycode
+                return false;
+            }
+        });
+    </script>
+
+</body>
+
+</html>

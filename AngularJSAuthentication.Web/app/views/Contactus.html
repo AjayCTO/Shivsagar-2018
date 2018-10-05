@@ -1,0 +1,63 @@
+﻿<style>
+ .star{
+        color:#f25d5d;
+    }
+    .errormessage {
+        color: #f25d5d;
+        padding-left:15px;
+    }
+</style>
+<section id="contactscroll"class="hero hero-page gray-bg padding-small">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-lg-9 order-2 order-lg-1">
+                <h3>Contact Us</h3><p class="lead"></p>
+            </div>
+            <div class="col-lg-3 text-right order-1 order-lg-2">
+                <ul class="breadcrumb justify-content-lg-end">
+                    <li class="breadcrumb-item"><a href="#/home">Home</a></li>
+                    <li class="breadcrumb-item active">Contact Us</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="checkout">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <form name='form1'>
+                    <div class="form-group col-md-12">
+                        <label for="shipping_firstname" class="form-label">Name<span class="star">*</span></label>
+                        <input id="Name" ng-model="contactdetails.name" type="text" name="Name" placeholder="Enter you  name" class="form-control" required>
+
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="shipping_lastname" class="form-label">Email<span class="star">*</span></label>
+                        <input id="Email" type="Text" name="Email" ng-model="contactdetails.EmailAddress" ng-pattern="emailvalidation" placeholder="Enter your Email" class="form-control" required>
+                        <span class="errormessage" ng-show="form1.Email.$error.pattern">Email is not valid!</span>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="shipping_lastname" class="form-label">Messsage<span class="star">*</span></label>
+                        <textarea id="Messsage" name="Messsage" ng-model="contactdetails.message" rows="8" placeholder="Enter Message" class="form-control" required></textarea>
+
+                    </div>
+                    <div class="form-group col-md-12 text-right">
+                        <button class="btn btn-primary large" type="submit" ng-disabled=!form1.$valid data-ng-click="SendMessage()"><i class="fa fa-sign-in"></i>Send</button>
+                    </div>
+
+                </form>
+         
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </div>
+</section>
+
+<script>  
+    $('html, body').animate({
+        scrollTop: $("#contactscroll").offset().top
+    }, 2000);
+    </script>

@@ -1,0 +1,90 @@
+﻿<table class="table table-bordered table-hover" >
+    <thead>
+        <tr>
+            <td colspan="2">
+                Fill Below Form To Add A New Merchant
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Name</td>
+            <td>
+                <input type="text" id="MerchantName" class="form-control"/> 
+            </td>
+        </tr>
+        <tr>
+            <td>Firm Name</td>
+            <td>
+                <input type="text" id="MerchantFirmName" class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td>Contact Number</td>
+            <td>
+                <input type="text" id="MerchantContactNumber" class="form-control" />
+            </td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>
+                <textarea id="MerchantDescription" class="form-control"> </textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>
+                <textarea id="MerchantAddress" class="form-control"></textarea>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>
+                <input type="button" id="AddMerchant" value="Add New Merchant" class="btn btn-primary"/>
+            </td>
+            <td>
+                <input type="button" id="ResetMerchant" value="ResetForm" class="btn btn-primary" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"> 
+                <div id="divError">
+                    <p id="divErrorText"></p>
+                </div>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {       
+       
+        $("#AddMerchant").click(function () {
+            debugger;
+            var Merchant = {
+                Name: $("#MerchantName").val(),
+                FirmName: $("#MerchantFirmName").val(),
+                ContactNumber: $("#MerchantContactNumber").val(),
+                Description: $("#MerchantDescription").val(),
+                Address: $("#MerchantAddress").val(),
+            }
+            console.log(Merchant);
+            $.ajax({
+                url: 'http://localhost:26264/api/Merchant',
+                method: 'POST',                        
+                data: JSON.stringify(Merchant),
+                contentType: "application/json",
+                processData: false,
+                success: function () {
+                    alert("Successful");
+                },
+                error: function (jqXHR) {
+                    $("#divError").show('fade');
+                    $("#divErrorText").text(jqXHR.responseText);                   
+                }
+            });
+        });
+    });
+</script>

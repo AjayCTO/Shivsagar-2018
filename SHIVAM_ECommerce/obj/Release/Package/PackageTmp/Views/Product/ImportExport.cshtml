@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "ImportExport";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="#">Product</a>
+    </li>
+    <li class="breadcrumb-item active">Product Import/Export</li>
+</ol>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-green-light">
+                <i class="fa fa-download"></i>
+            </div>
+            <div class="card-body">
+                <h4>Export Products</h4>
+
+                <p>You can Download all products data by pressing below Import button. downloaded file containing all products informations which you add earlier in your account</p>
+
+
+                <a class="btn btn-success"> <i class="fa fa-download"></i> Import</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+
+        
+
+        <div class="card">
+            <div class="card-header bg-blue">
+                <i class="fa fa-upload"></i>
+            </div>
+            <div class="card-body">
+                <h4>Import Products</h4>
+
+                <p>For upload your data <a href="#">Download file</a> template file </p>
+
+              
+
+             
+                <p>Select file to upload</p>
+                <div class="file-upload">
+                    <div class="file-select">
+                        <div class="file-select-button" id="fileName">Choose File</div>
+                        <div class="file-select-name" id="noFile">No file chosen...</div>
+                        <input type="file" name="chooseFile" id="chooseFile">
+                    </div>
+                </div>
+
+                <a class="btn btn-primary"> <i class="fa fa-download"></i> Upload</a>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+
+
+<style>
+    .card-header
+    {
+        text-align:center;
+    }
+
+    .card-header i
+    {
+        font-size:42px;
+        color:#fff;
+        margin:0 auto;
+    }
+    .card-body
+    {
+        min-height:250px;
+    }
+</style>
+
+<script>
+    $('#chooseFile').bind('change', function () {
+        var filename = $("#chooseFile").val();
+        if (/^\s*$/.test(filename)) {
+            $(".file-upload").removeClass('active');
+            $("#noFile").text("No file chosen...");
+        }
+        else {
+            $(".file-upload").addClass('active');
+            $("#noFile").text(filename.replace("C:\\fakepath\\", ""));
+        }
+    });
+
+</script>
+
+
+
+
+

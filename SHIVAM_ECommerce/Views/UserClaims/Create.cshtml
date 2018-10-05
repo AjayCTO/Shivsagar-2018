@@ -1,0 +1,141 @@
+﻿@model SHIVAM_ECommerce.Models.Claims
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/UserClaims">User Claims</a>
+    </li>
+    <li class="breadcrumb-item active">User Claims Create</li>
+</ol>
+
+
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa fa-plus"></i> Assign Claims</h3>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-md-3">
+                    <label>Select Role</label>
+                </div>
+                <div class="col-md-4">
+                    @Html.DropDownList("Role", new SelectList(ViewBag.Roles, "Name", "Name"), new { @class = "form-control col-md-5", @name = "Role" })
+                </div>
+            </div>
+            <div class="row">
+                <br/>
+            </div>
+    <div class="row">
+        @foreach (var claim in ViewBag.AllClaims)
+        {
+
+        @*<div class="col-md-6">
+                <label>@claim.Notes</label>
+            </div>*@
+        <div class="col-md-3">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" title="@claim.Title" claim-group="@claim.ClaimGroup" class=" getselected custom-control-input" name="GetSelected" value="@claim.ClaimValue" notes="@claim.Notes" claimtype="@claim.ClaimType" />
+          
+
+
+                <span class="custom-control-label">@claim.Notes</span>
+            </label>
+        </div>
+
+        }
+    </div>
+            <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button type="button" id="GetSelectedValue" value="Create" class="btn btn-primary">
+                            <i class="fa fa-check"></i>
+                            Save
+                        </button>
+                        <a href="/UserClaims" class="btn btn-gray">
+                            <i class="fa fa-times"></i>
+                            Cancel
+                        </a>
+                    </div>
+                </div>
+                        
+            
+        }
+    </div>
+</div>
+
+<script>
+    var SelectedClaims = [];
+
+    function GetSelectedValue() {
+
+       
+        SelectedClaims = [];
+
+        $('input:checkbox[name=GetSelected]').each(function () {
+            
+                SelectedClaims.push({
+                    'ClaimType': $(this).attr("claimType"),
+                    'ClaimValue': $(this).val(),
+                    'IsActive': $(this).is(':checked'),
+                    'Notes': $(this).attr("notes"),
+                    'Role': $('#Role :selected').text(),
+                    'Title':$(this).attr("title"),
+                    'ClaimGroup': $(this).attr("claim-group"),
+                });
+           
+
+        });
+
+    }
+
+
+
+    $(document).ready(function () {
+        $("#GetSelectedValue").click(function () {
+            GetSelectedValue();
+
+
+            $.ajax({
+                url: "/UserClaims/CreateFromAjax",
+                type: 'POST',
+                data: JSON.stringify({ "model": SelectedClaims }),
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (result) {
+                    if (result.Success == true) {
+
+                        alert("In");
+                        window.location.href = "/UserClaims/Index";
+                    }
+                    else {
+                        alert(result.ex);
+                        //toastr.error(result.ex);
+                    }
+                },
+                error: function (err) {
+                },
+                complete: function () {
+                }
+            });
+
+        })
+    });
+
+
+
+  
+</script>
+
+
+
+       
+
+
+      

@@ -1,0 +1,119 @@
+﻿@model SHIVAM_ECommerce.Models.ProductAttributes
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Product Attribute Edit</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/ProductAttributes">Product Attributes</a></li>
+            <li class="breadcrumb-item active">Product Attribute Edit</li>
+        </ol>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card">
+
+                <div class="card-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+
+                            @Html.ValidationSummary(true)
+                            @Html.HiddenFor(model => model.Id)
+
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Attribute Name</label>
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.AttributeName, new { @class = "form-control col-md-5 customColumnData UniqueAttributes" })
+                                    @Html.ValidationMessageFor(model => model.AttributeName)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Attribute Description</label>
+                                <div class="col-md-10">
+                                    @Html.TextAreaFor(model => model.AttributeDescription, new { @class = "form-control col-md-5" })
+                                    @Html.ValidationMessageFor(model => model.AttributeDescription)
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button type="submit" value="Create" class="btn btn-primary">
+                                        <i class="fa fa-check"></i> Update
+                                    </button>
+                                    <a href="/ProductAttributes" class="btn btn-secondary btn-gray"> <i class="fa fa-times"></i> Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts{
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+
+            var Attributename = '@Model.AttributeName';
+
+
+            $.validator.addMethod('UniqueAttributes', function (value) {
+                debugger;
+                if (value.toLowerCase() == Attributename.toLowerCase()) {
+                    return true;
+                }
+
+                if ($.trim(value) != "") {
+                    return UniqeProductAttributes(value);
+                }
+                else {
+                    return true;
+                }
+
+            }, "Please enter a different Attribute Name ! It's already exist");
+
+        });
+        function UniqeProductAttributes(value) {
+            var _x = true;
+            $.ajax({
+                url: "/ProductAttributes/UniqueAttributes",
+                data: JSON.stringify({ Attributes: value }),
+                type: 'POST',
+                async: false,
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function (result) {
+                    _x = !result.IsAlreadyExist;
+                },
+                error: function (req, status, error) {
+                    alert(error);
+                }
+            });
+
+            return _x;
+        }
+
+    </script>
+}

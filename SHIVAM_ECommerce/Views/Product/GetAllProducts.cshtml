@@ -1,0 +1,621 @@
+﻿@model IEnumerable<object[]>
+@{
+    ViewBag.Title = "GetAllProducts";
+    var NewCount = (TempData["cols"] as List<object>).Count();
+    var _CurrentUser = Session["CurrentUserContext"] as SHIVAM_ECommerce.ViewModels.CurrentUserContext;
+    var _suppliers = ViewBag.Suppliers as List<SHIVAM_ECommerce.Models.Supplier>;
+}
+<div class="barcode-container" style="text-align:center;">
+
+    @for (int i = 0; i < 10; i++)
+    {
+        <svg style="display:none;width:200px;height:200px;" id="barcode" class="barcode d-print-inline-block"></svg>
+    }
+
+</div>
+
+
+<div class="row d-print-none">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title"> <i class="fe fe-box"></i> Products</h3>
+                <div class="card-options">
+                    @if (_CurrentUser.SupplierID != -1)
+                    {
+
+                        <div class="item-action dropdown pull-right" style="margin-top: -26px;">
+                            <a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fa fa-ellipsis-v"></i></a>
+                            <div class="dropdown-menu dropdown-menu-right">
+
+                                <a href="/Product/ExportProducts" class="dropdown-item"> <i class="dropdown-icon fa fa-download"></i> Export As Excel</a>
+                                <a href="/Product/Create" class="dropdown-item"><i class="dropdown-icon fa fa-plus"></i> Add New</a>
+                                <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" class="dropdown-item"><i class="dropdown-icon fa fa-upload"></i> Upload Products</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+            <div class="card-body">
+                @if (_CurrentUser.SupplierID == -1)
+                {
+
+                    <div class="row">
+                        <div class="col-md-4">
+
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-control" style="position: absolute;top:10px;z-index:10;" id="SupplierData">
+                                <option value="">Select Supplier</option>
+                                @foreach (var _item in _suppliers)
+                                {
+                                    <option value="@_item.Id">@_item.FirstName  @_item.LastName</option>
+
+                                }
+                            </select>
+                            @*<input type="text" class="form-control" style="position: absolute;top:10px;z-index:10;" name="name" id="SupplierAuto" placeholder="Search By Supplier" />*@
+                        </div>
+                    </div>
+                }
+
+
+                <table class="table table-hover table-bordered table-outline table-vcenter text-nowrap card-table" id="productlist">
+                    <thead>
+                        <tr id="Columns">
+          
+                            @foreach (var row in TempData["cols"] as List<object>)
+                            {
+
+                                <th>@row</th>
+
+
+                            }
+             
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="card-footer">
+
+
+
+                <!-- Modal -->
+                <div id="myModal" class="modal" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Add Products via Excel</h4>
+
+                                <button type="button" class="close" data-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-danger" id="ErrorString" style="display: none; max-height: 150px; overflow: auto;">
+
+                                </div>
+
+                                <form action="#" id="fileForm" name="fileForm" method="post">
+
+                                    <div class="form-horizontal">
+                                        <div class="form-group">
+                                            <div class="col-md-10">
+                                                <a href="/Product/DownloadSample/" class="btn btn-secondary"> <i class="fa fa-excel"></i>Download Sample</a>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+
+                                            <div class="col-md-10">
+
+
+                                                <div class="form-group">
+                                                    <div class="form-label">Select Excel/CSV file to upload data</div>
+
+                                                    <div class="testlabel">
+
+                                                    </div>
+
+                                                    <div class="custom-file">
+                                                        <input type="file" id="FileUpload" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="FileUpload" class="custom-file-input" />
+
+                                                        <label class="custom-file-label">Choose file</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+
+                            </div>
+                            <div class="modal-footer">
+
+
+                                <button type="button" class="btn btn-primary" disabled id="btnSubmit"> <i class="fa fa-check"></i> Upload</button>
+
+                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="myModalImages" class="modal" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Product Images</h4>
+                                <button type="button" class="close" data-dismiss="modal"></button>
+
+                            </div>
+                            <div class="modal-body">
+                                <div>
+                                    <img src="" id="mainImage" alt="Alternate Text" />
+                                </div>
+                                <div class="listImages">
+
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                              
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="myModalProductImages" class="modal" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Assign Product Images</h4>
+                                <button type="button" class="close" data-dismiss="modal"></button>
+
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="AssignlistImages">
+
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<style>
+    .ui-autocomplete-loading {
+        background: url('../images/loading.gif') no-repeat right center;
+        background-size: 80px;
+    }
+    .modal-body img {
+        max-width:320px;
+    }
+
+</style>
+
+
+@section scripts
+{
+    <script src="~/Scripts/JsBarcode.all.min.js"></script>
+    <script>
+        $('#btnSubmit').on('click', function () {
+            $("#ErrorString").hide();
+            $("#btnSubmit").attr("disabled", "disbled");
+            $("#btnSubmit").find("i").addClass("fa-spin");
+            $.ajax({
+                url: "/Product/UploadExcel",
+                type: "POST",
+                data: new FormData(document.getElementById("fileForm")),
+                enctype: 'multipart/form-data',
+                processData: false,
+                contentType: false
+            }).done(function (data) {
+                $("#btnSubmit").removeAttr("disabled");
+                $("#btnSubmit").val("Upload file");
+                $("#btnSubmit").find("i").removeClass("fa-spin");
+                if (data.Success == true) {
+                    alert("uploaded Successfully");
+                    window.location.reload();
+                }
+                else {
+                    $(".clearFile").trigger("click");
+                    $("#ErrorString").show("slow");
+                    $("#ErrorString").html(data.ErrorString);
+
+                }
+            }).fail(function (jqXHR, textStatus) {
+
+                console.log(jqXHR);
+                toastr.error('File upload failed ...');
+            });
+
+        });
+
+        $(document).on("click", ".listImages img", function (e){
+            e.preventDefault();
+            e.stopPropagation();
+            $("#mainImage").attr("src",$(this).attr("src"));
+        });
+        $(document).on("click", ".clearFile", function () {
+            $('#FileUpload').val("");
+            $('#FileUpload').trigger("Change");
+            $('.my-label').remove();
+            $('#btnSubmit').attr("disabled","disabled");
+            $('#btnSubmit').attr("disabled",true);
+
+        });
+
+        $('#FileUpload').change(function() {
+            $("#ErrorString").html("");
+            $("#ErrorString").hide();
+            if($('#FileUpload')[0].files.length>0)
+            {
+                $('#btnSubmit').removeAttr("disabled");
+                $('#btnSubmit').attr("disabled",false);
+                var i = $(this).prev('label').clone();
+                var file = $('#FileUpload')[0].files[0].name+"<span style='cursor:pointer' class='clearFile'><i class='fa fa-times'></i></span>";
+                $(".testlabel").append("<label class='my-label'></label>");
+                $('.my-label').html(file);
+
+            }
+            else{
+
+
+                $('#btnSubmit').attr("disabled","disabled");
+                $('#btnSubmit').attr("disabled",true);
+
+            }
+        });
+    </script>
+    <script>
+        function UpdateLoadingImage(){
+            var allimages= document.getElementsByClassName('gridImage');
+            for (var i=0; i<allimages.length; i++) {
+                if (allimages[i].getAttribute('data-src')) {
+                    allimages[i].setAttribute('src', allimages[i].getAttribute('data-src'));
+                }
+            }
+        }
+    </script>
+
+
+    <script>
+        var totalColumns =@NewCount;
+        var _supplierID='@_CurrentUser.SupplierID';
+        totalColumns=totalColumns;
+        var table;
+        function LoadAllImages(ProductID)
+        {
+            $(".listImages").html("");
+            $.get("/Product/GetDataImages?ProductID="+ProductID,function(data){
+                for (var i = 0; i < data.data.length; i++) {
+                    var _img='<img src="/ProductImages/'+data.data[i].FileName+'" height="40" width="40"/>';
+                    $(".listImages").append(_img);
+                }
+                $("#myModalImages .modal-footer").html('<a href="/Product/AssignProductImages?ProductID='+ProductID+'" class="btn btn-primary"><i class="dropdown-icon fa fa-image"></i> Assign Image</a>'+  '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>');
+                       
+                $(".listImages img:first-child").trigger("click");
+                $("#myModalImages").modal("show");
+            });
+        }
+
+        function LoadImages(ID)
+        {
+            window.location.href="/Product/AssignProductImages?ProductID="+ID;
+        }
+
+        function GetColumns(ID)
+        {
+              debugger;
+            $.get("/Product/GetColumnNames?SupplierID="+ID,function(data){
+                console.log("datacolumn");
+                console.log(data);
+                debugger;
+                if(data.Data.length>0)
+                {
+                    debugger;
+                    var _columns="";
+                    var _CounterColumn=0;
+                    for (var i = 0; i < data.Data.length; i++) {
+                        if(i!=0 && i!=1 && i!=2 && i!=3 && i!=9){
+                            _columns+='<th class="sorting" tabindex="'+i+'" aria-controls="productlist" rowspan="1" colspan="1" aria-label="'+data.Data[i]+'": activate to sort column ascending">'+data.Data[i]+'</th>"';
+
+
+                        }
+                        _CounterColumn+=1;
+
+                    }
+                   
+                    $("#Columns").html(_columns+"<th>Actions</th>");
+                    
+                    table.clear().draw();
+                    alert("set");
+                    totalColumns=_CounterColumn;
+                }
+                else{
+                    toastr.warning("This supplier doesn't have any product attributes that's why it doesn't have any products.");
+                }
+
+            });
+
+        }
+        $(document).ready(function () {
+
+
+            //$("#SupplierID").change(function () {
+            //    if ($.trim($(this).attr("alt")) != "") {
+            //        GetColumns($(this).attr("alt"));
+
+            //    }
+            //});
+
+            $("#SupplierData").val(_supplierID);
+
+            $("#SupplierAuto").change(function () {
+                if ($.trim($(this).attr("alt")) == "") {
+                    $(this).attr("alt", -1);
+                }
+
+            });
+
+            $("#SupplierData").change(function () {
+                if($.trim($(this).val())!=""){
+
+                    GetColumns($(this).val());
+                }
+            });
+
+
+            if(totalColumns!='0'){
+                table=$('#productlist').DataTable({
+                    bServerSide: true,
+
+                    //"sScrollX": "100%",
+                    //"sScrollXInner": "100%",
+                    //"bScrollCollapse": true,
+                    //oLanguage: {
+                    //    sProcessing: '<div class="preloader" style="display:block !important;"><svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /></svg></div>'
+                    //},
+                    "processing": true, // for show progress bar
+                    "serverSide": true,
+
+                    sAjaxSource: '/Handler/GetProducts.ashx',
+                    fnServerData: function (sSource, aoData, fnCallback, oSettings) {
+                        aoData.push( { name:"SupplierID",value: $("#SupplierData").val()} );
+                    
+                        oSettings.jqXHR = $.ajax({
+                            "dataType": 'json',
+                            "type": "POST",
+                            "url": sSource,
+                            "data": aoData,
+                            "success": fnCallback
+
+                        });
+                    },
+                    "fnDrawCallback": function( oSettings ) {
+                        UpdateLoadingImage();
+                        $("#productlist").find(".dropdown").on("shown.bs.dropdown", function() {
+
+                            $(".dataTables_scrollBody").css("overflow","visible");
+                        });
+                        $("#productlist").find(".dropdown").on("hidden.bs.dropdown", function() {
+
+                            //$("#productlist").css("overflow","auto");
+                            $(".dataTables_scrollBody").css("overflow","hidden");
+                        });
+                    },
+                    iDisplayLength: 10,
+                    iDisplayStart: 0,
+                    columnDefs: [
+                            {
+                                "targets": [0],
+                                "visible": false
+                            },
+                            {
+                                "targets": [1],
+                                "visible": false
+                            },
+
+                             {
+                                 "targets": [2],
+                                 "visible": false
+                             },
+                                {
+                                    "targets": [3],
+                                    "visible": false
+                                },
+                            {
+                                "targets": [4],
+                                'searchable': false,
+                                'orderable': false,
+                                'title':'ProductImage',
+
+                            },
+
+                            {
+                                "targets": [9],
+                                "visible": false
+
+                            },
+
+                            {
+                                "targets": [totalColumns],
+                                'searchable': false,
+                                'orderable': false,
+                                'title':'Actions',
+                                'render': function (data, type, full, meta,row) {
+
+
+                                    return "";
+                                }
+                            }
+
+                    ],
+                    //rowGroup: {
+
+                    //    dataSrc: 5
+                    //},
+                    rowCallback: function( row, data, index ) {
+                    
+                        console.log("innerdata");
+                        console.log(data);
+                        console.log(totalColumns);
+                        debugger;
+                        if ( data[totalColumns-1]!=null ){
+                            var html="";
+                            if(data[2]!=null){
+
+                                var _b = ' <a onclick="nextBarcode(&#34;' + data[5] + '&#34;)" style="cursor: pointer" class="dropdown-item" ><i class="dropdown-icon fa fa-print"></i> Product Barcode</a>';
+                                var _c = ' <a href="/Product/AssignProductImages?ProductID='+data[3]+'" class="dropdown-item" ><i class="dropdown-icon fa fa-image"></i> Assign Images</a>';
+                                html= '<div class="item-action dropdown"><a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fa fa-ellipsis-v"></i></a>   <div class="dropdown-menu dropdown-menu-right">';
+
+                                html=html+'<a href="/Product/Edit?productID='+data[2]+'" class="dropdown-item"><i class="dropdown-icon fa fa-pencil"></i> Edit Product </a>';
+                                html=html+'<a href="/Product/ProductDetails?productID='+data[2]+'" class="dropdown-item"><i class="dropdown-icon fa fa-list"></i> Product Details</a>';
+                                html=html+_b+_c+'</div>';
+                            }
+
+                            $('td:eq('+(totalColumns-5)+')', row).html(html);
+
+                            var _imageData="";
+
+                            if ($.trim(data[4]) ==='')
+                            {
+                                _imageData= '<a href="/Product/AssignProductImages?ProductID='+data[3]+'" class="btn btn-primary btn-sm"><i class="dropdown-icon fa fa-image"></i> Assign Image</a>';
+                            } else {
+                                _imageData= '<img class="gridImage" onclick="LoadAllImages('+data[2]+')" src="/images/loading.gif" data-src="/ProductImages/' + data[4] + '">';
+                            }
+                            $('td:eq(0)', row).html(_imageData);
+                        }
+
+                    }
+                });
+     
+            }
+
+            //table.columns().every(function () {
+            //    var that = this;
+
+            //    $('input', this.footer()).on('keyup change', function () {
+
+            //        if (that.search() !== this.value) {
+            //            that.search(this.value).draw();
+            //        }
+            //    });
+            //});
+
+
+
+        });
+
+
+        if(_supplierID=='-1'){
+            $("#SupplierAuto").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/Order/SearchSupplier" + "/?SearchValue=" + this.element.val(),
+                        type: "GET",
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        error: function () {
+                            alert('There is a problem with the service!');
+                        },
+                        success: function (data) {
+                            $(this).attr("alt", "");
+                            try {
+
+                                $(this).attr("alt", 0);
+                                response($.map(data, function (item) {
+                                    return {
+                                        label: item.SupplierName,  // tblLocation.lLoc
+                                        value: item.SupplierID     // tblLocation.lID
+                                    };
+                                }));
+                            } catch (_ex) {
+                                alert(_ex);
+                            }
+                        }
+                    });
+                },
+                select: function (event, ui) {
+                    event.preventDefault();
+                    $(this).val(ui.item.label);
+                    $(this).attr("alt", ui.item.value);
+                    $(this).trigger('change');
+                    $(this).trigger('blur');
+                },
+                delay: 250,
+                autoFocus: true,
+                focus: function (event, ui) {
+                    event.preventDefault();
+                }
+            });
+        }
+
+        function nextBarcode(value) {
+            var _value = value.toString();
+            JsBarcode("#barcode", _value, {});
+
+            window.print();
+        }
+    </script>
+
+    <script>
+
+        $(function() {
+
+
+        });
+    </script>
+
+    <style>
+        .gridImage {
+            height: 40px;
+            width: 40px;
+            border-radius: 100%;
+        }
+
+        .my-label {
+            font-size: 16px;
+            background: skyblue;
+            color: white;
+            padding: 10px;
+        }
+
+        #myModalImages .modal-body {
+            max-height: 420px;
+            text-align: center;
+        }
+
+        .modal-body img {
+            max-height: 375px;
+        }
+
+
+        .listImages img {
+            margin: 6px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+        }
+    </style>
+}

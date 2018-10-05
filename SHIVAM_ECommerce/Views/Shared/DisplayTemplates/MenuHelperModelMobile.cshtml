@@ -1,0 +1,107 @@
+﻿@model MvcSiteMapProvider.Web.Html.Models.MenuHelperModel
+@using System.Web.Mvc.Html
+@using MvcSiteMapProvider.Web.Html.Models
+@using Microsoft.AspNet.Identity
+@using SHIVAM_ECommerce.ViewModels
+@{
+    var _CurrentUser = Session["CurrentUserContext"] as CurrentUserContext;
+    var _AllClaims = Session["UserClaims"] as List<ClaimsViewModel>;
+
+    var CanSeeCategoryURL = Session["CanSeeCategoryURL"].ToString() == "URL:/Category" ? true : false;
+    var CanSeeSupplierURL = Session["CanSeeSupplierURL"].ToString() == "URL:/Supplier" ? true : false;
+    var CanSeePlanURL = Session["CanSeePlanURL"].ToString() == "URL:/Plan" ? true : false;
+    var CanSeeManufacturerURL = Session["CanSeeManufacturerURL"].ToString() == "URL:/Manufacturers" ? true : false;
+    var CanSeeProductURL = Session["CanSeeProductURL"].ToString() == "URL:/Product/GetAllProducts" ? true : false;
+    var CanSeeProductStatusURL = Session["CanSeeProductStatusURL"].ToString() == "URL:/ProductStatus" ? true : false;
+    var CanSeeUOMURL = Session["CanSeeUOMURL"].ToString() == "URL:/UnitOfMeasures" ? true : false;
+    var CanSeeProductAttrURL = Session["CanSeeProductAttrURL"].ToString() == "URL:/ProductAttributes" ? true : false;
+    var CanSeeProductAttrSupplierURL = Session["CanSeeProductAttrSupplierURL"].ToString() == "URL:/ProductAttributes/AddAttributesForSupplier" ? true : false;
+    var CanSeeCustomerURL = Session["CanSeeCustomerURL"].ToString() == "URL:/Customer" ? true : false;
+    var CanSeeOrderURL = Session["CanSeeOrderURL"].ToString() == "URL:/Order" ? true : false;
+    var CanSeeEmailRecordURL = Session["CanSeeEmailRecordURL"].ToString() == "URL:/EmailRecords" ? true : false;
+    var CanSeeManageAccountURL = Session["CanSeeManageAccountURL"].ToString() == "URL:/Account/Manage" ? true : false;
+    var CanSeeSupplierUserURL = Session["CanSeeSupplierUserURL"].ToString() == "URL:/SupplierUser" ? true : false;
+
+}
+
+
+
+<div class="scroll-sidebar">
+    <!-- Sidebar navigation-->
+    <nav class="sidebar-nav">
+        <ul id="sidebarnav">
+            <li class="nav-devider"></li>
+            <li class="nav-label">Home</li>
+
+            <li>
+                <a  href="/" aria-expanded="false"><i class="fa fa-home"></i><span class="hide-menu">Dashboard </span> </a>
+             
+            </li>
+
+
+            @if (Request.IsAuthenticated)
+            {
+                if (_AllClaims != null)
+                {
+
+                    foreach (var _item in _AllClaims.ToList())
+                    {
+                        if (_item.AllClaims.Count() == 1)
+                        {
+                            <li>
+
+                                <a href="/@_item.AllClaims[0].ClaimValue" aria-expanded="false"><i class="fa fa-list"></i><span class="hide-menu">@_item.AllClaims[0].Title </span> </a>
+
+                              
+                            </li>
+                        }
+                        else
+                        {
+                            
+                            
+                               <li class="nav-label">All @_item.Group</li>
+                            
+                            <li>
+                            
+
+
+                                <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-list"></i><span class="hide-menu">@_item.Group </span> </a>
+
+                                <ul aria-expanded="false" class="collapse">
+
+                                    @foreach (var _childitem in _item.AllClaims.ToList())
+                                    {
+                                        
+                                          <li><a href="/@_childitem.ClaimValue"> <i class="fa fa-dot-circle-o"></i> @_childitem.Title </a></li>
+                                        
+                                      
+                                    }
+
+                                  
+                                 
+                                </ul>
+
+                                
+
+                            </li>
+
+                        }
+
+                    }
+                }
+
+
+
+
+
+
+
+            }
+
+
+          
+          
+        </ul>
+    </nav>
+    <!-- End Sidebar navigation -->
+</div>

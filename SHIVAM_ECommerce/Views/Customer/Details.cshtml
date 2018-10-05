@@ -1,0 +1,206 @@
+﻿@model SHIVAM_ECommerce.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Personal Information</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/Customer">Customer</a></li>
+            <li class="breadcrumb-item active">Order</li>
+        </ol>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+
+                <div class="card-body">
+                    <div style="font-size:16px;" class="row">
+                        <div class="col-md-6">
+                            <h4>General Info</h4>
+                            <div class="row">
+                                <div class="col-md-6"> <span>User Name :</span> @Html.DisplayFor(model => model.User.UserName) </div>
+                                <div class="col-md-6"> <span>Name : </span> @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName) </div>
+                                <div class="col-md-6"> <span>Mobile : </span> @Html.DisplayFor(model => model.Phone) </div>
+                                <div class="col-md-6"> <span>Email : </span> @Html.DisplayFor(model => model.Email) </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Card Info</h4>
+                            <div class="row">
+                                <div class="col-md-6"> <span>Credit Card :</span> @Html.DisplayFor(model => model.CreditCard) </div>
+                                <div class="col-md-6"> <span>Card Type : </span> @Html.DisplayFor(model => model.CreditCardType)  </div>
+                                <div class="col-md-6"> <span>Exp Yr : </span> @Html.DisplayFor(model => model.CardExpYr) </div>
+                                <div class="col-md-6"> <span>Exp Month : </span> @Html.DisplayFor(model => model.CardExpMo) </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+
+
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="card">
+                            <div class="container-fluid">
+
+                                <h3 class="card-title"><i class="fa fa-list"></i> Orders </h3>
+                                <div class="flex-fill text-right">
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <table style="width:100%;" id="myTable" class="table table-striped table-bordered dt-responsive">
+                                    <thead>
+                                        <tr>
+                                            <th>Order Number</th>
+                                            <th>Payment</th>
+                                            <th>Total Price</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="card">
+                            <div class="container-fluid">
+                                <h3 class="card-title">
+                                    <i class="fe fe-sidebar"></i>  Payment Information
+                                </h3>
+                            </div>
+
+                            <div style="min-height:248px;" class="card-body">
+                                <div class="dimmer active">
+                                    <div class="loader"></div>
+                                    <div class="dimmer-content">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deleniti fugit incidunt, iste, itaque minima neque pariatur perferendis sed suscipit velit vitae voluptatem. A consequuntur, deserunt eaque error nulla temporibus!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div id="OrderItems" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Order Items</h4>
+                                <button type="button" class="close" data-dismiss="modal"></button>
+
+                            </div>
+                            <div class="modal-body">
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+        var _myTableData;
+        var _CustomerID = '@Model.Id';
+        $(document).ready(function () {
+
+
+
+
+            _myTableData = $("#myTable").DataTable({
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "ajax": {
+                    "url": "/Customer/LoadCustomerOrders",
+                    "type": "POST",
+                    "datatype": "json",
+                    "data": function (d) {
+                        d.CustomerID = _CustomerID;
+
+                    }
+
+                },
+                "columns": [
+                     {
+
+                         "data": "OrderNumber", "name": "OrderNumber", "autoWidth": true
+                     },
+
+                           {
+
+                               "data": "Paid", "name": "Paid", "autoWidth": true
+                           },
+                        {
+
+                            "data": "TotalPrice", "name": "TotalPrice", "autoWidth": true, "render": function (value) {
+
+
+                                return "₹ " + value;
+                            }
+                        },
+
+                         {
+
+                             "data": "Status", "name": "Status", "autoWidth": true, "orderable": false,
+                         },
+                         {
+                             "orderable": false,
+                             "mRender": function (data, type, row) {
+                                 return '<a href="#" class="btn btn-primary" onclick="GetOrderItems(' + row.Id + ')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Order Items"><i class="fa fa-list"  align="center"></i></a>  ';
+                             }
+                         },
+                ]
+            });
+
+
+
+
+        });
+
+        function GetOrderItems(id) {
+
+            $.get("/Order/GetOrderItems?orderID=" + id, function (data) {
+                $("#OrderItems").find(".modal-body").html(data);
+                $("#OrderItems").modal('show');
+            });
+        }
+
+    </script>
+
+    <style>
+        .modal-dialog {
+            max-width: 650px;
+        }
+
+        .col-md-6 span {
+            font-weight: 600;
+        }
+    </style>
+}

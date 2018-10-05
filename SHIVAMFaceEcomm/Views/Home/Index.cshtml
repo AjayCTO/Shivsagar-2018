@@ -1,0 +1,258 @@
+﻿@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Index";
+    var _CurrentUserID = User.Identity.GetUserId();
+    
+}
+
+ <!-- Swiper slider-->
+<div  ng-controller="PaginationCtrl">
+
+    <div ng-if="showloader==true" style="background-color:#e1e6e6; height:500px;" class="toploader">
+        <div class="FB-Loading-Card">
+            <div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div></div>
+            <div></div>
+            <div></div>
+
+          
+        </div>
+    </div>
+    
+
+    <div class="swiper-container swiper-coverflow">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-color:#e1e6e6; " ng-repeat="xyz in categories">
+                <div  class="slider-content">
+                    <div class="box text-left">
+                        <h1 class="text-info">{{xyz.CategoryName}}</h1>
+                        <p class="text-dark">{{xyz.Description}}</p>
+                        <a href="/Home/GetAllProducts/?CategoryId={{xyz.Id}}" class="btn btn-default semi-circle">View Collection</a>
+                    </div>
+                    <div class="box text-right hidden-xs hidden-sm fa">
+
+                        <img ng-show="xyz.CategoryImage == null" src="~/Content/images/nocategory.png" alt="No Image available for category" />
+
+                        <img style="max-width:750px;" ng-show="xyz.CategoryImage != null" src="@SHIVAMFaceEcomm.MvcApplication.GlobalImageAssetUrl/CategoryImage/{{xyz.CategoryImage}}" alt="" />
+                    </div>
+                </div><!-- end slider-content -->
+            </div><!-- end swiper-slider -->
+
+        </div><!-- end swiper wrapper -->
+        <!-- Pagination -->
+        <div class="swiper-pagination swiper-pagination-h"></div>
+        <!-- Arrows -->
+        <div class="swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev swiper-button-white"></div>
+    </div><!-- end swiper-container -->
+    <!-- start section -->
+
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="box-banner">
+                        <figure>
+                            <img src="http://diamondcreative.net/plus-v1.3.0/img/banners/banner_01.jpg" alt="">
+                            <figcaption class="box-bottom">
+                                <div class="banner-content">
+                                    <h4 class="title alt-font text-info">Save Up - 25%</h4>
+                                    <p class="subtitle text-dark">Lorem Ipsum dolar sit amet</p>
+                                    <a href="#" class="btn btn-info semi-circle btn-sm">Buy Now</a>
+                                </div><!-- end banner-content -->
+                            </figcaption>
+                        </figure>
+                    </div><!-- end box-banner -->
+                </div><!-- end col -->
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="box-banner">
+                        <figure>
+                            <img src="http://diamondcreative.net/plus-v1.3.0/img/banners/banner_02.jpg" alt="">
+                            <figcaption class="box-middle">
+                                <div class="banner-content">
+                                    <h4 class="title alt-font text-danger">New Chairs</h4>
+                                    <p class="subtitle text-dark">Lorem Ipsum dolar sit amet</p>
+                                    <a href="#" class="btn btn-danger semi-circle btn-sm">Look Now</a>
+                                </div><!-- end banner-content -->
+                            </figcaption>
+                        </figure>
+                    </div><!-- end box-banner -->
+                </div><!-- end col -->
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="box-banner">
+                        <figure>
+                            <img src="http://diamondcreative.net/plus-v1.3.0/img/banners/banner_03.jpg" alt="">
+                            <figcaption class="box-top">
+                                <div class="banner-content">
+                                    <h4 class="title alt-font text-success">Work Desk</h4>
+                                    <p class="subtitle text-dark">Lorem Ipsum dolar sit amet</p>
+                                    <a href="#" class="btn btn-success semi-circle btn-sm">Shop Now</a>
+                                </div><!-- end banner-content -->
+                            </figcaption>
+                        </figure>
+                    </div><!-- end box-banner -->
+                </div><!-- end col -->
+            </div>
+        </div>
+    </section>
+
+    
+
+
+
+    <section class="section white-backgorund">
+        @Html.Partial("shoppingcart")
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <div class="title-wrap">
+                        <h2 class="title">Our Collections</h2>
+                        <p class="lead">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
+                    </div>
+                </div><!-- end col -->
+            </div><!-- end row -->
+
+
+
+            <div class="row column-4">
+                <div class="col-sm-6 col-md-3" ng-repeat="x in pagedItems">
+                    <div class="thumbnail store style2">
+                        <div class="header">
+                            <div class="badges">
+                                <span class="product-badge top left white-backgorund text-primary semi-circle">{{x[3]}}</span>
+                                <span class="product-badge top right text-warning">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-half-o"></i>
+                                </span>
+                            </div>
+                            <figure>
+                                <a href="/home/productdetail/?productId={{x[8]}}">
+                                    <img ng-show="x[2]!=null" src="@SHIVAMFaceEcomm.MvcApplication.GlobalImageAssetUrl/ProductImages{{x[2]}}" alt="">
+
+                                    <img ng-show="x[2]==null" src="~/Content/images/default-no-image.png" alt="Alternate Text" />
+
+                                </a>
+                            </figure>
+                            <div class="icons">
+                                <a class="icon {{CheckisInWishList(x[8])}}" ng-click="addTowishList(x[8],'@_CurrentUserID')"><i class="fa fa-heart-o"></i></a>
+                                <a class="icon" href="/home/productdetail/?productId={{x[8]}}"><i class="fa fa-search"></i></a>
+                                <a class="icon" href="javascript:void(0);" id="pid{{x[3]}}" ng-click="AddToCart(x[3],this)"><i class="fa fa-cart-plus mr-5"></i>Add to cart</a>
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <h6 class="regular"><a href="shop-single-product-v1.html">{{x[3]}}</a></h6>
+                            <div class="price">
+                                <span class="amount text-primary">${{x[4]}}</span>
+                            </div>
+                        </div><!-- end caption -->
+                    </div>
+                </div><!-- end col -->
+
+            </div><!-- end row -->
+
+        </div><!-- end container -->
+    </section>
+    <!-- end section -->
+    <!-- start section -->
+   
+    <!-- end section -->
+    <!-- start section -->
+
+    
+
+    <section class="section light-background">
+
+        
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="title-wrap">
+                        <h2 class="title lines">Top Suppliers</h2>
+                    </div>
+                </div><!-- end col -->
+            </div>
+            <div ng-repeat="obj in supplierlist" class="supplierlist">
+
+                     
+                            <div class="item">
+                                <figure class="zoom-out">
+                                    <img src="http://localhost:7080/SupplierImage/{{obj.Logo}}" alt="">
+                                </figure>
+                            </div>
+                        </div><!-- end owl carousel -->
+        </div>
+        <!-- end container -->
+    </section>
+
+    <!-- start section -->
+    
+
+
+    <!-- end section -->
+    <!-- start section -->
+    <!-- start section -->
+    <section class="light-backgorund">
+        <div class="container-fluid">
+            <div class="row grid-space-0">
+                <div class="col-md-6 col-lg-3 bg-blue-light" ng-repeat="x in categories">
+                    <div class="shop-category">
+                        <div class="category-img">
+                            <img style="width:100%;" src="http://localhost:7080/CategoryImage/{{x.CategoryImage}}" alt="">
+                        </div><!-- end category-img -->
+                        <div class="category-name">
+                            <a href="/Home/GetAllProducts/?CategoryId={{x.Id}}"><h5 class="title">{{x.CategoryName}}</h5></a>
+                            <p>{{x.Description}}</p>
+                        </div><!-- end category-name -->
+                    </div><!-- end category -->
+                </div>
+                
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </section>
+
+
+
+
+    
+
+
+    <!-- end section -->
+    <!-- start footer -->
+    <!-- end footer -->
+    <!-- end section -->
+</div>
+@section scripts
+{
+<script src="~/Scripts/AngularData/Products.js"></script>
+<script>
+        var _customerID = '@_CurrentUserID';
+</script>
+}
+
+<style>
+    figure {
+        min-height: 338px;
+        max-height: 338px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      
+    }
+    .rotate {
+        transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) !important;
+    }
+    .active .fa {
+        color: #0cd4d2 !important;
+    }
+
+</style>

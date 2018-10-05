@@ -1,0 +1,318 @@
+﻿@model SHIVAM_ECommerce.Models.Supplier
+@{
+    ViewBag.Title = "Profile";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">
+            Manage Your details 
+        </h3>
+    </div>
+    <div class="card-body">
+
+        @using (Html.BeginForm("Profile", "Home", FormMethod.Post,
+                            new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary()
+
+            @Html.HiddenFor(model => model.Id)
+            @*@Html.HiddenFor(model => model.Logo)*@
+            <input type="hidden" id="Logo" name="Logo" />
+            @Html.HiddenFor(model=>model.UserID)
+            @Html.HiddenFor(model=>model.PlanStartDate)
+            @Html.HiddenFor(model=>model.PlanEndDate)
+            @Html.HiddenFor(model=>model.ParentSupplierID)
+             @Html.HiddenFor(model=>model.RegisteredByID)
+            <input type="hidden" name="UserName" id="UserName" value="UserName" >
+            <input type="hidden" name="Password" id="Password" value="Password123">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        @*<div class="card-header">
+                    <h3 class="card-title">Personal Information</h3>
+                </div>*@
+
+                        <div class="card-body">
+                            <div class="form-group">
+                              <label>First Name</label>
+                                <div class="">
+                                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control requiredName" })
+                                    @Html.ValidationMessageFor(model => model.FirstName)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <div class="">
+                                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control required" })
+                                    @Html.ValidationMessageFor(model => model.LastName)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Company Name</label>
+                                <div class="">
+                                    @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.CompanyName)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Supplier Type</label>
+                                <div class="">
+                                    @Html.TextBoxFor(model => model.SupplierType, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.SupplierType)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+                                <div class="">
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control required UniqueEmailvalid" })
+                                    @Html.ValidationMessageFor(model => model.Email)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PlanID, "Plan", new { @class = "control-label " })
+                                <div class="">
+                                    @*@Html.DropDownList("PlanID", String.Empty)*@
+                                    @Html.DropDownList("PlanID", (IEnumerable<SelectListItem>)ViewBag.PlanID, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PlanID)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Address1, new { @class = "control-label " })
+                                <div class="">
+                                    @Html.TextAreaFor(model => model.Address1, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Address1)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Address2, new { @class = "control-label " })
+                                <div class="">
+                                    @Html.TextAreaFor(model => model.Address2, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Address2)
+                                </div>
+                            </div>
+                            <div id="selection">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.State, new { @class = "control-label " })
+                                    <select id="listBox" onchange='selct_district(this.value)' class="form-control"></select>
+                                    @Html.HiddenFor(model=>model.State)
+                                    @Html.ValidationMessageFor(model => model.State)
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.City, new { @class = "control-label " })
+                                    <div class="">
+                                        <select id='secondlist' class="form-control"></select>
+                                        @Html.HiddenFor(model=>model.City)
+                                       
+                                        @Html.ValidationMessageFor(model => model.City)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                              <label>Postal Code</label>
+                                <div class="">
+                                    @Html.TextBoxFor(model => model.PostalCode, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PostalCode)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Phone, new { @class = "control-label " })
+                                <div class="">
+                                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Phone)
+                                </div>
+                            </div>
+                  
+                            <div class="form-group">
+                                <div class="col-md-offset-2 ">
+                                    <input type="submit" value="Update" class="btn btn-primary" />
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+            <div class="col-md-6">
+
+                <div class="card">
+                    @*<div class="card-header">
+                        
+                    </div>*@
+                    <div class="card-body">
+                        <h3 class="card-title text-center">Company Logo</h3>
+                        <div style="text-align:center">
+                            @if (Model.Logo != null)
+                            {
+                                <img style="height:100px; width:120px;" src="@Url.Content("~/SupplierImage/"+Model.Logo)" alt="Alternate Text" />
+                            }
+
+
+                            @if (Model.Logo == null)
+                            {
+                                <img style="height:100px; width:100px;" src="@Url.Content("~/CategoryImage/no-image.png")" alt="Alternate Text" />
+                            }
+
+                            <br/>
+                            <br/>
+                            <div class="form-group">
+
+                                <div class="col-md-12">
+                             
+                                    @*<input type="file" name="file" id="file" style="width: 100%;" />*@
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input form-control" name="file" id="file" accept="image/*">
+                                        <label class="custom-file-label">Choose file</label>
+                                    </div>
+
+                                    <div class="gallery"></div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    
+
+          
+
+                    </div>
+                </div>
+
+
+         
+
+           
+            </div>
+
+     
+        </div>
+
+          
+        }
+
+
+
+        
+    </div>
+</div>
+
+@section Scripts {
+
+@*<link href="~/Content/style.css" rel="stylesheet" />*@
+<script src="~/Scripts/state.js"></script>
+@Scripts.Render("~/bundles/jqueryval")
+<script>
+    $(document).ready(function () {
+
+        $.validator.addMethod("required", function (value) {
+
+            if ($.trim(value) != "") {
+
+                return true;
+
+            }
+
+        }, "Please Enter Value.");
+
+        $.validator.addMethod("UniqueEmailvalid", function (value, element) {
+            debugger;
+            return /^\b[A-Z0-9._%-]+@@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i.test(value);
+        }, "Please Enter Valid Email.");
+
+
+
+    });
+    </script>
+<script>
+    //$("select").addClass("form-control");
+    $(document).ready(function(){
+
+    $("#Logo").val('@Model.Logo');
+        $(window).load(function() 
+        {
+            $("#listBox").val('@Model.State');
+            selct_district('@Model.State');
+            $("#secondlist").val('@Model.City');
+        });
+        
+
+    $("#listBox").change(function () {
+        $("#State").val($(this).val());
+    });
+
+    $("#secondlist").change(function () {
+        $("#City").val($(this).val());
+    });
+
+
+    });
+</script>
+
+  <script>
+      $(document).ready(function () {
+          var current = location.pathname;
+          $('.nav li a').each(function () {
+              var $this = $(this);
+              // if the current path is like this link, make it active
+              if ($this.attr('href').indexOf(current) !== -1) {
+                  if (current != "/") {
+                      $this.addClass('active');
+
+                  }
+              }
+          })
+          var imagesPreview = function (input, placeToInsertImagePreview) {
+
+              if (input.files) {
+                  var filesAmount = input.files.length;
+
+                  for (i = 0; i < filesAmount; i++) {
+                      var reader = new FileReader();
+
+                      reader.onload = function (event) {
+                          var _multiple = $.trim($(input).attr("multiple"));
+                          if (_multiple == "") { $(placeToInsertImagePreview).html(""); }
+                          $($.parseHTML('<img style="height:50px; width:50px; margin-right:10px; margin-top:5px;">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                      }
+
+                      reader.readAsDataURL(input.files[i]);
+                  }
+              }
+
+          };
+          $('.custom-file-input').on('change', function () {
+              imagesPreview(this, 'div.gallery');
+          });
+
+          $(document).on("keypress", ".customColumnData", function (evt) {
+
+              var keycode = evt.charCode || evt.keyCode;
+              if (keycode == 35 || keycode == 64) { //Enter key's keycode
+                  return false;
+              }
+          });
+      });
+</script>
+    }
+<style>
+  
+
+    textarea
+    {
+        height:110px;
+    }
+</style>
+
+

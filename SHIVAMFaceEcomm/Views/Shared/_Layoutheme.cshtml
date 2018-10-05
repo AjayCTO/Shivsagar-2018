@@ -1,0 +1,389 @@
+﻿@using System.Web.Optimization;
+@using Microsoft.AspNet.Identity;
+@{
+    var _CurrentUserID = User.Identity.GetUserId();
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ShivaSaagar Online</title>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--Favicon-->
+    <!-- css files -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/owl.carousel.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/owl.theme.default.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/swiper.css" />
+    <link href="~/Content/css/toastr.css" rel="stylesheet" />
+    @*@Styles.Render("~/bundle/css")*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- this is default skin you can replace that with: dark.css, yellow.css, red.css ect -->
+    <link id="pagestyle" rel="stylesheet" type="text/css" href="~/Content/css/default.css" />
+    @* <link href="~/Content/css/skin-red.css" rel="stylesheet" />*@
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900,900i&subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/css/dataTables.bootstrap4.min.css">
+    <link href="~/Content/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/css/rowGroup.dataTables.min.css" rel="stylesheet" />
+
+    <link href="~/Content/css/responsive.dataTables.min.css" rel="stylesheet" />
+    <style>
+    </style>
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x- ng-cloak {
+            display: none !important;
+        }
+    </style>
+</head>
+<body  ng-app="MyApp" ng-controller="layoutCtrl">
+
+
+    <div class="topBar">
+        <div class="container">
+            <ul class="topBarNav pull-right">
+
+                @Html.Partial("_LoginPartial")
+
+            </ul>
+        </div><!-- end container -->
+    </div>
+    <!-- end topBar -->
+    <div>
+        <div class="middleBar">
+            <div class="container">
+                <div class="row display-table">
+                    <div class="col-sm-3 vertical-align text-left hidden-xs">
+                        <a href="javascript:void(0);">
+                            <h3>SHIVAM ITCS</h3>
+                        </a>
+                    </div><!-- end col -->
+                    <div class="col-sm-7 vertical-align text-center">
+                        <form>
+
+                            <div class="row grid-space-1">
+                                <div class="col-sm-3">
+
+                                    <div style="display:none;">
+                                        <ul class="nav navbar-nav">
+                                            <li class="dropdown active left">
+                                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Category<i class="fa fa-angle-down ml-5"></i></a>
+                                                <ul class="dropdown-menu">
+                                                    <li ng-repeat="cat in searchcategories" class="dropdown-submenu">
+                                                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">{{cat.CategoryName}} sdf asdf </a>
+                                                        <ul class="dropdown-menu" ng-if="cat.Categories1.length>0">
+                                                            <li ng-repeat="subcat in cat.Categories1"><a href="/Home/products?CategoryID={{cat.Id}}">{{cat.CategoryName}}</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    @*<li ng-if="cat.Categories1.length==0" ng-repeat="cat in searchcategories"><a href="#">{{cat.CategoryName}}</a></li>*@
+
+                                                </ul><!-- end ul dropdown-menu -->
+                                            </li><!-- end li dropdown -->
+
+
+                                        </ul>
+                                    </div>
+
+                                    <select class="form-control input-lg" name="category" id="SearchCategoryID">
+                                        <option value="all">All Categories</option>
+                                        <optgroup ng-if="cat.Categories1.length>0" ng-repeat="cat in searchcategories" label="{{cat.CategoryName}}">
+                                            <option ng-repeat="subcat in cat.Categories1" value="{{subcat.Id}}">{{subcat.CategoryName}}</option>
+
+                                        </optgroup>
+
+                                        <option ng-if="cat.Categories1.length==0" ng-repeat="cat in searchcategories" value="{{cat.Id}}">{{cat.CategoryName}}</option>
+
+                                    </select>
+                                </div><!-- end col -->
+                                <div class="col-sm-6">
+                                    <input type="text" name="keyword" id="SearchText" class="form-control input-lg" placeholder="Search">
+                                </div><!-- end col -->
+                                <div class="col-sm-3">
+                                    <input type="button" class="btn btn-default btn-block btn-lg" id="SearchBtn" value="Search">
+                                </div><!-- end col -->
+
+
+                            </div><!-- end row -->
+                        </form>
+                    </div><!-- end col -->
+                    <div class="col-sm-2 vertical-align header-items hidden-xs">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="header-item mr-5">
+                                <a href="/Home/CustomerWishList/?CustomerId=@User.Identity.GetUserId()" data-toggle="tooltip" data-placement="top" title="Wishlist">
+                                    <i class="fa fa-heart-o"></i>
+                                    <sub>{{wishlistCounter}}</sub>
+                                </a>
+                            </div>
+                        }
+
+
+                    </div><!-- end col -->
+                </div><!-- end  row -->
+            </div><!-- end container -->
+        </div><!-- end middleBar -->
+        <!-- start navbar -->
+        <div class="navbar yamm navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" data-toggle="collapse" data-target="#navbar-collapse-3" class="navbar-toggle">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="javascript:void(0);" class="navbar-brand visible-xs">
+                        <img src="img/logo.png" alt="logo">
+                    </a>
+                </div>
+                <div id="navbar-collapse-3" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <!-- Home -->
+                        <li>
+                            <a href="/Home/Index">Home</a>
+
+                        </li>
+                        <li><a href="/Home/products">Products</a></li>
+                        <li><a href="/Home/Contact">Contact Us</a></li>
+
+                    </ul><!-- end navbar-nav -->
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                    <span class="hidden-sm">Account</span>
+                                </a>
+                                <ul class="dropdown-menu">
+
+
+                                    <li>
+                                        <a href="/CustomerOdersDetail/Index">My Order</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Home/CustomerWishList/?CustomerId=@User.Identity.GetUserId()">Wishlist <span class="text-primary badge badge-danger">{{wishlistCounter}}</span></a>
+                                    </li>
+
+
+                                </ul>
+                            </li>
+                        </ul>
+                    }
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown right">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                                <span class="hidden-sm">Categories</span><i class="fa fa-bars ml-5"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li ng-repeat="cat in searchcategories" ng-class="{'dropdown-submenu':cat.Categories1.length!=0}">
+                                    <a href="javascript:void(0);" ng-if="cat.Categories1.length>0" class="dropdown-toggle" data-toggle="dropdown">{{cat.CategoryName}}  </a>
+                                    <a href="/Home/products?CategoryID={{cat.Id}}" ng-if="cat.Categories1.length==0">{{cat.CategoryName}}  </a>
+                                    <ul class="dropdown-menu" ng-if="cat.Categories1.length>0">
+                                        <li ng-repeat="subcat in cat.Categories1"><a href="/Home/products?CategoryID={{subcat.Id}}">{{subcat.CategoryName}}</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                            <!-- end ul dropdown-menu -->
+                        </li><!-- end dropdown -->
+                    </ul><!-- end navbar-right -->
+                </div><!-- end navbar collapse -->
+            </div><!-- end container -->
+        </div><!-- end navbar -->
+    </div>
+    @RenderBody()
+
+
+    <div id="overlay"></div>
+
+
+    <!-- start footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="icon-boxes style1">
+                        <div class="icon">
+                            <i class="fa fa-truck text-gray"></i>
+                        </div><!-- end icon -->
+                        <div class="box-content">
+                            <h6 class="alt-font text-light text-uppercase">Free Shipping</h6>
+                            <p class="text-gray">Aenean semper lacus sed molestie sollicitudin.</p>
+                        </div>
+                    </div><!-- icon-box -->
+                </div><!-- end col -->
+                <div class="col-sm-3">
+                    <div class="icon-boxes style1">
+                        <div class="icon">
+                            <i class="fa fa-life-ring text-gray"></i>
+                        </div><!-- end icon -->
+                        <div class="box-content">
+                            <h6 class="alt-font text-light text-uppercase">Support 24/7</h6>
+                            <p class="text-gray">Aenean semper lacus sed molestie sollicitudin.</p>
+                        </div>
+                    </div><!-- icon-box -->
+                </div><!-- end col -->
+                <div class="col-sm-3">
+                    <div class="icon-boxes style1">
+                        <div class="icon">
+                            <i class="fa fa-gift text-gray"></i>
+                        </div><!-- end icon -->
+                        <div class="box-content">
+                            <h6 class="alt-font text-light text-uppercase">Gift cards</h6>
+                            <p class="text-gray">Aenean semper lacus sed molestie sollicitudin.</p>
+                        </div>
+                    </div><!-- icon-box -->
+                </div><!-- end col -->
+                <div class="col-sm-3">
+                    <div class="icon-boxes style1">
+                        <div class="icon">
+                            <i class="fa fa-credit-card text-gray"></i>
+                        </div><!-- end icon -->
+                        <div class="box-content">
+                            <h6 class="alt-font text-light text-uppercase">Payment 100% Secure</h6>
+                            <p class="text-gray">Aenean semper lacus sed molestie sollicitudin.</p>
+                        </div>
+                    </div><!-- icon-box -->
+                </div><!-- end col -->
+            </div><!-- end row -->
+
+            <hr class="spacer-30">
+
+            @*<div class="row">
+                    <div class="col-sm-3">
+                        <h5 class="title">Plus</h5>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin suscipit, libero a molestie consectetur, sapien elit lacinia mi.</p>
+
+                        <hr class="spacer-10 no-border">
+
+                        <ul class="social-icons">
+                            <li class="facebook"><a href="javascript:void(0);"><i class="fa fa-facebook"></i></a></li>
+                            <li class="twitter"><a href="javascript:void(0);"><i class="fa fa-twitter"></i></a></li>
+                            <li class="dribbble"><a href="javascript:void(0);"><i class="fa fa-dribbble"></i></a></li>
+                            <li class="linkedin"><a href="javascript:void(0);"><i class="fa fa-linkedin"></i></a></li>
+                            <li class="youtube"><a href="javascript:void(0);"><i class="fa fa-youtube"></i></a></li>
+                            <li class="behance"><a href="javascript:void(0);"><i class="fa fa-behance"></i></a></li>
+                        </ul>
+                    </div><!-- end col -->
+                    <div class="col-sm-3">
+                        <h5 class="title">My Account</h5>
+                        <ul class="list alt-list">
+                            <li><a href="my-account.html"><i class="fa fa-angle-right"></i>My Account</a></li>
+                            <li><a href="wishlist.html"><i class="fa fa-angle-right"></i>Wishlist</a></li>
+                            <li><a href="cart.html"><i class="fa fa-angle-right"></i>My Cart</a></li>
+                            <li><a href="checkout.html"><i class="fa fa-angle-right"></i>Checkout</a></li>
+                        </ul>
+                    </div><!-- end col -->
+                    <div class="col-sm-3">
+                        <h5 class="title">Information</h5>
+                        <ul class="list alt-list">
+                            <li><a href="about-us-v1.html"><i class="fa fa-angle-right"></i>About Us</a></li>
+                            <li><a href="faq.html"><i class="fa fa-angle-right"></i>FAQ</a></li>
+                            <li><a href="privacy-policy.html"><i class="fa fa-angle-right"></i>Privacy Policy</a></li>
+                            <li><a href="contact-v1.html"><i class="fa fa-angle-right"></i>Contact Us</a></li>
+                        </ul>
+                    </div><!-- end col -->
+                    <div class="col-sm-3">
+                        <h5 class="title">Payment Methods</h5>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        <ul class="list list-inline">
+                            <li class="text-white"><i class="fa fa-cc-visa fa-2x"></i></li>
+                            <li class="text-white"><i class="fa fa-cc-paypal fa-2x"></i></li>
+                            <li class="text-white"><i class="fa fa-cc-mastercard fa-2x"></i></li>
+                            <li class="text-white"><i class="fa fa-cc-discover fa-2x"></i></li>
+                        </ul>
+                    </div><!-- end col -->
+                </div><!-- end row -->*@
+
+            @*<hr class="spacer-30">*@
+
+            <div class="row text-center">
+                <div class="col-sm-12">
+                    <p class="text-sm">&COPY; @DateTime.Now.Year. Made with <i class="fa fa-heart text-danger"></i> by <a href="javascript:void(0);">ShivamITCS.</a></p>
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </footer>
+    <!-- end footer -->
+    <!-- JavaScript Files -->
+    <script type="text/javascript" src="~/Content/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/js.cookie.min.js"></script>
+    <script src="~/Scripts/toastr.js"></script>
+
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Scripts/dataTables.rowGroup.min.js"></script>
+    <script src="~/Scripts/dataTables.responsive.min.js"></script>
+    <link href="~/Scripts/bootbox.min.js" rel="stylesheet" />
+
+    <script src="~/Scripts/AngularData/App.js"></script>
+    <script type="text/javascript" src="~/Content/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/jquery.downCount.js"></script>
+    <script type="text/javascript" src="~/Content/js/nouislider.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/jquery.sticky.js"></script>
+    <script type="text/javascript" src="~/Content/js/pace.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/star-rating.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/wow.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+    <script type="text/javascript" src="~/Content/js/gmaps.js"></script>
+    <script type="text/javascript" src="~/Content/js/swiper.min.js"></script>
+    <script type="text/javascript" src="~/Content/js/main.js"></script>
+
+
+    <script src="~/Scripts/bootbox.min.js"></script>
+    <!-- Initialize Swiper slide -->
+    <script>
+        var _CustomerIDLayout = '@_CurrentUserID';
+        var _GlobalSearchText = '';
+        var _GlobalCatID = '';
+
+        $(document).ready(function () {
+            $("#SearchBtn").click(function () {
+                var _searchValue = $.trim($("#SearchText").val());
+                var _searchCat = $.trim($("#SearchCategoryID").val());
+
+                if (_searchValue != "") {
+
+                    var _url = "/Home/Products?ProductName=" + _searchValue;
+
+                    if (_searchCat != "" && _searchCat != "all") {
+
+                        _url = _url + "&CategoryID=" + _searchCat;
+                    }
+                    window.location.href = _url;
+                }
+
+            });
+        });
+        //var swiperH = new Swiper('.swiper-coverflow', {
+        //    pagination: '.swiper-pagination',
+        //    nextButton: '.swiper-button-next',
+        //    prevButton: '.swiper-button-prev',
+        //    paginationClickable: true,
+        //    effect: 'coverflow',
+        //    centeredSlides: true,
+        //    slidesPerView: 'auto',
+        //    loop: true,
+        //    coverflow: {
+        //        rotate: 50,
+        //        stretch: 0,
+        //        depth: 100,
+        //        modifier: 1,
+        //        slideShadows: true
+        //    }
+        //});
+    </script>
+
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

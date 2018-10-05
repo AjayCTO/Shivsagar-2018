@@ -1,0 +1,979 @@
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll.config
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.pdb
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\DocumentFormat.OpenXml.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\ExporterObjects.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\ExportImplementation.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\itextsharp.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Web.Infrastructure.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Owin.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Data.Linq.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Interfaces.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Linq.Dynamic.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Unity.Mvc4.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\WebActivatorEx.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\WebGrease.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Xamasoft.JsonClassGenerator.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.pdb
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.pdb
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.pdb
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.csprojResolveAssemblyReference.cache
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.dll
+E:\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.pdb
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll.config
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.pdb
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\DocumentFormat.OpenXml.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\ExporterObjects.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\ExportImplementation.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\itextsharp.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Data.Linq.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Interfaces.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Linq.Dynamic.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Unity.Mvc4.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\WebActivatorEx.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\WebGrease.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Xamasoft.JsonClassGenerator.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.pdb
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.pdb
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.csprojResolveAssemblyReference.cache
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.pdb
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll.config
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.pdb
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\DocumentFormat.OpenXml.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\ExporterObjects.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\ExportImplementation.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\itextsharp.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Data.Linq.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Interfaces.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Linq.Dynamic.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Unity.Mvc4.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\WebActivatorEx.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\WebGrease.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Xamasoft.JsonClassGenerator.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.pdb
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.pdb
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.csprojResolveAssemblyReference.cache
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.dll
+C:\Users\SHIVAMITCS03\Desktop\lastest\Shivam_Ecommerce\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.pdb
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.csprojResolveAssemblyReference.cache
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.pdb
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll.config
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.pdb
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\DocumentFormat.OpenXml.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\ExporterObjects.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\ExportImplementation.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\itextsharp.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Owin.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Data.Linq.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Interfaces.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Linq.Dynamic.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Unity.Mvc4.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\WebActivatorEx.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\WebGrease.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Xamasoft.JsonClassGenerator.dll
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.pdb
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.pdb
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\SHIVAMITCS-05\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.csprojResolveAssemblyReference.cache
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll.config
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.pdb
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\DocumentFormat.OpenXml.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\ExporterObjects.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\ExportImplementation.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\itextsharp.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Data.Linq.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Interfaces.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Linq.Dynamic.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Unity.Mvc4.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\WebActivatorEx.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\WebGrease.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Xamasoft.JsonClassGenerator.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.pdb
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.pdb
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.dll
+C:\Users\SHIVAMITCS03\Desktop\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.pdb
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.csprojResolveAssemblyReference.cache
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll.config
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.pdb
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\DocumentFormat.OpenXml.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\ExporterObjects.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\ExportImplementation.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\itextsharp.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Data.Linq.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Interfaces.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Linq.Dynamic.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Unity.Mvc4.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\WebActivatorEx.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\WebGrease.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Xamasoft.JsonClassGenerator.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.pdb
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.pdb
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.dll
+C:\Users\SHIVAMITCS03\Desktop\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.pdb
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll.config
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.pdb
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\DocumentFormat.OpenXml.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\ExporterObjects.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\ExportImplementation.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\itextsharp.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Data.Linq.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Interfaces.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Linq.Dynamic.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Unity.Mvc4.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\WebActivatorEx.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\WebGrease.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Xamasoft.JsonClassGenerator.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.pdb
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.pdb
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.csprojResolveAssemblyReference.cache
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.dll
+C:\Users\SHIVAMITCS03\Desktop\22SeptShivamOnline\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.pdb
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.csprojResolveAssemblyReference.cache
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll.config
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.pdb
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\DocumentFormat.OpenXml.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\ExporterObjects.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\ExportImplementation.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\itextsharp.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Web.Infrastructure.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Owin.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Data.Linq.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Interfaces.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Linq.Dynamic.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Unity.Mvc4.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\WebActivatorEx.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\WebGrease.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Xamasoft.JsonClassGenerator.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.pdb
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.pdb
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.pdb
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.dll
+E:\18sep\Shivam_Ecommerce14\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.pdb
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll.config
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.pdb
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\DocumentFormat.OpenXml.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\ExporterObjects.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\ExportImplementation.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\itextsharp.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Data.Linq.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Interfaces.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Linq.Dynamic.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Unity.Mvc4.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\WebActivatorEx.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\WebGrease.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Xamasoft.JsonClassGenerator.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.pdb
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.pdb
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.csprojResolveAssemblyReference.cache
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.dll
+C:\Users\SHIVAMITCS03\Desktop\27sep\27\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.pdb
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll.config
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.pdb
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\DocumentFormat.OpenXml.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\ExporterObjects.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\ExportImplementation.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\itextsharp.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Owin.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Data.Linq.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Interfaces.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Linq.Dynamic.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Unity.Mvc4.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\WebActivatorEx.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\WebGrease.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Xamasoft.JsonClassGenerator.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.pdb
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.pdb
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.pdb
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.csprojResolveAssemblyReference.cache
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.dll
+C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.pdb
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll.config
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\SHIVAM_ECommerce.pdb
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\DocumentFormat.OpenXml.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\ExporterObjects.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\ExportImplementation.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\itextsharp.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Web.Infrastructure.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Owin.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Data.Linq.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Remotion.Interfaces.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Linq.Dynamic.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Unity.Mvc4.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\WebActivatorEx.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\WebGrease.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Xamasoft.JsonClassGenerator.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\EmailService.pdb
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\LinqToExcel.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.pdb
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.ServiceLocation.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.Configuration.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\MvcSiteMapProvider.WebActivator.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Newtonsoft.Json.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\RazorEngine.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Net.Http.Formatting.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Http.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Helpers.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Mvc.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Optimization.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.Razor.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Deployment.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\System.Web.WebPages.Razor.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Antlr3.Runtime.pdb
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\EntityFramework.SqlServer.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Core.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Facebook.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Cookies.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.OAuth.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Google.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.Twitter.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.csprojResolveAssemblyReference.cache
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.dll
+E:\28Sept - Copy\ShivSagarOnline\SHIVAM_ECommerce\obj\Debug\SHIVAM_ECommerce.pdb

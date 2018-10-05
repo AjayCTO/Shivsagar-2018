@@ -1,0 +1,92 @@
+﻿
+
+<section id="loginscroll" class="hero hero-page gray-bg padding-small">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-lg-9 order-2 order-lg-1">
+                <h3>Customer Login</h3>
+            </div>
+            <div class="col-lg-3 text-right order-1 order-lg-2">
+                <ul class="breadcrumb justify-content-lg-end">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Customer login</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<br/>
+<br/>
+<form role="form">
+    <div class="row">
+        <div class="col-md-2">
+            &nbsp;
+        </div>
+        <div class="col-md-4">
+            <h4  class="form-login-heading">Login</h4>
+            <label for="email" class="form-label">User Name</label>
+            <input type="text" class="form-control" placeholder="Username" data-ng-model="loginData.userName" required autofocus>
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" placeholder="Password" data-ng-model="loginData.password" required>
+            <div class="checkbox">
+                <label>
+                    <!--<input type="checkbox" data-ng-model="loginData.useRefreshTokens"><strong> Use Refresh Tokens</strong>-->
+                </label>
+            </div>
+            <button class="btn btn-primary" type="submit" data-ng-click="login()"><i class="fa fa-sign-in"></i>Login</button>
+            <a href="#/signup" class="btn btn-primary right-col"><i class="icon-profile"></i>Create New Account</a> 
+              <div data-ng-hide="message == ''" class="alert alert-danger">
+                {{message}}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h4 class="form-login-heading">Social Logins</h4>
+            <p>Or you can login using one of the social logins bleow</p>
+            <button class="btn btn-large btn-facebook btn-block" type="button" data-ng-click="authExternalProvider('Facebook')"><i class="fa fa-facebook"></i> | Connect with Facebook</button>
+            <button class="btn btn-large btn-google-plus btn-block" type="button" data-ng-click="authExternalProvider('Google')"><i class="fa fa-google-plus"></i> | Connect with Google+</button>
+        </div>
+        <div class="col-md-2">
+            &nbsp;
+        </div>
+    </div>
+</form>
+
+
+<div id="loadinglogin" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade overview">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img id="imgloading" src="../../img/loading_io.gif" />
+
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    #loadinglogin {
+        box-shadow: none;
+        background: rgba(222, 222, 222, 0.7);
+        align-items: center;
+    }
+
+    .modal.show .modal-dialog {
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .modal-content {
+        background: transparent;
+        align-items: center;
+    }
+
+    #imgloading {
+        width: 100px;
+        margin-top: 100px;
+    }
+</style>
+<script>
+    $('html, body').animate({
+        scrollTop: $("#loginscroll").offset().top
+    }, 2000);
+</script>

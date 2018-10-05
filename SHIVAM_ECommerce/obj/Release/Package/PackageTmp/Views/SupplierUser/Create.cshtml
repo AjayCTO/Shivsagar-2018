@@ -1,0 +1,431 @@
+﻿@model SHIVAM_ECommerce.Models.Supplier
+@{
+    ViewBag.Title = "Register";
+
+    var allplans = ViewBag.allplans as List<SHIVAM_ECommerce.Models.Plans>;
+}
+
+@*<h2>@ViewBag.Title.</h2>*@
+
+@using (Html.BeginForm("Create", "SupplierUser", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    @*<ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#selectplan">Select a Plan</a></li>
+            <li><a data-toggle="tab" href="#register">Registration Supplier</a></li>
+
+        </ul>*@
+
+    <div class="row page-titles">
+
+
+        <div class="col-md-5 align-self-center">
+            <h3 class="text-primary">Supplier User Create</h3>
+        </div>
+        <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+                <li class="breadcrumb-item"><a href="/SupplierUser">Supplier User</a></li>
+                <li class="breadcrumb-item active">Supplier User Create</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div id="register">
+
+
+
+
+
+
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h3 class="card-title"><i class="fa fa-plus"></i> Personal Details</h3>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">Name</label>
+                                            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control requiredfield" })
+                                            @Html.ValidationMessageFor(model => model.FirstName)
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Email, new { @class = "control-label " })
+                                            <div class="">
+
+                                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control requiredfield UniqueEmail UniqueEmailvalid" })
+                                                @Html.ValidationMessageFor(model => model.Email)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Phone, new { @class = "control-label " })
+                                            <div class="">
+                                                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control requiredfield phonenumbervalid" })
+                                                @Html.ValidationMessageFor(model => model.Phone)
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label">Address</label>
+                                            @*@Html.LabelFor(model => model.Address2, new { @class = "control-label " })*@
+                                            <div class="">
+                                                @Html.TextAreaFor(model => model.Address2, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Address2)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @*<div class="col-md-8">
+
+
+                                        <h3 class="card-title"><i class="fa fa-plus"></i> Company Details</h3>
+
+                                        <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.CompanyName, new { @class = "control-label " })
+
+                                                        @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.CompanyName)
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.SupplierType, new { @class = "control-label " })
+
+                                                        @Html.TextBoxFor(model => model.SupplierType, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.SupplierType)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.City, new { @class = "control-label " })
+
+                                                        @Html.TextBoxFor(model => model.City, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.City)
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.State, new { @class = "control-label " })
+
+                                                        @Html.TextBoxFor(model => model.State, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.State)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+
+                                                    <div class="form-group">
+                                                        <label>Logo</label>
+                                                        <div class="custom-file">
+                                                            <input type="file" multiple class="custom-file-input form-control" name="file" id="file" accept="image/*">
+                                                            <label class="custom-file-label">Choose file</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.PostalCode, new { @class = "control-label " })
+
+                                                        @Html.TextBoxFor(model => model.PostalCode, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.PostalCode)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.Country, new { @class = "control-label " })
+
+                                                        @Html.TextBoxFor(model => model.Country, new { @class = "form-control" })
+                                                        @Html.ValidationMessageFor(model => model.Country)
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.Address1, new { @class = "control-label " })
+                                                        <div class="">
+                                                            @Html.TextBoxFor(model => model.Address1, new { @class = "form-control" })
+                                                            @Html.ValidationMessageFor(model => model.Address1)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>*@
+
+                                <div class="col-md-4">
+
+
+                                    <h3 class="card-title"><i class="fa fa-plus"></i> New User Create </h3>
+
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label class="control-label">User Name</label>
+                                            <div class="">
+                                                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control requiredfield UniqueUserName" })
+                                                @Html.ValidationMessageFor(model => model.UserName)
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Password, new { @class = "control-label " })
+                                            <div class="">
+                                                @Html.PasswordFor(model => model.Password, new { @class = "form-control minPasswordLength" })
+                                                @Html.ValidationMessageFor(model => model.Password)
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            @*<div class="row">
+                                    <div class="form-group">
+
+                                        <input type="submit" value="Submit" class="btn btn-primary" />
+
+
+
+                                    </div>
+                                </div>*@
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+
+                                            <button type="submit" class="btn btn-primary"> <i class="fa fa-check"></i> Create</button>
+                                            <a class="btn btn-secondary btn-gray" href="/SupplierUser"><i class="fa fa-times"></i> Cancel</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+}
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+
+
+        $(document).ready(function () {
+            var _btnname;
+            var getid
+            var gid
+            var _value;
+            var _gname
+            $(".btn-green").click(function () {
+
+                debugger;
+                $(".status").removeClass("card-status bg-green");
+                var _btnname = $(this).attr("btnname");
+                $("#plans_" + _btnname).addClass("card-status bg-green");
+                var _getid = $(".getid_" + _btnname).val();
+                var _getname = $(".getname_" + _btnname).html();
+                gid = _getid;
+                _gname = _getname;
+                $("#PlanID").val(gid);
+                $("#Plan").val(_gname);
+                $("#planhead").val("You Select " + _gname + "Plan");
+                $("#selectplan").attr("hidden", true);
+                $("#register").attr("hidden", false);
+
+
+            });
+
+            $(".back").click(function () {
+                debugger;
+
+                $("#selectplan").attr("hidden", false);
+
+
+                $("#register").attr("hidden", true);
+
+            });
+        });
+
+
+
+
+
+
+
+
+    </script>
+    <script>
+        $(document).ready(function () {
+
+
+            $.validator.addMethod("requiredfield", function (value, element) {
+                debugger;
+
+                if ($.trim(value) == "") {
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }, "This Field is Required");
+
+
+            $.validator.addMethod("UniqueEmailvalid", function (value, element) {
+
+                debugger;
+                return /^\b[A-Z0-9._%-]+@@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i.test(value);
+            }, "Please Enter Email & Should be Valid");
+
+
+
+            $.validator.addMethod("phonenumbervalid", function (value, element) {
+
+                debugger;
+
+                var filter = "/^[0-9-+]+$/";
+
+                return filter.test(value);
+
+            }, "Please Enter Valid Phone Number");
+
+
+
+
+            $.validator.addMethod('UniqueEmail', function (value) {
+
+                if ($.trim(value) != "") {
+
+                    return CheckUniqueEmail(value);
+                }
+                else {
+                    return true;
+                }
+
+            }, "Please enter a unique Email ! It's already Exist");
+
+
+            $.validator.addMethod('UniqueUserName', function (value) {
+
+
+                if ($.trim(value) != "") {
+                    return CheckUniqueUserName(value);
+                }
+                else {
+                    return true;
+                }
+
+            }, "Please enter a unique username value");
+            $.validator.addMethod('minPasswordLength', function (value) {
+
+
+                if ($.trim(value) != "") {
+                    return value.length >= 7 ? true : false;
+                }
+                else {
+                    return true;
+                }
+
+            }, "Please enter at least 7 characters for password");
+        });
+
+        function CheckUniqueEmail(value) {
+            var _x = true;
+            $.ajax({
+                url: "/Supplier/UniqueEmail",
+                data: JSON.stringify({ Email: value }),
+                type: 'POST',
+                async: false,
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function (result) {
+                    _x = !result.IsAlreadyExist;
+                },
+                error: function (req, status, error) {
+                    alert(error);
+                }
+            });
+
+            return _x;
+        }
+
+
+
+        function CheckUniqueUserName(value) {
+            var _x = true;
+            $.ajax({
+                url: "/Supplier/UniqueUserName",
+                data: JSON.stringify({ UserName: value }),
+                type: 'POST',
+                async: false,
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function (result) {
+                    _x = !result.IsAlreadyExist;
+                },
+                error: function (req, status, error) {
+                    alert(error);
+                }
+            });
+
+            return _x;
+        }
+
+
+
+
+
+
+
+    </script>
+}

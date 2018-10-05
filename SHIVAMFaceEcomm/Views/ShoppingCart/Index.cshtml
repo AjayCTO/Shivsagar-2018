@@ -1,0 +1,317 @@
+﻿
+    @using Microsoft.AspNet.Identity;
+    @{
+        ViewBag.Title = "Index";
+
+        var _CustomerInfo = ViewBag.Customer as SHIVAMFaceEcomm.ViewModels.CustomerInfoViewModel;
+
+        var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+        serializer.MaxJsonLength = Int32.MaxValue;
+        var customerinfo = serializer.Serialize(_CustomerInfo);
+           
+    }
+
+    <div ng-app="MyApp" ng-controller="ShoppingCartCtrl">
+
+
+        <section class="section white-backgorund">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div class="widget">
+                                <h6 class="subtitle">Account Navigation</h6>
+
+                                <ul class="list list-unstyled">
+                                    <li>
+                                        <a href="/UserAccount/MyAccount/?CustomerId=@User.Identity.GetUserId()">My Account</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/CustomerOdersDetail/Index">My Order</a>
+                                    </li>
+                                    <li>
+                                        <a href="/Home/CustomerWishList/?CustomerId=@User.Identity.GetUserId()">Wishlist <span class="text-primary">{{}}</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="/UserAccount/Setting/?CustomerId=@User.Identity.GetUserId()">Settings</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                        <!-- end widget -->
+
+
+
+                        <div class="widget">
+                            <h6 class="subtitle">Your cart</h6>
+
+                            <ul class="items">
+                                <li ng-repeat="item in CartItems track by $index">
+                                    <a href="shop-single-product-v1.html" class="product-image">
+                                        <img ng-hide="item.Image==null" src="@SHIVAMFaceEcomm.MvcApplication.GlobalImageAssetUrl/ProductImages/{{item.Image}}" alt="Sample Product ">
+                                        <img ng-show="item.Image==null" src="~/Content/images/nocategory.png" width="70" alt="..." class="thumbnail img-responsive" />
+                                    </a>
+                                    <div class="product-details">
+                                        <p class="product-name">
+                                            <a>{{item.ProductName}}</a>
+                                        </p>
+                                        <p class="product-name">
+                                            <a>Quantity - {{item.Quantity}}</a>
+                                        </p>
+                                        <p class="product-name">
+                                            <a>${{item.Cost}}</a>
+                                        </p>
+                                    </div>
+                                </li><!-- end item -->
+
+
+
+                            </ul>
+
+                            <hr class="spacer-10 no-border">
+
+                            <strong class="text-dark">Cart Subtotal:<span class="pull-right text-primary">${{TotalOfCartItems}}</span></strong>
+
+                            <hr class="spacer-10 no-border">
+
+                            <a href="/home/Products" class="btn btn-default btn-block semi-circle btn-md">All Products</a>
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-sm-9">
+                        <div>
+
+
+                            <h6 class="subtitle">Complete your purchase</h6>
+
+
+                            <div id="smartwizard">
+
+                                <ul class="nav nav-pills style2 nav-justified">
+                                    <li class="active">
+                                        <a href="#step-1" data-toggle="tab">
+                                            1. Shopping Cart
+                                            <div class="icon">
+                                                <i class="fa fa-check"></i>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#step-2" data-toggle="tab">
+                                            2. Billing/Payment Info
+                                            <div class="icon">
+                                                <i class="fa fa-home"></i>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#step-3" data-toggle="tab">
+                                            3. Order Confirm
+                                            <div class="icon">
+                                                <i class="fa fa-list"></i>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content pills">
+                                    <div id="step-1" class="tab-pane active">
+
+                                        <div class="table-responsive">
+                                            <table id="cart" class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width:50%">Product</th>
+                                                        <th style="width:10%">Price</th>
+                                                        <th style="width:8%">Quantity</th>
+                                                        <th style="width:22%" class="text-center">Subtotal</th>
+                                                        <th style="width:10%"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbody">
+                                                    <tr ng-repeat="item in CartItems track by $index">
+                                                        <td data-th="Product">
+                                                            <div class="row">
+                                                                <div class="col-sm-2 hidden-xs">
+
+                                                                    <img ng-hide="item.Image==null" src="@SHIVAMFaceEcomm.MvcApplication.GlobalImageAssetUrl/ProductImages/{{item.Image}}" width="70" alt="..." class="thumbnail img-responsive" />
+
+                                                                    <img ng-show="item.Image==null" src="~/Content/images/nocategory.png" width="70" alt="..." class="thumbnail img-responsive" />
+
+                                                                </div>
+                                                                <div class="col-sm-10">
+                                                                    <h6 class="regular"><a href="javascript:void(0);">{{item.ProductName}}</a></h6>
+                                                                    <p>{{item.ProductDiscription}}.</p>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td data-th="Price">${{item.Cost}}</td>
+                                                        <td data-th="Quantity">
+                                                            <input type="number" min="1" data-max="{{item.ProductQuantity}}" ng-model="item.Quantity" class="form-control text-center quantityFigure" ng-change="updateQuantityOfCartItem(item,$index)" value="{{item.Quantity}}">
+                                                        </td>
+                                                        <td data-th="Subtotal" class="text-center"><span ng-if="item.Quantity!=undefined"> ${{item.Cost * item.Quantity}}</span> <span ng-if="item.Quantity==undefined">0</span></td>
+                                                        <td class="actions" data-th="">
+                                                            <button style="margin-right:5px;" class="close" ng-click="DeleteCartItem(item)"><i class="fa fa-trash-o"></i></button>
+                                                            <button style="margin-right:5px;" class="close" ng-click="updateQuantityOfCartItem(item,$index)"><i class="fa fa-refresh"></i></button>
+
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr class="visible-xs">
+                                                        <td class="text-center" colspan="5"><strong>${{TotalOfCartItems}}</strong></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td colspan="2" class="hidden-xs"></td>
+                                                        <td class="hidden-xs text-center"><strong>Total ${{TotalOfCartItems}}</strong></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-sm-7 text-left">
+                                                <form class="form-inline">
+                                                    <div class="form-group">
+                                                        <input class="form-control input-md" type="text" placeholder="Coupon code">
+                                                    </div>
+                                                    <button class="btn btn-default btn-md round" type="submit">Apply</button>
+                                                </form>
+                                            </div><!-- end col -->
+
+                                            <div class="col-sm-5">
+                                                <div class="table-responsive">
+                                                    <table class="table no-border">
+                                                        <tbody>
+                                                            <tr>
+                                                                <th>Cart Subtotal</th>
+                                                                <td>${{TotalOfCartItems}}</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <th>Order Total</th>
+                                                                <td>${{TotalOfCartItems}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table><!-- end table -->
+                                                </div><!-- end table-responsive -->
+                                            </div><!-- end col -->
+                                        </div>
+
+                                    </div>
+                                    <div id="step-2" class="tab-pane">
+                                        @Html.Partial("AddNewCustomer")
+
+                                    </div>
+                                    <div id="step-3" class="tab-pane">
+                                        Order Confirmation
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+    </div>
+
+
+    @section scripts
+{
+        <script>
+           
+            var a = '@Html.Raw((customerinfo))';
+            var  _CustomerInfo= JSON.parse(a);
+            console.log(_CustomerInfo);
+            console.log(a);
+       
+
+            // Listen for input event on numInput.
+            
+
+            $(document).on("keydown", ".quantityFigure", function (e) {
+                debugger;
+                    if (!((e.keyCode > 95 && e.keyCode < 106)
+                      || (e.keyCode > 47 && e.keyCode < 58)
+                      || e.keyCode == 8)) {
+                        return false;
+                       
+                    }
+                 
+
+            });
+            $(document).on("focusout", ".quantityFigure", (function () {
+              
+                debugger;
+                var _Value = parseFloat($(this).val());
+                if ($.trim(_Value) == null || $.trim(_Value)=='NaN' || $.trim(_Value) == 0) {
+
+                    $(this).val(1);
+                    $(this).trigger("input");
+                    $(this).trigger("change");
+                }
+                else {
+                    return true;
+                }
+            }));
+
+          
+
+            $(document).on("keypress", ".quantityFigure", (function () {
+                debugger
+                var _maxValue = parseFloat($(this).attr("data-max"));
+                var _Value = parseFloat($(this).val());
+                Qvalue = parseFloat($(this).val());
+                if($.trim(_Value)!="")
+                {
+                    if(_Value>_maxValue){
+                        toastr.error("Don't have that much quantity");
+                        $(this).val(1);
+                        $(this).trigger("input");
+                        $(this).trigger("change");
+                    }
+                }
+               
+            }));
+            $(document).on("change", ".quantityFigure", (function () {
+                var _maxValue = parseFloat($(this).attr("data-max"));
+                debugger;
+                var _Value = parseFloat($(this).val());
+              
+                
+                if ($.trim(_Value) != ""&& $.trim(_Value<1)) {
+                    if (_Value > _maxValue) {
+                        toastr.error("Don't have that much quantity");
+                        $(this).val(1);
+                        $(this).trigger("input");
+                        $(this).trigger("change");
+                    }
+                }
+
+            }));
+
+
+
+      
+        </script>
+
+        <script src="~/Scripts/AngularData/ShoppingCart.js"></script>
+
+
+
+    }

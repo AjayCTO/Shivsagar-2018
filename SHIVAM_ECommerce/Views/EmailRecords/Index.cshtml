@@ -1,0 +1,139 @@
+﻿@model IEnumerable<SHIVAM_ECommerce.Models.emailrecord>
+
+@{
+
+    ViewBag.Title = "Index";
+}
+
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Email Records</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item active">Email Records</li>
+        </ol>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+
+
+            <div class="card">
+
+                <div class="card-body">
+                    <table id="myTable" class="table table-striped table-bordered dt-responsive">
+                        <thead>
+                            <tr>
+                                <th>Email Sender</th>
+                                <th>Email Receiver</th>
+                                <th>Send Date</th>
+                                <th>Subject</th>
+                                <th>Message</th>
+                                @*<th>Action</th>*@
+
+                            </tr>
+                        </thead>
+
+                    </table>
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+           
+    @section scripts{
+        <script>
+
+            var dataTableObj;
+            debugger;
+            $(document).ready(function () {
+                dataTableObj = $("#myTable").DataTable({
+                    "processing": true, // for show progress bar
+                    "serverSide": true, // for process server side
+                    "filter": true, // this is for disable filter (search box)
+                    "orderMulti": false, // for disable multiple column at once
+                    "ajax": {
+                        "url": "/EmailRecords/GetAllEmailrecord",
+                        "type": "POST",
+                        "datatype": "json"
+                    },
+                    "columns": [
+
+                             {
+
+                                 "data": "sender", "name": "sender", "autoWidth": true
+                             },
+                              {
+
+                                  "data": "receiver", "name": "receiver", "autoWidth": true
+                              },
+                               {
+
+                                   "data": "senddate", "name": "senddate", "autoWidth": true
+                               },
+                               {
+
+                                   "data": "subject", "name": "subject", "autoWidth": true
+                               },
+                               {
+
+                                   "data": "message", "name": "message", "autoWidth": true
+                               },
+                               //{
+                               //    "orderable": false,
+                               //    "mRender": function (data, type, row) {
+                               //        debugger;
+                               //        var _a ='<a onclick="DeleteCustomer(' + row.id + ')"  class="btn btn-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" ><i class="fa fa-trash"  align="center"></i></a>';
+                               //        //'<a href="/EmailRecords/Edit?' + row.id + '" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-pencil"  align="center"></i></a>  '
+                               //        return "" ;
+                               //    }
+                               //},
+                    ]
+                });
+            });
+
+
+
+            function DeleteCustomer(Id) {
+                debugger;
+                var _confirm = confirm("Are you sure you want to delete this Customer ?");
+                if (_confirm) {
+
+                    $.ajax({
+                        url: "/EmailRecords/Delete?id=" + Id,
+                        //data: JSON.stringify({ id: Id }),
+                        type: 'POST',
+                        contentType: 'application/json',
+                        dataType: 'json',
+                        success: function (result) {
+                            if (result.Success == true) {
+                                dataTableObj.clear().draw();
+                                toastr.success("Deleted Successfully");
+                                // $("#myTable").DataTable().fnDraw();
+
+                            } else {
+                                alert("error occurred during operation.");
+                            }
+                        },
+                        error: function (req, status, error) {
+                            alert(error);
+                        }
+                    });
+                }
+            }
+
+
+
+        </script>
+    }

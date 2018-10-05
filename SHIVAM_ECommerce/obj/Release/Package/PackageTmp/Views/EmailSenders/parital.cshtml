@@ -1,0 +1,68 @@
+﻿@model IEnumerable<SHIVAM_ECommerce.ViewModels.EmailDetail>
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "parital";
+    
+    var _Data = Model;
+       var newdata =_Data.Where(x => x.IsRead==false).ToList();
+    Layout = null;
+
+}
+<style>
+    .dropdown-menu {
+        width: 280px;
+  
+    }
+    .main {
+        margin-top: -12px;
+     
+
+    }
+    .bg-add{
+        background-color:#393c76;
+        color:white;
+        border-radius:10px;
+        text-align:center;
+        padding:1px;
+        border:1px groove yellow;
+
+
+    }
+</style>
+@Html.AntiForgeryToken()
+
+
+<div class="nav-link">
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <span class=" fa fa-bell" style="height:20px,;color:yellow"></span>
+        <span class='badgeAlert' style="color:black">@newdata.Count()</span>
+        <span class="caret"></span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+        @foreach (var item in newdata.OrderByDescending(g => g.SendingDate))
+        {
+            <div class="main" onclick="Delete(@item.Id)" id='item_notification_@item.Id'>
+
+                <div class="">
+                    <h3 class="media-heading "><span class="bg-add">@item.SenderId</span></h3>
+                </div>
+                <div class="media-body">
+         
+                    <h5>@item.Subject</h5>
+                    <p class="">@item.SendingDate</p>
+                </div>
+     
+            </div>
+    
+        }
+    </div>
+</div>
+
+
+
+
+
+@section scripts{
+
+}

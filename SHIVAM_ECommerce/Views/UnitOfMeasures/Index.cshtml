@@ -1,0 +1,113 @@
+﻿@model IEnumerable<SHIVAM_ECommerce.Models.UnitOfMeasures>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Unit of Measures</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+            <li class="breadcrumb-item active">Unit of Measures</li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card">
+
+                <div class="container-fluid">
+
+                    <a href="/UnitOfMeasures/Create" class="btn btn-success"> <i class="fa fa-plus"></i> Add New Unit of Measures</a>
+                </div>
+
+                <div class="card-body">
+                    <table id="myTable"  class="table table-striped table-bordered dt-responsive">
+                        <thead>
+                            <tr>
+                                <th>Unit Of Measures</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+   
+    @section scripts{
+
+        <script>
+            var _datatable = "";
+            $(document).ready(function () {
+                _datatable = $("#myTable").DataTable({
+                    "processing": true, // for show progress bar
+                    "serverSide": true, // for process server side
+                    "filter": true, // this is for disable filter (search box)
+                    "orderMulti": false, // for disable multiple column at once
+                    "ajax": {
+                        "url": "/UnitOfMeasures/LoadData",
+                        "type": "POST",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                            {
+                                "data": "UnitOfMeasuresName", "name": "UnitOfMeasuresName", "autoWidth": true
+                            },
+                             {
+                                 "orderable": false,
+                                 "mRender": function (data, type, row) {
+                                     var _a = '<a onclick="Deleteuom(' + row.Id + ')"  class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" ><i class="fa fa-trash"  align="center"></i></a>';
+                                     return '<a href="/UnitOfMeasures/Edit?id=' + row.Id + '" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-pencil"  align="center"></i></a>  ' + _a;
+                                 }
+                             },
+                    ]
+                });
+            });
+
+            function Deleteuom(Id) {
+
+                bootbox.confirm("Are you sure you want to delete this ?", function (result) {
+
+                    if (result) {
+                        $.ajax({
+                            url: "/UnitOfMeasures/Delete",
+                            data: JSON.stringify({ id: Id }),
+                            type: 'POST',
+                            contentType: 'application/json',
+                            dataType: 'json',
+                            success: function (result) {
+                                if (result.Success === true) {
+                                    _datatable.clear().draw();
+                                    toastr.success("Deleted Successfully");
+                                } else {
+                                    bootbox.alert("error occurred during operation. " + result.ex);
+                                }
+                            },
+                            error: function (req, status, error) {
+                                bootbox.alert(error);
+                            }
+                        });
+
+                    }
+                });
+
+            }
+
+
+        </script>
+    }
+
+
+
+
+

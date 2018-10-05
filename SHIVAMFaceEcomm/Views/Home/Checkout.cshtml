@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "Checkout";
+
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+
+
+
+    <div  ng-app="MyApp" ng-controller="ShoppingCartCtrl">
+        <div class="row">
+            <div class="col-sm-12 text-left">
+                <h2 class="title">Checkout</h2>
+            </div><!-- end col -->
+        </div><!-- end row -->
+
+        <hr class="spacer-5"><hr class="spacer-20 no-border">
+
+        <div class="row">
+            <div class="col-sm-12">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Products</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in CartItems track by $index">
+                            <td data-th="Product">
+                                <div class="row">
+                                    <div class="col-sm-2 hidden-xs">
+                                  
+                                        <img ng-hide="item.Image==null" src="@SHIVAMFaceEcomm.MvcApplication.GlobalImageAssetUrl/ProductImages/{{item.Image}}" width="70" alt="..." class="thumbnail img-responsive" />
+
+                                        <img ng-show="item.Image==null" src="/Content/images/no-image.png" width="70" alt="..." class="thumbnail img-responsive" />
+                                    
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <h6 class="regular"><a href="javascript:void(0);">{{item.ProductName}}</a></h6>
+                                        <p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td data-th="Price">${{item.Cost}}</td>
+                            <td data-th="Quantity">
+                                <input type="number" ng-model="item.Quantity" class="form-control text-center" value="{{item.Quantity}}">
+                            </td>
+                            <td data-th="Subtotal" class="text-center">${{item.Cost * item.Quantity}}</td>
+                            <td class="actions" data-th="">
+                                <button style="margin-right:5px;" class="close" ng-click="DeleteCartItem(item)"><i class="fa fa-trash-o"></i></button>
+                                <button style="margin-right:5px;" class="close" ng-click="updateQuantityOfCartItem(item)"><i class="fa fa-refresh"></i></button>
+                              
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <hr class="spacer-30">
+
+                <div class="row">
+                    <div class="col-sm-7 text-left">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <input class="form-control input-md" type="text" placeholder="Coupon code">
+                            </div>
+                            <button class="btn btn-default btn-md round" type="submit">Apply</button>
+                        </form>
+                    </div><!-- end col -->
+
+                    <div class="col-sm-5">
+                        <div class="table-responsive">
+                            <table class="table no-border">
+                                <tr>
+                                    <th>Cart Subtotal</th>
+                                    <td>${{TotalOfCartItems}}</td>
+                                </tr>
+                                <tr>
+                                    <th>Shipping and Handling</th>
+                                    <td>Free Shipping</td>
+                                </tr>
+                                <tr>
+                                    <th>Order Total</th>
+                                    <td>${{TotalOfCartItems}}</td>
+                                </tr>
+                            </table><!-- end table -->
+                        </div><!-- end table-responsive -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end col -->
+        </div><!-- end row -->
+    </div><!-- end col -->
+
+
+@section scripts
+{
+     
+    <script src="~/Scripts/AngularData/ShoppingCart.js"></script>
+
+     
+}

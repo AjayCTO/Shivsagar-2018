@@ -1,0 +1,82 @@
+﻿@model SHIVAM_ECommerce.Models.LoginViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
+
+    ViewBag.Title = "Log in";
+
+}
+
+<div class="unix-login" style=" margin-top: -80px;">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-4">
+                <div class="login-content card">
+                    <div class="login-form">
+                        <div class="row">
+
+                            <div class="col-md-12 text-center">
+                                <img src="~/Content/Logo.png" class="img-circle img-thumbnail" height="160" width="160" />
+
+                            </div>
+                        </div>
+                        
+
+                            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <h4 style="margin-bottom:0px;">Login</h4>
+                                <br />
+
+
+                                @Html.ValidationSummary(true)
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.UserName, new { @class = "form-label" })
+                                    <div>
+                                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.UserName)
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Password, new { @class = "form-label" })
+                                    <div>
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Password)
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="custom-control custom-checkbox">
+                                        <input type="checkbox" name="RememberMe" class="custom-control-input">
+                                        <span class="custom-control-label">Remember me</span>
+
+                                    </label>
+                                    <div class="form-group">
+                                        @Html.ActionLink("Forgot Password?", "ForgotPassword")
+                                    </div>
+
+                                </div>
+
+                                <div class="form-footer">
+                                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                </div>
+
+                            }
+                            <div class="register-link m-t-15 text-center">
+                                <p>Don't have account yet? @Html.ActionLink("Register", "Create", "Supplier")</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

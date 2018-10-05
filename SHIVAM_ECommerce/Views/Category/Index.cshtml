@@ -1,0 +1,167 @@
+﻿@model IEnumerable<SHIVAM_ECommerce.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+
+}
+
+@*<ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="#">Category</a>
+        </li>
+        <li class="breadcrumb-item active">Category List</li>
+    </ol>*@
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Category</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li class="breadcrumb-item active">Category</li>
+        </ol>
+    </div>
+</div>
+ <div class="container-fluid">
+     <div class="row">
+         <div class="col-md-12">
+             <div class="card">
+                
+                 <div class="container-fluid">
+
+                     <a href="/Category/Create" class="btn btn-success"> <i class="fa fa-plus"></i> Add New Category</a>
+
+
+                 </div>
+
+                 <div class="card-body">
+                     <table id="myTable"  class="table table-striped table-bordered dt-responsive">
+                         <thead>
+                             <tr>
+                                 <th>Category Icon</th>
+                                 <th>Category Name</th>
+                                 <th>Action</th>
+                             </tr>
+                         </thead>
+                     </table>
+                 </div>
+
+             </div>
+
+
+
+         </div>
+     </div>
+ </div>
+
+
+
+
+
+@section scripts{
+
+
+    <script>
+        function UpdateLoadingImage() {
+            var allimages = document.getElementsByClassName('gridImage');
+            for (var i = 0; i < allimages.length; i++) {
+                if (allimages[i].getAttribute('data-src')) {
+                    allimages[i].setAttribute('src', allimages[i].getAttribute('data-src'));
+                }
+            }
+        }
+    </script>
+
+    <script>
+        var _dataTable = "";
+        var Imagepath = @Url.Content("~/CategoryImage/")
+        $(document).ready(function () {
+            _dataTable = $("#myTable").DataTable({
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "ajax": {
+                    "url": "/Category/LoadData",
+                    "type": "POST",
+                    "datatype": "json"
+                },
+                "fnDrawCallback": function (oSettings) {
+                    UpdateLoadingImage();
+                },
+                "columns": [
+
+                     {
+                         "orderable": false,
+                         "mRender": function (data, type, row) {
+                             debugger;
+
+                             if (row.CategoryImage != null) {
+                                 var _img = '<img style="height:50px; width:50px; border-radius:100%;" class="gridImage" src="/images/loading.gif" data-src="' + Imagepath + row.CategoryImage + ' "></img>';
+                             }
+
+                             else {
+                                 var _img = '<img style="height:50px; width:50px; border-radius:100%;" src="' + Imagepath + "no-image.png" + '  "></img>';
+
+                             }
+
+
+                             return _img;
+                         }
+                     },
+
+                        {
+
+                            "data": "CategoryName", "name": "CategoryName", "autoWidth": true
+                        },
+                         {
+                             "orderable": false,
+                             "mRender": function (data, type, row) {
+                                 var _a = '<a onclick="DeleteCategory(' + row.Id + ')"  class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" ><i class="fa fa-trash"  align="center"></i></a>';
+                                 return '<a href="/Category/Edit?id=' + row.Id + '" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-pencil"  align="center"></i></a>  ' + _a;
+                             }
+                         },
+                ]
+            });
+        });
+
+        function DeleteCategory(Id) {
+            bootbox.confirm("Are you sure you want to delete this Category?", function (result) {
+
+                if (result) {
+                    $.ajax({
+                        url: "/Category/Delete",
+                        data: JSON.stringify({ id: Id }),
+                        type: 'POSt',
+                        contentType: 'application/json',
+                        dataType: 'json',
+                        success: function (result) {
+                            if (result.Success === true) {
+                                // $("#myTable").DataTable().fnDraw();
+                                _dataTable.clear().draw();
+                                toastr.success("Deleted Successfully");
+                                
+                            } else {
+                                bootbox.alert("error occurred during operation. " + result.ex);
+                            }
+                        },
+                        error: function (req, status, error) {
+                            bootbox.alert(error);
+                        }
+                    });
+                }
+
+
+
+
+            });
+
+        }
+
+
+    </script>
+}
+
+

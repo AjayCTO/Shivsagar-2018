@@ -1,0 +1,303 @@
+﻿@model SHIVAM_ECommerce.ViewModels.PlanViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Plan Edit</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/Plan">Plan</a></li>
+            <li class="breadcrumb-item active">Plan Edit</li>
+        </ol>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card">
+
+                <div class="card-body">
+                    @using (Html.BeginForm("Edit", "Plan", FormMethod.Post,
+                            new { }))
+                    {
+                        @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.CreatedDate)
+        @Html.HiddenFor(model => model.IsActive)
+        @Html.ValidationSummary(true)
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label"> Plan Name</label>
+                    @Html.TextBoxFor(model => model.PlanName, new { @class = "form-control PlanName" })
+                    @Html.ValidationMessageFor(model => model.PlanName)
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label"> Plan Code</label>
+                    <div class=" ">
+                        @Html.TextBoxFor(model => model.Plancode, new { @class = "form-control PlanCode" })
+                        @Html.ValidationMessageFor(model => model.Plancode)
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="control-label  ">Plan Frequency</label>
+                    <div class=" ">
+                        <select class="form-control" data-val="true" data-val-required="Plan Frequency is Required." name="PlanFrequency" id="PlanFrequency">
+                            <option value="">None</option>
+                            <option value="1">Monthly</option>
+                            <option value="2">Yearly</option>
+                        </select>
+                        @Html.ValidationMessageFor(model => model.PlanFrequency)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label  ">Monthly Price</label>
+                    <div class=" ">
+                        @Html.TextBoxFor(model => model.MonthlyPrice, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.MonthlyPrice)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label  ">Yearly Price</label>
+                    <div class=" ">
+                        @Html.TextBoxFor(model => model.YearlyPrice, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.YearlyPrice)
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label  ">Total Monthly Price</label>
+                    <div class=" ">
+                        @Html.TextBoxFor(model => model.TotalMonthlyPrice, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TotalMonthlyPrice)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label  ">Total Yearly Price</label>
+                    <div class=" ">
+                        @Html.TextBoxFor(model => model.TotalYearlyPrice, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.TotalYearlyPrice)
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label  ">Product Bucket Count</label>
+                    @Html.TextBoxFor(model => model.ProductBucketCount, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ProductBucketCount)
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label  ">User Bucket Count</label>
+                    <div class=" ">
+                        @Html.TextBoxFor(model => model.UserBucketCount, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.UserBucketCount)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Sort, new { @class = "control-label" })
+                    <div class=" ">
+                        @Html.TextBoxFor(model => model.Sort, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Sort)
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, new { @class = "control-label" })
+                    <div class=" ">
+                        @Html.TextBoxFor(model => model.Description, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Notes, new { @class = "control-label" })
+                    <div class=" ">
+                        @Html.TextBoxFor(model => model.Notes, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Notes)
+                    </div>
+                </div>
+
+                @for (int i = 0; i < Model.Features.Count(); i++)
+                {
+                    <label class="custom-control custom-checkbox">
+                        @Html.CheckBoxFor(m => m.Features[i].IsSelected,
+       new Dictionary<string, object> { { "data-price", Model.Features[i].price }, { "class", "custom-control-input" } })
+
+
+                        <mytag class="custom-control-label">@Model.Features[i].title</mytag>
+                    </label>
+                    @Html.HiddenFor(m => m.Features[i].ID)
+                }
+            </div>
+
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2  ">
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-check"></i>
+                    Update
+                </button>
+                <a class="btn btn-secondary btn-gray" href="/Plan"> <i class="fa fa-times"></i> Cancel</a>
+            </div>
+
+
+        </div>
+    </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+      
+
+
+
+
+    @section Scripts {
+
+
+
+        @Scripts.Render("~/bundles/jqueryval")
+          <script>
+              $(document).ready(function () {
+                  var Planname = '@Model.PlanName';
+                  var Plancode = '@Model.Plancode';
+                  var PlanCode = $.trim(Plancode);
+                  var PlanName = $.trim(Planname);
+                  $.validator.addMethod('PlanName', function (values) {
+                      debugger;
+                      var value = $.trim(values);
+
+                      if (value.toLowerCase() == PlanName.toLowerCase()) {
+                          return true;
+                      }
+                      if ($.trim(value) != "") {
+                          return CheckUniquePlan(value);
+                      }
+                      else {
+                          return true;
+                      }
+
+                  }, "Please enter a different Name ! It's already exist");
+
+
+              $.validator.addMethod('PlanCode', function (values) {
+                  debugger;
+                  var value = $.trim(values);
+
+                  if (value.toLowerCase() == PlanCode.toLowerCase()) {
+                      return true;
+                  }
+                  if ($.trim(value) != "") {
+                      return CheckUniquePlanCode(value);
+                  }
+                  else {
+                      return true;
+                  }
+
+              }, "Please enter a different Code ! It's already exist");
+
+              });
+
+
+              function CheckUniquePlanCode(value) {
+                
+                  var _x = true;
+                  $.ajax({
+                      url: "/Plan/UniquePlanCode",
+                      data: JSON.stringify({ Plancode: value }),
+                      type: 'POST',
+                      async: false,
+                      contentType: 'application/json',
+                      dataType: 'json',
+                      success: function (result) {
+                          _x = !result.IsAlreadyExist;
+                      },
+                      error: function (req, status, error) {
+                          alert(error);
+                      }
+                  });
+
+                  return _x;
+              }
+
+
+          </script>
+
+        <script>
+            var _FrequencyValue = '@Model.PlanFrequency';
+
+            $("#PlanFrequency").val(_FrequencyValue);
+
+            $(document).ready(function () {
+                $(document).on("click", ".custom-control-input", function () {
+                    CalculateTotalPrice();
+                });
+
+                $(document).on("change", "#MonthlyPrice", function () {
+                    CalculateTotalPrice();
+                });
+                $(document).on("change", "#YearlyPrice", function () {
+                    CalculateTotalPrice();
+                });
+                $(document).on("change", "#PlanFrequency", function () {
+                    CalculateTotalPrice();
+                });
+
+            });
+
+            function CalculateTotalPrice() {
+                var _frequency = $.trim($("#PlanFrequency").val());
+                if (_frequency != "") {
+                    var _calculativemprice = $("#MonthlyPrice").val();
+                    var _calculativeyearprice = $("#YearlyPrice").val();
+                    var _yearlyPrice = 0;
+                    _calculativemprice = $.trim(_calculativemprice) != "" ? parseFloat(_calculativemprice) : 0;
+                    _calculativeyearprice = $.trim(_calculativeyearprice) != "" ? parseFloat(_calculativeyearprice) : 0;
+                    $(".custom-control-input").each(function () {
+                        if ($(this).is(":checked")) {
+                            _calculativemprice += parseFloat($(this).attr("data-price"));
+                            _yearlyPrice += parseFloat($(this).attr("data-price"));
+                        }
+                    });
+                    _calculativeyearprice = _calculativeyearprice + (_yearlyPrice * 12);
+
+                    $("#TotalYearlyPrice").val(_calculativeyearprice);
+                    $("#TotalMonthlyPrice").val(_calculativemprice);
+                }
+
+            }
+        </script>
+    }
+
+

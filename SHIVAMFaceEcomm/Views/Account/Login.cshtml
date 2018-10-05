@@ -1,0 +1,95 @@
+﻿@using SHIVAMFaceEcomm.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+
+  <!-- start section -->
+<section class="section white-backgorund">
+    <div class="container">
+        <div class="row">
+            <!-- start sidebar -->
+            <div class="col-sm-3">
+                <div class="widget">
+                    <h6 class="subtitle">New Collection</h6>
+                    <figure>
+                        <a href="javascript:void(0);">
+                            <img src="http://diamondcreative.net/plus-v1.3.0/img/products/men_06.jpg" alt="collection">
+                        </a>
+                    </figure>
+                </div><!-- end widget -->
+            </div><!-- end col -->
+            <!-- end sidebar -->
+            <div class="col-sm-9">
+                <div class="row">
+                    <div class="col-sm-12 text-left">
+                        <h2 class="title">Sign in to your account</h2>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+
+                <hr class="spacer-5"><hr class="spacer-20 no-border">
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-10 col-lg-8">
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                              <div class="form-group">
+                                <label for="email" class="col-sm-3 control-label">User Name</label>
+                                <div class="col-sm-9">
+
+                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+
+                                  
+                                </div>
+                            </div><!-- end form-group -->
+                            <div class="form-group">
+                                <label for="password" class="col-sm-3 control-label">Password</label>
+                                <div class="col-sm-9">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div><!-- end form-group -->
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <div class="checkbox-input mb-10">
+                                        <input id="remember" class="styled" type="checkbox">
+                                        <label for="remember">
+                                            Remember me
+                                        </label>
+                                    </div><!-- end checkbox-input -->
+                                </div><!-- end col -->
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <label><a href="#">Forgot Password</a></label>
+                                </div>
+                            </div><!-- end form-group -->
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <input type="submit" value="Log in" class="btn btn-default round btn-md">
+                                    <a href="/account/register" class="btn btn-default round btn-md">Create Account</a>
+                                </div>
+                            </div><!-- end form-group -->
+
+
+                        }
+
+
+                     
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end col -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section>
+<!-- end section -->
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

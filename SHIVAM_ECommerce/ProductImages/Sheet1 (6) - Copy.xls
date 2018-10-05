@@ -1,0 +1,2 @@
+Name	ProductCode	Description	categoryName	UnitOfMeasure	ManuFacturer	HighQuantityThreshold	LowQuantityThreshold	IsFeatured	ProductStatus	Model	Color	Size	Quantity	Cost
+Casual1234	C1		Shirt	pices	Remond	200	10	TRUE	Available	mo1	Red	XL	20	499

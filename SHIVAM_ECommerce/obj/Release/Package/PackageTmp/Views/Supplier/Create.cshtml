@@ -1,0 +1,575 @@
+﻿@model SHIVAM_ECommerce.Models.Supplier
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutEmpty.cshtml";
+    var allplans = ViewBag.allplans as List<SHIVAM_ECommerce.Models.Plans>;
+}
+
+@*<h2>@ViewBag.Title.</h2>*@
+
+@using (Html.BeginForm("Create", "Supplier", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        @*<ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#selectplan">Select a Plan</a></li>
+                <li><a data-toggle="tab" href="#register">Registration Supplier</a></li>
+
+            </ul>*@
+        <div class="card">
+            <div class="card-body">
+
+
+
+                <div id="selectplan">
+
+                    <h1> Select Plan</h1>
+                    <div class="row sameheight">
+                        @foreach (var items in allplans)
+{
+    <div class="col-sm-6 col-lg-3 card">
+       
+    <div class="card-header bg-indigo">
+        <div class="card-category getname_@items.Id">@items.PlanName</div>
+    </div>
+
+    <div>
+        <input type="hidden" class="getid_@items.Id" value="@items.Id" />
+        <div id="plans_@items.Id" class="status"></div>
+        <div class="card-body text-center">
+
+            <div class="display-3 my-4">@items.YearlyPrice</div>
+            <ul class="list-unstyled leading-loose">
+                <li> <b> Features</b></li>
+
+                @foreach (var item1 in items.Features)
+                {
+                    <li><i class="fe fe-check text-success mr-2" aria-hidden="true"></i> @item1.Feature.Title</li>
+                }
+
+
+
+            </ul>
+            <div class="text-center mt-6">
+
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <input type="button" class="btn btn-green btn-block" btnname="@items.Id" value="Choose plan" />
+        </div>
+
+    </div>
+</div>
+}
+                    </div>
+
+
+                </div>
+
+                <div id="register" hidden="hidden">
+
+
+
+                    <div class="flex-fill text-right">
+                        <input type="button" id="planhead" class="btn btn-primary" readonly />
+                        <input type="button" value="Change Plan" class="btn btn-info back" />
+                    </div>
+                    <h1> Fill Details</h1>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8">
+
+
+                                <h3 class="card-title"><i class="fa fa-plus"></i> Personal Details</h3>
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label> First Name *</label>
+                                            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control requiredfield" })
+                                            @Html.ValidationMessageFor(model => model.FirstName)
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+
+                                            <label>Last Name *</label>
+
+                                            @Html.TextBoxFor(model => model.LastName, new { @class = "form-control requiredfield" })
+                                            @Html.ValidationMessageFor(model => model.LastName)
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Email *</label>
+                                            <div class="">
+
+                                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control UniqueEmail UniqueEmailvalid" })
+                                                @Html.ValidationMessageFor(model => model.Email)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Phone, new { @class = "control-label " })
+                                            <div class="">
+                                                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Phone)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Address1, new { @class = "control-label " })
+                                            <div class="">
+                                                @Html.TextAreaFor(model => model.Address1, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Address1)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+
+
+                                <h3 class="card-title"><i class="fa fa-plus"></i> Login Details</h3>
+
+                                <div class="form-group">
+                                    @Html.HiddenFor(model => model.PlanID)
+                                    @Html.ValidationMessageFor(model => model.PlanID)
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Plan, new { @class = "control-label" })
+                                    <input type="text" id="Plan" name="Plan" class="form-control" readonly />
+                                    @Html.ValidationMessageFor(model => model.Plan)
+                                </div>
+                                <div class="form-group">
+                                     <label>User Name *</label>
+                                    <div class="">
+                                        @Html.TextBoxFor(model => model.UserName, new { @class = "form-control UniqueUserName" })
+                                        @Html.ValidationMessageFor(model => model.UserName)
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                  <label>Password *</label>
+                                    <div class="">
+                                        @Html.PasswordFor(model => model.Password, new { @class = "form-control minPasswordLength" })
+                                        @Html.ValidationMessageFor(model => model.Password)
+                                    </div>
+                                </div>
+
+                                @*<div class="form-group">
+                        @Html.LabelFor(model => model.Password, new { @class = "control-label " })
+                        <div class="">
+                            @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Password)
+                        </div>
+                    </div>*@
+
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-8">
+
+
+                                <h3 class="card-title"><i class="fa fa-plus"></i> Company Details</h3>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Company Name</label>
+
+                                                @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.CompanyName)
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Supplier Type</label>
+
+                                                @Html.TextBoxFor(model => model.SupplierType, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.SupplierType)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Address2, new { @class = "control-label " })
+                                                <div class="">
+                                                    @Html.TextAreaFor(model => model.Address2, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Address2)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.City, new { @class = "control-label " })
+
+                                                @Html.TextBoxFor(model => model.City, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.City)
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.State, new { @class = "control-label " })
+
+                                                @Html.TextBoxFor(model => model.State, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.State)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.Country, new { @class = "control-label " })
+
+                                                @Html.TextBoxFor(model => model.Country, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Country)
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label> Postal Code</label>
+
+                                                @Html.TextBoxFor(model => model.PostalCode, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.PostalCode)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+
+                                            <div class="form-group">
+                                                <label>Logo</label>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input form-control" name="file" id="file" accept="image/*">
+                                                    <label class="custom-file-label">Choose file</label>
+                                                </div>
+                                                <div class="gallery"></div>
+                                            </div>
+                                        </div>
+                                     
+                                  
+                                   
+                                </div>
+
+
+
+                            </div>
+
+                            <div class="col-md-4">
+
+                                @*<div class="card-body">
+                        <div style="text-align:center">
+                            @if (Model.Logo != null)
+                        {
+                                <img style="height:100px; width:120px;" src="@Url.Content("~/SupplierImage/" + Model.Logo)" alt="Alternate Text" />
+                        }
+
+
+                            @if (Model.Logo == null)
+                        {
+                                <img style="height:100px; width:100px;" src="@Url.Content("~/CategoryImage/no-image.png")" alt="Alternate Text" />
+                        }
+
+                            <div class="form-group">
+
+                                <div class="col-md-12">
+
+                                    <input type="file" name="file" id="file" />
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+
+                                    <button type="submit" value="Submit" class="btn btn-primary"> <i class="fa fa-check"></i> Submit</button>
+                                    <a class="btn btn-secondary btn-gray" href="/Supplier"><i class="fa fa-times"></i> Cancel</a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+}
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+   
+
+
+<script>
+    var current = location.pathname;
+    $('.nav li a').each(function () {
+        var $this = $(this);
+        // if the current path is like this link, make it active
+        if ($this.attr('href').indexOf(current) !== -1) {
+            if (current != "/") {
+                $this.addClass('active');
+
+            }
+        }
+    })
+    var imagesPreview = function (input, placeToInsertImagePreview) {
+
+        if (input.files) {
+            var filesAmount = input.files.length;
+
+            for (i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+
+                reader.onload = function (event) {
+                    var _multiple = $.trim($(input).attr("multiple"));
+                    if (_multiple == "") { $(placeToInsertImagePreview).html(""); }
+                    $($.parseHTML('<img style="height:50px; width:50px; margin-right:10px; margin-top:5px;">')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                }
+
+                reader.readAsDataURL(input.files[i]);
+            }
+        }
+
+    };
+    $('.custom-file-input').on('change', function () {
+        imagesPreview(this, 'div.gallery');
+    });
+
+    $(document).on("keypress", ".customColumnData", function (evt) {
+
+        var keycode = evt.charCode || evt.keyCode;
+        if (keycode == 35 || keycode == 64) { //Enter key's keycode
+            return false;
+        }
+    });
+</script>
+
+    <script>
+
+
+        $(document).ready(function () {
+            var _btnname;
+            var getid
+            var gid
+            var _value;
+            var _gname
+            $(".btn-green").click(function () {
+                debugger;
+                $(".status").removeClass("card-status bg-dark");
+                var _btnname = $(this).attr("btnname");
+                $("#plans_" + _btnname).addClass("card-status bg-dark");
+                var _getid = $(".getid_" + _btnname).val();
+                var _getname = $(".getname_" + _btnname).html();
+                gid = _getid;
+                _gname = _getname;
+                $("#PlanID").val(gid);
+                $("#Plan").val(_gname);
+                $("#planhead").val("You Select " + _gname +" Plan");
+                $("#selectplan").attr("hidden", true);
+                $("#register").attr("hidden", false);
+
+
+            });
+
+            $(".back").click(function () {
+
+                $("#selectplan").attr("hidden", false);
+
+
+                $("#register").attr("hidden", true);
+
+            });
+
+            $.validator.addMethod("requiredfield", function (value, element) {
+                debugger;
+          
+                if($.trim(value)==""){
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }, "This Field is Required");
+
+
+            $.validator.addMethod("UniqueEmailvalid", function (value, element) {
+          
+                debugger;
+               return /^\b[A-Z0-9._%-]+@@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i.test(value);
+                  }, "Please Enter Email & Should be Valid");
+           
+
+            $.validator.addMethod('UniqueEmail', function (value) {
+
+                if ($.trim(value) != "") {
+
+                    return CheckUniqueEmail(value);
+                }
+                else {
+                    return true;
+                }
+
+            },"Please eneter a unique Email ! It's already Exist");
+
+
+            $.validator.addMethod('UniqueUserName', function (value) {
+
+
+                if ($.trim(value) != "") {
+                    return CheckUniqueUserName(value);
+                }
+                else {
+                    return true;
+                }
+
+            }, "Please enter a unique username value");
+            $.validator.addMethod('minPasswordLength', function (value) {
+
+
+                if ($.trim(value) != "") {
+                    return value.length >= 7 ? true : false;
+                }
+                else {
+                    return true;
+                }
+
+            }, "Please enter at least 7 characters for password");
+        });
+
+        function CheckUniqueEmail(value) {
+            var _x = true;
+            $.ajax({
+                url: "/Supplier/UniqueEmail",
+                data: JSON.stringify({ Email: value }),
+                type: 'POST',
+                async: false,
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function (result) {
+                    _x = !result.IsAlreadyExist;
+                },
+                error: function (req, status, error) {
+                    alert(error);
+                }
+            });
+
+            return _x;
+        }
+
+
+
+        function CheckUniqueUserName(value) {
+            var _x = true;
+            $.ajax({
+                url: "/Supplier/UniqueUserName",
+                data: JSON.stringify({ UserName: value }),
+                type: 'POST',
+                async: false,
+                contentType: 'application/json',
+                dataType: 'json',
+                success: function (result) {
+                    _x = !result.IsAlreadyExist;
+                },
+                error: function (req, status, error) {
+                    alert(error);
+                }
+            });
+
+            return _x;
+        }
+
+
+
+
+
+
+
+    </script>
+
+
+    <style>
+        .sameheight {
+            display: flex;
+            flex-flow: row;
+            align-items: stretch;
+        }
+
+            .sameheight .col-lg-3.card {
+           
+                flex: 1 auto;
+            
+                align-items: stretch;
+                flex-flow: column;
+                padding-left:0;
+                padding-right:0;
+                margin-left:0.75rem;
+                margin-right:0.75rem;
+            
+                }
+
+        .sameheight .card .card-footer
+        {
+            position:absolute;
+            bottom:0;
+            width:100%
+        }
+
+        .sameheight .card-body
+        {
+            padding-bottom:50px;
+        }
+
+            .sameheight .my-4
+            {
+                margin-top:0 !important;
+            }
+
+            .sameheight .card-category
+            {
+                color:#fff;
+                font-size:20px;
+                padding-top:5px;
+            }
+
+     
+
+    </style>
+
+
+}

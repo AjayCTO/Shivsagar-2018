@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "Assign Product Images";
+    var _AlreadySelectedList = ViewBag.AlreadySelected as List<string>;
+}
+
+
+<div class="card">
+    <div class="card-header">
+
+        <h3 class="card-title"><i class="fa fa-list"></i> Assign Product Images</h3>
+    </div>
+    <div class="card-body">
+
+
+        <div ng-app="AssignProductImages">
+
+            <div ng-controller="AssignProductImagesController">
+
+
+                <div class="row row-cards">
+
+                    <div ng-repeat="obj in Images" ng-click="AddToArray(obj.ImagePath)" class="{{DisableCursor(obj.ImagePath)}} col-sm-6 col-lg-2">
+                        <div class="card p-3 {{IsSelected(obj.ImagePath)}}">
+
+                            <div style="display:none;" class="assiglabel">Assigned</div>
+
+
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="example-checkbox1" checked="">
+                                <span class="custom-control-label"></span>
+                            </label>
+
+                            <a style="text-align:center;" href="javascript:void(0)" class="mb-3">
+                                <img src="~/ProductImages/thumb/{{obj.ImagePath}}" alt="" class="rounded">
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <ul class="pagination pull-right">
+                    <li class="page-item" ng-class="prevPageDisabled()">
+                        <a class="page-link" ng-click="prevPage()">Previous</a>
+                    </li>
+                    <li class="page-item" ng-repeat="n in range()"
+                        ng-class="{active: n+1 == currentPage}" ng-click="setPage(n)"><a class="page-link" href="#">{{n+1}}</a></li>
+
+                    <li class="page-item" ng-class="nextPageDisabled()">
+                        <a class="page-link" ng-click="nextPage()">Next</a>
+                    </li>
+                </ul>
+
+                <button ng-disabled="Paths.length==0||IsSaving==true" ng-click="SaveImages()" class="btn btn-primary"> Assign Images</button>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@section scripts
+{
+    <style>
+        .Selected {
+        }
+
+        .custom-checkbox {
+            display: none;
+        }
+
+        .NonePointer {
+            pointer-events: none;
+          
+        }
+        
+        
+        
+         .NonePointer img {
+            pointer-events: none;
+            opacity: 0.3 !important;
+        }
+
+            .NonePointer .assiglabel {
+                display: block !important;
+                position: absolute;
+                background: #d4d4d4;
+                color: #000;
+                transform: rotate(-40deg);
+                margin-left: -13px;
+                padding-left: 3px;
+                padding-right: 3px;
+                font-size: 13px;
+            }
+            
+            
+            
+             .Selected .custom-checkbox {
+                display: block;
+                position: absolute;
+                right: 8px;
+                z-index: 10;
+            }
+
+
+        .card.p-3 img {
+            opacity: 0.7;
+        }
+
+
+            .card.p-3 img:hover {
+                opacity: 1;
+            }
+
+        .card.p-3.Selected img {
+            opacity: 1;
+        }
+    </style>
+    <script>
+        var _ProductID = '@ViewBag.ProductID';
+        var _AlreadySelectedData = '@Html.Raw(Json.Encode(_AlreadySelectedList))'
+
+    </script>
+    <link href="~/Content/toaster.css" rel="stylesheet" />
+
+    <script src="~/Scripts/angular.js"></script>
+
+    <script src="~/Scripts/toaster.js"></script>
+    <script src="~/Scripts/controllers/AssignProductImages.js"></script>
+}

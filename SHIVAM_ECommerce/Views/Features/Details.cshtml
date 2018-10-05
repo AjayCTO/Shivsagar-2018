@@ -1,0 +1,179 @@
+﻿@model SHIVAM_ECommerce.Models.Features
+
+@{
+    ViewBag.Title = "Details";
+}
+<style>
+    td {
+        text-align: left !important;
+    }
+</style>
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Features Details</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/Features">Features</a></li>
+            <li class="breadcrumb-item active">Features Details</li>
+        </ol>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card">
+
+                <div class="card-body col-md-6" >
+                    <table class="table table-bordered">
+                        <tr>
+
+                            <td>
+                                @Html.DisplayNameFor(model => model.Title)
+
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Title)
+
+
+                            </td>
+
+                            </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Price)
+
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Price)
+
+
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.Description)
+
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Description)
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label> Create Date</label>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.CreatedDate)
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Update Date</label>
+
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.UpdatedDate)
+
+
+                            </td>
+
+                        </tr>
+
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@*<h2>Details</h2>
+
+<div>
+    <h4>Features</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sort)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sort)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

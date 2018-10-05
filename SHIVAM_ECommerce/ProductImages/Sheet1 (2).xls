@@ -1,0 +1,10 @@
+Name	ProductCode	Description	categoryName	UnitOfMeasure	ManuFacturer	HighQuantityThreshold	LowQuantityThreshold	IsFeatured	ProductStatus	Model	Color	Size	Quantity	Cost
+P1234	PCode123	pdescription	c1	ea	m1	1000	500	TRUE	available	123	red	xl	1231	213
+P1235	PCode124	pdescription	c2	ea	m2	sdf	500	TRUE	available	124	red	xl	1231	213
+P1236	PCode125	pdescription	c3	ea	m3	1000	sdf	TRUE	available	125	red	xl	1231	213
+P1237	PCode126	pdescription	c4	ea	m4	1000	500	TRUE	available	126	red	xl	1231	213
+P1238	PCode127	pdescription	c5	ea	m5	sdf	500	TRUE	available	127	red	xl	1231	213
+P1239	PCode128	pdescription	c6	ea	m6	1000	500	TRUE	available	128	red	xl	1231	213
+P1240	PCode129	pdescription	c7	ea	m7	1000	500	TRUE	available	129	red	xl	1231	213
+P1241	PCode130	pdescription	c8	ea	m8	1000	500	TRUE	available	130	red	xl	1231	213
+P1242	PCode131	pdescription	c9	ea	m9	1000	500	TRUE	available	131	red	xl	1231	213

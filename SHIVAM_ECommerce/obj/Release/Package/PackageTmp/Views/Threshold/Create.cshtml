@@ -1,0 +1,82 @@
+﻿@model SHIVAM_ECommerce.Models.ThreshHold
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/Threshold">Product Threshold</a>
+    </li>
+    <li class="breadcrumb-item active">Create Product Threshold</li>
+</ol>
+
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa fa-plus"></i> Create New Product Threshold</h3>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>ThreshHold</h4>
+                <hr />
+                @Html.ValidationSummary(true)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProductId, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ProductId, new { @class = "form-control col-md-5" })
+                        @Html.ValidationMessageFor(model => model.ProductId)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProductName, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ProductName, new { @class = "form-control col-md-5" })
+                        @Html.ValidationMessageFor(model => model.ProductName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LowQuantityThresHold, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.LowQuantityThresHold, new { @class = "form-control col-md-5" })
+                        @Html.ValidationMessageFor(model => model.LowQuantityThresHold)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.HighQuantityThresHold, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.HighQuantityThresHold, new { @class = "form-control col-md-5" })
+                        @Html.ValidationMessageFor(model => model.HighQuantityThresHold)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary btn-gray">Create</button>
+                        <button type="reset" class="btn btn-secondary btn-gray">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+       
+
+        
+
+
+      
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

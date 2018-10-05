@@ -1,0 +1,203 @@
+﻿
+@{
+    ViewBag.Title = "CustomerWishList";
+    Layout = "~/Views/Shared/_NewLayout.cshtml";
+}
+<div ng-app="MyApp">
+
+    @*<div ng-controller="PaginationCtrl">
+        @Html.Partial("shoppingcart")
+
+    </div>*@
+    <div id="CustomerCtrl" ng-controller="CustomerCtrl">
+        <div class="row">
+            <div class="col-sm-12 text-left">
+                <h5 class="title">My Wishlist</h5>
+            </div><!-- end col -->
+        </div><!-- end row -->
+
+        <hr class="spacer-5"><hr class="spacer-20 no-border">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    <table style="width:100%;" id="myTable" class="table table-striped table-bordered dt-responsive">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Image
+                                </th>
+                                <th>
+                                    ProductName
+                                </th>
+                                <th>
+                                    Product Price
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+
+                        </thead>
+
+                        @*<tbody>
+
+                                <tr ng-repeat="obj in wishList track by obj.Id">
+
+                                    <td>
+                                        <a href="/home/productdetail/?productId={{obj.ProductId}}">
+                                            <img width="60px" ng-if="obj.Image!=''" src="@SHIVAMFaceEcomm.MvcApplication.GlobalImageAssetUrl{{obj.Image}}" alt="product">
+                                            <img width="60px" ng-if="obj.Image==''" src="@Url.Content("~/Content/images/nocategory.png")" alt="product">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <h6 class="regular"><a href="/home/productdetail/?productId={{obj.ProductId}}">{{obj.ProductName}}</a></h6>
+                                        <small>{{obj.ProductDescription}}</small>
+                                    </td>
+                                    <td>
+                                        <span class="text-primary">${{obj.ProductPrice}}</span>
+                                    </td>
+                                    <td>
+                                        <a href="javascript:void(0)" id="pid_{{obj.ProductId}}" ng-click="AddToCart(obj.ProductId,obj)" class="btn btn-default round btn-sm"><i class="fa fa-cart-plus mr-5"></i> Add to cart</a>
+                                    </td>
+                                    <td>
+                                        <button type="button" ng-click="RemoveFromwishList(obj.Id)" class="close">×</button>
+                                    </td>
+                                </tr>
+                                <tr ng-show="!wishList.length">
+                                    <td>
+                                        Your Wish List Is Empty
+                                    </td>
+                                </tr>
+                            </tbody>*@
+                    </table><!-- end table -->
+                </div><!-- end table-responsive -->
+
+                <hr class="spacer-10 no-border">
+
+                <a href="/Home/Products" class="btn btn-light semi-circle btn-md">
+                    <i class="fa fa-arrow-left mr-5"></i> Continue shopping
+                </a>
+            </div><!-- end col -->
+        </div><!-- end row -->
+    </div>
+
+</div>
+
+@section scripts
+{
+    <script>
+    var customerId = '@Model';
+        var _customerID = customerId;
+        var productdata;
+        var _TempProductID = "";
+        var _tempProductData = {};
+        var _myTableData;
+        var Imagepath = '@Url.Content("~/Content/images/")';
+        $(document).ready(function () {
+            var _img;
+            _myTableData = $("#myTable").DataTable({
+                responsive: true,
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "ajax": {
+                    "url": '/Home/LoadCustomerWishList',
+                    "type": "POST",
+                    "datatype": "json",
+                    "dataSrc": function (json) {
+                        //Make your callback here.
+                        productdata = json.data;
+                        return json.data;
+                    }
+           
+                },
+               
+                "columns": [
+                     {
+                         "data": "Image", "name": "Image", "autoWidth": true,
+                         "mRender": function (data, type, row) {
+                                
+                             if ($.trim(row.Image) != "") {
+                                 _img = '<img width="60px" src="@SHIVAMFaceEcomm.MvcApplication.GlobalImageAssetUrl/ProductImages/"'+row.Image+'" />';
+                             }
+                             else {
+                                 _img = '<img style="width:60px;" src="' + Imagepath + "nocategory.png" + '  "></img>';
+                             }
+                             return _img;
+                         }
+                     },
+                      {
+
+                          "data": "ProductName", "name": "ProductName", "autoWidth": true
+
+                      },
+                         {
+
+                             "data": "ProductPrice", "name": "ProductPrice", "autoWidth": true
+
+                         },
+                               {
+                             "orderable": false,
+                             "mRender": function (data, type, row) {
+                                 var _d = '<button type="button" onclick="RemoveFromwishList('+row.Id+')" class="close">×</button>'
+
+
+                                 return '<a href="javascript:void(0)" id="pid_' + row.ProductId + '" onclick="AddToCartdata(' +row.ProductId + ')" class="btn btn-default round btn-sm"><i class="fa fa-cart-plus mr-5"></i> Add to cart</a>' + _d;
+                             }
+
+                               },
+
+                ]
+        
+            });
+         
+
+        });
+
+        //console.log("hello");
+        //console.log(productdata);
+        //console.log("hello");
+ 
+            function RemoveFromwishList(ID){
+                debugger;
+                $.ajax({
+                    url: '/Home/DeleteWishList?id=' + ID,
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (data, textStatus, xhr) {
+                        if (data.Success == true) {
+
+                            toastr.success("Delete Successfully");
+                            _myTableData.clear().draw();
+
+                        }
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        alert("into error");
+                    }
+                });
+            };
+        
+            function AddToCartdata(Id) {
+                debugger;
+                for (var i = 0; i < productdata.length; i++) {
+                    if (productdata[i].ProductId == Id) {
+                        _TempProductID = Id;
+                        _tempProductData=productdata[i];
+                      
+                        angular.element(document.getElementById('CustomerCtrl')).scope().AddToCart(_TempProductID, _tempProductData);
+                     
+                    }
+    
+                }
+               
+            }
+
+    </script>
+   <script src="~/Scripts/AngularData/Products.js"></script>
+
+    <script src="~/Scripts/AngularData/Customer.js"></script>
+}

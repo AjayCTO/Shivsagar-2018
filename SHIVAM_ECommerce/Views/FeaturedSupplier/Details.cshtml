@@ -1,0 +1,76 @@
+﻿@model SHIVAM_ECommerce.Models.FeaturedSupplier
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="/FeaturedSupplier"> Featured Supplier</a>
+    </li>
+    <li class="breadcrumb-item active">Featured Supplier Details</li>
+</ol>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa fa-list"></i>Featured Supplier Detail </h3>
+    </div>
+    <div class="card-body">
+
+        <table class="table table-bordered">
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.Supplier.CompanyName)
+
+
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Supplier.CompanyName)
+
+
+                </td>
+
+                <td>
+                    @Html.DisplayNameFor(model => model.OfferMessage)
+
+
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.OfferMessage)
+
+
+                </td>
+
+            </tr>
+
+            <tr>
+                <td>
+                    Featured Image
+
+                </td>
+                <td>
+
+
+                    <img src="@Url.Content("~/FeaturedImages/"+Model.ImagePath)"  height="100" width="100"/>
+
+
+                </td>
+
+                <td>
+                    Description
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Description)
+                </td>
+
+
+
+
+            </tr>
+
+
+        </table>
+    </div>
+</div>
+

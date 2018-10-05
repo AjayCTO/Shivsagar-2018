@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "Index";
+
+}
+
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Product Status</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li class="breadcrumb-item active">Product Status</li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card">
+
+                <div class="container-fluid">
+
+                    <a href="/ProductStatus/Create" class="btn btn-success"> <i class="fa fa-plus"></i> Add New Status</a>
+                </div>
+
+                <div class="card-body">
+                    <table id="myTable" class="table table-striped table-bordered dt-responsive">
+                        <thead>
+                            <tr>
+                                <th>Status Name</th>
+                                <th>Active</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+          
+
+
+
+    @section scripts{
+
+
+
+        <script>
+
+
+            var myDataTable;
+
+            $(document).ready(function () {
+                myDataTable = $("#myTable").DataTable({
+                    "processing": true, // for show progress bar
+                    "serverSide": true, // for process server side
+                    "filter": true, // this is for disable filter (search box)
+                    "orderMulti": false, // for disable multiple column at once
+                    "ajax": {
+                        "url": "/ProductStatus/LoadData",
+                        "type": "POST",
+                        "datatype": "json"
+                    },
+                    "columns": [
+
+                            {
+
+                                "data": "Name", "name": "Name", "autoWidth": true
+                            },
+                            {
+
+                                "data": "IsActive", "name": "IsActive", "autoWidth": true
+                            },
+                             {
+                                 "orderable": false,
+                                 "mRender": function (data, type, row) {
+                                     debugger;
+                                     var _a = '<a onclick="DeleteStatus(' + row.Id + ')"  class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" ><i class="fa fa-trash"  align="center"></i></a>';
+                                     return '<a href="/ProductStatus/Edit?id=' + row.Id + '" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-pencil"  align="center"></i></a>  ' + _a;
+                                 }
+                             },
+                    ]
+                });
+            });
+
+            function DeleteStatus(Id) {
+
+                bootbox.confirm("Are you sure you want to delete this Status ?", function (result) {
+
+                    if (result) {
+                        $.ajax({
+                            url: "/ProductStatus/Delete",
+                            data: JSON.stringify({ id: Id }),
+                            type: 'POST',
+                            contentType: 'application/json',
+                            dataType: 'json',
+                            success: function (result) {
+                                if (result.Success == true) {
+                                    myDataTable.clear().draw();
+                                    toastr.success("Deleted Successfully");
+                                } else {
+                                    bootbox.alert("error occurred during operation." + result.ex);
+                                }
+                            },
+                            error: function (req, status, error) {
+                                bootbox.alert(error);
+                            }
+                        });
+
+                    }
+
+
+
+
+                });
+
+            }
+
+
+        </script>
+    }
+
+

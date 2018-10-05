@@ -1,0 +1,208 @@
+﻿@model SHIVAM_ECommerce.Models.Plans
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Plan Details</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/Plan">Plan</a></li>
+            <li class="breadcrumb-item active">Plan Details</li>
+        </ol>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card">
+
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.PlanName)
+
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.PlanName)
+
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayNameFor(model => model.Plancode)
+
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Plancode)
+
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.PlanFrequency)
+
+
+
+
+
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.PlanFrequency)
+
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayNameFor(model => model.MonthlyPrice)
+
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.MonthlyPrice)
+
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.YearlyPrice)
+
+
+
+
+
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.YearlyPrice)
+
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayNameFor(model => model.ProductBucketCount)
+
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.ProductBucketCount)
+
+
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.IsActive)
+
+
+
+
+
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.IsActive)
+
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayNameFor(model => model.UserBucketCount)
+
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.UserBucketCount)
+
+
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td>
+                                @Html.DisplayNameFor(model => model.TotalMonthlyPrice)
+
+
+
+
+
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.TotalMonthlyPrice)
+
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayNameFor(model => model.TotalYearlyPrice)
+
+
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.TotalYearlyPrice)
+
+
+                            </td>
+
+                        </tr>
+                    </table>
+
+
+                    @if (Model.Features.Count() > 0)
+                    {
+
+                        <h4>Features</h4>
+                        <table class="table card-table">
+                            <tbody>
+                                @foreach (var item in Model.Features)
+                                {
+
+                                    <tr>
+                                        <td>@item.Feature.Title</td>
+                                        <td class="text-right">
+                                            <span class="badge badge-success">@item.Feature.Price</span>
+                                        </td>
+                                    </tr>
+
+
+
+
+                                }
+                            </tbody>
+                        </table>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+     

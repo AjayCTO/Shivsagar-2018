@@ -1,0 +1,163 @@
+﻿@model SHIVAM_ECommerce.ViewModels.UserViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+<style>
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
+
+        .switch input {
+            display: none;
+        }
+
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+    input:checked + .slider {
+        background-color: #2196F3;
+    }
+
+    input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+</style>
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Edit User Roles</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/ManageUsers">ManageUsers</a></li>
+            <li class="breadcrumb-item active">Edit User Roles</li>
+        </ol>
+    </div>
+</div>
+
+<div class="container-fluid">
+
+
+    <form action="@Url.Action("Edit")" method="post">
+
+        <h3>
+            @Model.UserName
+            @Html.HiddenFor(model => model.UserId)
+        </h3>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-warning allclaims" type="button">Toggle Check Box</button>
+        <div class="row">
+            @for (var i = 0; i < Model.Claims.Count; i++)
+        {
+                <div class="col-md-3">
+                    <div class="card">
+
+                        <h5 class="">@Model.Claims[i].ClaimValue</h5>
+                        <div class="card-options">
+
+                            @*<label class="switch">
+
+                                    <input checked="@Model.Claims[i].IsChecked" data-val="@Model.Claims[i].IsChecked" data-val-required="The IsChecked field is required." id="Claims_@i.ToString()__IsChecked" name="Claims[@i.ToString()].IsChecked" type="checkbox" value="@Model.Claims[i].IsChecked">
+
+                                    <span class="slider round"></span>
+                                </label>*@
+
+
+                            @*<label class="custom-control custom-checkbox">
+
+                                    <input class="custom-control-input" checked="@Model.Claims[i].IsChecked" data-val="@Model.Claims[i].IsChecked" data-val-required="The IsChecked field is required." id="Claims_@i.ToString()__IsChecked" name="Claims[@i.ToString()].IsChecked" type="checkbox" value="@Model.Claims[i].IsChecked">
+
+
+                                    <mytag class="custom-control-label">@Model.Claims[i].ClaimValue</mytag>
+                                </label>*@
+
+                            @Html.CheckBoxFor(m => m.Claims[i].IsChecked, new { @class = "custom-checkbox" })
+                        </div>
+
+
+                    </div>
+
+
+
+
+                    @Html.HiddenFor(m => m.Claims[i].Id)
+                    @*@Html.CheckBoxFor(m => m.Claims[i].IsChecked)*@
+                    @Html.HiddenFor(m => m.Claims[i].ClaimValue)
+                    @Html.HiddenFor(m => m.Claims[i].ClaimType)
+                </div>
+
+
+        }
+        </div>
+
+
+
+        @*@for (var i = 0; i < Model.Claims.Count; i++)
+            {
+                @Html.HiddenFor(m => m.Claims[i].Id)
+                @Html.CheckBoxFor(m => m.Claims[i].IsChecked)
+                @Html.HiddenFor(m => m.Claims[i].ClaimValue)
+                @Html.HiddenFor(m => m.Claims[i].ClaimType)
+                @Html.DisplayFor(m => m.Claims[i].ClaimValue)
+            }*@
+
+
+
+
+    </form>
+</div>
+@section scripts{
+
+    <script>
+        $(document).ready(function () {
+            $(".allclaims").click(function () {
+
+                $(".custom-checkbox").trigger("click");
+
+            });
+
+        });
+    </script>
+
+}
