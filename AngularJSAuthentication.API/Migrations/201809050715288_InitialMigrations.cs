@@ -27,7 +27,7 @@ namespace AngularJSAuthentication.API.Migrations
             //AddPrimaryKey("dbo.AspNetUserLogins", new[] { "LoginProvider", "ProviderKey", "UserId" });
             //CreateIndex("dbo.AspNetUsers", "UserName", unique: true, name: "UserNameIndex");
             //CreateIndex("dbo.AspNetRoles", "Name", unique: true, name: "RoleNameIndex");
-            //DropColumn("dbo.AspNetUsers", "Discriminator");
+            DropColumn("dbo.AspNetUsers", "Discriminator");
         }        
         public override void Down()
         {
