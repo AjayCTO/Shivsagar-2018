@@ -49,7 +49,7 @@
                         <table class="table attributes">
                             <thead>
                                 <tr>
-                                    <th class="pl-0" ng-repeat="x in ProductAttributes">{{x.Name}}</th>
+                                    <th class="pl-0" ng-repeat="x in ProductAttributes | orderBy: 'Id'">{{x.Name}}</th>
                                     <th>Featured</th>
                                     <th>Enter Quantity</th>
                                     <th>Enter Price</th>
@@ -62,9 +62,13 @@
                             <tbody>
                                 <tr class="prototype" ng-repeat="obj in ProductAttributesList">
 
-                                    <td ng-repeat="x in obj.ColumnsData" ng-if="CheckColumn(x.AttributeID)">
+                                    <td ng-repeat="x in obj.ColumnsData | orderBy: 'AttributeID'" ng-if="CheckColumn(x.AttributeID)">
                                         <input type="text" class="form-control customColumnData" placeholder="Enter Value" ng-model="x.Value">
                                     </td>
+                                    @*<td ng-repeat="x in ProductAttributes">
+                                        <input type="text" class="form-control customColumnData" placeholder="Enter Value" ng-model="GetValue(obj.ColumnsData,x.Id)">
+                                     
+                                    </td>*@
                                     <td>
                                         <label class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" placeholder="Is Featured Product" ng-model="obj.IsFeatured" />
