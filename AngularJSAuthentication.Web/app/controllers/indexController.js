@@ -67,7 +67,7 @@ app.controller('indexController', ['$scope', '$rootScope', 'localStorageService'
     });
     
     $scope.GetCategories = function () {
-       
+      
         $scope.loadallcat = false;
 
         $.ajax({
@@ -75,10 +75,14 @@ app.controller('indexController', ['$scope', '$rootScope', 'localStorageService'
             type: 'GET',
             dataType: 'json',
             success: function (data, textStatus, xhr) {
+                debugger;
                 $scope.searchcategories = data;
-                localStorage.setItem("Categories", JSON.stringify(data));
+                localStorage.setItem("Categories", JSON.stringify(data));               
 
-               
+
+                $location.path('/orders');
+                $location.path('/home');
+
                 $scope.loadallcat = true;
                 $scope.$apply();
             },
@@ -487,6 +491,7 @@ app.controller('indexController', ['$scope', '$rootScope', 'localStorageService'
     function init() {
         $scope.GetCart();
         $scope.GetWishListfromService();
+        $scope.GetCategories();
         //$scope.GetWishList();
     }
 
