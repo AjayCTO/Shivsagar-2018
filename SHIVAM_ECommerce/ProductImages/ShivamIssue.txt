@@ -1,0 +1,25 @@
+ <div class="container">
+                <div class="row">
+
+                    <div class="col-md-12">
+
+1. Category name should be searchable by capital and lower string.:checked d
+2. "Success! Category Crated successfully." Change message. checked d
+3. Font Awsome icons. checked d
+4. Category edit not working. :checked d
+5. "Are you sure you want to delete this CategoryName ?" change message.:checked d
+6. "error occurred during operation. This Category Associated with some product, unable to delete this." change message. :checked d
+
+
+remaining
+=============================
+7. Supplier create -> at the time of adding logo no file selection is shown. :done
+8. Supplier create -> Plan name ?? :done
+9. After supplier create -> redirection is not proper.(if any error occurs).
+
+==============================
+10. Supplier edit image logo not visible. checked d
+11. No edit and delete functionality for Plan. checked d
+12. Problem in supplier user create. error:The remote certificate is invalid according to the validation procedure.
+13. Unnessary toaster messages at product create and edit. check d
+14. Supplier User Link should be visible fr only supplier

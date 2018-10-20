@@ -1,6 +1,7 @@
 ﻿@{
     var _CurrentUser = Session["CurrentUserContext"] as SHIVAM_ECommerce.ViewModels.CurrentUserContext;
     ViewBag.Title = "AddAttributesForSupplier";
+    var DrpsupplierId = Session["supplierId"] != null ? (int)Session["supplierId"] : -1;   
 }
 <style>
     .switch {
@@ -102,10 +103,11 @@
                         <div class="row">
                             <div class="col-md-12" ng-show="CurrentUserID==-1">
                                 <h3>Select Supplier</h3>
-                                <select ng-model="CurrentSupplier" id="CurrentSupplier" ng-change="AllSupplierAttributes()" class=" form-control">
-                                    <option value="">Select</option>
-                                    <option ng-repeat="x in Suppliers" value="{{x.Id}}">{{x.Name}}</option>
-                                </select>
+                                <select ng-model="CurrentSupplier" id="CurrentSupplier" ng-change="AllSupplierAttributes()" class="form-control">
+                                    <option ng-repeat="x in Suppliers" ng-selected="CurrentSupplier===x.Id" value="{{x.Id}}">{{x.Name}}</option>
+                       
+                                  </select>
+                             
                             </div>
                             <br />
 
@@ -142,7 +144,7 @@
                     <div>
 
                         <div class="form-group">
-                            <button type="button" ng-disabled="CurrentSupplier==''" ng-click="AddAttributes()" class="btn btn-primary"><i class="fa fa-check"></i>Save Attribute</button>
+                            <button type="button" ng-disabled="CurrentSupplier==''" ng-click="AddAttributes()" class="btn btn-primary"><i class="fa fa-check"></i> Save Attribute</button>
 
                             @if (_CurrentUser.SupplierID == -1)
                             {
@@ -171,7 +173,10 @@
 {
     <script>
         var _supplierID = '@_CurrentUser.SupplierID';
+        var aa = '@DrpsupplierId';
+        console.log(_supplierID);
     </script>
+
     <link href="~/Content/toaster.css" rel="stylesheet" />
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/toaster.js"></script>

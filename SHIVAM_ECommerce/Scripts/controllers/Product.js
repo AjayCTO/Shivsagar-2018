@@ -20,7 +20,7 @@
         };
 
         var _productData1 = JSON.parse(_productData);
-
+       
         $scope.Title = "Add New Product";
 
 
@@ -206,7 +206,7 @@
 
         $scope.IsValidProduct = function () {
             if ($.trim($scope.ProductObject.ProductName) == "" || $.trim($scope.ProductObject.SKU) == ""
-                || $.trim($scope.ProductObject.UnitOfMeasureID) == "" || $.trim($scope.ProductObject.CategoryID) == "" || $.trim($scope.ProductObject.ManufacturerID) == "") {
+                || $.trim($scope.ProductObject.UnitOfMeasureID) == "" || $.trim($scope.ProductObject.CategoryID) == "") {
 
                 return false;
 
@@ -286,7 +286,7 @@
         }
 
         $scope.EditProduct = function () {
-
+            debugger;
             $.ajax({
                 url: "/Product/Edit",
                 type: 'POST',
@@ -303,18 +303,49 @@
                     }
                 },
                 error: function (err) {
-
-
-
                 },
                 complete: function () {
                 }
             });
         }
+
+
+
+        $scope.DeletetProduct = function () {
+            alert("in");
+            $.ajax({
+                url: "/Product/Delete",
+                type: 'POST',
+                data: JSON.stringify({ "Model": $scope.ProductObject }),
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (result) {
+
+                    if (result.Success == true) {
+                        window.location.href = "/Product/GetAllProducts";
+                    }
+                    else {
+                        toaster.pop('error', "Product save", result.ex);
+                    }
+                },
+                error: function (err) {
+                },
+                complete: function () {
+                }
+            });
+        }
+
+
+
+
+
+
+
+
         $scope.SaveProduct = function () {
 
 
-
+            debugger;
 
             $.ajax({
                 url: "/Product/Create",
@@ -349,6 +380,16 @@
 
 
         if (_productData1.ProductID != 0) {
+            debugger;
+            var a;
+            if (_productData1.Description == null) {
+
+                a=_productData1.Description;
+            }
+            else {
+                a = _productData1.Description.replace(/<br>/g, '\n');
+            }
+
             $scope.ProductObject = {
                 ProductName: _productData1.ProductName,
                 ProductCode: _productData1.ProductCode,
@@ -356,7 +397,7 @@
                 ProductQuantity: "",
                 SKU: _productData1.SKU,
                 IDSKU: _productData1.IDSKU,
-                Description: _productData1.Description,
+                Description:  a ,
                 Images: [],
                 allAttributes: [],
                 ManufacturerID: _productData1.ManufacturerID.toString(),

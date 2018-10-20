@@ -83,7 +83,7 @@ namespace SHIVAM_ECommerce.Controllers
         public JsonResult AllSupplier()
         {
            
-            var suppliers = db.Suppliers.Include(s => s.Plan).Include(s => s.User).Select(p => new { Name = p.FirstName + p.LastName, Id = p.Id }); ;
+            var suppliers = db.Suppliers.Include(s => s.Plan).Include(s => s.User).Select(p => new { Name = p.FirstName+" "+ p.LastName, Id = p.Id }); ;
             return Json(suppliers.ToList(), JsonRequestBehavior.AllowGet);
 
         }
@@ -129,7 +129,7 @@ namespace SHIVAM_ECommerce.Controllers
             return View(new SupplierVM());
         }
         [HttpPost]
-        public async Task<ActionResult> CreateNew([Bind(Include = "Id,Name,LastName,Email,UserName,Password,PlanID")] SupplierVM supplier)
+        public async Task<ActionResult> CreateNew([Bind(Include = "Id,Name,LastName,Email,UserName,Password,PlanID,CompanyName")] SupplierVM supplier)
         {
 
             try
@@ -150,20 +150,23 @@ namespace SHIVAM_ECommerce.Controllers
                     _supplier.PlanEndDate = DateTime.Now.AddDays(_plan.PlanFrequency == "1" ? 30 : 365);
                     _supplier.UserCount = _plan.UserBucketCount;
                     _supplier.FirstName = supplier.Name;
+                    _supplier.CompanyName = supplier.CompanyName;
                     _supplier.Email = supplier.Email;
                     _supplier.UserName = supplier.UserName;
                     _supplier.LastName = supplier.LastName;
                     _supplier.PlanID = supplier.PlanID;
                     _supplier.Password = supplier.Password;
                     db.Suppliers.Add(_supplier);
+              
                     var user = new ApplicationUser() { UserName = supplier.UserName, CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now };
                     IdentityResult result = await _controller.UserManager.CreateAsync(user, supplier.Password);
                     if (result.Succeeded)
                     {
                         _supplier.UserID = user.Id;
+              
                         db.SaveChanges();
                         _controller.UserManager.AddToRole(user.Id, "Supplier");
-
+                        _controller.UserManager.AddToRole(user.Id, "Customer");
 
                         //Add Claims to the AspNetUserClaims table for the supplier registerd.
                         var Claims = db.Claims.Where(x => x.Role == "Supplier" && x.IsActive==true).ToList();
@@ -200,8 +203,40 @@ namespace SHIVAM_ECommerce.Controllers
 
                         //foreach (var claim in Claims)
 
-
-
+                        Customer _customer = new Customer();
+                        try
+                        {
+                            _customer.CreatedDate = DateTime.Now;
+                            _customer.UpdatedDate = DateTime.Now;
+                            _customer.Sort = 33;
+                            _customer.FirstName = supplier.Name;
+                            _customer.LastName = supplier.LastName;
+                            _customer.Email = supplier.Email;
+                            _customer.UserID = user.Id;
+                            _customer.UserName = user.UserName;
+                            _customer.Password = supplier.Password;
+                            _customer.ConfirmPassword = supplier.Password;
+                            _customer.Phone = "12345678910";
+                            db.Customers.Add(_customer);
+                            db.SaveChanges();
+                        }
+                        catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                        {
+                            Exception raise = dbEx;
+                            foreach (var validationErrors in dbEx.EntityValidationErrors)
+                            {
+                                foreach (var validationError in validationErrors.ValidationErrors)
+                                {
+                                    string message = string.Format("{0}:{1}",
+                                        validationErrors.Entry.Entity.ToString(),
+                                        validationError.ErrorMessage);
+                                    // raise a new exception nesting  
+                                    // the current instance as InnerException  
+                                    raise = new InvalidOperationException(message, raise);
+                                }
+                            }
+                            throw raise;
+                        }  
                         //Send confirmation mail to user and admin
                         string email = supplier.Email;
                         string username = _supplier.UserName;
@@ -474,8 +509,7 @@ namespace SHIVAM_ECommerce.Controllers
             {
 
                 supplier.UpdatedDate = DateTime.Now;
-
-
+                //supplier.CreatedDate = DateTime.Now;
                 if (file != null)
                 {
                     string pic = System.IO.Path.GetFileName(file.FileName);

@@ -8,7 +8,19 @@
     var check = ViewBag.ImageData;
                             
  }
+<div class="row page-titles">
 
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Images Assign</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Product/GetAllProducts">Products</a></li>
+            <li class="breadcrumb-item active">Images Assign</li>
+        </ol>
+    </div>
+</div>
 <div class="card">
 
 
@@ -33,18 +45,19 @@
 
                                 <a style="text-align:center;" href="javascript:void(0)" class="mb-3">
                                     <img src="~/ProductImages/thumb/{{obj2.ImagePath}}" alt="" class="rounded imgs">
+                                  
                                 </a>
                             </div>
                         </div>
 
                     </div>
-                    <button ng-disabled="ImageIds.length==0" ng-click="DeleteAssigned()" class="btn btn-primary"> Deassign Images</button>
+                    <button ng-disabled="ImageIds.length==0" ng-click="DeleteAssigned()" class="btn btn-primary"><i class="fa fa-close"></i> Deassign Images</button>
                     <hr />
                 </div>
                 <div ng-show="Images.length!=0">
                     <div class="card-header">
 
-                        <h3 class="card-title"><i class="fa fa-list"></i> Assign Product Images</h3>
+                        <h3 class="card-title"><i class="fa fa-list"></i> Assign Product Images  <a href="/AllImages" class="btn btn-primary"><i class="fa fa-upload"></i> Upload More Images</a> <a href="/Product/GetAllProducts" class="btn btn-primary"> <i class="fa fa-arrow-left"></i> Back to List </a></h3>
                     </div>
                     <div class="card-body">
 
@@ -64,6 +77,7 @@
 
                                     <a style="text-align:center;" href="javascript:void(0)" class="mb-3">
                                         <img src="~/ProductImages/thumb/{{obj.ImagePath}}" alt="" class="rounded">
+                                        <p>{{obj.ImageName}}</p>
                                     </a>
                                 </div>
                             </div>
@@ -80,7 +94,7 @@
                                 <a class="page-link" ng-click="nextPage()">Next</a>
                             </li>
                         </ul>
-                        <button ng-disabled="Paths.length==0||IsSaving==true" ng-click="SaveImages()" class="btn btn-primary"> Assign Images</button>
+                        <button ng-disabled="Paths.length==0||IsSaving==true" ng-click="SaveImages()" class="btn btn-primary"><i class="fa fa-check"></i> Assign Images</button>
 
 
 
@@ -98,7 +112,7 @@
                         </div>
                         <br />
                         <div>
-                            <a href="/AllImages" class="btn btn-primary">Upload Images</a>
+                            <a href="/AllImages" class="btn btn-primary"><i class="fa fa-upload"></i> Upload Images</a> <a href="/Product/GetAllProducts" class="btn btn-primary"> <i class="fa fa-arrow-left"></i> Back to List </a>
                         </div>
 
                     </div>

@@ -47,8 +47,6 @@ namespace SHIVAM_ECommerce.Models
         [ForeignKey("CateogryID")]
         public virtual Category Category { get; set; }
 
-        [ForeignKey("ManuFacturerID")]
-        public virtual Manufacturer ManuFacturer { get; set; }
         public virtual ICollection<ProductAttributesRelation> ProductAttributes { get; set; }
         public virtual ICollection<ProductImages> ProductImages { get; set; }
 

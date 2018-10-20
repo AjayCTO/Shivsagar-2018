@@ -202,11 +202,22 @@
                         </li>*@
                         <!-- End Messages -->
                         <!-- Profile -->
+
+                        <li class="nav-item ">
+
+                            @Html.Action("Parital", "EmailSenders")
+
+
+
+
+                        </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i></a>
+                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Hello @User.Identity.Name</a>
                             @Html.Partial("_LoginPartial")
                         </li>
                     </ul>
+                  
+             
                 </div>
             </nav>
         </div>

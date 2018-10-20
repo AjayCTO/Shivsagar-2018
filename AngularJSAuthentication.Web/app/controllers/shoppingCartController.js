@@ -15,6 +15,7 @@ app.controller('shoppingCartController', ['$scope','localStorageService', '$root
         }   
         //$scope.shoppingCart = _localCartItems;
         $scope.TotalCartItems = _globalTotal;
+        localStorage.setItem("GlobalTotal", _globalTotal);
         CheckScopeBeforeApply();
     }
 
@@ -71,8 +72,9 @@ app.controller('shoppingCartController', ['$scope','localStorageService', '$root
     $scope.CalculateCartGlobal = function (cart) {
         $rootScope.$emit("CalculateCart", cart);
         $scope.TotalCartItems = _globalTotal;
-
+        localStorage.setItem("GlobalTotal", _globalTotal);
     }
+
     $scope.UpdateQuantity = function (type, Index) {
         debugger;
         var _Objcopy = angular.copy($scope.shoppingCart[Index]);
@@ -96,7 +98,7 @@ app.controller('shoppingCartController', ['$scope','localStorageService', '$root
         debugger;
         $scope.shoppingCart[Index] = _Objcopy;
         CheckScopeBeforeApply();
-        localStorage.setItem("shoppingCart", JSON.stringify($scope.shoppingCart));
+        localStorage.setItem("shoppingCartNew", JSON.stringify($scope.shoppingCart));
         LocalCartFiller();
         $scope.CalculateCartGlobal($scope.shoppingCart);
     }
@@ -126,8 +128,8 @@ app.controller('shoppingCartController', ['$scope','localStorageService', '$root
                 for (var i = 0; i < $scope.shoppingCart.length; i++) {
                     $scope.shoppingCart[i].Quantity = 1;
                 }
-
-                console.log($scope.CurrentCartList);
+                localStorage.setItem("shoppingCartNew", JSON.stringify($scope.shoppingCart));
+             
                 $scope.$apply();
             },
             error: function (xhr, textStatus, errorThrown) {

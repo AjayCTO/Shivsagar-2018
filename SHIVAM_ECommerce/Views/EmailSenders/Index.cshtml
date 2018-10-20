@@ -42,7 +42,11 @@
                 <div class="container-fluid">
 
                     <a href="/EmailSenders/Create" class="btn btn-success"><i class="fa fa-envelope" aria-hidden="true"></i> New Message</a>
-                    <a href="" id="deleteAcc" class="btn btn-danger pull-right disabled">Delete All</a>
+
+                    <a href="/EmailSenders/sent" class="btn btn-success  pull-right"><i class="fa fa-envelope" aria-hidden="true"></i> Sent Message</a>
+
+
+                     <a href="" id="deleteAcc" class="btn btn-danger pull-right disabled">Delete All</a>
                 </div>
 
                 <div class="card-body">
@@ -65,10 +69,6 @@
         </div>
     </div>
 </div>
-
-
-
-
 
 
 
@@ -144,12 +144,22 @@
                      {
                          "orderable": false,
                          "mRender": function (data, type, row) {
-                             debugger;
-                             var _a = '<a href="/EmailSenders/UniqueDetailView?id=' + row.Id + '"  class="btn btn-info dataTables AcctQuickView" data-toggle="tooltip" data-placement="top" title="" data-original-title="Details" ><i class="fa fa-list"  align="center"></i></a>';
-                             var _b = '<a onclick="DeleteEmail(' + row.Id + ')"  class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" ><i class="fa fa-trash"  align="center"></i></a>';
-                             var _c = '<a href="/EmailSenders/Forward/?id=' + row.Id + '" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Forward" data-original-title="Forword"><i class="fa fa-share" title="Forward" align="center"></i></a>';
 
-                             return  _a  + '<a href="/EmailSenders/Reply/?id=' + row.Id + '" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Reply" data-original-title="Reply"><i class="fa fa-mail-reply" title="Reply" align="center"></i></a>' + _c + _b;
+
+
+                             var _b = ' <a href="/EmailSenders/Forward/?id=' + row.Id + '" class="dropdown-item" data-toggle="tooltip" data-placement="top" title="Forward" data-original-title="Forword"><i class="fa fa-share" title="Forward" align="center"></i> Forward</a>';
+                             var _c = ' <a onclick="DeleteEmail(' + row.id + ')" Style="Cursor:Pointer" class="dropdown-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" ><i class="fa fa-trash"  align="center"></i> Delete</a>';
+                             html = '<div class="item-action dropdown"><a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fa fa-ellipsis-v"></i></a>   <div class="dropdown-menu dropdown-menu-right">';
+
+                             html = html + '<a href="/EmailSenders/UniqueDetailView?id=' + row.Id + '"  class="dropdown-item dataTables AcctQuickView" data-toggle="tooltip" data-placement="top" title="" data-original-title="Details" ><i class="fa fa-list"  align="center"></i> Detail</a>';
+                             html = html + '<a href="/EmailSenders/Reply/?id=' + row.Id + '" class="dropdown-item" data-toggle="tooltip" data-placement="top" title="Reply" data-original-title="Reply"><i class="fa fa-mail-reply" title="Reply" align="center"></i> Reply</a>';
+                            return  html = html + _b + _c + '</div>';
+                             debugger;
+                             //var _a = '<a href="/EmailSenders/UniqueDetailView?id=' + row.Id + '"  class="btn btn-info dataTables AcctQuickView" data-toggle="tooltip" data-placement="top" title="" data-original-title="Details" ><i class="fa fa-list"  align="center"></i></a>';
+                             //var _b = '<a onclick="DeleteEmail(' + row.Id + ')"  class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" ><i class="fa fa-trash"  align="center"></i></a>';
+                             //var _c = '<a href="/EmailSenders/Forward/?id=' + row.Id + '" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Forward" data-original-title="Forword"><i class="fa fa-share" title="Forward" align="center"></i></a>';
+
+                             //return  _a  + '<a href="/EmailSenders/Reply/?id=' + row.Id + '" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Reply" data-original-title="Reply"><i class="fa fa-mail-reply" title="Reply" align="center"></i></a>' + _c + _b;
                          }
                      },
             ]
@@ -195,7 +205,9 @@
                 success: function (result) {
                     if (result.Success === true) {
                         myDataTable.clear().draw();
+                        window.location.href = "/EmailSenders/Index";
                         toastr.success("Deleted Message Successfully");
+
                     } else {
                         alert("error occurred during operation.");
                     }

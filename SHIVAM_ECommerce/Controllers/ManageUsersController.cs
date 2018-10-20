@@ -159,7 +159,7 @@ namespace SHIVAM_ECommerce.Controllers
             foreach (var item in _AllClaims)
             {
                 var _cClaim = _countClaims > 0 ? _user.Claims.Where(x => x.ClaimValue.ToLower() == item.ClaimValue.ToLower()).FirstOrDefault() : null;
-                _newuser.Claims.Add(new CustomClaims() { ClaimValue = item.ClaimValue, ClaimType = item.ClaimType, Id = item.Id, IsChecked = _cClaim == null ? false : true });
+                _newuser.Claims.Add(new CustomClaims() { ClaimValue = item.ClaimValue, ClaimType = item.ClaimType, Notes=item.Notes, Id = item.Id, IsChecked = _cClaim == null ? false : true });
             }
             return View(_newuser);
         }

@@ -21,6 +21,7 @@ using System.Data.SqlClient;
 using SHIVAM_ECommerce.Attributes;
 using Syncfusion.XlsIO;
 using SHIVAM_ECommerce.Extensions;
+using System.Net;
 namespace SHIVAM_ECommerce.Controllers
 {
     [CustomAuthorize]
@@ -56,6 +57,10 @@ namespace SHIVAM_ECommerce.Controllers
 
         }
 
+        public FileStreamResult DownloadCategory()
+        {
+            return ExportToExcel.getCategory(CurrentUserData.SupplierID);
+        }
         public ActionResult ImportExport()
         {
             return View();
@@ -93,18 +98,29 @@ namespace SHIVAM_ECommerce.Controllers
         public ActionResult GetAllProducts()
         {
             _columns = ExportToExcel.GetCustomColumnNames(SupplierId);
-            SupplierId = CurrentUserData.SupplierID;
+
+            if (Session["Drpsupplierid"] != null)
+            {
+                SupplierId = (int)Session["Drpsupplierid"];
+            }
+            else {
+                SupplierId = CurrentUserData.SupplierID;
+            }
+           
+            //SupplierId = 1005;
             var ctx = new ApplicationDbContext();
-            var _supplierdata = ctx.Suppliers.FirstOrDefault();
+            var _supplierdata = ctx.Suppliers.FirstOrDefault(x => x.Id == 1006);
             SupplierId = SupplierId == -1 ? (_supplierdata != null ? _supplierdata.Id : -1) : SupplierId;
             ViewBag.SupplierID = SupplierId;
             ViewBag.Suppliers = CurrentUserData.SupplierID == -1 ? db.Suppliers.ToList() : new List<Supplier>();
-            var _productAttributes = db.ProductAttributesRelation.Where(x => x.SupplierID == CurrentUserData.SupplierID).ToList();
+           var _productAttributes = db.ProductAttributesRelation.Where(x => x.SupplierID == CurrentUserData.SupplierID).ToList();
+            //var _productAttributes = db.ProductAttributesRelation.Where(x => x.SupplierID == _supplierdata.Id).ToList();
 
             using (var cmd = ctx.Database.Connection.CreateCommand())
             {
                 ctx.Database.Connection.Open();
                 cmd.CommandText = "EXEC SP_GetAllSortedProducts 5,0,'productName','ASC',NULL, " + SupplierId + "";
+               // cmd.CommandText = "EXEC SP_GetAllSortedProducts 5,0,'productName','ASC',NULL, " + _supplierdata.Id + "";
 
                 var _xdta = cmd.ExecuteReader();
                 if (_xdta != null)
@@ -127,10 +143,6 @@ namespace SHIVAM_ECommerce.Controllers
                     }
                 }
             }
-
-
-
-
             return View(new List<object>());
         }
 
@@ -139,6 +151,8 @@ namespace SHIVAM_ECommerce.Controllers
         {
             try
             {
+
+                Session["Drpsupplierid"] = SupplierID;
                 SupplierID = CurrentUserData.IsSuperAdmin == true ? SupplierID : CurrentUserData.SupplierID;
                 var ctx = new ApplicationDbContext();
                 var _List = new List<object>();
@@ -149,7 +163,7 @@ namespace SHIVAM_ECommerce.Controllers
                     using (var reader = cmd.ExecuteReader())
                     {
                         var model = Read(reader).ToList();
-                        _List = newcolumns;
+                        _List = newcolumns;                       
                         return Json(new { Success = true, Data = _List, ex = "" }, JsonRequestBehavior.AllowGet);
                     }
                 }
@@ -393,6 +407,13 @@ namespace SHIVAM_ECommerce.Controllers
             var _ValidObj = new ImportValid();
             _ValidObj.IsValid = true;
             _ValidObj.ErrorString = "";
+            var productNames = db.Products.Where(x => x.SupplierID == CurrentUserData.SupplierID).Select(x => x.ProductName).ToList();
+
+            if (productNames.Any(s => s.Contains(a.Cells[GetColumnIndex(_headerRow, "Name")].Value.ToString())))
+            {
+                var ProductName = a.Cells[GetColumnIndex(_headerRow, "Name")].Value.ToString();
+                _ValidObj.ErrorString += "<br/> Product with name = " + ProductName + " already exists please update the quantity from product details page.";
+            }     
             try
             {
 
@@ -482,31 +503,41 @@ namespace SHIVAM_ECommerce.Controllers
         }
 
         [HttpPost]
+
         public ActionResult Create(ProductViewmodel Model)
         {
 
             try
             {
-                #region Product Save
-                var _product = new Product();
-                _product.ManuFacturerID = Model.ManufacturerID;
-                _product.ProductCode = Model.ProductCode;
-                _product.ProductName = Model.ProductName;
-                _product.CateogryID = Model.CategoryID;
-                _product.SupplierID = CurrentUserData.SupplierID;
-                _product.ManuFacturerID = Model.ManufacturerID;
-                _product.SKU = Model.SKU;
-                _product.CreatedDate = DateTime.Now;
-                _product.UpdatedDate = DateTime.Now;
-                _product.UnitOfMeasuresId = Model.UnitOfMeasureID;
-                _product.Description = Model.Description;
-                _repository.Insert(_product);
-                _repository.Save();
-                SaveProductDetail(_product);
-                #endregion
+                var product = db.Products.FirstOrDefault(x => x.ProductName.ToLower() == Model.ProductName.ToLower() && x.SupplierID == CurrentUserData.SupplierID);
+
+                if (product == null)
+                {
+                    #region Product Save
+                    var _product = new Product();
+                    _product.ManuFacturerID = Model.ManufacturerID;
+                    _product.ProductCode = Model.ProductCode;
+                    _product.ProductName = Model.ProductName;
+                    _product.CateogryID = Model.CategoryID;
+                    _product.SupplierID = CurrentUserData.SupplierID;
+                    _product.ManuFacturerID = Model.ManufacturerID;
+                    _product.SKU = Model.SKU;
+                    _product.CreatedDate = DateTime.Now;
+                    _product.UpdatedDate = DateTime.Now;
+                    _product.UnitOfMeasuresId = Model.UnitOfMeasureID;
+                    _product.Description = Model.Description;
+                    _repository.Insert(_product);
+                    _repository.Save();
+                    SaveProductDetail(_product);
+                    #endregion
 
 
-                return Json(new { Success = true, ex = "", data = "", id = _product.Id });
+                    return Json(new { Success = true, ex = "", data = "", id = _product.Id });
+                }
+                else
+                {
+                    return Json(new { Success = false, ex = "Product alreay added please update the quantity.", data = "", id = 0 });
+                }
             }
             catch (Exception ex)
             {
@@ -517,6 +548,90 @@ namespace SHIVAM_ECommerce.Controllers
 
 
         }
+        //public ActionResult Create(ProductViewmodel Model)
+        //{
+
+        //    try
+        //    {
+        //        #region Product Save
+        //        var _product = new Product();
+        //        _product.ManuFacturerID = Model.ManufacturerID;
+        //        _product.ProductCode = Model.ProductCode;
+        //        _product.ProductName = Model.ProductName;
+        //        _product.CateogryID = Model.CategoryID;
+        //        _product.SupplierID = CurrentUserData.SupplierID;
+        //        _product.ManuFacturerID = Model.ManufacturerID;
+        //        _product.SKU = Model.SKU;
+        //        _product.CreatedDate = DateTime.Now;
+        //        _product.UpdatedDate = DateTime.Now;
+        //        _product.UnitOfMeasuresId = Model.UnitOfMeasureID;
+        //        _product.Description = Model.Description;
+        //        _repository.Insert(_product);
+        //        _repository.Save();
+        //        SaveProductDetail(_product);
+        //        #endregion
+
+
+        //        return Json(new { Success = true, ex = "", data = "", id = _product.Id });
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        return Json(new { Success = false, ex = ex.Message.ToString(), data = "", id = 0 });
+
+        //    }
+
+
+        //}
+      [HttpPost]
+        public ActionResult Deletes(int productID)
+        {
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var product = db.Products.FirstOrDefault(x => x.Id == productID);
+                    db.Products.Remove(product);
+                    db.SaveChanges();
+                    return Json(new { Success = true, ex = "", data = "" });
+                }
+                catch (Exception ex)
+                {
+
+                    return Json(new { Success = false, ex = ex.Message.ToString(), data = "" });
+
+                }
+
+            }
+
+            return Json(new { Success = true, ex = "", data = "" });
+            //return View(GetProduct(productID));
+        }
+
+        [HttpPost]
+        public ActionResult Delete(ProductViewmodel Model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var product = db.Products.FirstOrDefault(x => x.Id == Model.ProductID);
+                    db.Products.Remove(product);
+                    return RedirectToAction("GetAllProducts");
+                }
+                catch (Exception ex)
+                {
+
+                    return Json(new { Success = false, ex = ex.Message.ToString(), data = "" });
+
+                }
+
+            }
+
+            return Json(new { Success = true, ex = "", data = "" });
+        }
+
         public ActionResult Edit(int productID)
         {
             return View(GetProduct(productID));
@@ -525,17 +640,28 @@ namespace SHIVAM_ECommerce.Controllers
         [HttpPost]
         public ActionResult Edit(ProductViewmodel Model)
         {
+
             if (ModelState.IsValid)
             {
                 try
                 {
+                    var supplierId = -1;
+                    if (Session["Drpsupplierid"] != null)
+                    {
+                        supplierId = (int)Session["Drpsupplierid"];
+                    }
+                    else
+                    {
+                        supplierId = CurrentUserData.SupplierID;
+                    }
+                    
                     #region Product Save
                     var _product = _repository.GetById(Model.ProductID);
                     _product.ManuFacturerID = Model.ManufacturerID;
                     _product.ProductCode = Model.ProductCode;
                     _product.ProductName = Model.ProductName;
                     _product.CateogryID = Model.CategoryID;
-                    _product.SupplierID = CurrentUserData.SupplierID;
+                    _product.SupplierID = supplierId;
                     _product.ManuFacturerID = Model.ManufacturerID;
                     _product.SKU = Model.SKU;
                     _product.UpdatedDate = DateTime.Now;
@@ -570,7 +696,17 @@ namespace SHIVAM_ECommerce.Controllers
             _ProductViewModel.CategoryID = _Product.CateogryID;
             _ProductViewModel.ProductName = _Product.ProductName;
             _ProductViewModel.ProductCode = _Product.ProductCode;
-            _ProductViewModel.Description = _Product.Description;
+            if (_Product.Description == null)
+            {
+                _ProductViewModel.Description = _Product.Description;
+            }
+            else
+            {
+               var  a = _Product.Description.Replace("\"", "");
+        
+                _ProductViewModel.Description = a.Replace("\n", "<br>");
+        
+            }
             _ProductViewModel.IDSKU = _Product.IDSKU;
 
             return _ProductViewModel;
@@ -626,6 +762,62 @@ namespace SHIVAM_ECommerce.Controllers
             return _productImages;
         }
 
+
+        /// <summary>
+    
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+// product details page
+        public ActionResult Details(int ProductID)
+        {
+            var _ProductViewModel = new ProductViewmodel();
+            var _Product = _repository.GetById(ProductID);
+            _ProductViewModel.ProductID = _Product.Id;
+            _ProductViewModel.SupplierID = _Product.SupplierID;
+            _ProductViewModel.UnitOfMeasureID = _Product.UnitOfMeasuresId;
+            _ProductViewModel.ManufacturerID = _Product.ManuFacturerID;
+            _ProductViewModel.SKU = _Product.SKU;
+            _ProductViewModel.CategoryID = _Product.CateogryID;
+            _ProductViewModel.ProductName = _Product.ProductName;
+            _ProductViewModel.ProductCode = _Product.ProductCode;
+            if (_Product.Description == null)
+            {
+                _ProductViewModel.Description = _Product.Description;
+            }
+            else
+            {
+                var a = _Product.Description.Replace("\"", "");
+
+                _ProductViewModel.Description = a.Replace("\n", "<br>");
+
+            }
+            _ProductViewModel.IDSKU = _Product.IDSKU;
+            var _ProductAttributes = _Attributerepository.GetAll().Where(x => x.ProductId == ProductID && x.IsActive == true).ToList();
+        
+            _ProductViewModel.allAttributes = new List<ProductAttributeModel>();
+            foreach (var _item in _ProductAttributes)
+            {
+                var _newitem = new ProductAttributeModel();
+                _newitem.price = _item.ProductPrice;
+                _newitem.weight = _item.UnitWeight;
+                _newitem.Quantity = _item.ProductQuantity;
+                _newitem.highQuantityThreshold = _item.highQuantityThreshold;
+                _newitem.lowQuantityThreshold = _item.lowQuantityThreshold;
+                _newitem.IsFeatured = _item.IsFeatured;
+                _newitem.StatusId = _item.StatusId;
+                _newitem.ColumnsData = new List<ProductAttributeModelInner>();
+                _newitem.ColumnsData = GetColumnsDataSplitted(_item.AttributeValues);
+                _newitem.Images = new List<ProductImagesViewModel>();
+                _newitem.Images = GetImages(_item.Id);
+                _newitem.Id = _item.Id;
+                _ProductViewModel.allAttributes.Add(_newitem);
+            }
+            return View(_ProductViewModel);
+        }
+
+
+
         [HttpGet]
         public ActionResult GetDataImages(int ProductID)
         {
@@ -662,7 +854,15 @@ namespace SHIVAM_ECommerce.Controllers
             {
                 string[] parts2 = _item.Split(new string[] { "@@" }, StringSplitOptions.RemoveEmptyEntries);
                 var _attributeID = parts2[0];
-                var _value = parts2[1];
+
+
+                var _value = "";
+                if (parts2.Length > 1)
+                {
+                    _value = parts2[1] == null ? "N/A" : parts2[1];
+                }
+
+                
                 _ReturnModel.Add(new ProductAttributeModelInner { AttributeID = Convert.ToInt16(_attributeID), Value = _value });
             }
 

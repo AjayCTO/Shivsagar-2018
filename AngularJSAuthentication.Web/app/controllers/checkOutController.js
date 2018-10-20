@@ -4,7 +4,10 @@ app.controller('checkOutController', ['$scope', '$location',  'localStorageServi
     $scope.emailvalidation = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
     $scope.ccinfo = { type: "fa fa-credit-card" }
     $scope.CurrentTab = 1;
-    $scope.shipping = 10;
+    $scope.shipping = 0;
+    $scope.CartTotal = 0;
+    $scope.xyz = [];
+
     $scope.ChangeTab = function (CurrentTab) {
         $scope.CurrentTab = CurrentTab;
         CheckScopeBeforeApply();
@@ -16,11 +19,29 @@ app.controller('checkOutController', ['$scope', '$location',  'localStorageServi
 
   
 
-    $scope.PlaceOrder = function (cartitem) {
+    $scope.PlaceOrder = function () {
         debugger;
+        var allDataToSend = { OrderCartItem: $scope.shoppingCartNew, CartTotal: $scope.CartTotal, OrderCustomerData: $scope.CustomerDetails, PaymentInfo: $scope.PaymentInformation };
 
-        var allDataToSend = {CartItems: cartitem, CustomerData: $scope.CustomerDetails, PaymentInfo: $scope.PaymentInformation };
+       
+        $.ajax({
+            url: serviceBase + 'api/CustomerOrders/PostOrder',
+            type: 'POST',
+            data: allDataToSend,
+            dataType: 'json',
+            success: function (data) {
+                debugger;
+                if (data.success == true) {
+         
+                    $("#exampleModal").modal("show");
+                    //toastr.success("Success! Order placed successfully");
 
+                }
+            },
+            error: function (xhr, textStatus, errorThrown) {
+                alert("into error");
+            }
+        });
 
     };
 
@@ -62,7 +83,16 @@ app.controller('checkOutController', ['$scope', '$location',  'localStorageServi
         
     }
 
+    $scope.getCartInfo = function () {
+        $scope.shoppingCartNew = JSON.parse(localStorage.getItem("shoppingCartNew"));
+        $scope.CartTotal = localStorage.getItem("GlobalTotal");
+        $scope.$apply();     
+
+    }
+
+
     function init() {
+        $scope.getCartInfo();
         $scope.getcustomerinfo();
     }
 

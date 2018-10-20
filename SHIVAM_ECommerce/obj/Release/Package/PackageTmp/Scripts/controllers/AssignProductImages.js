@@ -9,6 +9,11 @@
         $scope.currentPage = 1;
         $scope.items = [];
         $scope.TotalItems = 0;
+        $scope.ImageIds = [];
+        $scope.ImageIds.length;
+        $scope.selectedImage = JSON.parse(check);
+        $scope.selectedImage.length;
+        console.log($scope.selectedImage);
         $scope.AlreadySelectedImages = JSON.parse(_AlreadySelectedData);
         $scope.IsSaving = false;
         //for (var i = 0; i < 50; i++) {
@@ -54,6 +59,7 @@
 
 
         $scope.DisableCursor = function (path) {
+            debugger;
             for (var i = 0; i < $scope.AlreadySelectedImages.length; i++) {
                 if ($.trim($scope.AlreadySelectedImages[i]) == $.trim(path)) {
                     return "NonePointer";
@@ -127,7 +133,33 @@
         }
 
 
+        $scope.DeleteAssigned = function () {
+            debugger;
+            var a = $scope.ImageIds;
+ 
+            $.ajax({
+                url: "/AllImages/DeleteAssignedimage",
+                type: "POST",
+                data: JSON.stringify(a),
+
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+              
+               
+                success: function (data) {
+                    debugger;
+                    if (data != true) {
+                        window.location.reload();
+                        CheckScopeBeforeApply();
+                    }
+                }
+
+            });
+
+        }
+
         $scope.SaveImages = function () {
+            debugger;
             var _model = { ProductID: _ProductID, Path: $scope.Paths };
             $scope.IsSaving = true;
             $.ajax({
@@ -146,9 +178,18 @@
                         $scope.Paths = [];
                         $scope.IsSaving = false;
                         if (data.Success === true) {
-                            bootbox.alert("Saved Successfully");
                             GetImages();
-                            window.location.reload();
+                          
+                            bootbox.confirm("Successfully Assigned! if you want to go at product list ", function (result) {
+                                if (result) {
+                                    window.location.href = "/Product/GetAllProducts";
+                                }
+                                else {
+                                    window.location.reload();
+                                }
+                            });
+                       
+                       
                             CheckScopeBeforeApply();
                         }
 
@@ -171,8 +212,45 @@
 
             return "";
         }
+ 
+        $scope.AddtoImageids = function (Id) {
+            debugger;
+            var _check = false;
+            for (var i = 0; i < $scope.ImageIds.length; i++) {
+                debugger;
+                if ($scope.ImageIds[i] == Id) {
+                    debugger;
+                    $scope.ImageIds.splice(i, 1);
+                    _check = true;
+                    break;
+                }
+            }
+                if (!_check)
+                {
+                    debugger;
+                    $scope.ImageIds.push(Id)
+                }
+                else
+
+                {
+                    $scope.ImageIds = $scope.ImageIds;
+                };
+               
+    
+            CheckScopeBeforeApply();
+        }
+        $scope.IsChecked = function (Id) {
+            for (var i = 0; i < $scope.ImageIds.length; i++) {
+                if ($.trim($scope.ImageIds[i]) == $.trim(Id)) {
+                    return "Selected";
+                }
+            }
+
+            return "";
+        }
 
         $scope.AddToArray = function (Path) {
+            debugger;
             var _TempImageData = angular.copy($scope.Paths);
             var _CheckVar = false;
             for (var i = 0; i < $scope.Paths.length; i++) {
@@ -181,8 +259,15 @@
                     _CheckVar = true;
                     break;
                 }
+                debugger;
             }
-            if (!_CheckVar) { $scope.Paths.push(Path) } else { $scope.Paths = _TempImageData };
+            if (!_CheckVar) { $scope.Paths.push(Path) } else
+            {
+             
+                    $scope.Paths = _TempImageData
+
+            };
+            debugger;
             CheckScopeBeforeApply();
 
         }

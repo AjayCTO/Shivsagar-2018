@@ -67,6 +67,12 @@ C:\Users\SHIVAMITCS03\Desktop\28Sept - Copy\ShivSagarOnline\AngularJSAuthenticat
 E:\28Sept - Copy\ShivSagarOnline\AngularJSAuthentication.Web\bin\AngularJSAuthentication.Web.dll.config
 E:\28Sept - Copy\ShivSagarOnline\AngularJSAuthentication.Web\bin\AngularJSAuthentication.Web.dll
 E:\28Sept - Copy\ShivSagarOnline\AngularJSAuthentication.Web\bin\AngularJSAuthentication.Web.pdb
-E:\28Sept - Copy\ShivSagarOnline\AngularJSAuthentication.Web\obj\Debug\AngularJSAuthentication.Web.csprojResolveAssemblyReference.cache
 E:\28Sept - Copy\ShivSagarOnline\AngularJSAuthentication.Web\obj\Debug\AngularJSAuthentication.Web.dll
 E:\28Sept - Copy\ShivSagarOnline\AngularJSAuthentication.Web\obj\Debug\AngularJSAuthentication.Web.pdb
+E:\28Sept - Copy\ShivSagarOnline\AngularJSAuthentication.Web\obj\Debug\AngularJSAuthentication.Web.csprojResolveAssemblyReference.cache
+C:\Users\win10\Desktop\28Sept - Copy\ShivSagarOnline\AngularJSAuthentication.Web\bin\AngularJSAuthentication.Web.dll.config
+C:\Users\win10\Desktop\28Sept - Copy\ShivSagarOnline\AngularJSAuthentication.Web\bin\AngularJSAuthentication.Web.dll
+C:\Users\win10\Desktop\28Sept - Copy\ShivSagarOnline\AngularJSAuthentication.Web\bin\AngularJSAuthentication.Web.pdb
+C:\Users\win10\Desktop\28Sept - Copy\ShivSagarOnline\AngularJSAuthentication.Web\obj\Debug\AngularJSAuthentication.Web.csprojResolveAssemblyReference.cache
+C:\Users\win10\Desktop\28Sept - Copy\ShivSagarOnline\AngularJSAuthentication.Web\obj\Debug\AngularJSAuthentication.Web.dll
+C:\Users\win10\Desktop\28Sept - Copy\ShivSagarOnline\AngularJSAuthentication.Web\obj\Debug\AngularJSAuthentication.Web.pdb

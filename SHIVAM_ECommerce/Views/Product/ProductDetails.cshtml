@@ -5,8 +5,9 @@
     var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
     serializer.MaxJsonLength = Int32.MaxValue;
     var jsonModel = serializer.Serialize(Model);
-    var prouductstatuslist = serializer.Serialize(ViewBag.productstatuslist);  
-
+    var prouductstatuslist = serializer.Serialize(ViewBag.productstatuslist);
+    
+    
 }
 
 
@@ -46,7 +47,7 @@
 
 
                     <div class="table-responsive">
-                        <table class="table attributes">
+                        <table class="table attributes" style="text-align: center;">
                             <thead>
                                 <tr>
                                     <th class="pl-0" ng-repeat="x in ProductAttributes | orderBy: 'Id'">{{x.Name}}</th>
@@ -63,12 +64,13 @@
                                 <tr class="prototype" ng-repeat="obj in ProductAttributesList">
 
                                     <td ng-repeat="x in obj.ColumnsData | orderBy: 'AttributeID'" ng-if="CheckColumn(x.AttributeID)">
-                                        <input type="text" class="form-control customColumnData" placeholder="Enter Value" ng-model="x.Value">
+                                        <input type="text" style="min-width:100px" class="form-control customcolumndata color_x.AttributeID" placeholder="Enter Value" ng-model="x.Value">
+
                                     </td>
                                     @*<td ng-repeat="x in ProductAttributes">
-                                        <input type="text" class="form-control customColumnData" placeholder="Enter Value" ng-model="GetValue(obj.ColumnsData,x.Id)">
-                                     
-                                    </td>*@
+                        <input type="text" class="form-control customColumnData" placeholder="Enter Value" ng-model="GetValue(obj.ColumnsData,x.Id)">
+
+                    </td>*@
                                     <td>
                                         <label class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" placeholder="Is Featured Product" ng-model="obj.IsFeatured" />
@@ -76,29 +78,29 @@
                                         </label>
                                     </td>
                                     <td>
-                                        <input type="text" class="form-control number" placeholder="Enter Quantity" ng-model="obj.Quantity">
+                                        <input type="text" style="min-width:100px" class="form-control number" placeholder="Enter Quantity" ng-model="obj.Quantity">
                                     </td>
 
                                     <td>
-                                        <input type="text" class="form-control number" placeholder="Enter Price" ng-model="obj.price">
+                                        <input type="text" style="min-width:100px" class="form-control number" placeholder="Enter Price" ng-model="obj.price">
                                     </td>
 
                                     <td>
-                                        <input type="text" class="form-control number" placeholder="Enter Weight" ng-model="obj.weight">
+                                        <input type="text" style="min-width:100px" class="form-control" placeholder="Enter Weight" ng-model="obj.weight">
                                     </td>
                                     <td width="200">
-                                        <select ng-model="obj.StatusId" class="form-control statusselect" selectedvalue="{{obj.StatusId}}">
-                                            <option value="">None</option>
+                                        <select ng-model="obj.StatusId" style="min-width:100px" class="form-control statusselect" selectedvalue="{{obj.StatusId}}">
+                                            <option value="0">None</option>
                                             <option ng-repeat="x in productstatuslist track by x.Id" value="{{x.Id}}">{{x.Name}}</option>
                                         </select>
 
 
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control number" placeholder="Enter Low Quantity Threshold" ng-model="obj.lowQuantityThreshold">
+                                        <input type="number" style="min-width:100px" class="form-control number" placeholder="Enter Low Quantity Threshold" ng-model="obj.lowQuantityThreshold">
                                     </td>
                                     <td>
-                                        <input type="number" class="form-control number" placeholder="Enter High Quantity Threshold" ng-model="obj.highQuantityThreshold">
+                                        <input type="number" style="min-width:100px" class="form-control number" placeholder="Enter High Quantity Threshold" ng-model="obj.highQuantityThreshold">
                                     </td>
                                     <td class="pr-0" width="200">
                                         @*<button type="button" class="btn btn-primary btn-sm Remove" ng-click="UploadImages($index)">UploadImages</button>*@
@@ -199,8 +201,20 @@
             </style>
             <script>
                 var _productData = '@Html.Raw((jsonModel))';
+                console.log("checkdata");
+                console.log(_productData);
                 var _productstatuslist = '@Html.Raw((prouductstatuslist))';
+           
 
+
+            </script>
+
+            <script>
+                $(document).ready(function () {
+
+                   
+                })
+                
             </script>
             <link href="~/Content/toaster.css" rel="stylesheet" />
 

@@ -41,14 +41,14 @@
             <div class="col-md-5">
                 <div class="form-group">
                     <label class="control-label"> Plan Name</label>
-                    @Html.TextBoxFor(model => model.PlanName, new { @class = "form-control" })
+                    @Html.TextBoxFor(model => model.PlanName, new { @class = "form-control PlanName" })
                     @Html.ValidationMessageFor(model => model.PlanName)
                 </div>
 
                 <div class="form-group">
                     <label class="control-label"> Plan Code</label>
                     <div class=" ">
-                        @Html.TextBoxFor(model => model.Plancode, new { @class = "form-control" })
+                        @Html.TextBoxFor(model => model.Plancode, new { @class = "form-control PlanCode" })
                         @Html.ValidationMessageFor(model => model.Plancode)
                     </div>
                 </div>
@@ -188,7 +188,71 @@
 
 
         @Scripts.Render("~/bundles/jqueryval")
+          <script>
+              $(document).ready(function () {
+                  var Planname = '@Model.PlanName';
+                  var Plancode = '@Model.Plancode';
+                  var PlanCode = $.trim(Plancode);
+                  var PlanName = $.trim(Planname);
+                  $.validator.addMethod('PlanName', function (values) {
+                      debugger;
+                      var value = $.trim(values);
 
+                      if (value.toLowerCase() == PlanName.toLowerCase()) {
+                          return true;
+                      }
+                      if ($.trim(value) != "") {
+                          return CheckUniquePlan(value);
+                      }
+                      else {
+                          return true;
+                      }
+
+                  }, "Please enter a different Name ! It's already exist");
+
+
+              $.validator.addMethod('PlanCode', function (values) {
+                  debugger;
+                  var value = $.trim(values);
+
+                  if (value.toLowerCase() == PlanCode.toLowerCase()) {
+                      return true;
+                  }
+                  if ($.trim(value) != "") {
+                      return CheckUniquePlanCode(value);
+                  }
+                  else {
+                      return true;
+                  }
+
+              }, "Please enter a different Code ! It's already exist");
+
+              });
+
+
+              function CheckUniquePlanCode(value) {
+                
+                  var _x = true;
+                  $.ajax({
+                      url: "/Plan/UniquePlanCode",
+                      data: JSON.stringify({ Plancode: value }),
+                      type: 'POST',
+                      async: false,
+                      contentType: 'application/json',
+                      dataType: 'json',
+                      success: function (result) {
+                          _x = !result.IsAlreadyExist;
+                      },
+                      error: function (req, status, error) {
+                          alert(error);
+                      }
+                  });
+
+                  return _x;
+              }
+
+
+          </script>
 
         <script>
             var _FrequencyValue = '@Model.PlanFrequency';

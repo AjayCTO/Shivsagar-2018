@@ -8,6 +8,8 @@
 
         function init() {
             var _productData1 = JSON.parse(_productData);
+            debugger;
+
             $scope.ProductObject = {
                 ProductName: _productData1.ProductName,
                 ProductCode: _productData1.ProductCode,
@@ -227,32 +229,38 @@
         }
 
 
-        $scope.GetValue = function (ColumnsData, Id) {
-            debugger;
-            var isAvail = false;
+        //$scope.checkedfun = function (ColumnsData, Id)
+        //{
+        //    debugger;
+        //}
 
-            for (var i = 0; i < ColumnsData.length; i++) {
+        //$scope.GetValue = function (ColumnsData, Id) {
+        //    debugger;
+        //    var isAvail = false;
+
+        //    for (var i = 0; i < ColumnsData.length; i++) {
                
-                if (ColumnsData[i].AttributeID == Id) {
-                    isAvail = true;
-                    return ColumnsData[i].Value;
-                } 
-            }
+        //        if (ColumnsData[i].AttributeID == Id) {
+        //            isAvail = true;
+        //            return ColumnsData[i].Value;
+        //        } 
+        //    }
 
-            if (isAvail == false)
-                return "N/A";
+        //    if (isAvail == false)
+        //        return "N/A";
 
             
             
             
-        };
+        //};
+
 
         setTimeout(function () {
             $(".statusselect").each(function () {
                 $(this).val($(this).attr("selectedvalue"));
                 $(this).trigger("change");
             });
-        }, 1000)
+        }, 1000);
         $scope.triggerFileClick = function () {
             $("#files").trigger("click");
 

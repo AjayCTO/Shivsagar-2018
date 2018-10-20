@@ -103,6 +103,10 @@ namespace SHIVAM_ECommerce.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            if (id == -1)
+            {
+                return RedirectToAction("Adminprofile");
+            }
             Supplier supplier = db.Suppliers.Find(id);
             if (supplier == null)
             {
@@ -113,14 +117,58 @@ namespace SHIVAM_ECommerce.Controllers
             return View(supplier);
         }
 
+
+        public ActionResult Adminprofile()
+        {
+            AdminProfile adminprofile = db.Adminprofile.FirstOrDefault();
+
+            return View(adminprofile);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Profile([Bind(Include = "Id,CompanyName,FirstName,LastName,Title,Address1,Address2,City,State,PostalCode,Country,Phone,Email,URL,Logo,SupplierType,UserID,PlanID,PlanStartDate,PlanEndDate,UserName,Password,ParentSupplierID,RegisteredByID")] Supplier supplier, HttpPostedFileBase file)
+        public ActionResult Adminprofile([Bind(Include = "Id,CompanyName,FirstName,LastName,Title,Address,City,State,PostalCode,Country,Phone,Email,Logo,CreatedDate")] AdminProfile adminprofile, HttpPostedFileBase file)
+        {
+            adminprofile.UpdatedDate = DateTime.Now;
+
+
+            if (ModelState.IsValid)
+            {
+
+                if (file != null)
+                {
+                    string pic = System.IO.Path.GetFileName(file.FileName);
+                    string path = System.IO.Path.Combine(
+                                           Server.MapPath("~/SupplierImage"), pic);
+                    // file is uploaded
+                    file.SaveAs(path);
+
+                    adminprofile.Logo = pic;
+
+                    // save the image path path to the database or you can send image 
+                    // directly to database
+                    // in-case if you want to store byte[] ie. for DB
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        file.InputStream.CopyTo(ms);
+                        byte[] array = ms.GetBuffer();
+                    }
+                }
+
+                db.Entry(adminprofile).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return View(adminprofile);
+           
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Profile([Bind(Include = "Id,CompanyName,FirstName,LastName,Title,Address1,Address2,City,State,PostalCode,Country,Phone,Email,URL,Logo,SupplierType,UserID,PlanID,PlanStartDate,PlanEndDate,UserName,Password,ParentSupplierID,CreatedDate,RegisteredByID")] Supplier supplier, HttpPostedFileBase file)
         {
             //supplier.UserName = "testtestsetetsetst";
             //supplier.Password = "testtestteststeest";
             supplier.UpdatedDate = DateTime.Now;
-            supplier.CreatedDate = DateTime.Now;
+       
 
 
             if (ModelState.IsValid)

@@ -56,6 +56,162 @@
             background: #f2f2f2;
            
         }
+
+        .icon-bar {
+            position: fixed;
+            top: 70%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            z-index:100;
+            right:0;
+        }
+
+            .icon-bar a {
+                display: block;
+                text-align: center;
+                padding: 16px;
+                transition: all 0.3s ease;
+                color: white;
+                font-size: 20px;
+            }
+
+                .icon-bar a:hover {
+                    background-color: #000;
+                }
+
+        .facebook {
+            background-color: #3B5998;
+            color: white;
+        }
+
+        .twitter {
+            background-color: #55ACEE;
+            color: white;
+        }
+
+        .gplus {
+            background: #dd4b39;
+            color: white;
+        }
+
+        .linked {
+            background: #007bb5;
+            color: white;
+        }
+
+        .youtube {
+            background: #bb0000;
+            color: white;
+        }
+
+        .content {
+            margin-left: 75px;
+            font-size: 30px;
+        }
+
+        .fab {
+            width: 60px;
+            height: 60px;
+            line-height: 35px;
+            background-color: #f44336;
+            font: normal normal normal 14px/1 FontAwesome;
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            transform: translate(-50%, -50%);
+            border-radius: 100%;
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+            cursor: pointer;
+             background-image: url() transition: box-shadow ease-in-out 350ms;
+            z-index: 1000;
+        }
+
+            .fab:before {
+                content: "\f064";
+                font-style: normal;
+                font-weight: normal;
+                text-decoration: inherit;
+                color: #fff;
+                font-size: 2rem;
+                position: absolute;
+                top: 25%;
+                left: 33%;
+            }
+
+        .fab-content {
+            bottom: -50%;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            bottom: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .fab:hover .fab-content,
+        .fab .fab-content:hover {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .fab .fab-content .fab-link {
+            width: 50px;
+            height: 50px;
+            display: block;
+            border-radius: 100%;
+            font-size: 23px;
+            line-height: 48px;
+            text-align: center;
+            margin: 10px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            transform: scaleY(0);
+            transition-timing-function: ease-in;
+            transition-duration: 200ms;
+            transition-property: transform, visibility, opacity;
+        }
+
+        .fab:hover .fab-content .fab-link,
+        .fab .fab-content:hover .fab-link {
+            transform: scaleY(1);
+        }
+
+       .dropdown .fa-ellipsis-v
+       {
+           padding-left:12px;
+           padding-right:12px;
+       }
+
+
+        .dropdown-item
+        {
+            padding:10px !important;
+            padding-right:0 !important;
+        }
+        
+         .dropdown-item:nth-child(even) {
+            background: #f9f9f9;
+            color: #000;
+            font-size: 15px;
+        }
+
+        .dropdown-item:nth-child(odd) {
+            background: #FFF;
+            color:#000;
+            font-size:15px;
+        }
+
+            .dropdown-item:hover {
+                background: #337ab7;
+                color: #fff !important;
+            }
+
+
+        
+
     </style>
   
 </head>
@@ -66,8 +222,29 @@
         </svg>
     </div>
 
-
   
+  
+
+    <div class="fab">
+        <ul class="fab-content">
+            <li title="Share with facebook" data-shareurl="http://shivamonline.shivamitconsultancy.com/" data-icon="ei-sc-facebook" data-size="m" class="facebook fbsharelink fab-link">
+                <i class="fa fa-facebook-square"></i>
+            </li>
+        
+            <li title="Share with twitter" data-icon="ei-sc-twitter" data-size="m" class="twitter twitter-share fab-link" data-js="twitter-share">
+                <i class="fa fa-twitter"></i>
+            </li>
+            <li id="gplusShare" title="Share with google-plus" data-icon="ei-sc-twitter" data-size="m" class="gplus fab-link" data-js="twitter-share">
+                <i class="fa fa-google-plus"></i>
+            </li>
+
+            
+
+            <li title="Share with linked" data-icon="ei-sc-twitter" data-size="m" class="linked fab-link" >
+                <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=<?php the_permalink(); ?>&title=Some%20Title&summary=Some%20Summary&source=http://shivamonline.shivamitconsultancy.com" title="linkedin Share">  <i class="fa fa-linkedin"></i></a>
+            </li>
+        </ul>
+    </div>
 
 
     <div id="main-wrapper">
@@ -202,11 +379,22 @@
                         </li>*@
                         <!-- End Messages -->
                         <!-- Profile -->
+
+                        <li class="nav-item ">
+
+                            @Html.Action("Parital", "EmailSenders")
+
+
+
+
+                        </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i></a>
+                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Hello @User.Identity.Name</a>
                             @Html.Partial("_LoginPartial")
                         </li>
                     </ul>
+                  
+             
                 </div>
             </nav>
         </div>
@@ -310,10 +498,42 @@
     <script src="~/Newtheme/JS/custom.min.js"></script>
 
 
+
+
     @*@Scripts.Render("~/bundles/jquery")*@
     @RenderSection("scripts", required: false)
 
+    <script>
+       
 
+        $('.fbsharelink').click( function() 
+        {
+            var shareurl = $(this).data('shareurl');
+            window.open('https://www.facebook.com/sharer/sharer.php?u='+escape(shareurl)+'&t='+document.title, '', 
+            'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=350,width=600');
+            return false;
+        });
+
+        var twitterShare = document.querySelector('[data-js="twitter-share"]');
+        var shareURL = "http://shivamonline.shivamitconsultancy.com/"
+
+        twitterShare.onclick = function (e) {
+            e.preventDefault();
+            var twitterWindow = window.open('https://twitter.com/share?url=' + shareURL, 'twitter-popup', 'height=350,width=600');
+            if (twitterWindow.focus) { twitterWindow.focus(); }
+            return false;
+        }
+
+        var gplusShare = document.getElementById("gplusShare");
+
+        gplusShare.onclick = function () {
+            window.open("https://plus.google.com/share?url=" + shareURL, "", "height=350,width=525,left=100,top=100,menubar=0");
+            return false;
+        }
+
+    </script> 
+
+    
 
 </body>
 

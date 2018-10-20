@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Create";
-
+    string Subjects = ViewBag.EmailSubject;
 }
 
 <div class="row page-titles">
@@ -32,7 +32,7 @@
                         @Html.HiddenFor(model => model.ReceiverIDs, new { @class = "form-control" })
                        <input type="hidden" name="ReceiverIDs" id="ReceiverIDs" />
                     @Html.AntiForgeryToken()
-                    @Html.ValidationSummary(true)
+                    @*@Html.ValidationSummary(true)*@
 
 
                     <div class="row">
@@ -44,13 +44,13 @@
                             <div class="panel panel-default">
                                 <div class="panel-body message">
                                     <div class="form-group">
-                                        <div class="col-md-2">
-                                            <label class="control-label">To:</label>
+                                        <div class="col-md-5">
+                                            <label class="control-label">To</label>
+                                            <a href="#" data-toggle="popover" style="margin-right:5px" data-trigger="hover" class="pull-right" data-content="This Messanger only use for internally send message"><i class="fa fa-info-circle"></i> </a>
+
                                             </div>
                                             <div class="col-md-5">
-
-
-                                                <select class="form-control myselect" data-val="true" data-val-required="ReceiverName is required" multiple="multiple" id="ReceiverId" name="ReceiverId"></select>
+                                                 <select class="form-control myselect" data-val="true" data-val-required="ReceiverName is required" multiple="multiple" id="ReceiverId" name="ReceiverId"></select>
                                                 @Html.ValidationMessageFor(model => model.ReceiverId)
                                             </div>
                                         </div>
@@ -58,7 +58,7 @@
                    
                                     <div class="form-group">
                                         <div class="col-md-2">
-                                            <label class="control-label">Subject:</label>
+                                            <label class="control-label">Subject</label>
                                             </div>
                                             <div class="col-md-5">
                                                 @Html.TextBoxFor(model => model.Subject, new { @class = "form-control" })
@@ -67,7 +67,7 @@
                                         </div>
                                     <div class="form-group">
                                         <div class="col-md-2">
-                                            <label class="control-label">Attachment:</label>
+                                            <label class="control-label">Attachment</label>
                                             </div>
                                         <div class="col-md-5">
                                             <div class="custom-file" style="width:300px">
@@ -90,10 +90,10 @@
                                     </div>*@
                                     <div class="form-group">
                                         <div class="col-md-2">
-                                            <label class="control-label">Message:</label>
+                                            <label class="control-label">Message</label>
                                             </div>
                                             <div class="col-md-5">
-                                                @Html.TextAreaFor(model => model.ContentMsg, new { @class = "form-control" })
+                                                @Html.TextAreaFor(model => model.ContentMsg, new { @class = "form-control"})
                                                 @Html.ValidationMessageFor(model => model.ContentMsg)
                                             </div>
                                         </div>
@@ -126,14 +126,68 @@
 
 <link href="~/Content/AdminLTE.min.css" rel="stylesheet" />
 @section scripts{
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="popover"]').popover();
+    });
+</script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<style>
+    .select2-selection__choice {
+        margin: 0 !important;
+        padding: 3px !important;
+        margin-top: 7px !important;
+        font-size: 12px !important;
+        font-family: verdana !important;
+        background: #128ECE !important;
+        position: relative !important;
+        margin-right: 15px !important;
+    }
+    .select2-results__option[aria-selected=true] {
+        display: none;
+    }
+    .select2-selection__choice__remove {
+        position: absolute;
+        right: -13px;
+        color: #fff !important;
+        background: brown;
+        border-radius: 100%;
+        padding-left: 4px;
+        padding-right: 3px;
+        margin-top: -9px;
+    }
+
+    .select2-container .select2-selection--multiple {
+        min-height: 42px;
+    }
+
+    .select2-container .select2-search--inline .select2-search__field {
+        margin-top: 12px;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__clear {
+        margin-top: 12px;
+    }
+
+    .select2-container--default .select2-selection--multiple .select2-selection__rendered {
+        padding: 0 12px;
+    }
+
+    .select2-results__option {
+        color: #31708f;
+        background-color: #d9edf7;
+        border-color: #bce8f1;
+    }
+</style>
 
     <script>
+
         var allSelectedMembers = "";
         $(document).ready(function () {
             $(".myselect").select2({
                 allowClear: true,
+                selectOnClose: true,
                 minimumInputLength: 1,
                 ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
 
@@ -173,7 +227,8 @@
             });
             debugger;
             $('.myselect').on('select2:select', function (e) {
-                allowClear:true
+                allowClear: true
+
                 debugger;
                 var data = e.params.data;
                 if (allSelectedMembers == "") {
@@ -301,6 +356,16 @@
         })();
 
     </script>
+    <script>
+        $(document).ready(function () {
+
+            var check = '@Subjects';
+            $("#Subject").val(check);
+                console.log("subject");
+            console.log(check);
+        })
+    </script>
+
     @*@Scripts.Render("~/bundles/jqueryval")
         <script>
         $.validator.addMethod("ReceiverId", function(value, element, arg){

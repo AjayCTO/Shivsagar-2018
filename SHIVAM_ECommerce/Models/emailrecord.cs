@@ -13,5 +13,10 @@ namespace SHIVAM_ECommerce.Models
         public string Send_Date { get; set; }
         public string Subject { get; set; }
         public string Message { get; set; }
+        public bool IsAttachment { get; set; }
+        public string Attachment { get; set; }
+        public bool IsRead { get; set; }
+
+        public string ReceiverName { get; set; }
     }
 }

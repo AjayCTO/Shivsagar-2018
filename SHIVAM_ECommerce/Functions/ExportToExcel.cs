@@ -82,6 +82,13 @@ namespace SHIVAM_ECommerce.Functions
             return _AttributeSelection;
         }
 
+
+        public static List<Category> getCategory()
+        {
+             var _db = new ApplicationDbContext();
+             var Categories = _db.Cateogries.ToList();
+             return Categories;
+        }
         public static List<ProductAttributesRelation> GetCustomColumns(int SupplierID)
         {
             var _db = new ApplicationDbContext();
@@ -114,6 +121,46 @@ namespace SHIVAM_ECommerce.Functions
             {
                 Tablecolumns.Columns.Add(_AttributeSelection[i]);
             }
+
+            CsvfileWriter.WriteLine(string.Join(",", Tablecolumns.Columns.Cast<DataColumn>().Select(csvfile => csvfile.ColumnName)));
+
+            CsvfileWriter.Flush();
+            CsvfileWriter.BaseStream.Seek(0, SeekOrigin.Begin);
+
+
+            HttpContext.Current.Response.Clear();
+            HttpContext.Current.Response.AddHeader("content-disposition", String.Format("attachment; filename={0}", FileName + ".xls"));
+            return new FileStreamResult(CsvfileWriter.BaseStream, "application/vnd.ms-excel");
+            //return new FileStreamResult(CsvfileWriter.BaseStream, "text/csv");
+            //return new FileStreamResult(CsvfileWriter.BaseStream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+
+        }
+        public static FileStreamResult getCategory(int SupplierID)
+        {
+            string FileName = "Sheet1";
+            string NewconnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+            var _path = HttpContext.Current.Server.MapPath("~/DownloadedFiles/" + FileName);
+            StreamWriter CsvfileWriter = new StreamWriter(new MemoryStream(), Encoding.UTF8);
+
+            //This Block of code for getting the Table Headers
+            DataTable Tablecolumns = new DataTable();
+            var _FieldList = new List<string>();
+
+            var _AttributeSelections = getCategory();
+
+            //_FieldList.Add("Name"); _FieldList.Add("ProductCode"); _FieldList.Add("Description"); _FieldList.Add("categoryName"); _FieldList.Add("UnitOfMeasure");
+            //_FieldList.Add("ManuFacturer"); _FieldList.Add("HighQuantityThreshold"); _FieldList.Add("LowQuantityThreshold"); _FieldList.Add("IsFeatured");
+            //_FieldList.Add("ProductStatus");
+            _FieldList.Add("Category Name");
+            for (int i = 0; i < _FieldList.Count(); i++)
+            {
+                Tablecolumns.Columns.Add(_FieldList[i]);
+                for (int j = 0; j < _AttributeSelections.Count(); j++)
+                {
+                    Tablecolumns.Columns.Add(_AttributeSelections[j].CategoryName);
+                }
+            }
+
 
             CsvfileWriter.WriteLine(string.Join(",", Tablecolumns.Columns.Cast<DataColumn>().Select(csvfile => csvfile.ColumnName)));
 

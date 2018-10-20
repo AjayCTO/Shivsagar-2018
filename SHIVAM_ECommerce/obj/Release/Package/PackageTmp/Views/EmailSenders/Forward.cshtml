@@ -32,7 +32,7 @@
                     @Html.HiddenFor(model=>model.IsAttachment)
                   <input type="hidden" name="ReceiverIDs" id="ReceiverIDs" />
                     @Html.AntiForgeryToken()
-                    @Html.ValidationSummary(true)
+                    @*@Html.ValidationSummary(true)*@
                
                     @Html.HiddenFor(model => model.Id)
 
@@ -46,20 +46,24 @@
 
                                 <div class="panel-body message">
                                     <div class="form-group">
-                                        <label class="control-label">*Send To:</label>
-                                        <div>
-                                            <select class="myselect form-control" data-val="true" data-val-required="ReceiverName is required" multiple="multiple" id="ReceiverId" name="ReceiverId"></select>
+                                        <div class="col-md-2">
+                                            <label class="control-label">To:</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <select class="myselect form-control" data-val="true" data-val-required="ReceiverName is required" multiple="multiple" id="ReceiverId" name="ReceiverId"></select>
                                                 @Html.ValidationMessageFor(model => model.ReceiverId)
-                                        </div> 
-                                    </div>
+                                            </div>
+                                        </div>
 
                                     <div class="form-group">
-                                        <label class="control-label">Subject:</label>
-
-                                        @Html.TextBoxFor(model => model.Subject, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.Subject)
-
-                                    </div>
+                                        <div class="col-md-2">
+                                            <label class="control-label">Subject:</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                @Html.TextBoxFor(model => model.Subject, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Subject)
+                                            </div>
+                                        </div>
                                     @*<div class="form-group">
                                         <label class="col-sm-1 control-label">Subject:</label>
                                         <div class="col-md-11">
@@ -70,15 +74,19 @@
                                     </div>*@
 
                                     <div class="form-group">
-                                        <label class="control-label">Attachment:</label>
-                                        <div class="custom-file" style="width:300px">
-
-                                            <input type="file" class="custom-file-input form-control" name="file" id="file">
-                                            <label class="custom-file-label">Choose file</label>
-
+                                        <div class="col-md-2">
+                                            <label class="control-label">Attachment:</label>
                                         </div>
-                                        <div class="gallery"></div>
-                                    </div>
+                                        <div class="col-md-5">
+                                            <div class="custom-file" style="width:300px">
+
+                                                <input type="file" class="custom-file-input form-control" name="file" id="file">
+                                                <label class="custom-file-label">Choose file</label>
+
+                                            </div>
+                                            <div class="gallery"></div>
+                                        </div>
+                                        </div>
 
                                     @*<div class="form-group">
                                         <div class="col-11">
@@ -91,19 +99,23 @@
                                         
                                     </div>*@
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="attach">
+                                        <div class="col-md-5">
+                                            <div class="col-md-12">
+                                                <div class="attach">
 
+                                                </div>
+                                            </div>
                                             </div>
                                         </div>
-                                    </div>
                                     <div class="form-group">
-
-                                        <label class="control-label">*Message:</label>
-                                        @Html.TextAreaFor(model => model.ContentMsg, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.ContentMsg)
-
-                                    </div>
+                                        <div class="col-md-2">
+                                            <label class="control-label">*Message:</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                @Html.TextAreaFor(model => model.ContentMsg, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.ContentMsg)
+                                            </div>
+                                        </div>
 
                                     @*<div class="form-group">
                                         <label class="col-sm-1 control-label">Message:</label>
@@ -116,9 +128,11 @@
 
 
                                     <div class="form-group">
-                                        <button type="submit" id="submit" class="btn btn-primary btn-space"><i class="fa fa-check"></i>Send</button>
-                                        <a class="btn btn-secondary" href="/EmailSenders/Index"><i class="fa fa-times"></i>Discard</a>
-                                    </div>
+                                        <div class="col-md-5">
+                                            <button type="submit" id="submit" class="btn btn-primary btn-space"><i class="fa fa-check"></i> Send</button>
+                                            <a class="btn btn-secondary" href="/EmailSenders/Index"><i class="fa fa-times"></i> Discard</a>
+                                            </div>
+                                        </div>
                                     @*<div class="form-group">
                                         <div class="col-md-5">
                                             <button type="submit" id="submit" class="btn btn-success">Send</button>

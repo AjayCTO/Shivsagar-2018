@@ -49,19 +49,27 @@ namespace SHIVAM_ECommerce.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindAsync(model.UserName, model.Password);
-                if (user != null)
+                try
                 {
+                    var user = await UserManager.FindAsync(model.UserName, model.Password);
+                    if (user != null)
+                    {
 
-                    await SignInAsync(user, model.RememberMe);
-                    var _LogClass = new CommonMethods();
+                        await SignInAsync(user, model.RememberMe);
+                        var _LogClass = new CommonMethods();
 
-                    Session["CurrentUserContext"] = _LogClass.GetCurrentUser();
-                    return RedirectToLocal(returnUrl);
+                        Session["CurrentUserContext"] = _LogClass.GetCurrentUser();
+                        return RedirectToLocal(returnUrl);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Invalid username or password.");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "Invalid username or password.");
+                    return View(ex);
+
                 }
             }
 
@@ -447,6 +455,7 @@ namespace SHIVAM_ECommerce.Controllers
            // RemoveCache();
             HttpContext.Cache.Remove("UserClaims");
             Session["SelectedSupplier"] = null;
+            Session["Drpsupplierid"] = null;
             return RedirectToAction("Index", "Home");
         }
         private void RemoveCache()

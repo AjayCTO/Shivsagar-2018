@@ -31,6 +31,7 @@ namespace SHIVAM_ECommerce.Controllers
 
         public JsonResult GetProductAttributes(int SupplierID)
         {
+            Session["Drpsupplierid"] = SupplierID;
             var productAttributes = _ProductAttributeRelationrepository.GetAll().Where(x => x.SupplierID == SupplierID).Select(p => new { Name = p.ProductAttributes.AttributeName, Id = p.ProductAttributesId, Descp = p.ProductAttributes.AttributeDescription });
             return Json(productAttributes.ToList(), JsonRequestBehavior.AllowGet);
 
@@ -63,7 +64,9 @@ namespace SHIVAM_ECommerce.Controllers
 
                 }
                 _ProductAttributeRelationrepository.Save();
+                
                 this.AddNotification("Attributes updated successfully.", NotificationType.SUCCESS);
+                
                 return Json(new { Success = true, ex = "", data = "" });
             }
             catch (Exception ex)

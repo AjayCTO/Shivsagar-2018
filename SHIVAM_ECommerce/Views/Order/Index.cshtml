@@ -3,6 +3,12 @@
 @{
     ViewBag.Title = "Index";
     var _CurrentUser = Session["CurrentUserContext"] as SHIVAM_ECommerce.ViewModels.CurrentUserContext;
+    var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+    serializer.MaxJsonLength = Int32.MaxValue;
+    var a = ViewBag.OrderStatus as IEnumerable<SHIVAM_ECommerce.Models.OrderStatus>;
+    var statuslist = a.Select(x => x.Status);
+    var status = serializer.Serialize(statuslist);
+  
 }
 
 <div class="row page-titles">
@@ -97,6 +103,12 @@
     <script>
         var _myTableData;
         var _supplierID = '@_CurrentUser.SupplierID';
+        debugger;
+        var _allstatus = '@Html.Raw((status))';
+       var ab= $.parseJSON(_allstatus);
+        console.log("ceadf");
+        console.log(_allstatus);
+        console.log(ab);
         $(document).ready(function () {
 
 
@@ -171,8 +183,28 @@
 
                          {
 
+
+
                              "data": "Status", "name": "Status", "autoWidth": true, "orderable": false,
-                         },
+                             render: function (data, type, row) {
+                                 debugger;
+                                 var ddl = "<select size='1' id='" + row.Id + "-Status' onchange='ChangeOrderStatus(" + row.Id + ")'  name='" + row.Id + "-Status'>";
+                                 for (var i = 0; i < ab.length; i++) {
+                                     debugger;
+                                     
+                                     if (data === ab[i]) {
+                                         ddl = ddl + "<option selected value='" + ab[i] + "'>" + ab[i] + "</option>";
+                                    
+                                     }
+                                     else {
+                                         ddl = ddl + "<option value='" + ab[i] + "'>" + ab[i] + "</option>";
+                                     }
+                                 }
+                                 ddl += "</select>";
+                                
+                                 return ddl;
+                             }
+                             },
                          {
                              "orderable": false,
                              "mRender": function (data, type, row) {
@@ -190,6 +222,9 @@
                 }
 
             });
+
+       
+          
 
             $("#SupplierID").blur(function () {
                 _myTableData.clear().draw();
@@ -250,6 +285,31 @@
             $.get("/Order/GetOrderItems?orderID=" + id, function (data) {
                 $("#OrderItems").find(".modal-body").html(data);
                 $("#OrderItems").modal('show');
+            });
+        }
+
+        function ChangeOrderStatus(value) {
+            debugger;
+       
+            var SelectedStatus= $('#'+value+"-Status").find(":selected").text();
+            $.ajax({
+                url: '/Order/UpdateOrdersStatus?id=' + value + '&status=' + escape(SelectedStatus),
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    debugger;
+                    if (data.Success == true) {
+                               
+                        toastr.success("Successfully Changed");
+                    }
+
+                    else {
+                        alert("error occured");
+                    }
+                }
+              
+               
             });
         }
 

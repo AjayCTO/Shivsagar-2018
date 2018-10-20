@@ -145,10 +145,11 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\CustomerOrdersController.cs" />
     <Compile Include="Controllers\CustomerReviewsController.cs" />
     <Compile Include="Controllers\CustomerWishlistController.cs" />
+    <Compile Include="Controllers\OrderItemViewModel.cs" />
     <Compile Include="Controllers\ProductController.cs" />
-    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ShoppingController.cs" />
     <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\WishlistDeleteController.cs" />
@@ -238,6 +239,7 @@
     <Compile Include="Models\OrderStatu.cs">
       <DependentUpon>ShivSaagarOnlineDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\Payment.cs">
       <DependentUpon>ShivSaagarOnlineDB.tt</DependentUpon>
     </Compile>

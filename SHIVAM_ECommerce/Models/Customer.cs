@@ -12,7 +12,7 @@ namespace SHIVAM_ECommerce.Models
         [Required]
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        [Required]
+  
         public string Phone { get; set; }
 
         [EmailAddress]

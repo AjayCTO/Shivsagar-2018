@@ -1,0 +1,93 @@
+﻿@model SHIVAM_ECommerce.ViewModels.ProductViewmodel
+@{
+    ViewBag.Title = "Details";
+    var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+    serializer.MaxJsonLength = Int32.MaxValue;
+    var jsonModel = serializer.Serialize(Model);
+}
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Product Details</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/Product/GetAllProducts">Products</a></li>
+            <li class="breadcrumb-item active">Product Details</li>
+        </ol>
+    </div>
+</div>
+
+
+<div class="container-fluid" ng-app="Details" ng-controller="DetailsController">
+    <div class="card">
+
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div>
+                        <img src="" id="mainImage" alt="Alternate Text" height="380" />
+                    </div>
+                    <div class="listImages">
+
+                    </div>      
+                </div>
+                <div class="col-md-8">
+                    <table>
+                        <tr>
+                            <td>{{ProductDetails.ProductName}}</td>
+
+                        </tr>
+                        <tr>
+                            <td><h2>₹{{ProductDetails.ProductPrice}}</h2></td>
+                        </tr>
+                        <tr>
+                            <td>
+                              {{ProductDetails.Description}}
+                            </td>
+                        </tr>
+                        <tr>
+                           
+                        </tr>
+
+                    </table>
+
+
+                    @*<div class="col-md-3">Product Name</div>
+                        <div class="co-md-5">@Model.ProductName</div>
+                        <div class="col-md-3">Product Price</div>
+                        <div class="co-md-5">@Model.ProductPrice</div>
+                        <div class="col-md-3">Product Description</div>
+                        <div class="co-md-5">@Model.Description</div>
+                        <div class="col-md-3">Stock Keeping Unit(SKU)</div>
+                        <div class="co-md-5">@Model.SKU</div>*@
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+    <script>
+        var _productData = '@Html.Raw((jsonModel))';
+        console.log("productDetails");
+        console.log(_productData);
+
+
+        $(document).on("click", ".listImages img", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            $("#mainImage").attr("src", $(this).attr("src"));
+        });
+    </script>
+<link href="~/Content/toaster.css" rel="stylesheet" />
+
+<script src="~/Scripts/angular.js"></script>
+
+<script src="~/Scripts/toaster.js"></script>
+<script src="~/Scripts/controllers/Details.js"></script>
+}

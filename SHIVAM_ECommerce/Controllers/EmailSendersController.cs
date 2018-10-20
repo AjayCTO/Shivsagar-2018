@@ -67,7 +67,42 @@ namespace SHIVAM_ECommerce.Controllers
                return View(new List<EmailDetail>());
            }
        }
+      
 
+                public ActionResult LoadSentData()
+        {
+
+            var draw = Request.Form.GetValues("draw").FirstOrDefault();
+            var start = Request.Form.GetValues("start").FirstOrDefault();
+            var length = Request.Form.GetValues("length").FirstOrDefault();
+            var searchitem = Request["search[value]"];
+            //Find Order Column
+            var sortColumn = Request.Form.GetValues("columns[" + Request.Form.GetValues("order[0][column]").FirstOrDefault() + "][name]").FirstOrDefault();
+            var sortColumnDir = Request.Form.GetValues("order[0][dir]").FirstOrDefault();
+
+
+            int pageSize = length != null ? Convert.ToInt32(length) : 0;
+            int skip = start != null ? Convert.ToInt32(start) : 0;
+            int recordsTotal = 0;
+              var user_name= User.Identity.GetUserName();
+              var Emailrecorddata = db.EmailRecord.Where(x => x.Email_Sender == user_name).ToList();
+            // dc.Configuration.LazyLoadingEnabled = false; // if your table is relational, contain foreign key
+              var v = (from a in Emailrecorddata select a);
+            if (!string.IsNullOrEmpty(searchitem))
+            {
+
+                v = v.Where(b => b.Email_Sender.ToLower().Contains(searchitem.ToLower()));
+            }
+            //SORT
+            if (!(string.IsNullOrEmpty(sortColumn) && string.IsNullOrEmpty(sortColumnDir)))
+            {
+                v = v.OrderBy(sortColumn + " " + sortColumnDir);
+            }
+
+            recordsTotal = v.Count();
+            var data = v.Skip(skip).Take(pageSize).ToList();
+            return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data.Select(p => new { id = p.Id, ReceiverName=p.ReceiverName, Email_Sender = p.Email_Sender, Email_Receiver = p.Email_Receiver, Send_Date = p.Send_Date, Subject = p.Subject, Message = p.Message, IsAttachment = p.IsAttachment, IsRead = p.IsRead, Attachment = p.Attachment }) }, JsonRequestBehavior.AllowGet);
+        }
        public ActionResult LoadData()
        {
 
@@ -198,9 +233,17 @@ namespace SHIVAM_ECommerce.Controllers
         // GET: /EmailSenders/Create
         public ActionResult Create()
         {
-
-            return View();
+           var subject= TempData["Subject"];
+           ViewBag.EmailSubject = subject;
+           return View();
         }
+
+    [HttpPost]
+        public ActionResult Subject(string subject)
+        {
+            TempData["Subject"] = subject;
+            return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
+          }
         [HttpPost]
         public JsonResult GetUser(string term)
         {
@@ -219,6 +262,8 @@ namespace SHIVAM_ECommerce.Controllers
         {
             if (ModelState.IsValid)
             {
+                emailrecord obj= new emailrecord();
+              
               string s = emailsender.ReceiverIDs;
      
                string[] words = s.Split(',');
@@ -229,12 +274,14 @@ namespace SHIVAM_ECommerce.Controllers
                     if (file != null)
                     {
                         emailsender.IsAttachment = true;
+                        obj.IsAttachment = true;
+                       
                         string pic = System.IO.Path.GetFileName(file.FileName);
                         string path = System.IO.Path.Combine(
-                                               Server.MapPath("~/images"), pic);
+                                               Server.MapPath("~/ProductImages"), pic);
                         // file is uploaded
                         file.SaveAs(path);
-
+                        obj.Attachment = pic;
                         emailsender.Attachment = pic;
 
                         // save the image path path to the database or you can send image 
@@ -246,19 +293,30 @@ namespace SHIVAM_ECommerce.Controllers
                             byte[] array = ms.GetBuffer();
                         }
                     }
+
                     emailsender.ReceiverId = word;
+                    var name = db.Users.Where(x => x.Id == word).FirstOrDefault();
                     emailsender.SenderId = User.Identity.GetUserName();
                     emailsender.SenderIds = User.Identity.GetUserId();
                     emailsender.SendingDate = DateTime.Now.ToString();
-                 
+                    obj.Subject = emailsender.Subject;
+                    obj.Email_Sender = emailsender.SenderId;
+                    obj.Message = emailsender.ContentMsg;
+                    obj.Send_Date = emailsender.SendingDate;
+                    obj.Email_Receiver = word;
+                    obj.ReceiverName = name.UserName;
+
+                    db.EmailRecord.Add(obj);
+                  await  db.SaveChangesAsync();
+                  
                     db.EmailSenders.Add(emailsender);
 
                     await db.SaveChangesAsync();
-               
+                    
 
 
 
-                }
+                 }
 
                 this.AddNotification("Send successfully.", NotificationType.SUCCESS);
                 return RedirectToAction("Index", "EmailSenders");
@@ -361,7 +419,7 @@ namespace SHIVAM_ECommerce.Controllers
 
             string fileName = name;
 
-            string folder = Server.MapPath("/images");
+            string folder = Server.MapPath("/ProductImages");
             folder = folder.Replace("EmailSenders", "");
             //HttpContext.Response.AddHeader("content-dispostion", "attachment; filename=" + fileName);
             return File(new FileStream(folder + "/" + fileName, FileMode.Open), "content-dispostion", name);
@@ -369,7 +427,10 @@ namespace SHIVAM_ECommerce.Controllers
             throw new ArgumentException("Invalid file name of file not exist");
         }
 
-
+        public ActionResult Sent()
+        {
+            return View();
+        }
 
         // POST: /EmailSenders/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -437,7 +498,17 @@ namespace SHIVAM_ECommerce.Controllers
             await db.SaveChangesAsync();
             return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
         }
+
+    [HttpPost]
+    public async Task<ActionResult> DeleteSentConfirmed(int id)
+    {
+        emailrecord emailrecord = db.EmailRecord.Where(x => x.Id == id).FirstOrDefault();
+        db.EmailRecord.Remove(emailrecord);
+        await db.SaveChangesAsync();
+        return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
+    }
         
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

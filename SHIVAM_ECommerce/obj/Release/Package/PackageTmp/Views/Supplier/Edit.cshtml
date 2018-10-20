@@ -4,11 +4,17 @@
     ViewBag.Title = "Edit";
 }
 
+
+<style>
+    .stars {
+        color: #f55555;
+    }
+</style>
 <div class="row page-titles">
 
 
     <div class="col-md-5 align-self-center">
-        <h3 class="text-primary">Supplier</h3>
+        <h3 class="text-primary">Supplier Edit</h3>
     </div>
     <div class="col-md-7 align-self-center">
         <ol class="breadcrumb">
@@ -18,227 +24,219 @@
         </ol>
     </div>
 </div>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
+<div class="card">
 
+    <div class="card-body">
 
-            @using (Html.BeginForm("Edit", "Supplier", FormMethod.Post,
+        @using (Html.BeginForm("Edit", "Supplier", FormMethod.Post,
                             new { enctype = "multipart/form-data" }))
-            {
-                @Html.AntiForgeryToken()
+        {
+            @Html.AntiForgeryToken()
+            @*@Html.ValidationSummary()*@
 
-                @Html.ValidationSummary(true)
-                @Html.HiddenFor(model => model.Id)
-                @Html.HiddenFor(model => model.UserID)
-                @Html.HiddenFor(model => model.Sort)
-                @Html.HiddenFor(model => model.CreatedDate)
-                @Html.HiddenFor(model => model.Logo)
-                @Html.HiddenFor(model => model.PlanEndDate)
-                @Html.HiddenFor(model => model.PlanStartDate)
-                @Html.HiddenFor(model => model.ProductCount)
-                @Html.HiddenFor(model => model.UserCount)
-                <input type="hidden" name="UserName" id="UserName" value="UserName">
-                <input type="hidden" name="Password" id="Password" value="Password123">
+            @Html.HiddenFor(model => model.Id)
+            @*@Html.HiddenFor(model => model.Logo)*@
+            <input type="hidden" id="Logo" name="Logo" />
+            @Html.HiddenFor(model => model.UserID)
+            @Html.HiddenFor(model => model.PlanStartDate)
+            @Html.HiddenFor(model => model.PlanEndDate)
+            @Html.HiddenFor(model => model.ParentSupplierID)
+            @Html.HiddenFor(model => model.RegisteredByID)
+            @Html.HiddenFor(model=>model.CreatedDate)
+            <input type="hidden" name="UserName" id="UserName" value="UserName">
+            <input type="hidden" name="Password" id="Password" value="Password123">
 
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title"><i class="fa fa-plus"></i> Personal Details</h3>
-                    </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        @*<div class="card-header">
+                                <h3 class="card-title">Personal Information</h3>
+                            </div>*@
 
-                    <div class="card-body">
-                        <br />
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.FirstName,"Name", new { @class = "control-label" })
-                                    <div class="">
-                                        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control requiredfield" })
-                                        @Html.ValidationMessageFor(model => model.FirstName)
-                                    </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>First Name<span class="stars">*</span></label>
+                                <div>
+                                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control requiredfield" })
+                                    @Html.ValidationMessageFor(model => model.FirstName)
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Email, new { @class = "control-label" })
-                                    <div class="">
-                                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control requiredfield UniqueEmailvalid UniqueEmail" })
-                                        @Html.ValidationMessageFor(model => model.Email)
-                                    </div>
+                            <div class="form-group">
+                                <label>Last Name<span class="stars">*</span></label>
+                                <div>
+                                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control requiredfield" })
+                                    @Html.ValidationMessageFor(model => model.LastName)
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label>Company Name</label>
+                                <div>
+                                    @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.CompanyName)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Supplier Type</label>
+                                <div>
+                                    @Html.TextBoxFor(model => model.SupplierType, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.SupplierType)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                               <label>Email<span class="stars">*</span></label>
+                                <div class="">
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control requiredfield UniqueEmailvalid" })
+                                    @Html.ValidationMessageFor(model => model.Email)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PlanID, "Plan", new { @class = "control-label " })
+                                <div class="">
+                                    @*@Html.DropDownList("PlanID", String.Empty)*@
+                                    @Html.DropDownList("PlanID", (IEnumerable<SelectListItem>)ViewBag.PlanID, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PlanID)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Address1, new { @class = "control-label " })
+                                <div class="">
+                                    @Html.TextAreaFor(model => model.Address1, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Address1)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Address2, new { @class = "control-label " })
+                                <div class="">
+                                    @Html.TextAreaFor(model => model.Address2, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Address2)
+                                </div>
+                            </div>
+                            <div id="selection">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.State, new { @class = "control-label " })
+                                    <select id="listBox" onchange='selct_district(this.value)' class="form-control"></select>
+                                    @Html.HiddenFor(model => model.State)
+                                    @Html.ValidationMessageFor(model => model.State)
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.City, new { @class = "control-label " })
+                                    <div class="">
+                                        <select id='secondlist' class="form-control"></select>
+                                        @Html.HiddenFor(model => model.City)
+
+                                        @Html.ValidationMessageFor(model => model.City)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Postal Code</label>
+                                <div class="">
+                                    @Html.TextBoxFor(model => model.PostalCode, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.PostalCode)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Phone, new { @class = "control-label " })
+                                <div class="">
+                                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Phone)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" value="Create" class="btn btn-primary">
+                                    <i class="fa fa-check"></i>
+                                    Update
+                                </button>
+               
+                                <a href="/Supplier" class="btn btn-secondary btn-gray">
+                                    <i class="fa fa-times"></i>
+                                    Cancel
+                                </a>
+                            </div>
+                  
 
                         </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Phone, new { @class = "control-label " })
-                                    <div class="">
-                                        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.Phone)
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Address2, new { @class = "control-label " })
-                                    <div class="">
-                                        @Html.TextAreaFor(model => model.Address2, new { @class = "form-control requiredfield" })
-                                        @Html.ValidationMessageFor(model => model.Address2)
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                     
-                    
-                    
                     </div>
+
+
                 </div>
 
-                <div class="row">
-                    <div class="col-md-12">
+                <div class="col-md-6">
 
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title"><i class="fa fa-plus"></i> Company Details</h3>
-                            </div>
-                            <div class="card-body">
+                    <div class="card">
+                        @*<div class="card-header">
+
+                            </div>*@
+                        <div class="card-body">
+                            <h3 class="card-title text-center">Company Logo</h3>
+                            <div style="text-align:center">
+                                @if (Model.Logo != null)
+                                {
+                                    <img style="height:100px; width:120px;" src="@Url.Content("~/SupplierImage/"+Model.Logo)" alt="Alternate Text" />
+                                }
+
+
+                                @if (Model.Logo == null)
+                                {
+                                    <img style="height:100px; width:100px;" src="@Url.Content("~/CategoryImage/no-image.png")" alt="Alternate Text" />
+                                }
+
                                 <br />
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Company Name</label>
-                                            <div class="">
-                                                @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control" })
-                                                @Html.ValidationMessageFor(model => model.CompanyName)
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label">Supplier Type</label>
-                                            <div class="">
-                                                @Html.TextBoxFor(model => model.SupplierType, new { @class = "form-control" })
-                                                @Html.ValidationMessageFor(model => model.SupplierType)
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.City, new { @class = "control-label " })
-                                            <div class="">
-                                                @Html.TextBoxFor(model => model.City, new { @class = "form-control" })
-                                                @Html.ValidationMessageFor(model => model.City)
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.State, new { @class = "control-label " })
-                                            <div class="">
-                                                @Html.TextBoxFor(model => model.State, new { @class = "form-control" })
-                                                @Html.ValidationMessageFor(model => model.State)
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.PlanID, "Plan", new { @class = "control-label " })
-                                            <div class="">
-                                                @*@Html.DropDownList("PlanID", String.Empty)*@
-                                                @Html.DropDownList("PlanID", (IEnumerable<SelectListItem>)ViewBag.PlanID, new { @class = "form-control" })
-                                                @Html.ValidationMessageFor(model => model.PlanID)
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-md-6">
-
-                                        <div style="text-align:center">
-                                            @if (Model.Logo != null)
-                                            {
-                                                <img style="height:100px; width:120px;" src="@Url.Content("~/SupplierImage/" + Model.Logo)" alt="Alternate Text" />
-                                            }
-
-
-                                            @if (Model.Logo == null)
-                                            {
-                                                <img style="height:100px; width:100px;" src="@Url.Content("~/CategoryImage/no-image.png")" alt="Alternate Text" />
-                                            }
-
-
-                                            <div class="form-group">
-
-                                                <div class="col-md-10" >
-                                                    <label for="file">Upload Image:</label>
-
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input form-control" name="file" id="file" accept="image/*">
-                                                        <label class="custom-file-label">Choose file</label>
-                                                    </div>
-
-                                                    <div class="gallery"></div>
-                                                </div>
-
-
-                                            </div>
-                                        </div>
-
-                                        <br />
-
-                                        <div class="form-group">
-                                            <label class="control-label">Postal Code</label>
-                                            <div class="">
-                                                @Html.TextBoxFor(model => model.PostalCode, new { @class = "form-control" })
-                                                @Html.ValidationMessageFor(model => model.PostalCode)
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.Country, new { @class = "control-label " })
-                                            <div class="">
-                                                @Html.TextBoxFor(model => model.Country, new { @class = "form-control" })
-                                                @Html.ValidationMessageFor(model => model.Country)
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            @Html.LabelFor(model => model.Address1, new { @class = "control-label " })
-                                            <div class="">
-                                                @Html.TextBoxFor(model => model.Address1, new { @class = "form-control" })
-                                                @Html.ValidationMessageFor(model => model.Address1)
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
+                                <br />
                                 <div class="form-group">
-                                    <div class="col-md-offset-2">
-                                        <button type="submit" class="btn btn-primary"><i class="fa fa-check"></i> Update </button>
-                                        <a href="/Supplier" class="btn btn-secondary btn-gray"><i class="fa fa-times"></i>Cancel</a>
-                                    </div>
-                                </div>
 
+                                    <div class="col-md-12">
+
+                                        @*<input type="file" name="file" id="file" style="width: 100%;" />*@
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input form-control" name="file" id="file" accept="image/*">
+                                            <label class="custom-file-label">Choose file</label>
+                                        </div>
+
+                                        <div class="gallery"></div>
+                                    </div>
+
+
+                                </div>
                             </div>
 
-                        </div>
 
+
+
+
+                        </div>
                     </div>
 
 
+
+
+
                 </div>
-                             
-          
 
-            }
 
-        </div>
+            </div>
+
+
+        }
+
+
+
 
     </div>
-
-
 </div>
 
 @section Scripts {
 
 
 @Scripts.Render("~/bundles/jqueryval")
-
+<script src="~/Scripts/state.js"></script>
 
 <script>
     var current = location.pathname;
@@ -291,6 +289,28 @@
 
 
         $(document).ready(function () {
+
+         
+            $("#Logo").val('@Model.Logo');
+            $(window).load(function() 
+            {
+                $("#listBox").val('@Model.State');
+                selct_district('@Model.State');
+                $("#secondlist").val('@Model.City');
+            });
+        
+
+            $("#listBox").change(function () {
+                $("#State").val($(this).val());
+            });
+
+            $("#secondlist").change(function () {
+                $("#City").val($(this).val());
+            });
+
+
+    
+
             var Emailcheck = '@Model.Email';
 
 
@@ -303,14 +323,14 @@
                 else {
                     return true;
                 }
-            }, "This Field is Required");
+            }, "This field is required");
 
 
             $.validator.addMethod("UniqueEmailvalid", function (value, element) {
 
                
                 return /^\b[A-Z0-9._%-]+@@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i.test(value);
-            }, "Please Enter Email & Should be Valid");
+            }, "Please enter valid  email");
 
 
             $.validator.addMethod('UniqueEmail', function (value) {
@@ -326,7 +346,9 @@
                     return true;
                 }
 
-            },"Please eneter a unique Email ! It's already Exist");
+            },"Please enter a different Email ! It's already Exist");
+
+
 
 
         });

@@ -10,6 +10,13 @@
         max-width: 1000px;
     }
 
+    .suc {
+        cursor: pointer;
+    }
+
+    .star {
+        color: #fa5d5d;
+    }
 
     .modal-body .row {
         margin-left: 0;
@@ -41,14 +48,36 @@
         padding-bottom: 15px;
     }
 
-  
+
 
     .btn-green {
-        background-color: #26dad2;
+        background-color: #5c4ac7;
     }
 
-    .choosePlan{
-        color:white;
+    #PlanName {
+        color: white;
+    }
+
+    .choosePlan {
+        color: white;
+    }
+
+    .field-icon {
+        float: right;
+        margin-left: -25px;
+        margin-top: -25px;
+        margin-right: 10px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .container {
+        padding-top: 50px;
+        margin: auto;
+    }
+
+    .features {
+        font-size: 12px;
     }
 </style>
 <div id="myModal" class="modal" role="dialog">
@@ -68,37 +97,44 @@
                     @foreach (var items in allplans)
                     {
                         <div class="col-sm-6 col-lg-3 card">
+                            <a class="suc choosePlan" data-plan="@items.PlanName"btnname=" @items.Id " value="chooseplan">
+                                <div class="card-header bg-indigo">
+                                    <div class="card-category getname_@items.Id"><i class="fa fa-ship"></i> @items.PlanName</div>
+                                </div>
 
-                            <div class="card-header bg-indigo">
-                                <div class="card-category getname_@items.Id">@items.PlanName</div>
-                            </div>
+                                <div>
+                                    <input type="hidden" class="getid_@items.Id" value="@items.Id" />
+                                    <div id="plans_@items.Id" class="status"></div>
+                                    <div class="card-body text-center">
+                                        <br />
+                                        <h6><b><i class="fa fa-cube" aria-hidden="true"></i> @items.ProductBucketCount Products</b></h6>
+                                        <h6><b><i class="fa fa-user" aria-hidden="true"></i> @items.UserBucketCount Users</b></h6>
 
-                            <div>
-                                <input type="hidden" class="getid_@items.Id" value="@items.Id" />
-                                <div id="plans_@items.Id" class="status"></div>
-                                <div class="card-body text-center">
+                                        <ul class="list-unstyled leading-loose">
+                                            <li><h6> <b><i class="fa fa-flash"></i> Features</b></h6></li>
 
-                                    <div class="display-3 my-4">@items.YearlyPrice</div>
-                                    <ul class="list-unstyled leading-loose">
-                                        <li> <b> Features</b></li>
-
-                                        @foreach (var item1 in items.Features)
-                                        {
-                                            <li><i class="fe fe-check text-success mr-2" aria-hidden="true"></i> @item1.Feature.Title</li>
-                                        }
+                                            @foreach (var item1 in items.Features)
+                                            {
+                                                <li><h6 class="features">@item1.Feature.Title</h6></li>
+                                            }
 
 
 
-                                    </ul>
-                                    <div class="text-center mt-6">
+                                        </ul>
+                                        <hr />
+                                        <p><b>Monthly Price :</b> <i class="fa fa-inr"></i> @items.TotalMonthlyPrice</p>
+                                        <p><b>Yearly Price :</b> <i class="fa fa-inr"></i> @items.TotalYearlyPrice</p>
+                                        <div class="text-center mt-6">
 
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="card-footer">
-                                    <input type="button" class="btn btn-green btn-block choosePlan" data-plan="@items.PlanName" btnname=" @items.Id " value=" choose plan" />
-                                </div>
 
+                                </div>
+                            </a>
+
+                            <div class="card-footer">
+                                <button type="button" class="btn btn-primary btn-block choosePlan" data-plan="@items.PlanName" btnname=" @items.Id "><i class='fa fa-check'> Choose Plan</i> </button>
                             </div>
                         </div>
                     }
@@ -125,45 +161,51 @@
                             </div>
                         </div>
                         <h4 style="margin-bottom: 0px; margin-top: 10px;">Create new account</h4>
-
-                        @using (Html.BeginForm("CreateNew", "Supplier", FormMethod.Post, new {@id="SupplierForm", @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+                        <br />
+                        @using (Html.BeginForm("CreateNew", "Supplier", FormMethod.Post, new { @id = "SupplierForm", @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
                             <div class="card-body p-6">
                                 <div class="form-group">
-                                    <label class="form-label">Name</label>
+                                    <label class="form-label">First Name<span class="star">*</span></label>
                                     @Html.HiddenFor(model => model.PlanID, new { @class = "" })
                                     @Html.TextBoxFor(model => model.Name, new { @class = "form-control requiredfield" })
                                     @Html.ValidationMessageFor(model => model.Name)
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Email address</label>
-                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control UniqueEmail UniqueEmailvalid" })
+                                    <label class="form-label">Last Name<span class="star">*</span></label>
+                                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.LastName)
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email address<span class="star">*</span></label>
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control  UniqueEmailvalid" })
                                     @Html.ValidationMessageFor(model => model.Email)
                                 </div>
-                                
+
                                 <div class="form-group">
-                                    <label class="form-label">User Name</label>
+                                    <label class="form-label">User Name<span class="star">*</span></label>
                                     @Html.TextBoxFor(model => model.UserName, new { @class = "form-control minUserNameLength UniqueUserName" })
                                     @Html.ValidationMessageFor(model => model.UserName)
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Password</label>
+                                    <label class="form-label">Password<span class="star">*</span></label>
                                     @Html.PasswordFor(model => model.Password, new { @class = "form-control minPasswordLength" })
+                                    <span toggle="#Password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                     @Html.ValidationMessageFor(model => model.Password)
                                 </div>
 
-                                <div class="form-group">
-                                    <label class="form-label">Address</label>
-                                    @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.Address)
+                                @*<div class="form-group">
+                                        <label class="form-label">Address</label>
+                                        @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Address)
 
-                                </div>
+                                    </div>*@
 
                                 <div class="form-group">
-                                    <label class="form-label">Choose Plan</label>
+                                    <label class="form-label">Choose Plan <span class="star">*</span></label>
                                     <span></span>
-                                    <a href="#" data-toggle="modal" class="btn btn-success" data-target="#myModal" id="PlanName">Select Plan</a>
+                                    <a href="#" data-toggle="modal" class="btn btn-green" data-target="#myModal" id="PlanName"><i class="fa fa-handshake-o"></i> Select Plan</a>
 
                                 </div>
 
@@ -172,9 +214,13 @@
                                 </div>
                             </div>
                         }
-                        <div class="text-center text-muted">
-                            Already have account? <a href="/Account/login">Sign in</a>
+                        <br />
+                        <div class="register-link m-t-15 text-center">
+                            <p>Already have account? <a href="/Account/login">Sign in</a></p>
                         </div>
+
+
+
                     </div>
                 </div>
             </div>
@@ -201,18 +247,25 @@
 
         $("#createNewAccount").click(function () {
             if ($("#SupplierForm").valid()) {
-                $("#createNewAccount").attr("disabled","disabled")
+                $("#createNewAccount").attr("disabled", "disabled")
                 $("#createNewAccount").find("i").addClass("fa-spin");
                 $("#SupplierForm").submit();
             }
         });
-        
+
 
         $(".choosePlan").click(function () {
-            $("#PlanName").html($(this).attr("data-plan"));
+            debugger;
+            toastr.success("successfully selected");
+
+            var a = $(this).attr("data-plan");
+            $("#PlanName").html('<i class="fa fa-check"></i> ' + a);
+
             $("#PlanID").val($(this).attr("btnname"));
             $("#PlanID").trigger("change");
             $(".close").trigger("click");
+
+
         })
 
         $.validator.addMethod("UniqueEmailvalid", function (value, element) {
@@ -258,13 +311,13 @@
 
 
             if ($.trim(value) != "") {
-                return value.length >= 8 ? true : false;
+                return value.length >= 6 ? true : false;
             }
             else {
                 return true;
             }
 
-        }, "Please enter at least 8 characters for username");
+        }, "Please enter at least 6 characters for username");
         function CheckUniqueEmail(value) {
             var _x = true;
             $.ajax({
@@ -303,5 +356,17 @@
 
             return _x;
         }
+
+
+        $(".toggle-password").click(function () {
+
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
     </script>
 }

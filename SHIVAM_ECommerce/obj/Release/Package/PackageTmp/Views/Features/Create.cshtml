@@ -28,7 +28,7 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Title, new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <div class="col-md-6">
                         @Html.TextBoxFor(model => model.Title, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Title)
                     </div>
@@ -36,7 +36,7 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <div class="col-md-6">
                         @Html.TextBoxFor(model => model.Price, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Price)
                     </div>
@@ -45,7 +45,7 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <div class="col-md-6">
                         @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Description)
                     </div>
@@ -59,9 +59,10 @@
                             <i class="fa fa-check"></i>
                             Create
                             </button>
-                        <a href="/Features" class="btn btn-gray">
+                        <a href="/Features" class="btn btn-secondary btn-gray">
                             <i class="fa fa-times"></i>
-                        Cancel</a>
+                            Cancel
+                        </a>
                     </div>
                 </div>
             </div>

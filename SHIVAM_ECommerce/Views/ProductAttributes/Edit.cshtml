@@ -76,11 +76,12 @@
     <script>
         $(document).ready(function () {
 
-            var Attributename = '@Model.AttributeName';
+            var Attributenames = '@Model.AttributeName';
+            var Attributename = $.trim(Attributenames);
 
-
-            $.validator.addMethod('UniqueAttributes', function (value) {
+            $.validator.addMethod('UniqueAttributes', function (values) {
                 debugger;
+                var value = $.trim(values);
                 if (value.toLowerCase() == Attributename.toLowerCase()) {
                     return true;
                 }

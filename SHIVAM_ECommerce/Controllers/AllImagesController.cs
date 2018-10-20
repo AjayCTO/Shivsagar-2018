@@ -133,6 +133,10 @@ namespace SHIVAM_ECommerce.Controllers
             try
             {
 
+                var supplier = Session["Drpsupplierid"];
+              if (CurrentUserData.SupplierID == -1) {
+                  CurrentUserData.SupplierID = Convert.ToInt32(supplier);
+                 }
                 var _data = db.AllProductImages.Where(a => a.SupplierID == CurrentUserData.SupplierID);
                 int _TotalCount = _data.Count();
                 _data = !string.IsNullOrEmpty(model.SearchString) ? _data.Where(x => x.ImageName.Contains(model.SearchString)) : _data;

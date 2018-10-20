@@ -182,6 +182,11 @@
                         <div class="right-col d-flex align-items-lg-center flex-column flex-lg-row">
                             <!-- Search Button-->
                             <div class="nav-item">
+                                <a ng-click="GetOrder()" data-ng-hide="!authentication.isAuth" class="dropdown-toggle" data-placement="top" title="My Orders">
+                                 My Orders
+                                </a>
+                            </div>
+                            <div class="nav-item">
                                 <a href="#/WishList" data-ng-hide="!authentication.isAuth" class="dropdown-toggle" data-placement="top" title="Wishlist">
                                     <i class="icon-heart"></i>
                                     <div class="cart-no">{{CurrentWishList.length}}</div>

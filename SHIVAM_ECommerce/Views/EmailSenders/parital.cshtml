@@ -18,7 +18,7 @@
      
 
     }
-    .bg-add{
+    /*.bg-add{
         background-color:#393c76;
         color:white;
         border-radius:10px;
@@ -27,6 +27,12 @@
         border:1px groove yellow;
 
 
+    }*/
+    .badgeAlert {
+      color:white;
+       font-size:14px;
+
+      
     }
 </style>
 @Html.AntiForgeryToken()
@@ -34,12 +40,11 @@
 
 <div class="nav-link">
 
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        <span class=" fa fa-bell" style="height:20px,;color:yellow"></span>
-        <span class='badgeAlert' style="color:black">@newdata.Count()</span>
-        <span class="caret"></span>
+    <a href="/EmailSenders/index">
+        <span class="fa fa-bell" style="color:orange"><sup class='badgeAlert'>@newdata.Count()</sup></span>
+        
     </a>
-    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+    @*<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
         @foreach (var item in newdata.OrderByDescending(g => g.SendingDate))
         {
             <div class="main" onclick="Delete(@item.Id)" id='item_notification_@item.Id'>
@@ -56,7 +61,7 @@
             </div>
     
         }
-    </div>
+    </div>*@
 </div>
 
 

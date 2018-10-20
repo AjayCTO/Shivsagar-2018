@@ -22,7 +22,8 @@ namespace SHIVAM_ECommerce.ViewModels
         [Required]
         public string LastName { get; set; }
         public int PlanID { get; set; }
-
+       [Required]
+        public string CompanyName { get; set; }
         public int ProductCount { get; set; }
         public int UserCount { get; set; }
 

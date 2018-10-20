@@ -32,7 +32,7 @@
                         @Html.HiddenFor(model => model.ReceiverIDs, new { @class = "form-control" })
                        <input type="hidden" name="ReceiverIDs" id="ReceiverIDs" />
                     @Html.AntiForgeryToken()
-                    @Html.ValidationSummary(true)
+                    @*@Html.ValidationSummary(true)*@
 
 
                     <div class="row">
@@ -44,30 +44,42 @@
                             <div class="panel panel-default">
                                 <div class="panel-body message">
                                     <div class="form-group">
-                                        <label class="control-label">*Send To:</label>
-                                        <select class="form-control myselect" data-val="true" data-val-required="ReceiverName is required" multiple="multiple" id="ReceiverId" name="ReceiverId"></select>
-                                        @Html.ValidationMessageFor(model => model.ReceiverId)
-                             
-                                    </div>
+                                        <div class="col-md-2">
+                                            <label class="control-label">To:</label>
+                                            </div>
+                                            <div class="col-md-5">
+
+
+                                                <select class="form-control myselect" data-val="true" data-val-required="ReceiverName is required" multiple="multiple" id="ReceiverId" name="ReceiverId"></select>
+                                                @Html.ValidationMessageFor(model => model.ReceiverId)
+                                            </div>
+                                        </div>
 
                    
                                     <div class="form-group">
-                                        <label class="control-label">Subject:</label>
-                                
-                                            @Html.TextBoxFor(model => model.Subject, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.Subject)
-                                
-                                    </div>
+                                        <div class="col-md-2">
+                                            <label class="control-label">Subject:</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                @Html.TextBoxFor(model => model.Subject, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.Subject)
+                                            </div>
+                                        </div>
                                     <div class="form-group">
-                                         <label class="control-label">Attachment:</label>
-                                        <div class="custom-file" style="width:300px">
-                                          
+                                        <div class="col-md-2">
+                                            <label class="control-label">Attachment:</label>
+                                            </div>
+                                        <div class="col-md-5">
+                                            <div class="custom-file" style="width:300px">
+
                                                 <input type="file" class="custom-file-input form-control" name="file" id="file">
                                                 <label class="custom-file-label">Choose file</label>
 
-                                        </div>
+                                            </div>
+
                                             <div class="gallery"></div>
-                                    </div>
+                                        </div>
+                                            </div>
 
 
                                     @*<div class="form-group">
@@ -77,19 +89,22 @@
                                       
                                     </div>*@
                                     <div class="form-group">
-                                 
-                                        <label class="control-label">Message:</label>
-                                            @Html.TextAreaFor(model => model.ContentMsg, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.ContentMsg)
-                                     
-                                    </div>
+                                        <div class="col-md-2">
+                                            <label class="control-label">Message:</label>
+                                            </div>
+                                            <div class="col-md-5">
+                                                @Html.TextAreaFor(model => model.ContentMsg, new { @class = "form-control"})
+                                                @Html.ValidationMessageFor(model => model.ContentMsg)
+                                            </div>
+                                        </div>
                                       
                                         <div class="form-group">
-                                            <button type="submit" id="submit" class="btn btn-primary btn-space"><i class="fa fa-check"></i>Send</button>
-                                            <a class="btn btn-secondary btn-gray" href="/EmailSenders/Index"><i class="fa fa-times"></i>Discard</a>
+                                            <div class="col-md-5">
+                                                <button type="submit" id="submit" class="btn btn-primary btn-space"><i class="fa fa-check"></i> Send</button>
+                                                <a class="btn btn-secondary btn-gray" href="/EmailSenders/Index"><i class="fa fa-times"></i> Discard</a>
 
-                                   
-                                        </div>
+                                                </div>
+                                            </div>
 
 
                                     </div>

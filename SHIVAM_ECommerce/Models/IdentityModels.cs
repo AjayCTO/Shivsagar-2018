@@ -16,6 +16,7 @@ namespace SHIVAM_ECommerce.Models
         public DateTime? CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
 
+       
         public string Email { get; set; }
 
         public bool  EmailConfirmed { get; set; }
@@ -85,6 +86,7 @@ namespace SHIVAM_ECommerce.Models
 
         public DbSet<Cart> Cart { get; set; }
 
+        public DbSet<AdminProfile> Adminprofile { get; set; }
         public DbSet<ApplicationUserClaim> AspNetUserClaims { get; set; }
 
         public DbSet<ProductAttributes> ProductAttributes { get; set; }

@@ -30,28 +30,99 @@
 
 
             $scope.AllAttributes();
+           
+
+            CheckScopeBeforeApply();
+        }
+
+
+        $scope.UpdateAttributes = function () {
+            debugger;
             for (var i = 0; i < $scope.ProductObject.allAttributes.length; i++) {
                 if ($scope.ProductObject.allAttributes[i].Images.length > 0) {
                     for (var k = 0; k < $scope.ProductObject.allAttributes[i].Images.length; k++) {
                         var _base64String = base64ArrayBuffer($scope.ProductObject.allAttributes[i].Images[k].bytestring);
                         $scope.ProductObject.allAttributes[i].Images[k].bytestring = _base64String;
-
+                        
                     }
                 }
                 $scope.ProductAttributesList.push($scope.ProductObject.allAttributes[i]);
+
+
+                $scope.exsistingIds = [];
+
+                if ($scope.ProductAttributesList[i].ColumnsData.length != $scope.ProductAttributes.length) {                   
+                    for (var j = 0 ; j < $scope.ProductAttributesList[i].ColumnsData.length; j++) {
+                       
+                            $scope.exsistingIds.push($scope.ProductAttributesList[i].ColumnsData[j].AttributeID);
+                                        
+                    }
+                }
+
+
+                //if ($scope.ProductAttributesList[i].ColumnsData.length != $scope.ProductAttributes.length) {
+                //    debugger;
+                //    for (var j = 0 ; j < $scope.ProductAttributes.length; j++) {
+                //        if ($scope.ProductAttributesList[i].ColumnsData[j] == undefined) {
+                //            debugger;
+                //            if ($scope.exsistingIds.indexOf($scope.ProductAttributes[j].Id) == -1)
+                //            {
+                //                $scope.ProductAttributesList[i].ColumnsData.push({ AttributeID: $scope.ProductAttributes[j].Id, Value: "N/A", $$hashKey: "" })
+                //            }                            
+                //        }
+                //        else {
+                //            $scope.exsistingIds.push($scope.ProductAttributesList[i].ColumnsData[j].AttributeID);
+                //        }
+                //    }                  
+                //}  
+
+
+                if ($scope.ProductAttributesList[i].ColumnsData.length != $scope.ProductAttributes.length) {
+                    debugger;
+                    for (var j = 0 ; j < $scope.ProductAttributes.length; j++) {                                                  
+                            if ($scope.exsistingIds.indexOf($scope.ProductAttributes[j].Id) == -1)
+                            {
+                                $scope.ProductAttributesList[i].ColumnsData.push({ AttributeID: $scope.ProductAttributes[j].Id, Value: "N/A", $$hashKey: "" })
+                            }    
+                    }                  
+                }  
+
+
+
+                console.log("================$scope.ProductAttributes================");
+                console.log($scope.ProductAttributesList);
+                console.log("================$scope.ProductAttributes================");
+
+                console.log("================$scope.ProductAttributes================");
+                console.log($scope.ProductAttributes);
+                console.log("================$scope.ProductAttributes================");
+
+
+                //$scope.ProductAttributesList.ColumnsData.sort(function (a, b) {
+                //    return a.AttributeID - b.AttributeID
+                //})
+
+
+               //$scope.ProductAttributesList.sort(function (a, b) {
+               //     var textA = a.AttributeID;
+               //     var textB = b.AttributeID;
+               //     return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+               // });
+                //console.log("================$scope.ProductAttributes======Sorted==========");
+                //console.log($scope.ProductAttributesList.ColumnsData);
+                //console.log("================$scope.ProductAttributes================");
             }
-
-            $scope.ProductObject.allAttributes = [];
-
             CheckScopeBeforeApply();
+            $scope.ProductObject.allAttributes = [];
         }
+
 
         $scope.TempIndex = -1;
 
         $scope.Title = "Add New Product";
 
 
-      
+
 
         $scope.CurrentSupplier = { Id: 0, Name: "" };
         $scope.Suppliers = [];
@@ -132,8 +203,8 @@
                         $scope.ProductAttributes.push({ Id: response.data[i].Id, Name: response.data[i].Name })
                     }
 
-
-                    toaster.pop('success', "Product Attributes", "Product Attributes loaded successfully");
+                    setTimeout(function () { $scope.UpdateAttributes(); }, 500);
+                    //toaster.pop('success', "Product Attributes", "Product Attributes loaded successfully");
 
                 }, function myError(response) {
                     toaster.pop('error', "Product Attributes", response.statusText);
@@ -149,13 +220,32 @@
             for (var i = 0; i < $scope.ProductAttributes.length; i++) {
                 if ($scope.ProductAttributes[i].Id == ID) {
                     return true;
-
                 }
             }
 
             return false;
         }
 
+
+        $scope.GetValue = function (ColumnsData, Id) {
+            debugger;
+            var isAvail = false;
+
+            for (var i = 0; i < ColumnsData.length; i++) {
+               
+                if (ColumnsData[i].AttributeID == Id) {
+                    isAvail = true;
+                    return ColumnsData[i].Value;
+                } 
+            }
+
+            if (isAvail == false)
+                return "N/A";
+
+            
+            
+            
+        };
 
         setTimeout(function () {
             $(".statusselect").each(function () {
@@ -168,12 +258,13 @@
 
         }
         $scope.addNew = function () {
+            debugger;
             var _obj = { AttributeID: "", Value: "", Quantity: 0 };
             var _ListData = [];
             for (var i = 0; i < $scope.ProductAttributes.length; i++) {
                 _ListData.push({ AttributeID: $scope.ProductAttributes[i].Id, Value: "", Quantity: "" })
             }
-            $scope.ProductAttributesList.push({ ColumnsData: _ListData, IsFeatured: false, lowQuantityThreshold: null, highQuantityThreshold: null, StatusId: null, Quantity: "", price: "", weight: "", Images: [], Id: 0 });
+            $scope.ProductAttributesList.push({ ColumnsData: _ListData, IsFeatured: false, lowQuantityThreshold: 1, highQuantityThreshold: 10, StatusId: null, Quantity: 1, price: 0, weight: 0, Images: [], Id: 0 });
             CheckScopeBeforeApply();
         }
 
@@ -277,7 +368,7 @@
             else {
                 $scope.ProductAttributesList[$scope.TempIndex].Images.splice(_Index, 1);
             }
-          
+
 
         }
 

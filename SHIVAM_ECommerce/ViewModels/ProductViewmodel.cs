@@ -44,7 +44,7 @@ namespace SHIVAM_ECommerce.ViewModels
         [Display(Name = "Product Category")]
         public int CategoryID { get; set; }
 
-        [Required(ErrorMessage = "Product Manufacturer is Required")]
+        
         [Display(Name = "Product Manufacturer")]
         public int ManufacturerID { get; set; }
 

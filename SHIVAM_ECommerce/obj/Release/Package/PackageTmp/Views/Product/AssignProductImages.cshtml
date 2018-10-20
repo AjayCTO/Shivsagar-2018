@@ -1,63 +1,112 @@
 ﻿@{
     ViewBag.Title = "Assign Product Images";
     var _AlreadySelectedList = ViewBag.AlreadySelected as List<string>;
-}
+    var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+    serializer.MaxJsonLength = Int32.MaxValue;
+    var _AssignedImage = serializer.Serialize(ViewBag.ImageData);
 
+    var check = ViewBag.ImageData;
+                            
+ }
 
 <div class="card">
-    <div class="card-header">
-
-        <h3 class="card-title"><i class="fa fa-list"></i> Assign Product Images</h3>
-    </div>
-    <div class="card-body">
 
 
         <div ng-app="AssignProductImages">
 
             <div ng-controller="AssignProductImagesController">
+                <div ng-show="selectedImage.length!=0">
+                    <h3 class="card-title"><i class="fa fa-list"></i> All Assigned Product Images</h3>
+                    <div class="row row-cards">
+
+                        <div ng-repeat="obj2 in selectedImage" class="col-sm-6 col-lg-2" ng-click="AddtoImageids(obj2.Id)">
+
+                            <div class="card p-3 {{IsChecked(obj2.Id)}}">
+
+                                <div style="display:none;" class="assigned">Assigned</div>
 
 
-                <div class="row row-cards">
+                                <label class="custom-control custom-checkbox align-content-end">
+                                    <input type="checkbox" class="custom-control-input" name="example-checkbox2" checked="">
+                                    <span class="custom-control-label"></span>
+                                </label>
 
-                    <div ng-repeat="obj in Images" ng-click="AddToArray(obj.ImagePath)" class="{{DisableCursor(obj.ImagePath)}} col-sm-6 col-lg-2">
-                        <div class="card p-3 {{IsSelected(obj.ImagePath)}}">
-
-                            <div style="display:none;" class="assiglabel">Assigned</div>
-
-
-                            <label class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" name="example-checkbox1" checked="">
-                                <span class="custom-control-label"></span>
-                            </label>
-
-                            <a style="text-align:center;" href="javascript:void(0)" class="mb-3">
-                                <img src="~/ProductImages/thumb/{{obj.ImagePath}}" alt="" class="rounded">
-                            </a>
+                                <a style="text-align:center;" href="javascript:void(0)" class="mb-3">
+                                    <img src="~/ProductImages/thumb/{{obj2.ImagePath}}" alt="" class="rounded imgs">
+                                </a>
+                            </div>
                         </div>
+
+                    </div>
+                    <button ng-disabled="ImageIds.length==0" ng-click="DeleteAssigned()" class="btn btn-primary"><i class="fa fa-close"></i> Deassign Images</button>
+                    <hr />
+                </div>
+                <div ng-show="Images.length!=0">
+                    <div class="card-header">
+
+                        <h3 class="card-title"><i class="fa fa-list"></i> Assign Product Images  <a href="/AllImages" class="btn btn-primary"><i class="fa fa-upload"></i> Upload More Images</a> <a href="/Product/GetAllProducts" class="btn btn-primary"> <i class="fa fa-arrow-left"></i> Back to List </a></h3>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row row-cards">
+
+                            <div ng-repeat="obj in Images" ng-click="AddToArray(obj.ImagePath)" class="{{DisableCursor(obj.ImagePath)}} col-sm-6 col-lg-2">
+
+                                <div class="card p-3 {{IsSelected(obj.ImagePath)}}">
+
+                                    <div style="display:none;" class="assiglabel">Assigned</div>
+
+
+                                    <label class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" name="example-checkbox1" checked="">
+                                        <span class="custom-control-label"></span>
+                                    </label>
+
+                                    <a style="text-align:center;" href="javascript:void(0)" class="mb-3">
+                                        <img src="~/ProductImages/thumb/{{obj.ImagePath}}" alt="" class="rounded">
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <ul class="pagination pull-right">
+                            <li class="page-item" ng-class="prevPageDisabled()">
+                                <a class="page-link" ng-click="prevPage()">Previous</a>
+                            </li>
+                            <li class="page-item" ng-repeat="n in range()"
+                                ng-class="{active: n+1 == currentPage}" ng-click="setPage(n)"><a class="page-link" href="#">{{n+1}}</a></li>
+
+                            <li class="page-item" ng-class="nextPageDisabled()">
+                                <a class="page-link" ng-click="nextPage()">Next</a>
+                            </li>
+                        </ul>
+                        <button ng-disabled="Paths.length==0||IsSaving==true" ng-click="SaveImages()" class="btn btn-primary"><i class="fa fa-check"></i> Assign Images</button>
+
+
+
+
                     </div>
 
                 </div>
+                <div ng-hide="Images.length!=0">
 
-                <ul class="pagination pull-right">
-                    <li class="page-item" ng-class="prevPageDisabled()">
-                        <a class="page-link" ng-click="prevPage()">Previous</a>
-                    </li>
-                    <li class="page-item" ng-repeat="n in range()"
-                        ng-class="{active: n+1 == currentPage}" ng-click="setPage(n)"><a class="page-link" href="#">{{n+1}}</a></li>
+                    <div class="card-body">
 
-                    <li class="page-item" ng-class="nextPageDisabled()">
-                        <a class="page-link" ng-click="nextPage()">Next</a>
-                    </li>
-                </ul>
 
-                <button ng-disabled="Paths.length==0||IsSaving==true" ng-click="SaveImages()" class="btn btn-primary"> Assign Images</button>
-            </div>
+                        <div>
+                            <h4>You Don't have images !Please click on Upload button</h4>
+                        </div>
+                        <br />
+                        <div>
+                            <a href="/AllImages" class="btn btn-primary"><i class="fa fa-upload"></i> Upload Images</a> <a href="/Product/GetAllProducts" class="btn btn-primary"> <i class="fa fa-arrow-left"></i> Back to List </a>
+                        </div>
 
-        </div>
+                    </div>
+                </div>
 
+                    </div>
+                </div>
     </div>
-</div>
-
 @section scripts
 {
     <style>
@@ -114,11 +163,36 @@
         .card.p-3.Selected img {
             opacity: 1;
         }
+
+
+        .assigned {
+            display: block !important;
+            position: absolute;
+            background: #d4d4d4;
+            color: #000;
+            transform: rotate(-40deg);
+            margin-left: -13px;
+            padding-left: 3px;
+            padding-right: 3px;
+            font-size: 13px;
+            z-index:1000;
+            
+        }
+        .imgs {
+         
+            pointer-events: none;
+     
+        }
+   
     </style>
     <script>
         var _ProductID = '@ViewBag.ProductID';
         var _AlreadySelectedData = '@Html.Raw(Json.Encode(_AlreadySelectedList))'
-
+        console.log(_AlreadySelectedData);
+        var _AssignedImages = '@Html.Raw(Json.Encode(_AssignedImage))'
+        console.log(_AssignedImages);
+    var check='@Html.Raw(Json.Encode(check))'
+        console.log(check);
     </script>
     <link href="~/Content/toaster.css" rel="stylesheet" />
 

@@ -33,7 +33,8 @@
                     <div class="col-md-12">
                         <div class="">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Message</h3>
+                                <a href="/EmailSenders/index" class="btn btn-primary"><i class="fa  fa-arrow-left"></i> Back</a>
+
 
                                 @*<div class="box-tools pull-right">
                                     @if (ViewBag.Prevrecord == null)
@@ -69,30 +70,29 @@
                                     </h5>
                                 </div>
                                 <!-- /.mailbox-read-info -->
-                                <div class="mailbox-controls with-border text-center">
-                                    <div class="btn-group">
-                                        <button type="button" onclick="DeleteEmail(@Model.Id)" class="btn btn-danger btn-sm" data-toggle="tooltip" data-container="body" title="" data-original-title="Delete">
-                                            <i class="fa fa-trash-o"></i>
-                                        </button>
-                                        <a href="/EmailSenders/Reply/@Model.Id" class="btn btn-primary btn-sm" data-toggle="tooltip" data-container="body" title="" data-original-title="Reply">
-                                            <i class="fa fa-mail-reply"></i>
-                                        </a>
-                                        <a href="/EmailSenders/Forward/@Model.Id" class="btn  btn-primary btn-sm" data-toggle="tooltip" data-container="body" title="" data-original-title="Forward">
-                                            <i class="fa fa-share"></i>
-                                        </a>
-                                    </div>
-                                    <!-- /.btn-group -->
-                                    <button type="button" onclick="window.print();" class="btn btn-success btn-sm" data-toggle="tooltip" title="" data-original-title="Print">
-                                        <i class="fa fa-print"></i>
-                                    </button>
-                                </div>
+       
                                 </div>
                                 <!-- /.mailbox-controls -->
                             
                                 <div class="mailbox-read-message">
-                                   
-                                    <h4>Message Content</h4>
-                                   <p>@Model.ContentMsg</p>
+                                   <div class="row">
+                                       <div class="col-md-6">
+                                           <h4>Message:</h4>
+                                           <p>@Model.ContentMsg</p>
+                                       </div>
+                      
+                                       <div class="col-md-5">
+                             
+                                           <div class="col-md-12">
+                                               <div class="attach pull-right">
+
+
+                                               </div>
+                                           </div>
+
+                                       </div>
+                                   </div>
+                        
 
                          
                                 </div>
@@ -100,13 +100,7 @@
                        
 
                             <hr/>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="attach">
-                                          
-                                        </div>
-                                    </div>
-                                </div>
+                             
                      
                             <!-- /.box-body -->
                   
@@ -202,7 +196,7 @@
                     case 'png':
                     case "bmp":
                         {
-                            $(".attach").html("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon has-img'><img  src='/images/@Model.Attachment' alt='Attachment'></span><div class='mailbox-attachment-info'><a href='/EmailSenders/Download?name=@Model.Attachment' class='mailbox-attachment-name'><i class='fa fa-camera'></i> @Model.Attachment</a><span class='mailbox-attachment-size'><a href='/EmailSenders/Download?name=@Model.Attachment' class='btn btn-success btn-xs pull-right'><i class='fa fa-cloud-download'></i></a></span></div></li></ul>");
+                            $(".attach").html("<h4>Attachment :</h4><ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon has-img'><img  src='/ProductImages/@Model.Attachment' alt='Attachment'></span><div class='mailbox-attachment-info'><a href='/EmailSenders/Download?name=@Model.Attachment' class='mailbox-attachment-name'><i class='fa fa-camera'></i> @Model.Attachment</a><span class='mailbox-attachment-size'><a href='/EmailSenders/Download?name=@Model.Attachment' class='btn btn-success btn-xs pull-right'><i class='fa fa-cloud-download'></i></a></span></div></li></ul>");
                        
                             break;
                         }

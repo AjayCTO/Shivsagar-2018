@@ -4,6 +4,8 @@
     
 }
 
+
+
 <div class="row page-titles">
 
 
@@ -31,66 +33,66 @@
                     <div class="col-md-12">
                         <div class="">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Message</h3>
+                                <a href="/EmailSenders/index" class="btn btn-primary"><i class="fa  fa-arrow-left"></i> Back</a>
 
-                                <div class="box-tools pull-right">
+
+                                @*<div class="box-tools pull-right">
                                     @if (ViewBag.Prevrecord == null)
                                              {
-                                        <a href="" class="btn btn-box-tool disabled" data-role="disabled"><i class="fa fa-chevron-left"></i></a>
+                                    <a href="" class="btn btn-primary btn-sm disabled" data-role="disabled"><i class="fa fa-chevron-left"></i></a>
 
                                           }
                                        else
                                           {
-                                           <a href="/EmailSenders/UniqueDetailView?id=@ViewBag.Prevrecord.Id" class="btn btn-box-tool" data-toggle="tooltip" title="" data-original-title="Previous"><i class="fa fa-chevron-left"></i></a>
+                                    <a href="/EmailSenders/UniqueDetailView?id=@ViewBag.Prevrecord.Id" class="btn btn-primary btn-sm" data-toggle="tooltip" title="" data-original-title="Previous"><i class="fa fa-chevron-left"></i></a>
                                 
                                                  }
 
                                     @if (ViewBag.nextrecord == null)
                                             {
-                                     <a href="" class="btn btn-box-tool disabled" data-role="disabled" data-toggle="tooltip" title="" data-original-title="Next"><i class="fa fa-chevron-right"></i></a>
+                                    <a href="" class="btn btn-primary btn-sm disabled" data-role="disabled" data-toggle="tooltip" title="" data-original-title="Next"><i class="fa fa-chevron-right"></i></a>
 
-                                                }
-                                            else
-                                            {
-                                         <a href="/EmailSenders/UniqueDetailView?id=@ViewBag.nextrecord.Id" class="btn btn-box-tool" data-toggle="tooltip" title="" data-original-title="Next"><i class="fa fa-chevron-right"></i></a>
-                             
-                                                    }
-                                       </div>
+                                            }
+                                    else
+                                    {
+                                    <a href="/EmailSenders/UniqueDetailView?id=@ViewBag.nextrecord.Id" class="btn btn-primary btn-sm" data-toggle="tooltip" title="" data-original-title="Next"><i class="fa fa-chevron-right"></i></a>
+
+                                    }
+                                       </div>*@
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body no-padding">
                                 <div class="mailbox-read-info">
-                                    <h3>@Model.Subject</h3>
+                                    <h3>Subject: @Model.Subject</h3>
                                     <h5>
                                         From: @Model.SenderId
                                         <span class="mailbox-read-time pull-right">@Model.SendingDate</span>
                                     </h5>
                                 </div>
                                 <!-- /.mailbox-read-info -->
-                                <div class="mailbox-controls with-border text-center">
-                                    <div class="btn-group">
-                                        <button type="button" onclick="DeleteEmail(@Model.Id)" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="" data-original-title="Delete">
-                                            <i class="fa fa-trash-o"></i>
-                                        </button>
-                                        <a href="/EmailSenders/Reply/@Model.Id" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="" data-original-title="Reply">
-                                            <i class="fa fa-reply"></i>
-                                        </a>
-                                        <a href="/EmailSenders/Forward/@Model.Id" class="btn btn-default btn-sm" data-toggle="tooltip" data-container="body" title="" data-original-title="Forward">
-                                            <i class="fa fa-share"></i>
-                                        </a>
-                                    </div>
-                                    <!-- /.btn-group -->
-                                    <button type="button" onclick="window.print();" class="btn btn-default btn-sm" data-toggle="tooltip" title="" data-original-title="Print">
-                                        <i class="fa fa-print"></i>
-                                    </button>
-                                </div>
+       
                                 </div>
                                 <!-- /.mailbox-controls -->
                             
                                 <div class="mailbox-read-message">
-                                   
+                                   <div class="row">
+                                       <div class="col-md-6">
+                                           <h4>Message:</h4>
+                                           <p>@Model.ContentMsg</p>
+                                       </div>
+                      
+                                       <div class="col-md-5">
+                             
+                                           <div class="col-md-12">
+                                               <div class="attach pull-right">
 
-                                   <p>@Model.ContentMsg</p>
+
+                                               </div>
+                                           </div>
+
+                                       </div>
+                                   </div>
+                        
 
                          
                                 </div>
@@ -98,24 +100,18 @@
                        
 
                             <hr/>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="attach">
-
-                                        </div>
-                                    </div>
-                                </div>
+                             
                      
                             <!-- /.box-body -->
                   
                             <!-- /.box-footer -->
                             <div class="box-footer">
                                 <div class="pull-right">
-                                    <a  href="/EmailSenders/Reply/@Model.Id" class="btn btn-default"><i class="fa fa-reply"></i> Reply</a>
-                                    <a href="/EmailSenders/Forward/@Model.Id" class="btn btn-default"><i class="fa fa-share"></i> Forward</a>
+                                    <a  href="/EmailSenders/Reply/@Model.Id" class="btn btn-primary"><i class="fa fa-reply"></i> Reply</a>
+                                    <a href="/EmailSenders/Forward/@Model.Id" class="btn btn-primary"><i class="fa fa-share"></i> Forward</a>
                                 </div>
-                                <button type="button" onclick="DeleteEmail(@Model.Id)" class="btn btn-default"><i class="fa fa-trash-o"></i> Delete</button>
-                                <button type="button" onclick="window.print();" class=" btn btn-default"><i class="fa fa-print"></i> Print</button>
+                                <button type="button" onclick="DeleteEmail(@Model.Id)" class="btn btn-danger"><i class="fa fa-trash-o"></i> Delete</button>
+                                <button type="button" onclick="window.print();" class=" btn btn-success"><i class="fa fa-print"></i> Print</button>
                             </div>
                             <!-- /.box-footer -->
                         </div>
@@ -132,7 +128,6 @@
 
 </div>
 <link href="~/Content/AdminLTE.min.css" rel="stylesheet" />
-
 @section scripts{
 
     <script>
@@ -201,26 +196,26 @@
                     case 'png':
                     case "bmp":
                         {
-                            $(".attach").html("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon has-img'><img  src='/images/@Model.Attachment' alt='Attachment'></span><div class='mailbox-attachment-info'><a href='/EmailSenders/Download?name=@Model.Attachment' class='mailbox-attachment-name'><i class='fa fa-camera'></i> @Model.Attachment</a><span class='mailbox-attachment-size'><a href='/EmailSenders/Download?name=@Model.Attachment' class='btn btn-default btn-xs pull-right'><i class='fa fa-cloud-download'></i></a></span></div></li></ul>");
+                            $(".attach").html("<h4>Attachment :</h4><ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon has-img'><img  src='/images/@Model.Attachment' alt='Attachment'></span><div class='mailbox-attachment-info'><a href='/EmailSenders/Download?name=@Model.Attachment' class='mailbox-attachment-name'><i class='fa fa-camera'></i> @Model.Attachment</a><span class='mailbox-attachment-size'><a href='/EmailSenders/Download?name=@Model.Attachment' class='btn btn-success btn-xs pull-right'><i class='fa fa-cloud-download'></i></a></span></div></li></ul>");
                        
                             break;
                         }
                    
                     case 'txt':
-                        $(".attach").html("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon'><i class='fa fa fa-file-text'></i></span><div class='mailbox-attachment-info'><a href='/EmailSenders/Download?name=@Model.Attachment' class='mailbox-attachment-name'><i class='fa fa-paperclip'></i>  @Model.Attachment</a><span class='mailbox-attachment-size'><a href='/EmailSenders/Download?name=@Model.Attachment' class='btn btn-default btn-xs pull-right'><i class='fa fa-cloud-download'></i></a></span></div></li></ul>");
+                        $(".attach").html("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon'><i class='fa fa fa-file-text'></i></span><div class='mailbox-attachment-info'><a href='/EmailSenders/Download?name=@Model.Attachment' class='mailbox-attachment-name'><i class='fa fa-paperclip'></i>  @Model.Attachment</a><span class='mailbox-attachment-size'><a href='/EmailSenders/Download?name=@Model.Attachment' class='btn btn-success btn-xs pull-right'><i class='fa fa-cloud-download'></i></a></span></div></li></ul>");
 
                         break;
                     case 'pdf':
 
-                        $(".attach").html("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon'><i class='fa fa-file-pdf-o'></i></span> <div class='mailbox-attachment-info'><a href='/EmailSenders/Download?name=@Model.Attachment' class='mailbox-attachment-name'><i class='fa fa-paperclip'></i>  @Model.Attachment</a><span class='mailbox-attachment-size'><a href='/EmailSenders/Download?name=@Model.Attachment' class='btn btn-default btn-xs pull-right'><i class='fa fa-cloud-download'></i></a> </span></div></li></ul>");
+                        $(".attach").html("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon'><i class='fa fa-file-pdf-o'></i></span> <div class='mailbox-attachment-info'><a href='/EmailSenders/Download?name=@Model.Attachment' class='mailbox-attachment-name'><i class='fa fa-paperclip'></i>  @Model.Attachment</a><span class='mailbox-attachment-size'><a href='/EmailSenders/Download?name=@Model.Attachment' class='btn btn-success btn-xs pull-right'><i class='fa fa-cloud-download'></i></a> </span></div></li></ul>");
               
                         break;
                     case 'docx':
-                        $(".attach").html("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon'><i class='fa fa-file-word-o'></i></span><div class='mailbox-attachment-info'><a href='/EmailSenders/Download?name=@Model.Attachment' class='mailbox-attachment-name'><i class='fa fa-paperclip'></i>  @Model.Attachment</a><span class='mailbox-attachment-size'><a href='/EmailSenders/Download?name=@Model.Attachment' class='btn btn-default btn-xs pull-right'><i class='fa fa-cloud-download'></i></a></span></div></li></ul>");
+                        $(".attach").html("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon'><i class='fa fa-file-word-o'></i></span><div class='mailbox-attachment-info'><a href='/EmailSenders/Download?name=@Model.Attachment' class='mailbox-attachment-name'><i class='fa fa-paperclip'></i>  @Model.Attachment</a><span class='mailbox-attachment-size'><a href='/EmailSenders/Download?name=@Model.Attachment' class='btn btn-success btn-xs pull-right'><i class='fa fa-cloud-download'></i></a></span></div></li></ul>");
                 
                         break;
                     case 'xlsx':
-                        $(".attach").html("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon'><i class='fa fa-file-excel-o'></i></span><div class='mailbox-attachment-info'><a href='/EmailSenders/Download?name=@Model.Attachment' class='mailbox-attachment-name'><i class='fa fa-paperclip'></i>  @Model.Attachment</a><span class='mailbox-attachment-size'><a href='/EmailSenders/Download?name=@Model.Attachment' class='btn btn-default btn-xs pull-right'><i class='fa fa-cloud-download'></i></a></span></div></li></ul>");
+                        $(".attach").html("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon'><i class='fa fa-file-excel-o'></i></span><div class='mailbox-attachment-info'><a href='/EmailSenders/Download?name=@Model.Attachment' class='mailbox-attachment-name'><i class='fa fa-paperclip'></i>  @Model.Attachment</a><span class='mailbox-attachment-size'><a href='/EmailSenders/Download?name=@Model.Attachment' class='btn btn-success btn-xs pull-right'><i class='fa fa-cloud-download'></i></a></span></div></li></ul>");
                 
                         break;
                     default:

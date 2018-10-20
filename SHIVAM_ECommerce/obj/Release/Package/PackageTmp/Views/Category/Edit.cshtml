@@ -206,13 +206,17 @@
                 <script>
                     $(document).ready(function () {
 
-                        var Category = '@Model.CategoryName';
-                        $.validator.addMethod('UniqueCategory', function (value) {
+                        var Categories = '@Model.CategoryName';
+                        var Category = $.trim(Categories);
+                        $.validator.addMethod('UniqueCategory', function (values) {
+                            debugger;
+                           var value= $.trim(values);
+                           
                             if (value.toLowerCase() == Category.toLowerCase()) {
                                 return true;
                             }
 
-                            if ($.trim(value) != "") {
+                            if ($.trim(value)!="") {
                                 return UniqeCategories(value);
                             }
                             else {

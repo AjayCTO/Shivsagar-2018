@@ -75,7 +75,7 @@ namespace SHIVAM_ECommerce.Migrations
 
                 listOfClaims.ForEach(u => context.Claims.Add(u));
                 context.SaveChanges();
-
+               
 
             }
 
@@ -139,7 +139,6 @@ namespace SHIVAM_ECommerce.Migrations
             //}
 
 
-
             if (!context.Users.Any(u => u.UserName == "Admin"))
             {
 
@@ -149,6 +148,12 @@ namespace SHIVAM_ECommerce.Migrations
 
                 manager.Create(user, "Shivam@123");
                 manager.AddToRole(user.Id, "superadmin");
+                var AdminProfile = new List<AdminProfile>
+                {
+                new AdminProfile{ Id=-1,FirstName="Ajay",LastName="Paliwal",CompanyName="ShivamItConsultancy", Email="ajaypal.mca@outlook.com",Address="bus stand",City="Nathdwara",Country="India",Logo=null,CreatedDate=DateTime.Now,UpdatedDate=DateTime.Now,Sort=1, Phone="8386911436",PostalCode="313301",State="Rajasthan"},
+                };
+                AdminProfile.ForEach(p => context.Adminprofile.Add(p));
+                context.SaveChanges();
 
                 var listOfClaims = new List<Claims>
                 {

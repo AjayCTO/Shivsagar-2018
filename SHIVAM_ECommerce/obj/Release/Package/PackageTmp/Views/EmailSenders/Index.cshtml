@@ -195,7 +195,9 @@
                 success: function (result) {
                     if (result.Success === true) {
                         myDataTable.clear().draw();
+                        window.location.href = "/EmailSenders/Index";
                         toastr.success("Deleted Message Successfully");
+
                     } else {
                         alert("error occurred during operation.");
                     }

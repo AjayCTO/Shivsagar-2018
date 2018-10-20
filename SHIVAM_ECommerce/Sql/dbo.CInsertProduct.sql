@@ -65,7 +65,7 @@ Else
 	
 							SET @ProductID = (select TOP 1 Id 
                       from dbo.Products c 
-                      where LOWER(c.ProductName) = LOWER(@Name))
+                      where LOWER(c.ProductName) = LOWER(@Name) and c.SupplierID = @SupplierID)
 					SET @ProductID=@ProductID
 	
 						  if @ProductID IS NULL

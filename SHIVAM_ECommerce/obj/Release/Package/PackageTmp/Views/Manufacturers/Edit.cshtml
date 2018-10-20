@@ -79,9 +79,13 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script>
         $(document).ready(function () {
-            var manufacturer = '@Model.Name';
-            $.validator.addMethod('ManufactureName', function (value) {
+            var manufacturers = '@Model.Name';
+
+            var manufacturer = $.trim(manufacturers);
+            $.validator.addMethod('ManufactureName', function (values) {
                 debugger;
+                var value = $.trim(values);
+            
                 if (value.toLowerCase() == manufacturer.toLowerCase()) {
                     return true;
                 }

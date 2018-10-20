@@ -4,6 +4,10 @@
     var NewCount = (TempData["cols"] as List<object>).Count();
     var _CurrentUser = Session["CurrentUserContext"] as SHIVAM_ECommerce.ViewModels.CurrentUserContext;
     var _suppliers = ViewBag.Suppliers as List<SHIVAM_ECommerce.Models.Supplier>;
+    var a = Session["supplierid"];
+    var drpSupplierID = Session["Drpsupplierid"] != null ? (int)Session["Drpsupplierid"]  : -1;   
+    var selectedsupplierid = Convert.ToInt32(a);
+   
 }
 <div class="barcode-container" style="text-align:center;">
 
@@ -50,8 +54,7 @@
                                 <option value="">Select Supplier</option>
                                 @foreach (var _item in _suppliers)
                                 {
-                                    <option value="@_item.Id">@_item.FirstName  @_item.LastName</option>
-
+                                   <option  value="@_item.Id">@_item.FirstName  @_item.LastName</option>
                                 }
                             </select>
                             @*<input type="text" class="form-control" style="position: absolute;top:10px;z-index:10;" name="name" id="SupplierAuto" placeholder="Search By Supplier" />*@
@@ -63,17 +66,22 @@
                 <table class="table table-hover table-bordered table-outline table-vcenter text-nowrap card-table" id="productlist">
                     <thead>
                         <tr id="Columns">
-                            @foreach (var row in TempData["cols"] as List<object>)
+
+                           
+                              @foreach (var row in TempData["cols"] as List<object>)
                             {
 
                                 <th>@row</th>
 
 
                             }
+                            
+                          
                             <th></th>
                         </tr>
                     </thead>
                 </table>
+
             </div>
             <div class="card-footer">
 
@@ -162,7 +170,7 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary btn-gray" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                             </div>
                         </div>
 
@@ -187,7 +195,7 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary btn-gray" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                             </div>
                         </div>
 
@@ -206,12 +214,25 @@
         background: url('../images/loading.gif') no-repeat right center;
         background-size: 80px;
     }
+    .modal-body img {
+        max-width:320px;
+        max-height:300px !important;
+    }
+
 </style>
 
 
 @section scripts
 {
     <script src="~/Scripts/JsBarcode.all.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            debugger;
+            var supplierid=  '@Html.Raw(selectedsupplierid)';                
+            $('#SupplierData option[value="'+supplierid+'"]').prop('selected', true);
+        });
+    </script>
     <script>
         $('#btnSubmit').on('click', function () {
             $("#ErrorString").hide();
@@ -306,8 +327,7 @@
                 for (var i = 0; i < data.data.length; i++) {
                     var _img='<img src="/ProductImages/'+data.data[i].FileName+'" height="40" width="40"/>';
                     $(".listImages").append(_img);
-                }
-
+                }             
                 $(".listImages img:first-child").trigger("click");
                 $("#myModalImages").modal("show");
             });
@@ -320,25 +340,39 @@
 
         function GetColumns(ID)
         {
+            debugger;
+            //$('#productlist').DataTable().clear();
+            //$('#productlist').DataTable().destroy();
+            //table.clear().draw();  
+           // $("#Columns").html(_columns+"<th>Actions</th>");
             $.get("/Product/GetColumnNames?SupplierID="+ID,function(data){
+                console.log("datacolumn");
+                console.log(data);
+                debugger;
                 if(data.Data.length>0)
-                {
+                {      
+                    //$('#productlist').DataTable().clear()
+                    debugger;
                     var _columns="";
                     var _CounterColumn=0;
                     for (var i = 0; i < data.Data.length; i++) {
                         if(i!=0 && i!=1 && i!=2 && i!=3 && i!=9){
                             _columns+='<th class="sorting" tabindex="'+i+'" aria-controls="productlist" rowspan="1" colspan="1" aria-label="'+data.Data[i]+'": activate to sort column ascending">'+data.Data[i]+'</th>"';
 
-
                         }
                         _CounterColumn+=1;
-
                     }
-
-                    $("#Columns").html(_columns+"<th>Actions</th>");
-
-                    table.clear().draw();
+                  
+                    table.clear().draw(); 
                     
+                    $("#Columns").html(_columns+"<th>Actions</th>");                  
+
+
+                    //setTimeout(function () {
+                    //    $("#productlist td:empty").remove();
+                    //},1000)    
+
+
                     totalColumns=_CounterColumn;
                 }
                 else{
@@ -349,7 +383,12 @@
 
         }
         $(document).ready(function () {
+            var x = '@drpSupplierID';
 
+           
+            setTimeout(function(){
+                $('#SupplierData option[value='+x+']').attr('selected','selected');
+            },1000)           
 
             //$("#SupplierID").change(function () {
             //    if ($.trim($(this).attr("alt")) != "") {
@@ -379,9 +418,9 @@
                 table=$('#productlist').DataTable({
                     bServerSide: true,
 
-                    "sScrollX": "100%",
-                    "sScrollXInner": "100%",
-                    "bScrollCollapse": true,
+                    //"sScrollX": "100%",
+                    //"sScrollXInner": "100%",
+                    //"bScrollCollapse": true,
                     //oLanguage: {
                     //    sProcessing: '<div class="preloader" style="display:block !important;"><svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /></svg></div>'
                     //},
@@ -391,13 +430,14 @@
                     sAjaxSource: '/Handler/GetProducts.ashx',
                     fnServerData: function (sSource, aoData, fnCallback, oSettings) {
                         aoData.push( { name:"SupplierID",value: $("#SupplierData").val()} );
-
+                    
                         oSettings.jqXHR = $.ajax({
                             "dataType": 'json',
                             "type": "POST",
                             "url": sSource,
                             "data": aoData,
                             "success": fnCallback
+
                         });
                     },
                     "fnDrawCallback": function( oSettings ) {
@@ -439,21 +479,17 @@
                                 'title':'ProductImage',
 
                             },
-
                             {
                                 "targets": [9],
                                 "visible": false
 
                             },
-
                             {
                                 "targets": [totalColumns],
                                 'searchable': false,
                                 'orderable': false,
                                 'title':'Actions',
                                 'render': function (data, type, full, meta,row) {
-
-
                                     return "";
                                 }
                             }
@@ -464,17 +500,21 @@
                     //    dataSrc: 5
                     //},
                     rowCallback: function( row, data, index ) {
-
-                        if(data[12]!=null){
-
+                    
+                        console.log("innerdata");
+                        console.log(data);
+                        console.log(totalColumns);
+                        debugger;
+                        if ( data[totalColumns-1]!=null ){
                             var html="";
                             if(data[2]!=null){
 
-                                var _b = ' <a onclick="nextBarcode(&#34;' + data[5] + '&#34;)" class="dropdown-item" ><i class="dropdown-icon fa fa-print"></i> Product Barcode</a>';
+                                var _b = ' <a onclick="nextBarcode(&#34;' + data[5] + '&#34;)" style="cursor: pointer" class="dropdown-item" ><i class="dropdown-icon fa fa-print"></i> Product Barcode</a>';
                                 var _c = ' <a href="/Product/AssignProductImages?ProductID='+data[3]+'" class="dropdown-item" ><i class="dropdown-icon fa fa-image"></i> Assign Images</a>';
                                 html= '<div class="item-action dropdown"><a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fa fa-ellipsis-v"></i></a>   <div class="dropdown-menu dropdown-menu-right">';
 
                                 html=html+'<a href="/Product/Edit?productID='+data[2]+'" class="dropdown-item"><i class="dropdown-icon fa fa-pencil"></i> Edit Product </a>';
+                                html=html+'<a onclick="DeleteProduct(' + data[2] + ')" style="cursor: pointer" class="dropdown-item"><i class="dropdown-icon fa fa-pencil"></i> Delete Product </a>';
                                 html=html+'<a href="/Product/ProductDetails?productID='+data[2]+'" class="dropdown-item"><i class="dropdown-icon fa fa-list"></i> Product Details</a>';
                                 html=html+_b+_c+'</div>';
                             }
@@ -485,7 +525,7 @@
 
                             if ($.trim(data[4]) ==='')
                             {
-                                _imageData= '<div class="avatar d-block" style="background-image: url(/FeaturedImages/no-image.png)"></div>';
+                                _imageData= '<a href="/Product/AssignProductImages?ProductID='+data[3]+'" class="btn btn-primary btn-sm"><i class="dropdown-icon fa fa-image"></i> Assign Image</a>';
                             } else {
                                 _imageData= '<img class="gridImage" onclick="LoadAllImages('+data[2]+')" src="/images/loading.gif" data-src="/ProductImages/' + data[4] + '">';
                             }
@@ -494,7 +534,7 @@
 
                     }
                 });
-
+     
             }
 
             //table.columns().every(function () {
@@ -513,9 +553,9 @@
         });
 
 
+
+
         if(_supplierID=='-1'){
-
-
             $("#SupplierAuto").autocomplete({
                 source: function (request, response) {
                     $.ajax({
@@ -564,6 +604,43 @@
 
             window.print();
         }
+
+
+        function DeleteProduct(Id) {
+            debugger;
+            bootbox.confirm("Are you sure you want to delete this Manufacturer ?", function (result) {
+                
+                if (result) {
+                    $.ajax({
+                        url: "/Product/Deletes?productID="+Id,
+                        type: 'POST',
+                        dataType:"Json",
+                        success: function (result) {
+                            debugger;
+                            if (result.Success === true) {
+                                table.clear().draw();
+                                toastr.success("Deleted Successfully");
+                            } else {
+                                bootbox.alert("error occurred during operation. " + result.ex);
+                            }
+                        },
+                        error: function (req, status, error) {
+                            bootbox.alert(error);
+                        }
+                    });
+
+                }
+
+
+
+
+            });
+
+
+
+
+        }
+
     </script>
 
     <script>

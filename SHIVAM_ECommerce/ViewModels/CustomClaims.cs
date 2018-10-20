@@ -14,6 +14,8 @@ namespace SHIVAM_ECommerce.ViewModels
 
         public string ClaimValue { get; set; }
 
+        public string Notes { get; set; }
+
     }
 
     public class ClaimsViewModel

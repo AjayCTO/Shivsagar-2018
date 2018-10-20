@@ -14,11 +14,20 @@
         $scope.CurrentUserID = _supplierID;
         $scope.CurrentSupplier = _supplierID == '-1' ? 0 : _supplierID;
         $scope.Suppliers = [];
+        $scope.supplieridcheck = aa;
         $scope.ProductSupplierAttributes = [];
         $scope.ProductAttributes = [];
-        $scope.AllSupplierAttributes = function () {
 
+
+        setTimeout(function () {
+            $('#CurrentSupplier option[value=' +$scope.supplieridcheck+ ']').attr('selected', 'selected');
+            $scope.AllSupplierAttributes();
+
+        }, 1000)
+        $scope.AllSupplierAttributes = function () {
+            debugger;
             $scope.CurrentSupplier = $scope.CurrentSupplier != 0 ? $scope.CurrentSupplier : $("#CurrentSupplier").val();
+       
             if ($.trim($scope.CurrentSupplier) != "") {
                 $scope.ProductSupplierAttributes = [];
                 $http({
@@ -85,8 +94,13 @@
 
         };
 
+        //function getData() {
+        //    debugger;
+        //    $scope.AllSupplierAttributes();
+        //}
 
         $scope.AddAttributes = function () {
+            debugger;
             var items = $('input[name="chk[]"]:checked');
 
             var _productAttributeRelation = [];
@@ -108,8 +122,13 @@
                     if (result.Success == true) {
                         debugger;
                         CheckScopeBeforeApply();
-                        window.location.href = "/Product/GetAllProducts";
-
+                        if ($scope.CurrentUserID == -1) {
+                        
+                            window.location.reload();
+                        }
+                        else {
+                            window.location.href = "/Product/GetAllProducts";
+                        }
                     }
                     else {
                         toastr.error(result.ex);
@@ -145,6 +164,7 @@
             });
 
         };
+
 
 
 

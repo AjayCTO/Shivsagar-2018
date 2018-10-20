@@ -11,11 +11,9 @@
 
     <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                                 <ul class="dropdown-user">
-                                    @if (_CurrentUser.SupplierID != -1)
-                                    {
                                         
                                     <li><a href="/Home/Profile/@_CurrentUser.SupplierID"><i class="ti-user"></i> Profile</a></li>
-                                    }
+                              
                                     <li><a href="/Account/Manage"><i class="ti-settings"></i> Setting</a></li>
                                     <li><a href="/Account/logOff"><i class="ti-settings"></i> Logout</a></li>
                                 </ul>

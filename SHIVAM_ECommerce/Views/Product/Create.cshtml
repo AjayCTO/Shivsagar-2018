@@ -3,14 +3,30 @@
 @{
     ViewBag.Title = "Create";
 }
-<div ng-app="myFormApp" class="container">
+
+<style>
+    .starS{
+        color:#f55050;
+    }
+</style>
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Create Product</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/Product/GetAllProducts">Products</a></li>
+            <li class="breadcrumb-item active">Create Product</li>
+        </ol>
+    </div>
+</div>
+<div ng-app="myFormApp" class="container-fluid">
     <toaster-container></toaster-container>
     <div class="" ng-controller="ProductController">
-
-        <br />
-        <div class="page-header">
-            <h3 class="card-title">{{Title}}</h3>
-        </div>
+ 
 
         @using (Html.BeginForm("Create"))
         {
@@ -24,20 +40,20 @@
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="card">
-                            <div class="card-header"><h3 class="card-title">Product Detail</h3></div>
+                     
                             <br />
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-5">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label">Product Name</label>
+                                            <label class="form-label">Product Name<span class="starS">*</span></label>
                                       
                                             <input type="text" ng-model="ProductObject.ProductName" class="form-control" />
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 col-md-5">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label">Product Code</label>
+                                            <label class="form-label">Product Code<span class="starS">*</span></label>
                                             <input type="text" ng-model="ProductObject.ProductCode" class="form-control" />
                                  
                                         </div>
@@ -53,7 +69,7 @@
                                  
                                     <div class="col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label">SKU</label>
+                                            <label class="form-label">SKU<span class="starS">*</span></label>
                                             <input type="text" ng-model="ProductObject.SKU" class="form-control" />
                                    
                                         </div>
@@ -66,13 +82,29 @@
                                         </div>
                                     </div>
                                 </div>
+
+                        
                             </div>
+
+                        </div>
+                      
+                            <div class="btn-list text-left">
+                                <button type="button" ng-disabled="!IsValidProduct()" ng-click="SaveProduct()" class="btn btn-primary">
+                                    <i class="fa fa-check"></i>
+                                    Save changes
+                                </button>
+
+
+                                <a href="/Product/GetAllProducts" class="btn btn-secondary btn-gray"> <i class="fa fa-times"></i> Cancel</a>
+
+                       
+
                         </div>
                     </div>
                     <div class="col-lg-7">
 
                         <div class="card">
-                            <div class="card-header"><h3 class="card-title">Product Attributes</h3></div>
+                          
                             <br />
                             <div class="card-body">
                                 <div class="row">
@@ -97,7 +129,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label">Select Category</label>
+                                            <label class="form-label">Select Category<span class="starS">*</span></label>
                                             <select ng-model="ProductObject.CategoryID" class="form-control">
                                                 <option value="" selected="selected">Select</option>
 
@@ -109,7 +141,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label">Select Unit of measure</label>
+                                            <label class="form-label">Select Unit of measure<span class="starS">*</span></label>
                                             <select ng-model="ProductObject.UnitOfMeasureID" class="form-control">
                                                 <option value="" selected="selected">Select</option>
                                                 <option ng-repeat="x in UnitsOfMeasureList" value="{{x.Id}}">{{x.Name}}</option>
@@ -129,19 +161,6 @@
                 
 
 
-                <div class="card-footer">
-                    <div class="btn-list text-left">
-                        <button type="button" ng-disabled="!IsValidProduct()" ng-click="SaveProduct()" class="btn btn-primary">
-                            <i class="fa fa-check"></i>
-                            Save changes
-                            </button>
-                       
-                        
-                        <a href="/Product/GetAllProducts" class="btn btn-secondary btn-gray"> <i class="fa fa-times"></i> Cancel</a>
-
-                    </div>
-
-                </div>
             </div>
         }
 
@@ -153,7 +172,6 @@
 {
 <script>
         var _productData = '@Html.Raw(Json.Encode(Model))';
-         
 </script>
     <link href="~/Content/toaster.css" rel="stylesheet" />
 

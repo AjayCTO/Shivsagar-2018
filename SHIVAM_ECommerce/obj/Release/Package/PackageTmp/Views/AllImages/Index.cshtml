@@ -2,12 +2,14 @@
 
 @{
     ViewBag.Title = "Index";
+    var _CurrentUser = Session["CurrentUserContext"] as SHIVAM_ECommerce.ViewModels.CurrentUserContext;
+    var _suppliers = ViewBag.Suppliers as List<SHIVAM_ECommerce.Models.Supplier>;
+    //var supplier = TempData["SelectedSupplier"] as SHIVAM_ECommerce.Models.Supplier;
+    var supplier = Session["SelectedSupplier"] as SHIVAM_ECommerce.Models.Supplier;
 }
 
 
 <div class="row page-titles">
-
-
     <div class="col-md-5 align-self-center">
         <h3 class="text-primary">All Images</h3>
     </div>
@@ -18,31 +20,92 @@
         </ol>
     </div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" ng-app="myApp" ng-controller="myCtrl">
 
     <div class="card">
         <div class="card-body">
-            <form action="/AllImages/Index" id="UploadImageForm" method="post" enctype="multipart/form-data">
+            @if (_CurrentUser.SupplierID == -1)
+            {
+                <div class="card-header">
+                    <h3 class="card-title"> <i class="fe fe-box"></i> Select Supplier</h3>
+                    <div class="card-options">
+                        <form action="/AllImages/Index" id="UploadgetImageForm" method="post">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <select class="form-control" id="SupplierData1" name="SupplierData1">
+                                        <option value="">Select Supplier</option>
+                                        @foreach (var _item in _suppliers)
+                                        {
+                                            if (supplier != null)
+                                            { 
+                                                 if (_item.Id == supplier.Id)
+                                            {
+                                                <option selected value="@_item.Id">@_item.FirstName  @_item.LastName</option>
+                                            }
+                                            else
+                                            { 
+                                                <option value="@_item.Id">@_item.FirstName  @_item.LastName</option>
+                                            }
+                                            }
+                                            else
+                                            { 
+                                                <option value="@_item.Id">@_item.FirstName  @_item.LastName</option>
+                                            }  
+                                        }
+                                    </select>
+                                    @*<input type="text" class="form-control" style="position: absolute;top:10px;z-index:10;" name="name" id="SupplierAuto" placeholder="Search By Supplier" />*@
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-primary" type="submit" id="getImages" value="Get Images">
+                                        <i class="fa fa-upload"></i>
+                                        Get Images
+                                    </button>
+                                    <button type="button" class="btn btn-danger" id="delete"> <i class="fa fa-trash"></i> Delete </button>
 
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="custom-file">
-                            <input type="file" multiple class="custom-file-input" name="files" id="file1" accept="image/*">
-                            <label class="custom-file-label">Choose file</label>
+                                </div>
+                                <div class="col-md-4">
+                                    @if (supplier != null)
+                                    { 
+                                     <h3 class="card-title"> <i class="fe fe-box"></i>Selected Supplier : @supplier.FirstName @supplier.LastName</h3>
+                                    }
+                                   
+                                </div>
+                            </div>                           
+                        </form>
+                        <div class="row">
                         </div>
                     </div>
-                    <div class="col-md-5">
-                        <button class="btn btn-primary" type="submit" id="uploadImages" value="Upload" disabled>
-                            <i class="fa fa-upload"></i>
-                            Upload
-                        </button>
-                        <button type="button" class="btn btn-danger" id="delete"> <i class="fa fa-trash"></i> Delete </button>
+                </div>
+            }
+          
+                <div class="card-header">
+                    <h3 class="card-title"> <i class="fe fe-box"></i>Upload Images</h3>
+                    <div class="card-options">
+                        <form action="/AllImages/UploadImage" id="UploadImageForm" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="custom-file">
+                                        <input type="file" multiple class="custom-file-input" name="files" id="file1" accept="image/*">
+                                        <label class="custom-file-label">Choose file</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <button class="btn btn-primary" type="submit" id="uploadImages" value="Upload" disabled>
+                                        <i class="fa fa-upload"></i>
+                                        Upload
+                                    </button>
+                                    @*<a href="/Product/GetAllProducts" class="btn btn-primary"> <i class="fa fa-arrow-left"></i> Back to List </a>*@
+                                    <button type="button" class="btn btn-danger" id="delete"> <i class="fa fa-trash"></i> Delete </button>
+                                </div>
+                            </div>
+                            <div class="gallery"></div>
+                        </form>
+                        <div class="row">
 
+                        </div>
                     </div>
                 </div>
-
-                <div class="gallery"></div>
-            </form>
+                    
         </div>
     </div>
 
@@ -50,13 +113,9 @@
     <div class="row row-cards">
 
         @foreach (var item in Model)
-    {
+        {
 
             @*<img src="~/ProductImages/thumb/@item.ImagePath" />*@
-
-
-
-
             <div class="col-sm-6 col-lg-2">
                 <div class="card p-3">
                     <a style="text-align:center;" href="javascript:void(0)" class="mb-3">
@@ -71,7 +130,7 @@
                 </div>
             </div>
 
-    }
+        }
     </div>
 
 </div>
@@ -82,23 +141,72 @@
 
 <script>
     $(document).ready(function () {
+        var _supplierID = '@_CurrentUser.SupplierID';
+        var counting = @Model.Count()
+            console.log(counting);
+
+        if ($("#SupplierData1").val()!="") {
+            if (counting <= 0) {
+
+                toastr.warning("No Images ! Please upload");
+            }
+        }
+
         $('input:file').change(function () {
                 if ($(this).val()) {
                     $('button:submit').attr('disabled', false);
+                    //$("#UploadgetImageForm").submit();
                     //$('input:submit').removeAttr('disabled'); 
                 }
-            });
+        });
 
-        $("#uploadImages").click(function () {
+        $("#getImages").click(function () {
+            $("#getImages").attr("disabled", "disabled")
+            $("#getImages").find("i").addClass("fa-spin");
+            $("#UploadgetImageForm").submit();
          
-
-                $("#uploadImages").attr("disabled", "disabled")
-                $("#uploadImages").find("i").addClass("fa-spin");
-                $("#UploadImageForm").submit();
         });
 
 
+        $("#SupplierData1").change(function () {
+
+            //if ($.trim($(this).val()) != "") {
+
+                $("#getImages").trigger("click");
+            //}
+        });
+
+
+        $("#uploadImages").click(function () {
+            debugger;
+                $("#uploadImages").attr("disabled", "disabled")
+              
+                var check = $("#SupplierData1").val()
+                if (_supplierID == -1)
+                {
+                    if ($.trim(check) == "")
+                    {
+                        toastr.warning("First You Select Supplier From Dropdown");
+                       
+                    }
+                    else
+                    {
+                        $("#getImages").trigger('click');
+                        $("#uploadImages").find("i").addClass("fa-spin");
+                        $("#UploadImageForm").submit();
+                    }
+                }
+                else {
+
+                $("#uploadImages").find("i").addClass("fa-spin");
+                $("#UploadImageForm").submit();
+
+                }
+        });
     });
+
+
+   
 
     function RemoveCheck(id)
     {
@@ -158,11 +266,6 @@
     })
 
 
-  
-
-
-
-  
 
     $(function () {
         // Multiple images preview in browser
@@ -192,6 +295,41 @@
         $('#file1').on('change', function () {
             imagesPreview(this, 'div.gallery');
         });
+    });
+
+  
+
+</script>
+
+<script src="~/Scripts/angular.js"></script>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope) {
+        $("#SupplierData").change(function () {
+            if ($.trim($(this).val()) != "") {
+
+                GetImages($(this).val());
+            }
+        });
+
+
+        function GetImages(ID) {
+            alert(ID);
+            $.get("/AllImages/GetImages?SupplierID=" + ID, function (data) {
+                console.log(data);
+                debugger;
+                if (data.Data.length > 0) {
+                    $scope.AllImages = data.Data;
+
+                    console.log("All Images");
+                    console.log(data);
+                }
+                else {
+                    toastr.warning("");
+                }
+            });
+        }
+
     });
 </script>
 }

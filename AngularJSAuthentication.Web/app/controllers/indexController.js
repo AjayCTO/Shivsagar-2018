@@ -87,6 +87,35 @@ app.controller('indexController', ['$scope', '$rootScope', 'localStorageService'
             }
         });
     };
+    $scope.CustomerOrders = [];
+    $scope.GetOrder = function () {
+        debugger;
+        var authData = localStorageService.get('authorizationData');
+
+        if (authData != null) {
+            $.ajax({
+                url: serviceBase + '/api/CustomerOrders/GetOrder?UserName=' + authData.userName,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data, textStatus, xhr) {
+                    debugger;
+                    if (data.success == true)
+                    {
+                        $scope.CustomerOrders = data.data;
+                        localStorage.setItem("Customerorders",JSON.stringify($scope.CustomerOrders));
+                        CheckScopeBeforeApply();
+                        $location.path("/orders");
+                    }
+                   
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    alert("GetCart error");
+                }
+            });
+        }
+    }
+
+
 
 
     $scope.GetCart = function () {

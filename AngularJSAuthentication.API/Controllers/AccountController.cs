@@ -76,7 +76,7 @@ namespace AngularJSAuthentication.API.Controllers
 
           
             // IdentityResult result = await _repo.RegisterUser(userModel);
-            var user = new ApplicationUser() { Email = userModel.Email, UserName = userModel.UserName, CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now};
+            var user = new ApplicationUser() { Email = userModel.Email, UserName = userModel.UserName, CreatedDate = DateTime.Now, UpdatedDate = DateTime.Now,};
 
 
             try

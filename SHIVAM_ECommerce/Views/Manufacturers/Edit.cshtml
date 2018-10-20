@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Edit";
+    var _CurrentUser = Session["CurrentUserContext"] as SHIVAM_ECommerce.ViewModels.CurrentUserContext;
 }
 
 <div class="row page-titles">
@@ -32,7 +33,7 @@
 
                         @Html.ValidationSummary(true)
                         @Html.HiddenFor(model => model.Id)
-
+                        @Html.HiddenFor(model => model.SupplierID)
                         <div class="form-group">
                             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
@@ -80,7 +81,7 @@
     <script>
         $(document).ready(function () {
             var manufacturers = '@Model.Name';
-
+            $("#SupplierID").val(@_CurrentUser.SupplierID);
             var manufacturer = $.trim(manufacturers);
             $.validator.addMethod('ManufactureName', function (values) {
                 debugger;

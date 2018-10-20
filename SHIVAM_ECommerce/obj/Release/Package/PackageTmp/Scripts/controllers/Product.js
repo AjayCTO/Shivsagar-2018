@@ -168,6 +168,8 @@
 
         }
         $scope.addNew = function () {
+   
+            debugger;
             var _obj = { AttributeID: "", Value: "", Quantity: 0 };
             var _ListData = [];
             for (var i = 0; i < $scope.ProductAttributes.length; i++) {
@@ -284,7 +286,7 @@
         }
 
         $scope.EditProduct = function () {
-
+            alert("in");
             $.ajax({
                 url: "/Product/Edit",
                 type: 'POST',
@@ -301,14 +303,45 @@
                     }
                 },
                 error: function (err) {
-
-
-
                 },
                 complete: function () {
                 }
             });
         }
+
+
+
+        $scope.DeletetProduct = function () {
+            alert("in");
+            $.ajax({
+                url: "/Product/Delete",
+                type: 'POST',
+                data: JSON.stringify({ "Model": $scope.ProductObject }),
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (result) {
+
+                    if (result.Success == true) {
+                        window.location.href = "/Product/GetAllProducts";
+                    }
+                    else {
+                        toaster.pop('error', "Product save", result.ex);
+                    }
+                },
+                error: function (err) {
+                },
+                complete: function () {
+                }
+            });
+        }
+
+
+
+
+
+
+
+
         $scope.SaveProduct = function () {
 
 

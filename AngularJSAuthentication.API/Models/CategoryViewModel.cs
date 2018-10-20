@@ -24,8 +24,11 @@ namespace AngularJSAuthentication.Models
         [NotMapped]
         public DateTime? UpdatedDate { get; set; }
         [NotMapped]
-        public int? Sort { get; set; }
 
+  
+        public int? Sort { get; set; }
+        [NotMapped]
+        public string Discriminator { get; set; }
       
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

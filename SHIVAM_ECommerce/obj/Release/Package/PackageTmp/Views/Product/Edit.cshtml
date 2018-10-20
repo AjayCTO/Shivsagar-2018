@@ -76,7 +76,7 @@
                             <div class="card-body">
                                 <br />
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    @*<div class="col-md-6">
                                         <div class="form-group">
                                             <label class="form-label">Select Supplier</label>
                                             <select ng-model="ProductObject.SupplierID" class="form-control">
@@ -85,7 +85,7 @@
                                             </select>
 
                                         </div>
-                                    </div>
+                                    </div>*@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="form-label">Select Manufacturar</label>
@@ -134,8 +134,7 @@
                         <button type="button" ng-disabled="!IsValidProduct()" ng-click="EditProduct()" class="btn btn-primary" value="Save">
                             <i class="fa fa-check"> Save</i>
                         </button>
-
-                        <a href="/Product/GetAllProducts" class="btn btn-gray"><i class="fa fa-times"></i>  Cancel</a>
+                        <a href="/Product/GetAllProducts" class="btn btn-secondary btn-gray"><i class="fa fa-times"></i>  Cancel</a>
                     </div>
 
                 </div>

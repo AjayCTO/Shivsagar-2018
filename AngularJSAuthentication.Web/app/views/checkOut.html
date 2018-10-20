@@ -185,25 +185,26 @@
                                         <div class="col-6">Product</div>
                                         <div class="col-2">Price</div>
                                         <div class="col-2">Quantity</div>
-                                        <div class="col-2">Unit Price</div>
+                                        <div class="col-2">Unit Price </div>
                                     </div>
                                 </div>
                                 <div class="basket-body">
                                     <!-- Product-->
-                                    <div class="item row d-flex align-items-center" ng-repeat="item in shoppingCart track by $index">
+
+                                    <div class="item row d-flex align-items-center" ng-repeat="item in shoppingCartNew track by $index">
                                         <div class="col-6">
                                             <div class="d-flex align-items-center">
-                                                <img src="{{GetProductImageGlobal(item.Image)}}" alt="..." class="img-fluid">
+                                                <img src="{{GetProductImageGlobal(item.image)}}" alt="..." class="img-fluid">
                                                 <div class="title">
                                                     <a href="detail.html">
-                                                        <h6>{{item.ProductName}}</h6><span class="text-muted">Size: Large</span>
+                                                        <h6>{{item.productName}}</h6><span class="text-muted">{{item.productDescription}}</span>
                                                     </a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-2"><span>{{item.Cost| currency}}</span></div>
+                                        <div class="col-2"><span>{{item.productPrice| currency}}</span></div>
                                         <div class="col-2"><span>{{item.Quantity}}</span></div>
-                                        <div class="col-2"><span>{{item.Cost*item.Quantity|currency}}</span></div>
+                                        <div class="col-2"><span>{{item.productPrice*item.Quantity|currency}}</span></div>
                                     </div>
                                     <!-- Product-->
                                     <!--<div class="item row d-flex align-items-center">
@@ -223,9 +224,9 @@
                                     </div>-->
                                 </div>
                             </div>
-                            <div class="total row"><span class="col-md-9 col-3">Total</span><span class="col-md-3 col-9 text-primary">{{TotalCartItems|currency}}</span></div>
+                            <div class="total row"><span class="col-md-9 col-3">Total</span><span class="col-md-3 col-9 text-primary">{{CartTotal|currency}}</span></div>
                         </div>
-                        <div class="CTAs d-flex justify-content-between flex-column flex-lg-row"><a ng-click="ChangeTab(2)" class="btn btn-template-outlined wide prev"><i class="fa fa-angle-left"></i>Back to payment method</a><a ng-click="PlaceOrder(shoppingCart)" class="btn btn-template wide next">Place an order<i class="fa fa-angle-right"></i></a></div>
+                        <div class="CTAs d-flex justify-content-between flex-column flex-lg-row"><a ng-click="ChangeTab(2)" class="btn btn-template-outlined wide prev"><i class="fa fa-angle-left"></i>Back to payment method</a><a ng-click="PlaceOrder()" class="btn btn-template wide next">Place an order<i class="fa fa-angle-right"></i></a></div>
                     </div>
                 </div>
             </div>
@@ -234,14 +235,66 @@
                     <h6 class="text-uppercase">Order Summary</h6>
                     <p>Shipping and additional costs are calculated based on values you have entered</p>
                     <ul class="order-menu list-unstyled">
-                        <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong>{{TotalCartItems| currency}}</strong></li>
-                        <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>{{shipping| currency}}</strong></li>
+                        <li class="d-flex justify-content-between"><span>Order Subtotal </span><strong>{{TotalCartItems | currency}}</strong></li>
+                        <li class="d-flex justify-content-between"><span>Shipping and handling</span><strong>{{shipping | currency}}</strong></li>
                         <li class="d-flex justify-content-between"><span>Tax</span><strong>$0.00</strong></li>
-                        <li class="d-flex justify-content-between"><span>Total</span><strong class="text-primary price-total">{{TotalCartItems+shipping| currency}}</strong></li>
+                        <li class="d-flex justify-content-between"><span>Total</span><strong class="text-primary price-total">{{CartTotal | currency}}</strong></li>
                     </ul>
                 </div>
             </div>
         </div>
+    </div>
+
+    <div id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade overview">
+        <div role="document" class="modal-dialog">
+            <div class="modal-content">
+                <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"><i class="icon-close"></i></span></button>
+                <div style="width:40px; text-align:center">
+                    <img width="50" src="../../img/Smile.png" /> Thank you! Your order has been placed.
+                </div>
+                    <div class="modal-body">
+                        <div class="basket">
+                            <div class="cart">
+
+
+
+
+                                <div class="cart-holder">
+                                    <div class="basket-header">
+                                        <div class="row">
+                                            <div class="col-6">Product</div>
+                                            <div class="col-2">Price</div>
+                                            <div class="col-2">Quantity</div>
+                                            <div class="col-2">Unit Price </div>
+                                        </div>
+                                    </div>
+                                    <div class="basket-body">
+                                        <!-- Product-->
+
+                                        <div class="item row d-flex align-items-center" ng-repeat="item in shoppingCartNew track by $index">
+                                            <div class="col-6">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="{{GetProductImageGlobal(item.image)}}" alt="..." class="img-fluid">
+                                                    <div class="title">
+                                                        <a href="detail.html">
+                                                            <h6>{{item.productName}}</h6><span class="text-muted">{{item.productDescription}}</span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-2"><span>{{item.productPrice| currency}}</span></div>
+                                            <div class="col-2"><span>{{item.Quantity}}</span></div>
+                                            <div class="col-2"><span>{{item.productPrice*item.Quantity|currency}}</span></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="total row"><span class="col-md-9 col-3">Total</span><span class="col-md-3 col-9 text-primary">{{CartTotal|currency}}</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
     </div>
 </section>
 <style>

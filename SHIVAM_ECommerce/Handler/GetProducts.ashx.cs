@@ -30,7 +30,20 @@ namespace SHIVAM_ECommerce.Handler
             string sortDir = context.Request["sSortDir_0"];
             string search = context.Request["sSearch"];
             var _CurrentUserContext = context.Session["CurrentUserContext"] as CurrentUserContext;
-            int SupplierID = _CurrentUserContext.SupplierID == -1 ? (!string.IsNullOrEmpty(context.Request["SupplierID"]) ? Convert.ToInt16(context.Request["SupplierID"]) : -1) : _CurrentUserContext.SupplierID;
+            //int SupplierID = _CurrentUserContext.SupplierID == -1 ? (!string.IsNullOrEmpty(context.Request["SupplierID"]) ? Convert.ToInt16(context.Request["SupplierID"]) : -1) : _CurrentUserContext.SupplierID;
+            int SupplierID = 1006;
+            if (context.Session["Drpsupplierid"] != null)
+            {
+                SupplierID = (int)context.Session["Drpsupplierid"];
+            }
+
+            else
+            {
+                SupplierID = _CurrentUserContext.SupplierID == -1 ? (!string.IsNullOrEmpty(context.Request["SupplierID"]) ? Convert.ToInt16(context.Request["SupplierID"]) : -1) : _CurrentUserContext.SupplierID;
+            }
+
+         
+
 
             string cs = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
             var allProducts = new List<object[]>();

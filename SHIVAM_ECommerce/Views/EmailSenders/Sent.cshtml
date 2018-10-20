@@ -1,0 +1,252 @@
+﻿
+@model IEnumerable<SHIVAM_ECommerce.Models.emailrecord>
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Index";
+  
+
+
+    //var _Data = Model;
+    //var newdata = _Data.OrderByDescending(p => p.SendingDate);
+}
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Sent</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li class="breadcrumb-item active">Sent</li>
+        </ol>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card">
+
+
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <!--/row-->
+
+
+
+
+                    <div class="container-fluid">
+
+                        <a href="/EmailSenders/Create" class="btn btn-success"><i class="fa fa-envelope" aria-hidden="true"></i> New Message</a>
+                        <a href="" id="deleteAcc" class="btn btn-danger pull-right disabled">Delete All</a>
+                    </div>
+
+                    <div class="card-body">
+                        <table id="myTable" class="table table-striped table-bordered dt-responsive">
+                            <thead>
+                                <tr>
+                                    <th><label class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" id="checkAll" class="custom-control-input" name="checkAll" value=""><span class="custom-control-label">Select</span></label></th>
+                                    <th class="clickable">Receiver Name</th>
+                                    <th>Subject</th>
+                                    <th>Message</th>
+                                    <th>Attachment</th>
+                                    <th>Send Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+@section scripts{
+
+
+
+    <script>
+
+
+        var myDataTable;
+
+        $(document).ready(function () {
+            debugger;
+            myDataTable = $("#myTable").DataTable({
+                "processing": true, // for show progress bar
+                "serverSide": true, // for process server side
+                "filter": true, // this is for disable filter (search box)
+                "orderMulti": false, // for disable multiple column at once
+                "order": [[5, 'desc']],
+                "ajax": {
+                    "url": "/EmailSenders/LoadSentData",
+                    "type": "POST",
+                    "datatype": "json",
+          
+                    
+
+                },
+
+                "columns": [
+
+                                {
+                                    "orderable": false, "autoWidth": true,
+                                    "mRender": function (data, type, row) {
+                                        return '<div class="controls"><label class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input" name="example-inline-checkbox1" value="' + row.Id + '"><span class="custom-control-label"></span></label>   <a href="javascript:void(0);" class="favourite col-amber hidden-sm-down" data-toggle="active"><i class="zmdi zmdi-star"></i></a></div>'
+                                    }
+                                },
+
+                        {
+
+
+                            "data": "ReceiverName", "name": "ReceiverName", "autoWidth": true
+                        },
+                        {
+
+                            "data": "Subject", "name": "Subject", "autoWidth": true
+                        },
+                        {
+
+                            "data": "Message", "name": "Message", "autoWidth": true
+                        },
+                         {
+                             "mRender": function (data, type, row) {
+                                 if (row.IsAttachment == false || row.IsAttachment == "false") {
+                                     return "No File";
+                                 }
+                                 else {
+
+
+                                     return '<a href="/EmailSenders/UniqueDetailView?id=' + row.id + '"><i class="fa fa-paperclip"></i></a>'
+                                 }
+                             }
+
+                         },
+
+                        {
+
+                            "data": "Send_Date", "name": "Send_Date", "autoWidth": true
+                        },
+                         {
+                             "orderable": false,
+                             "mRender": function (data, type, row) {
+                                 var _b = ' <a href="/EmailSenders/Forward/?id=' + row.id + '" class="dropdown-item" data-toggle="tooltip" data-placement="top" title="Forward" data-original-title="Forword"><i class="fa fa-share" title="Forward" align="center"></i> Forward</a>';
+                                 var _c = ' <a onclick="DeleteEmail(' + row.id + ')" Style="Cursor:Pointer" class="dropdown-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" ><i class="fa fa-trash"  align="center"></i> Delete</a>';
+                                 html = '<div class="item-action dropdown"><a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fa fa-ellipsis-v"></i></a>   <div class="dropdown-menu dropdown-menu-right">';
+
+                                 html = html + '<a href="/EmailSenders/UniqueDetailView?id=' + row.id + '"  class="dropdown-item dataTables AcctQuickView" data-toggle="tooltip" data-placement="top" title="" data-original-title="Details" ><i class="fa fa-list"  align="center"></i> Detail</a>';
+                                 html = html + '<a href="/EmailSenders/Reply/?id=' + row.id + '" class="dropdown-item" data-toggle="tooltip" data-placement="top" title="Reply" data-original-title="Reply"><i class="fa fa-mail-reply" title="Reply" align="center"></i> Reply</a>';
+                                 return html = html + _b + _c + '</div>';
+                                 debugger;
+                             }
+                         },
+                ]
+            });
+
+        });
+
+
+
+
+        function DeleteEmail(Id) {
+            debugger;
+            var _confirm = confirm("Are you sure you want to delete this Message ?");
+            if (_confirm) {
+
+                $.ajax({
+                    type: "Post",
+                    url: "/EmailSenders/DeleteSentConfirmed?id=" + Id,
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    success: function (result) {
+                        if (result.Success === true) {
+                            myDataTable.clear().draw();
+                            toastr.success("Deleted Message Successfully");
+                        } else {
+                            alert("error occurred during operation.");
+                        }
+                    },
+                    error: function (req, status, error) {
+                        alert(error);
+                    }
+                });
+            }
+        }
+
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+            $(document).ready(function ($) {
+                $(".unread").click(function () {
+                    window.location = $(this).data("href");
+                });
+            });
+            $('#checkAll').change(function () {
+                debugger;
+                if ($(this).is(':checked')) {
+
+                    $('.custom-control input:checkbox').prop('checked', true);
+                    $("#deleteAcc").removeClass("disabled");
+                } else {
+                    $('.custom-control input:checkbox').prop('checked', false);
+                    $("#deleteAcc").addClass("disabled");
+
+                }
+            });
+            $("#deleteAcc").on("click", function () {
+                debugger;
+
+                var Ids = [];
+                $.each($(".custom-control input:checked").not("#checkAll"), function () {
+                    Ids.push(parseInt($(this).val()));
+                });
+
+                var _confirm = confirm("Are you sure you want to delete this Message ?");
+                if (_confirm) {
+                    $.ajax({
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        data: JSON.stringify({ Ids: Ids }),
+                        url: "/EmailSenders/Deleteall/",
+                        success: function (result) {
+                            if (result.Success === true) {
+                                alert("Message Deleted Successfully");
+                                window.location.href = "/EmailSenders/Index";
+                            } else {
+                                alert("error occurred during operation.");
+                            }
+                        },
+                        error: function (req, status, error) {
+                            alert(error);
+                        }
+
+                    });
+                }
+            });
+
+
+
+
+
+        });
+    </script>
+}

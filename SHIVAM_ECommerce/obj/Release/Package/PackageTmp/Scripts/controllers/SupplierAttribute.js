@@ -14,11 +14,20 @@
         $scope.CurrentUserID = _supplierID;
         $scope.CurrentSupplier = _supplierID == '-1' ? 0 : _supplierID;
         $scope.Suppliers = [];
+        $scope.supplieridcheck = aa;
         $scope.ProductSupplierAttributes = [];
         $scope.ProductAttributes = [];
-        $scope.AllSupplierAttributes = function () {
 
+
+        setTimeout(function () {
+            $('#CurrentSupplier option[value=' +$scope.supplieridcheck+ ']').attr('selected', 'selected');
+            $scope.AllSupplierAttributes();
+
+        }, 1000)
+        $scope.AllSupplierAttributes = function () {
+            debugger;
             $scope.CurrentSupplier = $scope.CurrentSupplier != 0 ? $scope.CurrentSupplier : $("#CurrentSupplier").val();
+       
             if ($.trim($scope.CurrentSupplier) != "") {
                 $scope.ProductSupplierAttributes = [];
                 $http({
@@ -36,9 +45,9 @@
                         }
                     }
 
+               
+                    //toaster.pop('success', "Product Attributes", "Product Attributes loaded successfully");
                     CheckScopeBeforeApply();
-                    toaster.pop('success', "Product Attributes", "Product Attributes loaded successfully");
-
                 }, function myError(response) {
                     toaster.pop('error', "Product Attributes", response.statusText);
 
@@ -66,16 +75,18 @@
         }
         //Get All Supplier
         $scope.GetSupplier = function () {
+             
             $http({
                 method: "GET",
                 url: "/Supplier/AllSupplier"
             }).then(function mySuccess(response) {
                 for (var i = 0; i < response.data.length; i++) {
                     $scope.Suppliers.push({ Id: response.data[i].Id, Name: response.data[i].Name })
+                    
                 }
 
-                toaster.pop('success', "Supplier", "Supplier loaded successfully");
-
+                //toaster.pop('success', "Supplier", "Supplier loaded successfully");
+                CheckScopeBeforeApply();
             }, function myError(response) {
                 toaster.pop('error', "Supplier", response.statusText);
 
@@ -83,8 +94,13 @@
 
         };
 
+        //function getData() {
+        //    debugger;
+        //    $scope.AllSupplierAttributes();
+        //}
 
         $scope.AddAttributes = function () {
+            debugger;
             var items = $('input[name="chk[]"]:checked');
 
             var _productAttributeRelation = [];
@@ -104,7 +120,15 @@
                 success: function (result) {
 
                     if (result.Success == true) {
-                        window.location.reload();
+                        debugger;
+                        CheckScopeBeforeApply();
+                        if ($scope.CurrentUserID == -1) {
+                        
+                            window.location.reload();
+                        }
+                        else {
+                            window.location.href = "/Product/GetAllProducts";
+                        }
                     }
                     else {
                         toastr.error(result.ex);
@@ -131,8 +155,8 @@
                 }
 
                 console.log($scope.ProductAttributes);
-
-                toaster.pop('success', "Product Attributes", "Product Attributes loaded successfully");
+                CheckScopeBeforeApply();
+                //toaster.pop('success', "Product Attributes", "Product Attributes loaded successfully");
 
             }, function myError(response) {
                 toaster.pop('error', "Product Attributes", response.statusText);
@@ -140,6 +164,7 @@
             });
 
         };
+
 
 
 

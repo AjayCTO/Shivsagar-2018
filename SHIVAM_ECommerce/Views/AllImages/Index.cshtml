@@ -26,9 +26,9 @@
         <div class="card-body">
             @if (_CurrentUser.SupplierID == -1)
             {
-                <div class="card-header">
+                @*<div class="card-header">*@
                     <h3 class="card-title"> <i class="fe fe-box"></i> Select Supplier</h3>
-                    <div class="card-options">
+                    @*<div class="card-options">*@
                         <form action="/AllImages/Index" id="UploadgetImageForm" method="post">
                             <div class="row">
                                 <div class="col-md-4">
@@ -55,7 +55,7 @@
                                     </select>
                                     @*<input type="text" class="form-control" style="position: absolute;top:10px;z-index:10;" name="name" id="SupplierAuto" placeholder="Search By Supplier" />*@
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-4">
                                     <button class="btn btn-primary" type="submit" id="getImages" value="Get Images">
                                         <i class="fa fa-upload"></i>
                                         Get Images
@@ -63,7 +63,7 @@
                                     <button type="button" class="btn btn-danger" id="delete"> <i class="fa fa-trash"></i> Delete </button>
 
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     @if (supplier != null)
                                     { 
                                      <h3 class="card-title"> <i class="fe fe-box"></i>Selected Supplier : @supplier.FirstName @supplier.LastName</h3>
@@ -74,26 +74,27 @@
                         </form>
                         <div class="row">
                         </div>
-                    </div>
-                </div>
+                    @*</div>*@
+                @*</div>*@
             }
           
-                <div class="card-header">
+                @*<div class="card-header">*@
                     <h3 class="card-title"> <i class="fe fe-box"></i>Upload Images</h3>
-                    <div class="card-options">
+                    @*<div class="card-options">*@
                         <form action="/AllImages/UploadImage" id="UploadImageForm" method="post" enctype="multipart/form-data">
                             <div class="row">
-                                <div class="col-md-5">
+                                <div class="col-md-4">
                                     <div class="custom-file">
                                         <input type="file" multiple class="custom-file-input" name="files" id="file1" accept="image/*">
                                         <label class="custom-file-label">Choose file</label>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-4">
                                     <button class="btn btn-primary" type="submit" id="uploadImages" value="Upload" disabled>
                                         <i class="fa fa-upload"></i>
                                         Upload
                                     </button>
+                                    @*<a href="/Product/GetAllProducts" class="btn btn-primary"> <i class="fa fa-arrow-left"></i> Back to List </a>*@
                                     <button type="button" class="btn btn-danger" id="delete"> <i class="fa fa-trash"></i> Delete </button>
                                 </div>
                             </div>
@@ -102,8 +103,8 @@
                         <div class="row">
 
                         </div>
-                    </div>
-                </div>
+                    @*</div>*@
+                @*</div>*@
                     
         </div>
     </div>
@@ -119,6 +120,7 @@
                 <div class="card p-3">
                     <a style="text-align:center;" href="javascript:void(0)" class="mb-3">
                         <img src="~/ProductImages/thumb/@item.ImagePath" alt="Photo by Nathan Guerrero" class="rounded">
+                        <p>@item.ImageName</p>
                     </a>
                     <div class="d-flex align-items-center px-2">
                         <label class="custom-control custom-checkbox custom-control-inline">
@@ -140,9 +142,21 @@
 
 <script>
     $(document).ready(function () {
+        var _supplierID = '@_CurrentUser.SupplierID';
+        var counting = @Model.Count()
+            console.log(counting);
+
+        if ($("#SupplierData1").val()!="") {
+            if (counting <= 0) {
+
+                toastr.warning("No Images ! Please upload");
+            }
+        }
+
         $('input:file').change(function () {
                 if ($(this).val()) {
                     $('button:submit').attr('disabled', false);
+                    //$("#UploadgetImageForm").submit();
                     //$('input:submit').removeAttr('disabled'); 
                 }
         });
@@ -151,15 +165,44 @@
             $("#getImages").attr("disabled", "disabled")
             $("#getImages").find("i").addClass("fa-spin");
             $("#UploadgetImageForm").submit();
+         
         });
 
 
+        $("#SupplierData1").change(function () {
+
+            //if ($.trim($(this).val()) != "") {
+
+                $("#getImages").trigger("click");
+            //}
+        });
 
 
         $("#uploadImages").click(function () {
+            debugger;
                 $("#uploadImages").attr("disabled", "disabled")
+              
+                var check = $("#SupplierData1").val()
+                if (_supplierID == -1)
+                {
+                    if ($.trim(check) == "")
+                    {
+                        toastr.warning("First You Select Supplier From Dropdown");
+                       
+                    }
+                    else
+                    {
+                        $("#getImages").trigger('click');
+                        $("#uploadImages").find("i").addClass("fa-spin");
+                        $("#UploadImageForm").submit();
+                    }
+                }
+                else {
+
                 $("#uploadImages").find("i").addClass("fa-spin");
                 $("#UploadImageForm").submit();
+
+                }
         });
     });
 

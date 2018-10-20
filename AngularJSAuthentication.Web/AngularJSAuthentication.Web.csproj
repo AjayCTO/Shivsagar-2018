@@ -138,6 +138,7 @@
     <Content Include="img\nocategory.png" />
     <Content Include="img\logo.png" />
     <Content Include="img\paypal.png" />
+    <Content Include="img\Smile.png" />
     <Content Include="img\wishlist.png" />
     <Content Include="index.html" />
     <Content Include="js\front.js" />

@@ -179,8 +179,17 @@
                         $scope.IsSaving = false;
                         if (data.Success === true) {
                             GetImages();
-
-                            window.location.href="/Product/GetAllProducts";
+                          
+                            bootbox.confirm("Successfully Assigned! if you want to go at product list ", function (result) {
+                                if (result) {
+                                    window.location.href = "/Product/GetAllProducts";
+                                }
+                                else {
+                                    window.location.reload();
+                                }
+                            });
+                       
+                       
                             CheckScopeBeforeApply();
                         }
 

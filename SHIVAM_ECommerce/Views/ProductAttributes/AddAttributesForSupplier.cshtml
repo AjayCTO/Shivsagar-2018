@@ -1,6 +1,7 @@
 ﻿@{
     var _CurrentUser = Session["CurrentUserContext"] as SHIVAM_ECommerce.ViewModels.CurrentUserContext;
     ViewBag.Title = "AddAttributesForSupplier";
+    var DrpsupplierId = Session["Drpsupplierid"] != null ? (int)Session["Drpsupplierid"] : -1;   
 }
 <style>
     .switch {
@@ -89,7 +90,7 @@
 </div>
 
 
-<div ng-app="SupplierAttribute" class="container">
+<div ng-app="SupplierAttribute">
     <toaster-container></toaster-container>
 
     <div class="container-fluid">
@@ -101,37 +102,46 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12" ng-show="CurrentUserID==-1">
-                                <h3>Select Supplier</h3>
-                                <select ng-model="CurrentSupplier" id="CurrentSupplier" ng-change="AllSupplierAttributes()" class=" form-control">
-                                    <option value="">Select</option>
-                                    <option ng-repeat="x in Suppliers" value="{{x.Id}}">{{x.Name}}</option>
-                                </select>
+                                <div class="col-md-3">
+                                    <h3>Select Supplier</h3>
+                                </div>
+                                <div class="col-md-9">
+                                    <select ng-model="CurrentSupplier" id="CurrentSupplier" ng-change="AllSupplierAttributes()" class="form-control col-md-6">
+                                        <option ng-repeat="x in Suppliers" ng-selected="CurrentSupplier===x.Id" value="{{x.Id}}">{{x.Name}}</option>
+                                    </select>
+                                </div>
                             </div>
-                            <br />
+                            <div class="col-md-12" ng-show="CurrentUserID==-1">
+                                <hr />
 
-                            <hr />
+                            </div>
+          
                             <div class="col-md-12">
-                                <h3>Select your Attributes</h3>
+                                <div class="col-md-3">
+                                    <h3>Select your Attributes</h3>
+                                </div>
+                              
+                             
                             </div>
+                       
 
+                            <div class="col-md-3" id="checkArray" ng-repeat="pa in ProductAttributes">
+                                <div class="card">
 
-                                <div class="col-lg-3" id="checkArray" ng-repeat="pa in ProductAttributes">
-                                    <div class="card">
+                                    <h3 class="">{{pa.Name}}</h3>
+                                    <div class="card-options">
 
-                                        <h3 class="">{{pa.Name}}</h3>
-                                        <div class="card-options">
+                                        <label class="switch">
 
-                                            <label class="switch">
-
-                                                <input class="custom-switch-input" type="checkbox" name="chk[]" ng-checked="pa.Checked" id="check_{{pa.Id}}" value="{{pa.Id}}">
-                                                <span class="slider round"></span>
-                                            </label>
-
-                                        </div>
-
+                                            <input class="custom-switch-input" type="checkbox" name="chk[]" ng-checked="pa.Checked" id="check_{{pa.Id}}" value="{{pa.Id}}">
+                                            <span class="slider round"></span>
+                                        </label>
 
                                     </div>
+
+
                                 </div>
+                            </div>
 
 
 
@@ -142,17 +152,19 @@
                     <div>
 
                         <div class="form-group">
-                            <button type="button" ng-disabled="CurrentSupplier==''" ng-click="AddAttributes()" class="btn btn-primary"><i class="fa fa-check"></i>Save Attribute</button>
+                            <button type="button" ng-disabled="CurrentSupplier==''" ng-click="AddAttributes()" class="btn btn-primary"><i class="fa fa-check"></i> Save Attribute</button>
 
                             @if (_CurrentUser.SupplierID == -1)
                             {
-                            <a class="btn btn-secondary btn-gray" href="/ProductAttributes"><i class="fa fa-times"></i> Cancel</a>
-                                
+                                <a class="btn btn-secondary btn-gray" href="/ProductAttributes"><i class="fa fa-times"></i> Cancel</a>
+
                             }
                             else
                             {
-                            <a class="btn btn-secondary btn-gray" href="/Product/GetAllProducts"><i class="fa fa-times"></i> Cancel</a>    
+                                <a class="btn btn-secondary btn-gray" href="/Product/GetAllProducts"><i class="fa fa-times"></i> Cancel</a>
                             }
+                            <a onclick="Request('Request for More Attribute')" style="cursor: pointer" class="pull-right" ng-hide="CurrentUserID==-1"><i class="fa fa-pencil-square-o"></i>Request For More Attribute</a>
+
                         </div>
                     </div>
 
@@ -171,7 +183,34 @@
 {
     <script>
         var _supplierID = '@_CurrentUser.SupplierID';
+        var aa = '@DrpsupplierId';
+        console.log(_supplierID);
     </script>
+    <script>
+        $(document).ready(function () {
+
+
+        })
+        function Request(string) {
+            debugger;
+            $.ajax({
+                url: "/EmailSenders/Subject?subject="+ string,
+                type: 'POST',
+                dataType: "Json",
+                success: function (result) {
+                    debugger;
+                    if (result.Success == true) {
+                        debugger;
+                        window.location.href ='/EmailSenders/Create';
+                    }
+
+                    
+                    debugger;
+                }
+            })
+        }
+    </script>
+
     <link href="~/Content/toaster.css" rel="stylesheet" />
     <script src="~/Scripts/angular.js"></script>
     <script src="~/Scripts/toaster.js"></script>

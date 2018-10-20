@@ -3,19 +3,34 @@
     ViewBag.Title = "Profile";
 }
 
-<div class="card">
-    <div class="card-header">
-        <h3 class="card-title">
-            Manage Your details 
-        </h3>
+
+<style>
+    .stars{
+        color:#f55555;
+    }
+</style>
+<div class="row page-titles">
+
+
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-primary">Update Profile</h3>
     </div>
+    <div class="col-md-7 align-self-center">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Home">Home</a></li>
+            <li class="breadcrumb-item active">Profile</li>
+        </ol>
+    </div>
+</div>
+<div class="card">
+
     <div class="card-body">
 
         @using (Html.BeginForm("Profile", "Home", FormMethod.Post,
                             new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
-            @Html.ValidationSummary()
+            @*@Html.ValidationSummary()*@
 
             @Html.HiddenFor(model => model.Id)
             @*@Html.HiddenFor(model => model.Logo)*@
@@ -25,6 +40,7 @@
             @Html.HiddenFor(model=>model.PlanEndDate)
             @Html.HiddenFor(model=>model.ParentSupplierID)
              @Html.HiddenFor(model=>model.RegisteredByID)
+             @Html.HiddenFor(model=>model.CreatedDate)
             <input type="hidden" name="UserName" id="UserName" value="UserName" >
             <input type="hidden" name="Password" id="Password" value="Password123">
 
@@ -37,39 +53,39 @@
 
                         <div class="card-body">
                             <div class="form-group">
-                              <label>First Name</label>
-                                <div class="">
-                                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control requiredName" })
+                              <label>First Name<span class="stars">*</span></label>
+                                <div>
+                                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control requiredfield" })
                                     @Html.ValidationMessageFor(model => model.FirstName)
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Last Name</label>
-                                <div class="">
-                                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control required" })
+                                <label>Last Name<span class="stars">*</span></label>
+                                <div>
+                                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control requiredfield" })
                                     @Html.ValidationMessageFor(model => model.LastName)
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label>Company Name</label>
-                                <div class="">
-                                    @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control" })
+                                <label>Company / Shop Name<span class="stars">*</span></label>
+                                <div>
+                                    @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control requiredfield" })
                                     @Html.ValidationMessageFor(model => model.CompanyName)
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label>Supplier Type</label>
-                                <div class="">
+                                <div>
                                     @Html.TextBoxFor(model => model.SupplierType, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.SupplierType)
                                 </div>
                             </div>
                             <div class="form-group">
-                                @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+                               <label>Email<span class="stars">*</span></label>
                                 <div class="">
-                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control required UniqueEmailvalid" })
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control requiredfield UniqueEmailvalid" })
                                     @Html.ValidationMessageFor(model => model.Email)
                                 </div>
                             </div>
@@ -132,9 +148,15 @@
                             </div>
                   
                             <div class="form-group">
-                                <div class="col-md-offset-2 ">
-                                    <input type="submit" value="Update" class="btn btn-primary" />
-                                </div>
+                                <button type="submit" value="Update" class="btn btn-primary">
+                                    <i class="fa fa-check"></i>
+                                    Update
+                                </button>
+
+                                <a href="/home" class="btn btn-secondary btn-gray">
+                                    <i class="fa fa-times"></i>
+                                    Cancel
+                                </a>
                             </div>
 
 
@@ -211,25 +233,29 @@
 @section Scripts {
 
 @*<link href="~/Content/style.css" rel="stylesheet" />*@
-<script src="~/Scripts/state.js"></script>
 @Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/state.js"></script>
+
 <script>
     $(document).ready(function () {
 
-        $.validator.addMethod("required", function (value) {
 
-            if ($.trim(value) != "") {
+        $.validator.addMethod("requiredfield", function (value, element) {
 
-                return true;
 
+            if ($.trim(value) == "") {
+                return false;
             }
+            else {
+                return true;
+            }
+        }, "This field is required");
 
-        }, "Please Enter Value.");
 
         $.validator.addMethod("UniqueEmailvalid", function (value, element) {
             debugger;
             return /^\b[A-Z0-9._%-]+@@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i.test(value);
-        }, "Please Enter Valid Email.");
+        }, "Please enter valid email.");
 
 
 
@@ -239,7 +265,8 @@
     //$("select").addClass("form-control");
     $(document).ready(function(){
 
-    $("#Logo").val('@Model.Logo');
+
+        $("#Logo").val('@Model.Logo');
         $(window).load(function() 
         {
             $("#listBox").val('@Model.State');
@@ -262,7 +289,18 @@
 
   <script>
       $(document).ready(function () {
+
+
           var current = location.pathname;
+
+
+
+
+
+
+
+
+
           $('.nav li a').each(function () {
               var $this = $(this);
               // if the current path is like this link, make it active
@@ -304,6 +342,9 @@
               }
           });
       });
+
+
+
 </script>
     }
 <style>

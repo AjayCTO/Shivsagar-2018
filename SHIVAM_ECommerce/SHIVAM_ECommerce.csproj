@@ -299,6 +299,7 @@
     <Compile Include="Controllers\ProductStatusController.cs" />
     <Compile Include="Controllers\ThresholdController.cs" />
     <Compile Include="Controllers\UserClaimsController.cs" />
+    <Compile Include="Models\AdminProfile.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\emailrecord.cs" />
     <Compile Include="Models\EmailSender.cs" />
@@ -867,6 +868,7 @@
     <Content Include="Newtheme\JS\semantic.ui.min.js" />
     <Content Include="Newtheme\JS\sidebarmenu.js" />
     <Content Include="Newtheme\JS\sticky-kit.min.js" />
+    <Content Include="ProductImages\no-image.png" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
@@ -899,9 +901,11 @@
     </None>
     <Content Include="Scripts\angular.min.js.map" />
     <None Include="Properties\PublishProfiles\BackEnd.pubxml" />
+    <None Include="Properties\PublishProfiles\plp.pubxml" />
     <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\controllers\AssignProductImages.js" />
+    <Content Include="Scripts\controllers\Details.js" />
     <Content Include="Scripts\controllers\ProductDetails.js" />
     <Content Include="Scripts\controllers\SupplierAttribute.js" />
     <Content Include="Scripts\controllers\Product.js" />
@@ -1101,11 +1105,14 @@
     <Content Include="Views\EmailSenders\Reply.cshtml" />
     <Content Include="Views\EmailSenders\UniqueDetailView.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModelMobile.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\EmailSenders\Sent.cshtml" />
+    <Content Include="Views\Home\Adminprofile.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="DownloadedFiles\" />
-    <Folder Include="ProductImages\" />
     <Folder Include="Repository\Category\" />
     <Folder Include="SpandView\Stored_Procedure\" />
     <Folder Include="Views\Base\" />

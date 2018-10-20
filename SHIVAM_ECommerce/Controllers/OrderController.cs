@@ -21,8 +21,10 @@ namespace SHIVAM_ECommerce.Controllers
         // GET: /Order/
         public async Task<ActionResult> Index()
         {
-
+            ViewBag.OrderStatus = db.OrderStatuses.ToList();
             return View();
+        
+        
         }
 
         [HttpGet]
@@ -182,6 +184,27 @@ namespace SHIVAM_ECommerce.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<ActionResult> UpdateOrdersStatus(int id, string status)
+        {
+            try
+            {
+                var _status = db.OrderStatuses.Where(x => x.Status == status).Select(x=>x.Id).FirstOrDefault();
+
+                await Task.Delay(100);
+                var _order = db.Orders.Where(x => x.Id == id).FirstOrDefault();
+                _order.OrderStatusID = _status;
+                db.Entry(_order).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+              
+                return Json(new { Success = true, ex = "" });
+
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Success = true, ex = ex.Message.ToString() });
+            }
+        }
 
         // GET: /Order/Delete/5
         public async Task<ActionResult> Delete(int? id)
