@@ -289,9 +289,16 @@ namespace SHIVAM_ECommerce.Controllers
                                     if (!a.IsBlank)
                                     {
 
+                                        var Name = a.Cells[GetColumnIndex(_headerRow, "Name")].Value.ToString().Replace("'", "''");
+                                        var productCode = a.Cells[GetColumnIndex(_headerRow, "ProductCode")].Value.ToString().Replace("'", "''");
+                                        var description = a.Cells[GetColumnIndex(_headerRow, "Description")].Value.ToString().Replace("'", "''");
+                                        var categoryName = a.Cells[GetColumnIndex(_headerRow, "categoryName")].Value.ToString().Replace("'", "''");
+                                        var UnitOfMeasure = a.Cells[GetColumnIndex(_headerRow, "UnitOfMeasure")].Value.ToString().Replace("'", "''");
+                                        var manufacturer = a.Cells[GetColumnIndex(_headerRow, "ManuFacturer")].Value.ToString().Replace("'", "''");
+
                                         string _Query = "DECLARE @return_value int,@ProductID int;";
                                         _Query += "SELECT	@ProductID = -1;";
-                                        _Query += "EXEC	@return_value = [dbo].[InsertProduct] @Name='" + a.Cells[GetColumnIndex(_headerRow, "Name")].Value.ToString() + "',@ProductCode = '" + a.Cells[GetColumnIndex(_headerRow, "ProductCode")].Value.ToString() + "',@Description = '" + a.Cells[GetColumnIndex(_headerRow, "Description")].Value.ToString() + "',@categoryName = '" + a.Cells[GetColumnIndex(_headerRow, "categoryName")].Value.ToString() + "',@UnitOfMeasure = '" + a.Cells[GetColumnIndex(_headerRow, "UnitOfMeasure")].Value.ToString() + "',@ManuFacturer = '" + a.Cells[GetColumnIndex(_headerRow, "ManuFacturer")].Value.ToString() + "',@SupplierID = '" + SupplierId + "',@ProductID = @ProductID OUTPUT;";
+                                        _Query += "EXEC	@return_value = [dbo].[InsertProduct] @Name='" + Name + "',@ProductCode = '" + productCode + "',@Description = '" + description + "',@categoryName = '" + categoryName + "',@UnitOfMeasure = '" + UnitOfMeasure + "',@ManuFacturer = '" + manufacturer + "',@SupplierID = '" + SupplierId + "',@ProductID = @ProductID OUTPUT;";
                                         _Query += "SELECT	@ProductID as N'ProductID'";
                                         SqlCommand command = new SqlCommand(_Query, connection);
                                         command.CommandTimeout = 640;
@@ -408,6 +415,11 @@ namespace SHIVAM_ECommerce.Controllers
             _ValidObj.IsValid = true;
             _ValidObj.ErrorString = "";
             var productNames = db.Products.Where(x => x.SupplierID == CurrentUserData.SupplierID).Select(x => x.ProductName).ToList();
+
+
+            //var valueTest = a.Cells[GetColumnIndex(_headerRow, "Name")].Value.ToString();
+
+            //var valueTest = a.Cells[0].Value.ToString();
 
             if (productNames.Any(s => s.Contains(a.Cells[GetColumnIndex(_headerRow, "Name")].Value.ToString())))
             {
@@ -771,8 +783,11 @@ namespace SHIVAM_ECommerce.Controllers
 // product details page
         public ActionResult Details(int ProductID)
         {
+            var Productdetailsid = db.ProductAttributeWithQuantity.Where(x => x.Id == ProductID).Select(x => x.ProductId).FirstOrDefault();
+            int Productid = Productdetailsid;
+
             var _ProductViewModel = new ProductViewmodel();
-            var _Product = _repository.GetById(ProductID);
+            var _Product = _repository.GetById(Productid);
             _ProductViewModel.ProductID = _Product.Id;
             _ProductViewModel.SupplierID = _Product.SupplierID;
             _ProductViewModel.UnitOfMeasureID = _Product.UnitOfMeasuresId;
@@ -793,8 +808,8 @@ namespace SHIVAM_ECommerce.Controllers
 
             }
             _ProductViewModel.IDSKU = _Product.IDSKU;
-            var _ProductAttributes = _Attributerepository.GetAll().Where(x => x.ProductId == ProductID && x.IsActive == true).ToList();
-        
+            var _ProductAttributes = _Attributerepository.GetAll().Where(x => x.Id == ProductID && x.IsActive == true).ToList();
+
             _ProductViewModel.allAttributes = new List<ProductAttributeModel>();
             foreach (var _item in _ProductAttributes)
             {
@@ -825,7 +840,7 @@ namespace SHIVAM_ECommerce.Controllers
             {
 
                 var _db = new ApplicationDbContext();
-                var _ProductQuantityIds = _db.ProductAttributeWithQuantity.Where(x => x.ProductId == ProductID).Select(x => x.Id);
+                var _ProductQuantityIds = _db.ProductAttributeWithQuantity.Where(x => x.Id == ProductID).Select(x => x.Id);
                 var _listImages = _db.ProductImages.Where(x => _ProductQuantityIds.Contains(x.ProductQuantityId)).ToList();
                 var _productImages = new List<ProductImagesViewModel>();
                 var _count = 0;

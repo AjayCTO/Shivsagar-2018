@@ -5,6 +5,7 @@
     serializer.MaxJsonLength = Int32.MaxValue;
     var jsonModel = serializer.Serialize(Model);
 }
+
 <div class="row page-titles">
 
 
@@ -22,53 +23,92 @@
 
 
 <div class="container-fluid" ng-app="Details" ng-controller="DetailsController">
-    <div class="card">
-
-        <div class="card-body">
+  
             <div class="row">
                 <div class="col-md-4">
-                    <div>
-                        <img src="" id="mainImage" alt="Alternate Text" height="380" />
+                    <div class="card">
+
+                        <div class="card-body">
+
+                            <div>
+                                <img style="margin-left:70px" src="" id="mainImage" alt="Alternate Text" height="200" />
+                            </div>
+                            <div class="listImages">
+
+                            </div>
+                        </div>
                     </div>
-                    <div class="listImages">
+                        </div>
 
-                    </div>      
-                </div>
+
                 <div class="col-md-8">
-                    <table>
-                        <tr>
-                            <td>{{ProductDetails.ProductName}}</td>
 
-                        </tr>
-                        <tr>
-                            <td><h2>₹{{ProductDetails.ProductPrice}}</h2></td>
-                        </tr>
-                        <tr>
-                            <td>
-                              {{ProductDetails.Description}}
-                            </td>
-                        </tr>
-                        <tr>
-                           
-                        </tr>
+                    <div style="min-height:280px;" class="card">
 
-                    </table>
+                        <div class="card-body">
+
+                            <h3 style="margin-bottom:0;">{{ProductDetails.ProductName}} [ ₹{{ProductDetails.allAttributes[0].price}}]</h3>
+                            <p>{{ProductDetails.Description}}</p>
+
+                            <br />
+                          
+
+                            <table class="table table-bordered" >
+                                <thead>
+                                    <tr>
+                                        <th>Quantity</th>
+                                        <th>Low Quantity</th>
+                                        <th>High Quantity</th>
+                                        <th>SKU</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ProductDetails.allAttributes[0].Quantity}}</td>
+                                        <td>{{ProductDetails.allAttributes[0].lowQuantityThreshold}}</td>
+                                        <td>{{ProductDetails.allAttributes[0].highQuantityThreshold}}</td>
+                                        <td>{{ProductDetails.SKU}}</td>
+                                    </tr>
+                                </tbody>
 
 
-                    @*<div class="col-md-3">Product Name</div>
-                        <div class="co-md-5">@Model.ProductName</div>
-                        <div class="col-md-3">Product Price</div>
-                        <div class="co-md-5">@Model.ProductPrice</div>
-                        <div class="col-md-3">Product Description</div>
-                        <div class="co-md-5">@Model.Description</div>
-                        <div class="col-md-3">Stock Keeping Unit(SKU)</div>
-                        <div class="co-md-5">@Model.SKU</div>*@
+                            </table>
+                         
+                         
 
-                </div>
-            </div>
+                        </div>
+                    </div>
+
+                        </div>
+
+
+                        
+                    </div>
+
+    <br />
+
+    <div class="card">
+        <div class="card-body">
+            <h4>Product Attribute details</h4>
+
+            <table class="table table-bordered">
+
+                <tbody>
+                    <tr ng-repeat="attr in attributesVALUE">
+                        <td style="text-align:right; font-weight:700;" ng-bind="attrName(attr.AttributeID)"></td>
+                        <td style="text-align:left;">
+                            {{attr.Value}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-</div>
+
+
+    
+
+                </div>
 
 @section scripts{
 
@@ -84,10 +124,10 @@
             $("#mainImage").attr("src", $(this).attr("src"));
         });
     </script>
-<link href="~/Content/toaster.css" rel="stylesheet" />
+    <link href="~/Content/toaster.css" rel="stylesheet" />
 
-<script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular.js"></script>
 
-<script src="~/Scripts/toaster.js"></script>
-<script src="~/Scripts/controllers/Details.js"></script>
+    <script src="~/Scripts/toaster.js"></script>
+    <script src="~/Scripts/controllers/Details.js"></script>
 }

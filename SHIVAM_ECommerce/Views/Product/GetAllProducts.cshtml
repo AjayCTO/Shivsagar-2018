@@ -44,41 +44,45 @@
 
                   
                     <a href="/Product/Create" class="btn btn-success"><i class="dropdown-icon fa fa-plus"></i> Add New Product</a>
-                   <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" class="btn btn-info"><i class="dropdown-icon fa fa-upload"></i> Upload Products</a>
+                   <a href="javascript:void(0)" data-toggle="modal" data-target="#myModal" class="btn btn-primary"><i class="dropdown-icon fa fa-upload"></i> Upload Products</a>
             
              <a href="/Product/ExportProducts" class="btn btn-primary pull-right"> <i class="dropdown-icon fa fa-download"></i> Export As Excel</a>
         }
 
         <div class="card">
-            
-              
-     
+
+
+
             <div class="card-body">
                 @if (_CurrentUser.SupplierID == -1)
                 {
 
                     <div class="row">
                         <div class="col-md-4">
-                         
-                        </div>
-                             @if (Supplierlength != 0)
-                            {
 
-                        <div class="col-md-4">
-                            <p style="position: absolute; z-index: 10; margin-left: 93px;">Select Supplier From Below Dropdown</p>
-                             
-                            <select class="form-control" style="position: absolute;top:28px;z-index:10;" id="SupplierData">
-                                <option value="">Select --</option>
-                                @foreach (var _item in _suppliers)
-                                {
-                                    
-                                    <option value="@_item.Id">@_item.FirstName  @_item.LastName</option>
-                                }
-                            </select>
-                    
-                            @*<input type="text" class="form-control" style="position: absolute;top:10px;z-index:10;" name="name" id="SupplierAuto" placeholder="Search By Supplier" />*@
                         </div>
-                            }
+                        @if (Supplierlength != 0)
+                        {
+
+                            <div class="col-md-4">
+                                <p style="position: absolute; z-index: 10; margin-top: -12px; margin-left: 74px;">Select Supplier From Below Dropdown</p>
+
+                                <select class="form-control" style="position: absolute; top: 10px; z-index: 10; left: -5px; " id="SupplierData">
+                                    <option value="">---Select Supplier---</option>
+                                    @foreach (var _item in _suppliers)
+                                    {
+
+                                        <option value="@_item.Id">@_item.FirstName  @_item.LastName   (@_item.User_Name)</option>
+                                    }
+                                </select>
+
+                                @*<input type="text" class="form-control" style="position: absolute;top:10px;z-index:10;" name="name" id="SupplierAuto" placeholder="Search By Supplier" />*@
+                            </div>
+                        }
+                        else
+                        {
+                            <h3 style="text-align:center;position: absolute;left: 511px;top: 1px;">No supplier Registration</h3>
+                        }
                     </div>
                 }
 
@@ -87,16 +91,16 @@
                     <thead>
                         <tr id="Columns">
 
-                           
-                              @foreach (var row in TempData["cols"] as List<object>)
+
+                            @foreach (var row in TempData["cols"] as List<object>)
                             {
 
                                 <th>@row</th>
 
 
                             }
-                            
-                          
+
+
                             <th></th>
                         </tr>
                     </thead>
@@ -127,10 +131,10 @@
 
                                     <div class="form-horizontal">
                                         <div class="form-group">
-                                            <div class="col-md-10">
-                                                <a href="/Product/DownloadSample/" class="btn btn-secondary"> <i class="fa fa-excel"></i>Download Sample</a>
-                                                <a href="/Product/DownloadCategory/" class="btn btn-secondary"> <i class="fa fa-excel"></i>Download Category</a>
-                                            
+                                            <div class="col-md-12">
+                                                <a href="/Product/DownloadSample/" class="btn btn-primary"> <i class="fa fa-download"></i> Download Sample <i class="fa fa-file-excel-o"></i></a>
+                                                <a href="/Product/DownloadCategory/" class="btn btn-primary"> <i class="fa fa-download"></i> Download Category <i class="fa fa-file-excel-o"></i></a>
+
                                             </div>
                                         </div>
 
@@ -225,6 +229,8 @@
                 </div>
             </div>
         </div>
+
+
 
     </div>
     </div>
@@ -543,7 +549,7 @@
                                 html=html+'<a href="/Product/Edit?productID='+data[2]+'" class="dropdown-item"><i class="dropdown-icon fa fa-pencil"></i> Edit Product </a>';
                                 html=html+'<a onclick="DeleteProduct(' + data[2] + ')" style="cursor: pointer" class="dropdown-item"><i class="dropdown-icon fa fa-trash"></i> Delete Product </a>';
                                 html=html+'<a href="/Product/ProductDetails?productID='+data[2]+'" class="dropdown-item"><i class="dropdown-icon fa fa-pencil"></i> Edit Attribute</a>';
-                                html=html+'<a href="/Product/Details?productID='+data[2]+'" class="dropdown-item"><i class="dropdown-icon fa fa-list"></i> Prodcut Details</a>';
+                                html=html+'<a href="/Product/Details?productID='+data[3]+'" class="dropdown-item"><i class="dropdown-icon fa fa-list"></i> Prodcut Details</a>';
                              
                                 html=html+_b+_c+'</div>';
                             }
@@ -556,7 +562,7 @@
                             {
                                 _imageData= '<a href="/Product/AssignProductImages?ProductID='+data[3]+'" class="btn btn-primary btn-sm"><i class="dropdown-icon fa fa-image"></i> Assign Image</a>';
                             } else {
-                                _imageData= '<img class="gridImage" onclick="LoadAllImages('+data[2]+')" src="/images/loading.gif" data-src="/ProductImages/' + data[4] + '">';
+                                _imageData= '<img class="gridImage" onclick="LoadAllImages('+data[3]+')" src="/images/loading.gif" data-src="/ProductImages/' + data[4] + '">';
                             }
                             $('td:eq(0)', row).html(_imageData);
                         }
@@ -722,6 +728,7 @@
         .dataTables_scrollBody
         {
             overflow:auto !important;
+            min-height:340px;
         }
 
         .dataTables_length {
@@ -735,7 +742,21 @@
         th {
             box-sizing: border-box;
         }
+        .dropdown-item {
+            width: 96%;
+        }
 
+        .dropdown-item {
+            padding: 10px !important;
+            padding-right: 0 !important;
+            padding-top: 21px;
+            line-height: 16px;
+            font-size: 14px !important;
+            color: #ccc;
+            color: #848484 !important;
+        }
+
+     
       
     </style>
 }
