@@ -83,7 +83,7 @@ namespace SHIVAM_ECommerce.Controllers
         public JsonResult AllSupplier()
         {
            
-            var suppliers = db.Suppliers.Include(s => s.Plan).Include(s => s.User).Select(p => new { Name = p.FirstName+" "+ p.LastName, Id = p.Id }); ;
+            var suppliers = db.Suppliers.Include(s => s.Plan).Include(s => s.User).Select(p => new { Name = p.FirstName+" "+ p.LastName, Id = p.Id, UserName=p.User_Name }); ;
             return Json(suppliers.ToList(), JsonRequestBehavior.AllowGet);
 
         }
@@ -152,6 +152,7 @@ namespace SHIVAM_ECommerce.Controllers
                     _supplier.FirstName = supplier.Name;
                     _supplier.CompanyName = supplier.CompanyName;
                     _supplier.Email = supplier.Email;
+                    _supplier.User_Name = supplier.UserName;
                     _supplier.UserName = supplier.UserName;
                     _supplier.LastName = supplier.LastName;
                     _supplier.PlanID = supplier.PlanID;
@@ -216,7 +217,7 @@ namespace SHIVAM_ECommerce.Controllers
                             _customer.UserName = user.UserName;
                             _customer.Password = supplier.Password;
                             _customer.ConfirmPassword = supplier.Password;
-                            _customer.Phone = "12345678910";
+                            _customer.Phone = "";
                             db.Customers.Add(_customer);
                             db.SaveChanges();
                         }
@@ -248,13 +249,14 @@ namespace SHIVAM_ECommerce.Controllers
                         string AdminUserName = ConfigurationManager.AppSettings["adminusername"].ToString();
                         var sendemail = new EmailService.Service.EmailService();
                         sendemail.SendEmail(email, Supplierregisters, "Successfully Created", username, supplier.UserName, supplier.Password);
-                        sendemail.SendEmail(adminemail, admintemple, subject, AdminUserName,null, null);
+                        sendemail.SendEmail(adminemail, admintemple, subject, AdminUserName,supplier.UserName, supplier.Email);
                         this.AddNotification("Created successfully.", NotificationType.SUCCESS);
                         return RedirectToAction("Index");
                     }
                     else
                     {
                         AddErrors(result);
+                       
                     }
 
 
@@ -287,7 +289,7 @@ namespace SHIVAM_ECommerce.Controllers
         {
             foreach (var error in result.Errors)
             {
-                ModelState.AddModelError("", error);
+                ModelState.AddModelError("UserName", error);
             }
         }
 
@@ -501,7 +503,7 @@ namespace SHIVAM_ECommerce.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CompanyName,FirstName,LastName,Title,Address1,Address2,City,State,PostalCode,Country,Phone,Email,URL,Logo,SupplierType,UserID,PlanID,UserName,Password,PlanEndDate,PlanStartDate,ProductCount,CreatedDate,UserCount")] Supplier supplier, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "Id,CompanyName,FirstName,LastName,Title,Address1,Address2,City,State,PostalCode,Country,Phone,Email,URL,Logo,SupplierType,UserID,PlanID,UserName,Password,PlanEndDate,PlanStartDate,User_Name,ProductCount,CreatedDate,UserCount")] Supplier supplier, HttpPostedFileBase file)
         {
 
 
@@ -510,6 +512,7 @@ namespace SHIVAM_ECommerce.Controllers
 
                 supplier.UpdatedDate = DateTime.Now;
                 //supplier.CreatedDate = DateTime.Now;
+                supplier.Sort = 33;
                 if (file != null)
                 {
                     string pic = System.IO.Path.GetFileName(file.FileName);

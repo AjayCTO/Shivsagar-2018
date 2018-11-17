@@ -11,6 +11,7 @@ using SHIVAM_ECommerce.Models;
 using SHIVAM_ECommerce.Attributes;
 using System.Linq.Dynamic;
 using SHIVAM_ECommerce.Extensions;
+using SHIVAM_ECommerce.ViewModels;
 namespace SHIVAM_ECommerce.Controllers
 {
     [CustomAuthorize]
@@ -21,6 +22,8 @@ namespace SHIVAM_ECommerce.Controllers
         // GET: /Order/
         public async Task<ActionResult> Index()
         {
+
+            ViewBag.Suppliers = CurrentUserData.SupplierID == -1 ? db.Suppliers.ToList() : new List<Supplier>();
             ViewBag.OrderStatus = db.OrderStatuses.ToList();
             return View();
         
@@ -53,12 +56,12 @@ namespace SHIVAM_ECommerce.Controllers
             var sortColumn = Request.Form.GetValues("columns[" + Request.Form.GetValues("order[0][column]").FirstOrDefault() + "][name]").FirstOrDefault();
             var sortColumnDir = Request.Form.GetValues("order[0][dir]").FirstOrDefault();
             var _supplierID = !string.IsNullOrEmpty(Request["SupplierID"]) ? Convert.ToInt16(Request["SupplierID"]) : CurrentUserData.SupplierID;
-
+            Session["SuppliersId"] = _supplierID;
             int pageSize = length != null ? Convert.ToInt32(length) : 0;
             int skip = start != null ? Convert.ToInt32(start) : 0;
             int recordsTotal = 0;
             var _orderIds = db.OrderItems.Where(x => x.SupplierID == _supplierID).Select(x => x.Orders_Id);
-            var orders = _supplierID == -1 ? db.Orders.Include(o => o.customer) : db.Orders.Include(o => o.customer).Where(x => _orderIds.Contains(x.Id));
+            var orders =db.Orders.Include(o => o.customer).Where(x => _orderIds.Contains(x.Id));
             var v = (from a in orders select a);
             if (!string.IsNullOrEmpty(searchitem))
             {
@@ -75,7 +78,7 @@ namespace SHIVAM_ECommerce.Controllers
 
             recordsTotal = v.Count();
             var data = v.Skip(skip).Take(pageSize).ToList();
-            return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data.Select(x => new { x.Id, x.OrderNumber, Name = x.customer.FirstName, x.OrderDate, x.ShipDate, Status = x.status.Status, Paid = x.IsPaid == true ? "Paid" : "UnPaid", x.TotalPrice, }) }, JsonRequestBehavior.AllowGet);
+            return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data.Select(x => new { x.Id, x.OrderNumber, Name = x.customer.FirstName +" "+x.customer.LastName, x.OrderDate, x.ShipDate, Status = x.status.Status, Paid = x.IsPaid == true ? "Paid" : "UnPaid", x.TotalPrice, }) }, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -83,7 +86,13 @@ namespace SHIVAM_ECommerce.Controllers
         {
             try
             {
-                var _orderItems = db.OrderItems.Where(x => x.SupplierID == CurrentUserData.SupplierID && x.Orders_Id == orderID).ToList();
+                var allProducts = new List<Array[]>();
+                var _orderItems = db.OrderItems.Where(x=>x.Orders_Id == orderID).ToList();
+
+                var attribute = _orderItems.Select(x => x.ProductAttributeWithQuantity.AttributeValues).FirstOrDefault().ToString();
+                var ColumnsData = new List<ProductAttributeModelInner>();
+                ColumnsData = GetColumnsDataSplitted(attribute);
+              
                 return PartialView("OrderItems", _orderItems);
             }
             catch (Exception ex)
@@ -93,6 +102,29 @@ namespace SHIVAM_ECommerce.Controllers
             }
         }
 
+
+        private List<ProductAttributeModelInner> GetColumnsDataSplitted(string p)
+        {
+            string[] parts1 = p.Split(new string[] { "##" }, StringSplitOptions.RemoveEmptyEntries);
+            var _ReturnModel = new List<ProductAttributeModelInner>();
+            foreach (var _item in parts1.ToList())
+            {
+                string[] parts2 = _item.Split(new string[] { "@@" }, StringSplitOptions.RemoveEmptyEntries);
+                var _attributeID = parts2[0];
+
+
+                var _value = "";
+                if (parts2.Length > 1)
+                {
+                    _value = parts2[1] == null ? "N/A" : parts2[1];
+                }
+
+
+                _ReturnModel.Add(new ProductAttributeModelInner { AttributeID = Convert.ToInt16(_attributeID), Value = _value });
+            }
+
+            return _ReturnModel;
+        }
         // GET: /Order/Details/5
         public async Task<ActionResult> Details(int? id)
         {

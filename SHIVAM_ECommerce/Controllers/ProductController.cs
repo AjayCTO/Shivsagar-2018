@@ -288,24 +288,37 @@ namespace SHIVAM_ECommerce.Controllers
 
                                     if (!a.IsBlank)
                                     {
-
                                         var Name = a.Cells[GetColumnIndex(_headerRow, "Name")].Value.ToString().Replace("'", "''");
-                                        var productCode = a.Cells[GetColumnIndex(_headerRow, "ProductCode")].Value.ToString().Replace("'", "''");
-                                        var description = a.Cells[GetColumnIndex(_headerRow, "Description")].Value.ToString().Replace("'", "''");
-                                        var categoryName = a.Cells[GetColumnIndex(_headerRow, "categoryName")].Value.ToString().Replace("'", "''");
-                                        var UnitOfMeasure = a.Cells[GetColumnIndex(_headerRow, "UnitOfMeasure")].Value.ToString().Replace("'", "''");
-                                        var manufacturer = a.Cells[GetColumnIndex(_headerRow, "ManuFacturer")].Value.ToString().Replace("'", "''");
+                               
+                                        var productcode = a.Cells[GetColumnIndex(_headerRow, "ProductCode")].Value.ToString().Replace("'", "''");
+                          
+                                        var Description = a.Cells[GetColumnIndex(_headerRow, "Description")].Value.ToString().Replace("'", "''");
+                           
+                                        var CategoryName = a.Cells[GetColumnIndex(_headerRow, "categoryName")].Value.ToString().Replace("'", "''");
+                               
+                                      var unitofmeasure = a.Cells[GetColumnIndex(_headerRow, "UnitOfMeasure")].Value.ToString().Replace("'", "''");
+                          
+                                      var Manufacturer = a.Cells[GetColumnIndex(_headerRow, "ManuFacturer")].Value.ToString().Replace("'", "''");
+                          
+                                      var productStatus = a.Cells[GetColumnIndex(_headerRow, "ProductStatus")].Value.ToString().Replace("'", "''");
+                       
+                                      var productprice = a.Cells[GetColumnIndex(_headerRow, "Cost")].Value.ToString().Replace("'","''");
+                                      var Quantity = a.Cells[GetColumnIndex(_headerRow, "Quantity")].Value.ToString().Replace("'", "''");
+                          
+                                      var lowquantitythreshold = a.Cells[GetColumnIndex(_headerRow, "LowQuantityThreshold")].Value.ToString().Replace("'", "''");
+                                
+                                      var highquantitytheshold = a.Cells[GetColumnIndex(_headerRow, "HighQuantityThreshold")].Value.ToString().Replace("'", "''");
 
                                         string _Query = "DECLARE @return_value int,@ProductID int;";
                                         _Query += "SELECT	@ProductID = -1;";
-                                        _Query += "EXEC	@return_value = [dbo].[InsertProduct] @Name='" + Name + "',@ProductCode = '" + productCode + "',@Description = '" + description + "',@categoryName = '" + categoryName + "',@UnitOfMeasure = '" + UnitOfMeasure + "',@ManuFacturer = '" + manufacturer + "',@SupplierID = '" + SupplierId + "',@ProductID = @ProductID OUTPUT;";
+                                        _Query += "EXEC	@return_value = [dbo].[InsertProduct] @Name='" + Name + "',@ProductCode = '" + productcode + "',@Description = '" + Description + "',@categoryName = '" + CategoryName + "',@UnitOfMeasure = '" + unitofmeasure + "',@ManuFacturer = '" + Manufacturer + "',@SupplierID = '" + SupplierId + "',@ProductID = @ProductID OUTPUT;";
                                         _Query += "SELECT	@ProductID as N'ProductID'";
                                         SqlCommand command = new SqlCommand(_Query, connection);
                                         command.CommandTimeout = 640;
                                         command.Connection.Open();
                                         var _productID = command.ExecuteScalar();
 
-                                        _Query = "EXEC [dbo].[InsertProductAttributes] @AttributeValues='" + GetAttributeValuesForSqlSync(a, _Customcolumns, _headerRow) + "', @ProductPrice = '" + a.Cells[GetColumnIndex(_headerRow, "Cost")].Value.ToString() + "', @ProductQuantity = '" + a.Cells[GetColumnIndex(_headerRow, "Quantity")].Value.ToString() + "', @ProductId = '" + _productID.ToString() + "', @UnitInStock = '" + a.Cells[GetColumnIndex(_headerRow, "Quantity")].Value.ToString() + "', @UnitWeight = '0',@HighQuantityThreshold='" + a.Cells[GetColumnIndex(_headerRow, "HighQuantityThreshold")].Value.ToString() + "',@LowQuantityThreshold='" + a.Cells[GetColumnIndex(_headerRow, "LowQuantityThreshold")].Value.ToString() + "',@ProductStatus='" + a.Cells[GetColumnIndex(_headerRow, "ProductStatus")].Value.ToString() + "';";
+                                        _Query = "EXEC [dbo].[InsertProductAttributes] @AttributeValues='" + GetAttributeValuesForSqlSync(a, _Customcolumns, _headerRow) + "', @ProductPrice = '" + productprice + "', @ProductQuantity = '" + Quantity + "', @ProductId = '" + _productID.ToString() + "', @UnitInStock = '" + Quantity + "', @UnitWeight = '0',@HighQuantityThreshold='" + highquantitytheshold + "',@LowQuantityThreshold='" + lowquantitythreshold + "',@ProductStatus='" + productStatus + "';";
 
                                         command = new SqlCommand(_Query, connection);
                                         command.ExecuteNonQuery();
@@ -399,10 +412,26 @@ namespace SHIVAM_ECommerce.Controllers
             int count = 0;
             foreach (var item in row.Cells)
             {
-                if (row.Cells[count].Value.ToString() == _Column)
+
+                var cellValue = row.Cells[count].Value.ToString();
+
+                if (row.Cells[0].Value.ToString().Contains("\t"))
                 {
-                    return count;
+                    var valuearray = row.Cells[0].Value.ToString().Split('\t');
+                    if (valuearray[count] == _Column)
+                    {
+                        return count;
+                    }
                 }
+                else
+                {
+                    if (cellValue == _Column)
+                    {
+                        return count;
+                    }
+                }
+
+               
                 count = count + 1;
             }
 
@@ -415,11 +444,6 @@ namespace SHIVAM_ECommerce.Controllers
             _ValidObj.IsValid = true;
             _ValidObj.ErrorString = "";
             var productNames = db.Products.Where(x => x.SupplierID == CurrentUserData.SupplierID).Select(x => x.ProductName).ToList();
-
-
-            //var valueTest = a.Cells[GetColumnIndex(_headerRow, "Name")].Value.ToString();
-
-            //var valueTest = a.Cells[0].Value.ToString();
 
             if (productNames.Any(s => s.Contains(a.Cells[GetColumnIndex(_headerRow, "Name")].Value.ToString())))
             {
@@ -874,7 +898,7 @@ namespace SHIVAM_ECommerce.Controllers
                 var _value = "";
                 if (parts2.Length > 1)
                 {
-                    _value = parts2[1] == null ? "N/A" : parts2[1];
+                    _value = parts2[1] == null ? "N/A" : parts2[1].Replace("\n", "<br>");
                 }
 
                 
