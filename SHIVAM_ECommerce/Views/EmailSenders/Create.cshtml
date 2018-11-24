@@ -5,6 +5,12 @@
     string Subjects = ViewBag.EmailSubject;
 }
 
+<style>
+    textarea.form-control {
+        height: auto !important;
+        min-height: 100px;
+    }
+</style>
 <div class="row page-titles">
 
 
@@ -226,11 +232,20 @@
                 } // we do not want to escape markup since we are displaying html in results
             });
             debugger;
-            $('.myselect').on('select2:select', function (e) {
-                allowClear: true
 
+            $('.myselect').on('select2:select', function (e) {
+            
                 debugger;
+                var arr = [];
                 var data = e.params.data;
+                if (data.selected == true) {
+                    arr.push(data.id)
+                }
+                else {
+
+                    arr.pop(data.id);
+                }
+
                 if (allSelectedMembers == "") {
                     allSelectedMembers = data.id;
                 } else {
@@ -238,7 +253,7 @@
                 }
 
 
-
+      
                 $("#ReceiverIDs").val('');
                 $("#ReceiverIDs").val(allSelectedMembers);
 
@@ -246,15 +261,28 @@
 
             });
 
+       
 
+           
+            $("span.select2-selection__choice__remove").on("click", function () {
+                debugger;
+                alert("in");
+               
 
-            //$("ul li .select2-selection__choice__remove").on("click", function () {
-            //    alert("in");
-            //    debugger;
-
-            //});
+            });
 
         });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            $(".select2-selection__choice span").click(function () {
+                debugger;
+                alert("in");
+            })
+
+        })
     </script>
 <script>
     var current = location.pathname;
@@ -315,10 +343,12 @@
                         case 'docx':
                             $($.parseHTML("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon'><i class='fa fa-file-word-o'></i></span><div class='mailbox-attachment-info'>" + input.files[0].name + "</div></li></ul>")).appendTo(placeToInsertImagePreview);
                             break;
-                        case 'xlsx':
-                            $($.parseHTML("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon'><i class='fa fa-file-excel-o'></i></span><div class='mailbox-attachment-info'>" + input.files[0].name + "</div></li></ul>")).appendTo(placeToInsertImagePreview);
-                            break;
-                    
+                        case 'xls':
+                        case 'csv':
+                            {
+                                $($.parseHTML("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon'><i class='fa fa-file-excel-o'></i></span><div class='mailbox-attachment-info'>" + input.files[0].name + "</div></li></ul>")).appendTo(placeToInsertImagePreview);
+                                break;
+                            }
                           
                     }
                 }

@@ -35,8 +35,8 @@
             @*@Html.ValidationSummary()*@
 
             @Html.HiddenFor(model => model.Id)
-            @*@Html.HiddenFor(model => model.Logo)*@
-            <input type="hidden" id="Logo" name="Logo" />
+            @Html.HiddenFor(model => model.Logo)
+            @*<input type="hidden" id="Logo" name="Logo" />*@
                         @Html.HiddenFor(model => model.UpdatedDate)
                        @Html.HiddenFor(model => model.Sort)
             @Html.HiddenFor(model => model.CreatedDate)
@@ -98,8 +98,6 @@
                                     @Html.ValidationMessageFor(model => model.State)
                                 </div>
 
-
-
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.City, new { @class = "control-label " })
                                     <div class="">
@@ -151,15 +149,17 @@
                         <div class="card-body">
                             <h3 class="card-title text-center">Company Logo</h3>
                             <div style="text-align:center">
-                                @if (Model.Logo != null)
-                                {
-                                    <img style="height:100px; width:120px;" src="@Url.Content("~/SupplierImage/"+Model.Logo)" alt="Alternate Text" />
-                                }
-
-
                                 @if (Model.Logo == null)
                                 {
-                                    <img style="height:100px; width:100px;" src="@Url.Content("~/CategoryImage/no-image.png")" alt="Alternate Text" />
+                                              <img style="height:100px; width:100px;" src="@Url.Content("~/CategoryImage/no-image.png")" alt="Alternate Text" />
+                          
+                                           }
+
+
+                             else
+                                {
+                                     <img style="height:100px; width:120px;" src="@Url.Content("~/SupplierImage/"+Model.Logo)" alt="Alternate Text" />
+                        
                                 }
 
                                 <br />
@@ -250,11 +250,13 @@
         });
 
 
-    $("#listBox").change(function () {
+        $("#listBox").on("change",function () {
+            debugger;
         $("#State").val($(this).val());
-    });
+        $("#City").val($("#secondlist").val());
+          });
 
-    $("#secondlist").change(function () {
+        $("#secondlist").change(function () {
         $("#City").val($(this).val());
     });
 

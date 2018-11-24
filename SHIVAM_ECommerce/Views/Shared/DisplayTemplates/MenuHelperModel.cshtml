@@ -6,20 +6,59 @@
 @{
     var _CurrentUser = Session["CurrentUserContext"] as CurrentUserContext;
     var _AllClaims = Session["UserClaims"] as List<ClaimsViewModel>;
+    if(Session["CanSeeCategoryURL"]!=null){
     var CanSeeCategoryURL = Session["CanSeeCategoryURL"].ToString() == "URL:/Category" ? true : false;
+    }
+    if (Session["CanSeeSupplierURL"] != null)
+    {
     var CanSeeSupplierURL = Session["CanSeeSupplierURL"].ToString() == "URL:/Supplier" ? true : false;
+    }
+    if (Session["CanSeePlanURL"] != null)
+    {
     var CanSeePlanURL = Session["CanSeePlanURL"].ToString() == "URL:/Plan" ? true : false;
+    }
+    if (Session["CanSeeManufacturerURL"] != null)
+        {
     var CanSeeManufacturerURL = Session["CanSeeManufacturerURL"].ToString() == "URL:/Manufacturers" ? true : false;
+        }
+    if (Session["CanSeeProductURL"] != null)
+    {
     var CanSeeProductURL = Session["CanSeeProductURL"].ToString() == "URL:/Product/GetAllProducts" ? true : false;
+    }
+    if (Session["CanSeeProductStatusURL"] != null)
+    {
     var CanSeeProductStatusURL = Session["CanSeeProductStatusURL"].ToString() == "URL:/ProductStatus" ? true : false;
+    }
+    if (Session["CanSeeUOMURL"] != null)
+    {
     var CanSeeUOMURL = Session["CanSeeUOMURL"].ToString() == "URL:/UnitOfMeasures" ? true : false;
+    }
+    if (Session["CanSeeProductAttrURL"] != null)
+    {
     var CanSeeProductAttrURL = Session["CanSeeProductAttrURL"].ToString() == "URL:/ProductAttributes" ? true : false;
-    var CanSeeProductAttrSupplierURL = Session["CanSeeProductAttrSupplierURL"].ToString() == "URL:/ProductAttributes/AddAttributesForSupplier" ? true : false;
-    var CanSeeCustomerURL = Session["CanSeeCustomerURL"].ToString() == "URL:/Customer" ? true : false;
+    }
+    if (Session["CanSeeProductAttrSupplierURL"] != null)
+    {
+        var CanSeeProductAttrSupplierURL = Session["CanSeeProductAttrSupplierURL"].ToString() == "URL:/ProductAttributes/AddAttributesForSupplier" ? true : false;
+    } if (Session["CanSeeCustomerURL"] != null)
+    {
+        var CanSeeCustomerURL = Session["CanSeeCustomerURL"].ToString() == "URL:/Customer" ? true : false;
+    } if (Session["CanSeeOrderURL"] != null)
+    {
     var CanSeeOrderURL = Session["CanSeeOrderURL"].ToString() == "URL:/Order" ? true : false;
+    }
+    if (Session["CanSeeEmailRecordURL"] != null)
+    {
     var CanSeeEmailRecordURL = Session["CanSeeEmailRecordURL"].ToString() == "URL:/EmailRecords" ? true : false;
-    var CanSeeManageAccountURL = Session["CanSeeManageAccountURL"].ToString() == "URL:/Account/Manage" ? true : false;
+    }
+    if (Session["CanSeeManageAccountURL"] != null)
+    {
+        var CanSeeManageAccountURL = Session["CanSeeManageAccountURL"].ToString() == "URL:/Account/Manage" ? true : false;
+    } 
+    if (Session["CanSeeSupplierUserURL"] != null)
+    {
     var CanSeeSupplierUserURL = Session["CanSeeSupplierUserURL"].ToString() == "URL:/SupplierUser" ? true : false;
+                                    }
 }
 
 <div class="header-nav d-none d-lg-flex">

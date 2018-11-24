@@ -3,6 +3,12 @@
 @{
     ViewBag.Title = "Reply";
 }
+<style>
+    textarea.form-control {
+        height: auto !important;
+        min-height: 100px;
+    }
+</style>
 <div class="row page-titles">
 
 
@@ -259,10 +265,12 @@
                         case 'docx':
                             $($.parseHTML("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon'><i class='fa fa-file-word-o'></i></span><div class='mailbox-attachment-info'>" + input.files[0].name + "</div></li></ul>")).appendTo(placeToInsertImagePreview);
                             break;
-                        case 'xlsx':
-                            $($.parseHTML("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon'><i class='fa fa-file-excel-o'></i></span><div class='mailbox-attachment-info'>" + input.files[0].name + "</div></li></ul>")).appendTo(placeToInsertImagePreview);
-                            break;
-
+                        case 'xls':
+                        case 'csv':
+                            {
+                                $($.parseHTML("<ul class='mailbox-attachments clearfix'><li><span class='mailbox-attachment-icon'><i class='fa fa-file-excel-o'></i></span><div class='mailbox-attachment-info'>" + input.files[0].name + "</div></li></ul>")).appendTo(placeToInsertImagePreview);
+                                break;
+                            }
 
                     }
                 }

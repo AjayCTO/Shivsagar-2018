@@ -3,6 +3,13 @@
 @{
     ViewBag.Title = "Edit";
 }
+
+<style>
+    textarea.form-control {
+        height: auto !important;
+        min-height: 100px;
+    }
+</style>
 <div class="row page-titles">
 
 
@@ -38,7 +45,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-md-3">Category Name</label>
                                         <div class="col-md-10">
-                                            @Html.TextBoxFor(model => model.CategoryName, new { @class = "form-control col-md-10 UniqueCategory" })
+                                            @Html.TextBoxFor(model => model.CategoryName, new { @class = "form-control col-md-8 UniqueCategory" })
                                             @Html.ValidationMessageFor(model => model.CategoryName)
                                         </div>
                                     </div>
@@ -47,7 +54,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-md-3"> Parent Category</label>
                                         <div class="col-md-10">
-                                            @Html.DropDownList("ParentCategory", String.Empty)
+                                            @Html.DropDownList("ParentCategory", null,"---Select---", new { @class = "form-control col-md-8" })
                                             @Html.ValidationMessageFor(model => model.ParentCategory)
                                         </div>
                                     </div>
@@ -74,34 +81,28 @@
                                     <div class="form-group">
                                         @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-3" })
                                         <div class="col-md-10">
-                                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control col-md-10" })
+                                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control col-md-8" })
                                             @Html.ValidationMessageFor(model => model.Description)
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-
-                                    <h4>Update Image</h4>
-
+                                    <h4 style="margin-left:84px">Category  Image</h4>
 
                                     @if (Model.CategoryImage != null)
                                     {
-                                        <img style="height:100px; width:100px;" src="@Url.Content("~/CategoryImage/" + Model.CategoryImage)" alt="Alternate Text" />
+                                        <img style="height: 150px; width: 150px; margin-left: 75px" src="@Url.Content("~/CategoryImage/" + Model.CategoryImage)" alt="Alternate Text" />
                                     }
-
 
                                     @if (Model.CategoryImage == null)
                                     {
-                                        <img style="height:100px; width:100px;" src="@Url.Content("~/CategoryImage/no-image.png")" alt="Alternate Text" />
+                                        <img style="height: 150px; width: 150px; margin-left: 75px; " src="@Url.Content("~/CategoryImage/no-image.png")" alt="Alternate Text" />
                                     }
-
-
-
-
-                                    <div class="form-group">
+                                    <br/>
+                                    <div class="form-group align-content-center" style="margin-top:10px">
 
                                         <div class="col-md-10">
-                                            <label for="file">Upload Image:</label>
+
                                             @*<input type="file" name="file" id="file" style="width: 100%;" />*@
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input form-control" name="file" id="file" accept="image/*">
@@ -151,9 +152,6 @@
             @section Scripts {
 
 
-                <script>
-                    $("#ParentCategory").addClass("form-control col-md-10")
-                </script>
 
                 @Scripts.Render("~/bundles/jqueryval")
 
@@ -207,7 +205,8 @@
                     $(document).ready(function () {
 
                         var Categories = '@Model.CategoryName';
-                        var Category = $.trim(Categories);
+                        var Category = $.trim(Categories).replace(/&#39;/g, "'").replace(/&amp;/g, "&").replace(/&quot;/g, "\"");
+                       
                         $.validator.addMethod('UniqueCategory', function (values) {
                             debugger;
                            var value= $.trim(values);

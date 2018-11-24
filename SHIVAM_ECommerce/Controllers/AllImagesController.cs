@@ -13,6 +13,7 @@ using System.IO;
 using SHIVAM_ECommerce.Repository;
 using SHIVAM_ECommerce.ViewModels;
 using SHIVAM_ECommerce.Attributes;
+using SHIVAM_ECommerce.Extensions;
 
 namespace SHIVAM_ECommerce.Controllers
 {
@@ -191,7 +192,7 @@ namespace SHIVAM_ECommerce.Controllers
 
             foreach (var file in files)
             {
-                if (file.ContentLength > 0)
+                if (file.ContentLength > 10000)
                 {
                     var fileName = Path.GetFileName(file.FileName);
                     var path = Path.Combine(Server.MapPath("~/ProductImages/large"), fileName);
@@ -209,6 +210,9 @@ namespace SHIVAM_ECommerce.Controllers
                     allproductimages.SupplierID = selectedSupplier.Id;
                     _repository.Insert(allproductimages);
                     _repository.Save();
+                }
+                else {
+                    this.AddNotification(file.FileName +" This image too Small Please Image should be greater then 10 kb", NotificationType.WARNING);
                 }
             }
             return RedirectToAction("index");

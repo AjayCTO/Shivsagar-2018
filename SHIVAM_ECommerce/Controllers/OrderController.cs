@@ -84,16 +84,73 @@ namespace SHIVAM_ECommerce.Controllers
 
         public ActionResult GetOrderItems(int orderID)
         {
-            try
+          try
             {
+                var SupplierID = CurrentUserData.SupplierID;
+             
                 var allProducts = new List<Array[]>();
-                var _orderItems = db.OrderItems.Where(x=>x.Orders_Id == orderID).ToList();
-
-                var attribute = _orderItems.Select(x => x.ProductAttributeWithQuantity.AttributeValues).FirstOrDefault().ToString();
-                var ColumnsData = new List<ProductAttributeModelInner>();
-                ColumnsData = GetColumnsDataSplitted(attribute);
               
-                return PartialView("OrderItems", _orderItems);
+                if (CurrentUserData.IsSuperAdmin)
+                {
+                    var _orderItems = db.OrderItems.Where(x => x.Orders_Id == orderID).ToList();
+                    var _List = new List<OrderItemAttribute>();
+                    foreach (var orderItem in _orderItems)
+                    {
+                        var ctx = new ApplicationDbContext();
+                        using (var cmd = ctx.Database.Connection.CreateCommand())
+                        {
+                            ctx.Database.Connection.Open();
+                            cmd.CommandText = "Select * from dbo.ProductValues_view Where Id=" + orderItem.Productattrid + "";
+                            using (var reader = cmd.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                {
+                                    _List.Add(new OrderItemAttribute()
+                                    {
+                                        Id = Convert.ToInt32(reader["Id"]),
+                                        AttributeName = reader["AttributeName"].ToString(),
+                                        AttributeValue = reader["AttributeValue"].ToString(),
+                                    });
+                                }
+
+                            }
+                        }
+
+                    }
+                    ViewBag.Attributes = _List;
+                    return PartialView("OrderItems", _orderItems);
+                }
+                else
+                {
+                   var _orderItems = db.OrderItems.Where(x => x.Orders_Id == orderID && x.SupplierID == SupplierID).ToList();
+                   var _List = new List<OrderItemAttribute>();
+                    foreach (var orderItem in _orderItems)
+                   {
+                       var ctx = new ApplicationDbContext();      
+                       using (var cmd = ctx.Database.Connection.CreateCommand())
+                       {
+                           ctx.Database.Connection.Open();
+                           cmd.CommandText = "Select * from dbo.ProductValues_view Where Id="+orderItem.Productattrid+"";
+                           using (var reader = cmd.ExecuteReader())
+                           {
+                              while (reader.Read())
+                               {
+                                _List.Add(new OrderItemAttribute()
+                                   {
+                                       Id= Convert.ToInt32(reader["Id"]),
+                                       AttributeName = reader["AttributeName"].ToString(),
+                                       AttributeValue = reader["AttributeValue"].ToString(),                                   
+                                  });
+                               }
+
+                           }
+                       }
+
+                   }             
+                   ViewBag.Attributes = _List;
+                   return PartialView("OrderItems", _orderItems);
+                }
+         
             }
             catch (Exception ex)
             {
@@ -128,6 +185,7 @@ namespace SHIVAM_ECommerce.Controllers
         // GET: /Order/Details/5
         public async Task<ActionResult> Details(int? id)
         {
+            var Userid = CurrentUserData.UserID;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -136,6 +194,17 @@ namespace SHIVAM_ECommerce.Controllers
             if (orders == null)
             {
                 return HttpNotFound();
+            }
+            if (CurrentUserData.IsSuperAdmin == true)
+            {
+                var adminDetails = db.Adminprofile.Where(x => x.UserId == Userid).FirstOrDefault();
+                ViewBag.Suppliers = adminDetails;
+                 }
+            else
+            {
+                var Supplier = db.Suppliers.Where(x => x.UserID == Userid).FirstOrDefault();
+                ViewBag.Suppliers = Supplier;
+           
             }
             return View(orders);
         }

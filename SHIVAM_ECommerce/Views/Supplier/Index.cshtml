@@ -32,7 +32,9 @@
                                 <th>Company Name</th>
                                 <th>Owner</th>
                                 <th>Contact No</th>
+                                <th>Plan Expire </th>
                                 <th>City</th>
+                                <th>User Name</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -44,6 +46,33 @@
 
 
         </div>
+    </div>
+</div>
+
+<div id="myModalImages" class="modal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Product Images</h4>
+                <button type="button" class="close" data-dismiss="modal"></button>
+
+            </div>
+            <div class="modal-body">
+                <div>
+                    <img src="" id="mainImage" alt="Alternate Text" />
+                </div>
+                <div class="listImages">
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-gray" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -74,37 +103,54 @@
                          "mRender": function (data, type, row) {
 
                              if (row.Logo != null) {
-                                 var _img = '<img style="width:100px; " src="' + Imagepath + row.Logo + ' "></img>';
+                                 var _img = '<img style="height: 40px;  width: 40px;border-radius: 100%;" src="' + Imagepath + row.Logo + ' "></img>';
                              }
                              else {
-                                 var _img = '<img style="width:50px;" src="' + Imagepath + "no-image.png" + '  "></img>';
+                                 var _img = '<img style="height: 40px;  width: 40px;border-radius: 100%;" src="' + Imagepath + "no-image.png" + '  "></img>';
                              }
 
                              return _img;
                          }
                      },
-
+     
                         {
 
                             "data": "CompanyName", "name": "CompanyName", "autoWidth": true
                         },
                           {
 
-                              "data": "FirstName", "name": "FirstName", "autoWidth": true
+                              "data": "OwnerName", "name": "OwnerName", "autoWidth": true
                           },
                             {
 
-                                "data": "Phone", "name": "CompanyName", "Phone": true
+                                "data": "Phone", "name": "Phone", "autoWidth": true
+                            },
+
+                            {
+                                "data": "PlanEndDate", "name": "PlanEndDate", "autoWidth": true, "render": function (value) {
+                                    if (value === null || value == undefined) return "";
+
+                                    var pattern = /Date\(([^)]+)\)/;
+                                    var results = pattern.exec(value);
+                                    var dt = new Date(parseFloat(results[1]));
+
+                                    return dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear();
+                                }
                             },
                               {
 
-                                  "data": "City", "name": "CompanyName", "City": true
+                                  "data": "City", "name": "City", "autoWidth": true
+                              },
+
+                              {
+                                  "data": "UserName", "name": "UserName", "autoWidth": true
                               },
                             {
                                 "orderable": false,
                                 "mRender": function (data, type, row) {
                                     var _a = '<a style="color:#fff;" onclick="DeleteSupplier(' + row.Id + ')"  class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" ><i class="fa fa-trash"  align="center"></i></a>';
-                                    return '<a href="/Supplier/Edit/' + row.Id + '" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-pencil"  align="center"></i></a>  ' + _a;
+                                    var _b = '<a onclick="UpgradePlan(' + row.Id + ')" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Upgrade Plan"><i class="fa fa-info-circle"  align="center"></i></a> '
+                                    return _b + '<a href="/Supplier/Edit/' + row.Id + '" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-pencil"  align="center"></i></a>  ' + _a;
                                 }
                             },
                 ]
@@ -134,6 +180,34 @@
                         error: function (req, status, error) {
                             bootbox.alert(error);
                         }
+                    });
+
+                }
+            });
+        }
+        function UpgradePlan(Id) {
+
+            bootbox.confirm("Are you sure you want to Revinue Plan for this Supplier ?", function (result) {
+
+                if (result) {
+                    $.ajax({
+                        url: "/Supplier/UpgradePlan",
+                        data: JSON.stringify({ id: Id }),
+                        type: 'POST',
+                        contentType: 'application/json',
+                        dataType: 'json',
+                        success: function (result) {
+                            if (result.Success === true)
+                            {
+                                _DataTable.clear().draw();
+                                toastr.success("Successfully! Upgraded plan");
+                            }
+                             },
+
+                            error: function (req, status, error) 
+                            {
+                                bootbox.alert(error);
+                            },
                     });
 
                 }

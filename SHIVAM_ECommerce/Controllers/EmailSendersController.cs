@@ -27,25 +27,21 @@ namespace SHIVAM_ECommerce.Controllers
 
            try
            {
-
                var ctx = new ApplicationDbContext();
                var _List = new List<EmailDetail>();
                using (var cmd = ctx.Database.Connection.CreateCommand())
                {
-                   ctx.Database.Connection.Open();
-               
+                   ctx.Database.Connection.Open();               
                    cmd.CommandText = "select * from GetAllEmails where userId='" + User.Identity.GetUserId() + "'";
                    using (var reader = cmd.ExecuteReader())
                    {
-
-                       while (reader.Read())
+                      while (reader.Read())
                        {
                            _List.Add(new EmailDetail()
                            {
-
                                Id = Convert.ToInt32(reader["Id"]),
                                Attachment = reader["Attachment"].ToString(),
-                               ContentMsg = reader["ContentMsg"].ToString(),
+                               ContentMsg = reader["ContentMsg"].ToString().Replace("\r\n", "<br/>"),
                                IsAttachment = Convert.ToBoolean(reader["IsAttachment"]),
                                SenderId = reader["SenderId"].ToString(),
                                sentUsers = reader["ReceiverId"].ToString(),
@@ -54,9 +50,8 @@ namespace SHIVAM_ECommerce.Controllers
                                SendingDate = reader["SendingDate"].ToString()
 
                            });
-                       }
-                     
-                       return View(_List);
+                       }      
+                     return View(_List);
                    }
                }
 
@@ -101,7 +96,7 @@ namespace SHIVAM_ECommerce.Controllers
 
             recordsTotal = v.Count();
             var data = v.Skip(skip).Take(pageSize).ToList();
-            return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data.Select(p => new { id = p.Id, ReceiverName=p.ReceiverName, Email_Sender = p.Email_Sender, Email_Receiver = p.Email_Receiver, Send_Date = p.Send_Date, Subject = p.Subject, Message = p.Message, IsAttachment = p.IsAttachment, IsRead = p.IsRead, Attachment = p.Attachment }) }, JsonRequestBehavior.AllowGet);
+            return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data.Select(p => new { id = p.Id, ReceiverName=p.ReceiverName, Email_Sender = p.Email_Sender, Email_Receiver = p.Email_Receiver, Send_Date = p.Send_Date, Subject = p.Subject, Message = p.ContentMsg==null?p.ContentMsg:p.ContentMsg.Replace("\r\n", "<br/>"), IsAttachment = p.IsAttachment, IsRead = p.IsRead, Attachment = p.Attachment }) }, JsonRequestBehavior.AllowGet);
         }
        public ActionResult LoadData()
        {
@@ -137,13 +132,14 @@ namespace SHIVAM_ECommerce.Controllers
 
                            Id = Convert.ToInt32(reader["Id"]),
                            Attachment = reader["Attachment"].ToString(),
-                           ContentMsg = reader["ContentMsg"].ToString(),
+                           ContentMsg = reader["ContentMsg"].ToString().Replace("\r\n", "<br/>"),
                            IsAttachment = Convert.ToBoolean(reader["IsAttachment"]),
                            SenderId = reader["SenderId"].ToString(),
                            sentUsers = reader["ReceiverId"].ToString(),
                            individualId = Guid.Parse(reader["userId"].ToString()),
                            Subject = reader["Subject"].ToString(),
-                           SendingDate = reader["SendingDate"].ToString()
+                           SendingDate = reader["SendingDate"].ToString(),
+                           IsRead=Convert.ToBoolean(reader["IsRead"])
 
                        });
                    }
@@ -263,7 +259,11 @@ namespace SHIVAM_ECommerce.Controllers
             if (ModelState.IsValid)
             {
                 emailrecord obj= new emailrecord();
-              
+                if (emailsender.Attachment != null)
+                {
+                    obj.Attachment = emailsender.Attachment;
+                    obj.IsAttachment = true;
+                }
               string s = emailsender.ReceiverIDs;
      
                string[] words = s.Split(',');
@@ -299,25 +299,19 @@ namespace SHIVAM_ECommerce.Controllers
                     emailsender.SenderId = User.Identity.GetUserName();
                     emailsender.SenderIds = User.Identity.GetUserId();
                     emailsender.SendingDate = DateTime.Now.ToString();
+                    db.EmailSenders.Add(emailsender);
+                    await db.SaveChangesAsync();
                     obj.Subject = emailsender.Subject;
                     obj.Email_Sender = emailsender.SenderId;
-                    obj.Message = emailsender.ContentMsg;
+                    obj.ContentMsg = emailsender.ContentMsg;
                     obj.Send_Date = emailsender.SendingDate;
                     obj.Email_Receiver = word;
                     obj.ReceiverName = name.UserName;
-
                     db.EmailRecord.Add(obj);
-                  await  db.SaveChangesAsync();
-                  
-                    db.EmailSenders.Add(emailsender);
-
                     await db.SaveChangesAsync();
-                    
-
-
-
+             
                  }
-
+         
                 this.AddNotification("Send successfully.", NotificationType.SUCCESS);
                 return RedirectToAction("Index", "EmailSenders");
                  
@@ -325,6 +319,7 @@ namespace SHIVAM_ECommerce.Controllers
 
             return View(emailsender);
         }
+
 
         // GET: /EmailSenders/Edit/5
         public async Task<ActionResult> Edit(int? id)
@@ -368,15 +363,39 @@ namespace SHIVAM_ECommerce.Controllers
         }
     
         EmailSender emailsender = await db.EmailSenders.FindAsync(id);
-        var next = db.EmailSenders.Where(t => t.Id > id).OrderBy(t => t.Id).Take(1).FirstOrDefault();
-        ViewBag.nextrecord = next;
-        var prev = db.EmailSenders.Where(t => t.Id < id).OrderByDescending(t=>t.Id).Take(1).FirstOrDefault();
-        ViewBag.Prevrecord = prev;
+        emailsender.IsRead = true;
+        emailsender.ContentMsg = emailsender.ContentMsg.Replace("\r\n", "<br/>");
+        //var next = db.EmailSenders.Where(t => t.Id > id).OrderBy(t => t.Id).Take(1).FirstOrDefault();
+        //ViewBag.nextrecord = next;
+        //var prev = db.EmailSenders.Where(t => t.Id < id).OrderByDescending(t=>t.Id).Take(1).FirstOrDefault();
+        //ViewBag.Prevrecord = prev;
+        
+        db.Entry(emailsender).State = EntityState.Modified;
+        await db.SaveChangesAsync();
         if(emailsender==null)
         {
             return HttpNotFound();
         }
         return View(emailsender);
+    }
+
+    public async Task<ActionResult> UniquesentDetailView(int? id)
+    {
+        if (id == null)
+        {
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+
+        emailrecord emailrecord = await db.EmailRecord.FindAsync(id);
+        emailrecord.IsRead = true;
+        emailrecord.ContentMsg = emailrecord.ContentMsg.Replace("\r\n", "<br/>");
+        db.Entry(emailrecord).State = EntityState.Modified;
+        await db.SaveChangesAsync();
+        if (emailrecord == null)
+        {
+            return HttpNotFound();
+        }
+        return View(emailrecord);
     }
         public async Task<ActionResult> Reply(int? id)
         {
@@ -406,12 +425,30 @@ namespace SHIVAM_ECommerce.Controllers
 
             }
             EmailSender emailsender = await db.EmailSenders.FindAsync(id);
-       
+            emailsender.ContentMsg = emailsender.ContentMsg.Replace("<br/>", "\r\n");
             if (emailsender == null)
             {
                 return HttpNotFound();
             }
             return View(emailsender);
+        }
+
+
+        public async Task<ActionResult> ForwardSent(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            }
+            emailrecord emailrecord = await db.EmailRecord.FindAsync(id);
+            emailrecord.ContentMsg = emailrecord.ContentMsg.Replace("<br/>","\r\n");
+            if (emailrecord == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.emailrecord = emailrecord;
+            return View(emailrecord);
         }
         public ActionResult Download(string name)
         {
@@ -448,15 +485,6 @@ namespace SHIVAM_ECommerce.Controllers
             return View(emailsender);
         }
 
-        //[HttpPost]
-        //public ActionResult DownloadFile()
-        //{
-        //    string path = AppDomain.CurrentDomain.BaseDirectory + "FolderName/";
-        //    byte[] fileBytes = System.IO.File.ReadAllBytes(path + "filename.extension");
-        //    string fileName = "filename.extension";
-        //    return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
-        //}
-
 
 
         // GET: /EmailSenders/Delete/5
@@ -477,7 +505,10 @@ namespace SHIVAM_ECommerce.Controllers
      [HttpPost]
         public async Task<ActionResult> Deleteall(List<int> Ids)
               {
-   
+                  if (Ids == null)
+                  {
+                      return Json(new { Success = false }, JsonRequestBehavior.AllowGet);
+                  }
             foreach (int id  in Ids)
              {
             EmailSender obj = await db.EmailSenders.FindAsync(id);
@@ -487,11 +518,27 @@ namespace SHIVAM_ECommerce.Controllers
              return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
                  }
 
+        
+     [HttpPost]
+        public async Task<ActionResult> DeleteallSend(List<int> Ids)
+              {
+                 if (Ids == null)
+                  {
+                      return Json(new { Success = false }, JsonRequestBehavior.AllowGet);
+                  }
+            foreach (int id  in Ids)
+             {
+            emailrecord obj = await db.EmailRecord.FindAsync(id);
+            db.EmailRecord.Remove(obj);
+             }
+            await db.SaveChangesAsync();
+             return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
+                 }
 
 
         // POST: /EmailSenders/Delete/5
     [HttpPost]
-        public async Task<ActionResult> DeleteConfirmed(int id)
+     public async Task<ActionResult> DeleteConfirmed(int? id)
         {
             EmailSender emailsender = db.EmailSenders.Where(x => x.Id == id).FirstOrDefault();
             db.EmailSenders.Remove(emailsender);

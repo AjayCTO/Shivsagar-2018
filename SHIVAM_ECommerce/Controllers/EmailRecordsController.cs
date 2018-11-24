@@ -90,7 +90,7 @@ namespace SHIVAM_ECommerce.Controllers
             if (!string.IsNullOrEmpty(searchitem))
             {
 
-                v = v.Where(b => b.Subject.Contains(searchitem) || b.Message.Contains(searchitem) || b.Email_Receiver.Contains(searchitem) || b.Email_Sender.Contains(searchitem));
+                v = v.Where(b => b.Subject.Contains(searchitem) || b.ContentMsg.Contains(searchitem) || b.Email_Receiver.Contains(searchitem) || b.Email_Sender.Contains(searchitem));
             }
 
             switch (sortColumn)
@@ -126,7 +126,7 @@ namespace SHIVAM_ECommerce.Controllers
 
             recordsTotal = v.Count();
             var data = v.Skip(skip).Take(pageSize).ToList();
-            return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data.Select(p => new { id=p.Id,sender = p.Email_Sender, receiver = p.Email_Receiver, senddate = p.Send_Date, subject = p.Subject, message = p.Message }) }, JsonRequestBehavior.AllowGet);
+            return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data.Select(p => new { id=p.Id,sender = p.Email_Sender, receiver = p.Email_Receiver, senddate = p.Send_Date, subject = p.Subject, message = p.ContentMsg }) }, JsonRequestBehavior.AllowGet);
         }
 
         // GET: /EmailRecords/Edit/5

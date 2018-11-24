@@ -43,6 +43,9 @@
             @Html.HiddenFor(model => model.ParentSupplierID)
             @Html.HiddenFor(model => model.RegisteredByID)
             @Html.HiddenFor(model=>model.CreatedDate)
+            @Html.HiddenFor(model=>model.User_Name)
+            @Html.HiddenFor(model=>model.UserCount)
+            @Html.HiddenFor(model=>model.ProductCount)
             <input type="hidden" name="UserName" id="UserName" value="UserName">
             <input type="hidden" name="Password" id="Password" value="Password123">
 
@@ -142,9 +145,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                @Html.LabelFor(model => model.Phone, new { @class = "control-label " })
+                                <label>Phone<span class="stars">*</span></label>
                                 <div class="">
-                                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control requiredfield Phonenumber" })
                                     @Html.ValidationMessageFor(model => model.Phone)
                                 </div>
                             </div>
@@ -301,7 +304,9 @@
         
 
             $("#listBox").change(function () {
+                debugger;
                 $("#State").val($(this).val());
+                $("#City").val($("#secondlist").val());
             });
 
             $("#secondlist").change(function () {
@@ -316,7 +321,7 @@
 
             $.validator.addMethod("requiredfield", function (value, element) {
              
-            
+                debugger;
                 if($.trim(value)==""){
                     return false;
                 }
@@ -324,6 +329,13 @@
                     return true;
                 }
             }, "This field is required");
+
+            $.validator.addMethod("Phonenumber", function (phone_number, element) {
+                debugger;
+                phone_number = phone_number.replace(/\s+/g, "");
+                return this.optional(element) || phone_number.length > 9 &&
+                phone_number.match(/^(\+?1-?)?(\([2-9]\d{2}\)|[0-9]\d{2})-?[0-9]\d{2}-?\d{4}$/);
+            }, "Please specify a valid phone number");
 
 
             $.validator.addMethod("UniqueEmailvalid", function (value, element) {

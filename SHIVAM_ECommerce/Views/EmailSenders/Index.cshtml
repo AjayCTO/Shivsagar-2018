@@ -8,6 +8,16 @@
     var _Data = Model;
     var newdata = _Data.OrderByDescending(p => p.SendingDate);
 }
+
+<style>
+    .unread {
+      
+        font-weight: bold;
+    }
+
+
+</style>
+
 <div class="row page-titles">
 
 
@@ -42,18 +52,20 @@
                 <div class="container-fluid">
 
                     <a href="/EmailSenders/Create" class="btn btn-success"><i class="fa fa-envelope" aria-hidden="true"></i> New Message</a>
-
                     <a href="/EmailSenders/sent" class="btn btn-success  pull-right"><i class="fa fa-envelope" aria-hidden="true"></i> Sent Message</a>
 
 
-                     <a href="" id="deleteAcc" class="btn btn-danger pull-right disabled">Delete All</a>
+                     <a href="" id="deleteAcc" style="margin-right: 10px"class="btn btn-danger pull-right disabled"><i class="fa fa-trash"></i> Delete All</a>
+                    <label style="margin-top: 10px" class="custom-control custom-checkbox custom-control-inline pull-right"><input type="checkbox" id="checkAll" class="custom-control-input" name="checkAll" value=""><span class="custom-control-label">Select All</span></label>
+
+
                 </div>
 
                 <div class="card-body">
                     <table id="myTable" class="table table-striped table-bordered dt-responsive">
                         <thead>
                             <tr>
-                                <th><label class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" id="checkAll" class="custom-control-input" name="checkAll" value=""><span class="custom-control-label">Select</span></label></th>
+                                <th>Select</th>
                                 <th class="clickable">Sender Name</th>
                                 <th>Subject</th>
                                 <th>Message</th>
@@ -92,7 +104,8 @@
             "serverSide": true, // for process server side
             "filter": true, // this is for disable filter (search box)
             "orderMulti": false, // for disable multiple column at once
-            "order": [[ 5, 'desc' ]], 
+            "order": [[5, 'desc']],
+            "columns": [{ "targets": 5, "type": "date-eu" }],
             "ajax": {
                 "url": "/EmailSenders/LoadData",
                 "type": "POST",
@@ -106,6 +119,7 @@
                             {
                                 "orderable": false, "autoWidth": true,
                                 "mRender": function (data, type, row) {
+                                   
                                     return '<div class="controls"><label class="custom-control custom-checkbox custom-control-inline"><input type="checkbox" class="custom-control-input" name="example-inline-checkbox1" value="' + row.Id + '"><span class="custom-control-label"></span></label>   <a href="javascript:void(0);" class="favourite col-amber hidden-sm-down" data-toggle="active"><i class="zmdi zmdi-star"></i></a></div>'
                                 }
                             },
@@ -121,7 +135,17 @@
                     },
                     {
 
-                        "data": "ContentMsg", "name": "ContentMsg", "autoWidth": true
+                        //"data": "ContentMsg", "name": "ContentMsg", "autoWidth": true]
+
+                        "mRender": function (data, type, row) {
+                         
+                          
+                            var Message = row.ContentMsg.replace(/↵/g, "<br />")
+                            var count = 50;
+                            var result = Message.slice(0, count) + (Message.length > count ? '<a href="/EmailSenders/UniqueDetailView?id=' + row.Id + '">...more</a>' : "");
+                            return result;
+                         
+                        }
                     },
                      {
                          "mRender": function (data, type, row) {
@@ -148,13 +172,13 @@
 
 
                              var _b = ' <a href="/EmailSenders/Forward/?id=' + row.Id + '" class="dropdown-item" data-toggle="tooltip" data-placement="top" title="Forward" data-original-title="Forword"><i class="fa fa-share" title="Forward" align="center"></i> Forward</a>';
-                             var _c = ' <a onclick="DeleteEmail(' + row.id + ')" Style="Cursor:Pointer" class="dropdown-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" ><i class="fa fa-trash"  align="center"></i> Delete</a>';
+                             var _c = ' <a onclick="DeleteEmail(' + row.Id + ')" Style="Cursor:Pointer" class="dropdown-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" ><i class="fa fa-trash"  align="center"></i> Delete</a>';
                              html = '<div class="item-action dropdown"><a href="javascript:void(0)" data-toggle="dropdown" class="icon"><i class="fa fa-ellipsis-v"></i></a>   <div class="dropdown-menu dropdown-menu-right">';
 
                              html = html + '<a href="/EmailSenders/UniqueDetailView?id=' + row.Id + '"  class="dropdown-item dataTables AcctQuickView" data-toggle="tooltip" data-placement="top" title="" data-original-title="Details" ><i class="fa fa-list"  align="center"></i> Detail</a>';
                              html = html + '<a href="/EmailSenders/Reply/?id=' + row.Id + '" class="dropdown-item" data-toggle="tooltip" data-placement="top" title="Reply" data-original-title="Reply"><i class="fa fa-mail-reply" title="Reply" align="center"></i> Reply</a>';
                             return  html = html + _b + _c + '</div>';
-                             debugger;
+                      
                              //var _a = '<a href="/EmailSenders/UniqueDetailView?id=' + row.Id + '"  class="btn btn-info dataTables AcctQuickView" data-toggle="tooltip" data-placement="top" title="" data-original-title="Details" ><i class="fa fa-list"  align="center"></i></a>';
                              //var _b = '<a onclick="DeleteEmail(' + row.Id + ')"  class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" ><i class="fa fa-trash"  align="center"></i></a>';
                              //var _c = '<a href="/EmailSenders/Forward/?id=' + row.Id + '" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Forward" data-original-title="Forword"><i class="fa fa-share" title="Forward" align="center"></i></a>';
@@ -163,60 +187,76 @@
                          }
                      },
             ]
+                                    ,
+            "fnRowCallback": function (nRow, aData, iDisplayIndex) {
+                debugger;
+                if (aData.IsRead == false) {
+                    $(nRow).addClass('unread');
+                }
+                else {
+                    $(nRow).removeClass('unread');
+                }
+            }
         });
+
+
+
 
     });
 
 
-    //$(document).on('click', '.dataTables', function () {
-    //    alert("in");
-    //    //Set the index based on the row that was clicked
-    //    debugger;
-    //    var CurItemIndex = myDataTable.row($(this).parents('tr')).index();
-    //    //Get the indexes 
-    //    var CurTableIndexs = myDataTable.rows().indexes();
-    //    // Get the array key for the current index we have
-    //    var CurIndexArrayKey = CurTableIndexs.indexOf(CurItemIndex);
-    //    // Subtract 1 to the array key to get the prior index number
-    //    var PrevItemIndex = CurTableIndexs[CurIndexArrayKey - 1];
-    //    // Add 1 to get the next index number
-    //    var NextItemIndex = CurTableIndexs[CurIndexArrayKey + 1];
-    //    //Create Previous Row object
-    //    var QVPrevItemObj = $(myDataTable.rows(PrevItemIndex).nodes()).find(".AcctQuickView").attr("href");
+    ////$(document).on('click', '.dataTables', function () {
+    ////    alert("in");
+    ////    Set the index based on the row that was clicked
+    ////    debugger;
+    ////    var CurItemIndex = myDataTable.row($(this).parents('tr')).index();
+    ////    Get the indexes 
+    ////    var CurTableIndexs = myDataTable.rows().indexes();
+    ////     Get the array key for the current index we have
+    ////    var CurIndexArrayKey = CurTableIndexs.indexOf(CurItemIndex);
+    ////     Subtract 1 to the array key to get the prior index number
+    ////    var PrevItemIndex = CurTableIndexs[CurIndexArrayKey - 1];
+    ////     Add 1 to get the next index number
+    ////    var NextItemIndex = CurTableIndexs[CurIndexArrayKey + 1];
+    ////    Create Previous Row object
+    ////    var QVPrevItemObj = $(myDataTable.rows(PrevItemIndex).nodes()).find(".AcctQuickView").attr("href");
     
-    //    //Create Next Row object
-    //    var QVNextItemObj = $(myDataTable.rows(NextItemIndex).nodes()).find(".AcctQuickView").attr("href");
+    ////    Create Next Row object
+    ////    var QVNextItemObj = $(myDataTable.rows(NextItemIndex).nodes()).find(".AcctQuickView").attr("href");
        
-    //});
+    ////});
 
 
  
 
     function DeleteEmail(Id) {
 
-        var _confirm = confirm("Are you sure you want to delete this Message ?");
-        if (_confirm) {
+        bootbox.confirm("Are you sure you want to delete this Message?", function (result) {
 
-            $.ajax({
-                type: "Post",
-                url: "/EmailSenders/DeleteConfirmed?id=" + Id,
-                contentType: 'application/json',
-                dataType: 'json',
-                success: function (result) {
-                    if (result.Success === true) {
-                        myDataTable.clear().draw();
-                        window.location.href = "/EmailSenders/Index";
-                        toastr.success("Deleted Message Successfully");
+            if (result) {
 
-                    } else {
-                        alert("error occurred during operation.");
+
+                $.ajax({
+                    type: "Post",
+                    url: "/EmailSenders/DeleteConfirmed?id=" + Id,
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    success: function (result) {
+                        if (result.Success === true) {
+                            myDataTable.clear().draw();
+                            window.location.href = "/EmailSenders/Index";
+                            toastr.success("Deleted Message Successfully");
+
+                        } else {
+                            alert("error occurred during operation.");
+                        }
+                    },
+                    error: function (req, status, error) {
+                        alert(error);
                     }
-                },
-                error: function (req, status, error) {
-                    alert(error);
-                }
-            });
-        }
+                });
+            }
+        });
     }
 
 </script>
@@ -230,7 +270,7 @@
             });
         });
         $('#checkAll').change(function () {
-            debugger;
+      
             if ($(this).is(':checked')) {
              
                 $('.custom-control input:checkbox').prop('checked', true);
@@ -242,7 +282,7 @@
             }
         });
         $("#deleteAcc").on("click", function () {
-            debugger;
+   
 
             var Ids = [];
             $.each($(".custom-control input:checked").not("#checkAll"), function () {
@@ -254,15 +294,17 @@
                 $.ajax({
                     type: "POST",
                     contentType: "application/json; charset=utf-8",
+                    url: "/EmailSenders/Deleteall/",
                     dataType: "json",
                     data: JSON.stringify({ Ids: Ids }),
-                    url: "/EmailSenders/Deleteall/",
+                   
                     success: function (result) {
-                        if (result.Success === true) {
-                            alert("Message Deleted Successfully");
+                        debugger;
+                        if (result.Success == true) {
+                            toastr.success("Message Deleted Successfully");
                             window.location.href = "/EmailSenders/Index";
                         } else {
-                            alert("error occurred during operation.");
+                            toastr.warning("Atleast one Selected");
                         }
                     },
                     error: function (req, status, error) {
@@ -279,8 +321,6 @@
 
     });
 </script>
-
-
 
 
                 }

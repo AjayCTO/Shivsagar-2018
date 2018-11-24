@@ -35,7 +35,12 @@ namespace SHIVAM_ECommerce.Controllers
 
             if (CurrentUserData.IsSuperAdmin)
             {
-                ViewBag.UserName = db.Users.ToList();
+                 var Userlist  =  db.Users.ToList();
+                 var Supplier= db.Suppliers.ToList();
+
+                 ViewBag.UserName = Userlist;
+                ViewBag.Supplier= Supplier;
+               
             }
             else
             {
@@ -85,14 +90,12 @@ namespace SHIVAM_ECommerce.Controllers
             int skip = start != null ? Convert.ToInt32(start) : 0;
             int recordsTotal = 0;
 
+           var Claims = db.AspNetUserClaims.Where(x => x.User.Id == UserID).ToList();
             // dc.Configuration.LazyLoadingEnabled = false; // if your table is relational, contain foreign key
-            var v = db.AspNetUserClaims.AsEnumerable();
 
-            if (!string.IsNullOrEmpty(UserID))
-            {
+           var v = (from a in Claims select a);
+     
 
-                v = v.Where(x => x.User.Id == UserID).ToList();
-            }
             if (!string.IsNullOrEmpty(searchitem))
             {
 

@@ -76,7 +76,7 @@ namespace SHIVAM_ECommerce.Controllers
 
             recordsTotal = v.Count();
             var data = v.Skip(skip).Take(pageSize).ToList();
-            return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data.Select(x => new { x.Id, x.CompanyName, x.FirstName, x.LastName, x.Logo, x.Phone, x.City }) }, JsonRequestBehavior.AllowGet);
+            return Json(new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data.Select(x => new { x.Id, x.CompanyName, OwnerName = x.FirstName + " " + x.LastName, x.Logo, x.PlanEndDate, x.Phone, x.City,UserName=x.User_Name }) }, JsonRequestBehavior.AllowGet);
         }
 
 
@@ -129,7 +129,7 @@ namespace SHIVAM_ECommerce.Controllers
             return View(new SupplierVM());
         }
         [HttpPost]
-        public async Task<ActionResult> CreateNew([Bind(Include = "Id,Name,LastName,Email,UserName,Password,PlanID,CompanyName")] SupplierVM supplier)
+        public async Task<ActionResult> CreateNew([Bind(Include = "Id,Name,LastName,Email,UserName,Password,PlanID,CompanyName,phone")] SupplierVM supplier)
         {
 
             try
@@ -156,6 +156,7 @@ namespace SHIVAM_ECommerce.Controllers
                     _supplier.UserName = supplier.UserName;
                     _supplier.LastName = supplier.LastName;
                     _supplier.PlanID = supplier.PlanID;
+                    _supplier.Phone = supplier.phone;
                     _supplier.Password = supplier.Password;
                     db.Suppliers.Add(_supplier);
               
@@ -217,7 +218,7 @@ namespace SHIVAM_ECommerce.Controllers
                             _customer.UserName = user.UserName;
                             _customer.Password = supplier.Password;
                             _customer.ConfirmPassword = supplier.Password;
-                            _customer.Phone = "";
+                            _customer.Phone = supplier.phone;
                             db.Customers.Add(_customer);
                             db.SaveChanges();
                         }
@@ -485,6 +486,52 @@ namespace SHIVAM_ECommerce.Controllers
             return View(supplier);
         }
 
+
+        //Upgrade Plan
+
+        public ActionResult UpgradePlan(int? id)
+        {
+
+            try
+            {
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Supplier supplier = db.Suppliers.Find(id);
+
+                if (supplier == null)
+                {
+                    return HttpNotFound();
+                }
+                var plandetail = db.Plans.Where(x => x.Id == supplier.PlanID).FirstOrDefault();
+                supplier.PlanStartDate = DateTime.Now;
+                supplier.PlanEndDate = DateTime.Now.AddDays(plandetail.PlanFrequency == "1" ? 30 : 365);
+                supplier.UserName = "ShivamItcs";
+                supplier.Password = "Shivam@123";
+                db.Entry(supplier).State = EntityState.Modified;
+                db.SaveChanges();
+                return Json(new { Success = true, ex = "" });
+            }
+
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                }
+                throw;
+                return Json(new { Success = false, ex = "" });
+            }
+ 
+       
+        }
 
         public FileContentResult DownloadAsExcel()
         {

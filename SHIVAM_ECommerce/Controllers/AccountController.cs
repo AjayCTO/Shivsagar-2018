@@ -11,12 +11,14 @@ using Microsoft.Owin.Security;
 using SHIVAM_ECommerce.Models;
 using System.Web.Caching;
 using System.Collections;
+using SHIVAM_ECommerce.ViewModels;
 using SHIVAM_ECommerce.Extensions;
+using System.Configuration;
 
 namespace SHIVAM_ECommerce.Controllers
 {
 
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         public AccountController()
@@ -306,6 +308,25 @@ namespace SHIVAM_ECommerce.Controllers
                     IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
                     if (result.Succeeded)
                     {
+                        var Userid=User.Identity.GetUserId();
+                        var UserName=User.Identity.GetUserName();
+                        var sendemail = new EmailService.Service.EmailService();
+                        string Supplierregisters = ConfigurationManager.AppSettings["SupplierChangePassword"].ToString();
+                       
+                        if (CurrentUserData.IsSuperAdmin == true)
+                        {
+                            var adminDetails = db.Adminprofile.Where(x => x.UserId == Userid).FirstOrDefault();
+                            sendemail.SendEmail(adminDetails.Email, Supplierregisters, "Successfully Updated Password", adminDetails.FirstName + adminDetails.LastName, UserName, model.NewPassword);
+            
+                        }
+                        else
+                        {
+                            var Supplier = db.Suppliers.Where(x => x.UserID == Userid).FirstOrDefault();
+                            sendemail.SendEmail(Supplier.Email, Supplierregisters, "Successfully Updated Password", Supplier.FirstName + Supplier.LastName,UserName, model.NewPassword);
+            
+                        }
+                  
+                     
                         this.AddNotification("Successfully Change Password", NotificationType.SUCCESS);
                         return RedirectToAction("Manage", new { Message = ManageMessageId.ChangePasswordSuccess });
                     }

@@ -199,7 +199,11 @@
                                     <span toggle="#Password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                     @Html.ValidationMessageFor(model => model.Password)
                                 </div>
-
+                                <div class="form-group">
+                                    <label class="form-label">Phone Number<span class="star">*</span></label>
+                                    @Html.TextBoxFor(model => model.phone, new { @class = "form-control Phonenumber" })
+                                    @Html.ValidationMessageFor(model => model.phone)
+                                </div>
                                 @*<div class="form-group">
                                         <label class="form-label">Address</label>
                                         @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
@@ -316,13 +320,29 @@
 
 
             if ($.trim(value) != "") {
-                return value.length >= 6 ? true : false;
+                return value.length >= 8 ? true : false;
             }
             else {
                 return true;
             }
 
-        }, "Please enter at least 6 characters for username");
+        }, "Please enter at least 8 characters for username");
+
+        $.validator.addMethod("Phonenumber", function (phone_number, element) {
+            phone_number = phone_number.replace(/\s+/g, "");
+            return this.optional(element) || phone_number.length > 9 &&
+            phone_number.match(/^(\+?1-?)?(\([2-9]\d{2}\)|[0-9]\d{2})-?[0-9]\d{2}-?\d{4}$/);
+        }, "Please specify a valid phone number");
+
+        //$.validator.addMethod('Phonenumber', function (value) {
+        //    if ($.trim(value) != "") {
+        //        return value.length >= 10 ? true : false;
+        //    }
+        //    else {
+        //        return true;
+        //    }
+        //    },"Phone number Should be 10 Digit");
+
         function CheckUniqueEmail(value) {
             var _x = true;
             $.ajax({

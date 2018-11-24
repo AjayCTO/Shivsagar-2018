@@ -6,8 +6,6 @@
 
 
 <div class="row page-titles">
-
-
     <div class="col-md-5 align-self-center">
         <h3 class="text-primary">Personal Information</h3>
     </div>
@@ -21,32 +19,51 @@
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-7">
+           
+             <div class="card">
+
+                <div class="card-body">
+                    <div  class="row">
+                        <div class="col-md-12">
+                            <h4><i class="fa fa-list"></i> General Info</h4>
+                            <div class="row">
+                                <div class="col-md-2"> <span>Name : </span> </div>
+                                <div class="col-md-10"> @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName) </div>
+                                <div class="col-md-2"> <span>Mobile : </span></div>
+                                <div class="col-md-10"> @Html.DisplayFor(model => model.Phone) </div>
+                                <div class="col-md-2"> <span>Email : </span></div>
+                                <div class="col-md-10"> @Html.DisplayFor(model => model.Email) </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+        <div class="col-md-5">
             <div class="card">
 
                 <div class="card-body">
-                    <div style="font-size:16px;" class="row">
-                        <div class="col-md-6">
-                            <h4>General Info</h4>
-                            <div class="row">
-                                <div class="col-md-6"> <span>User Name :</span> @Html.DisplayFor(model => model.User.UserName) </div>
-                                <div class="col-md-6"> <span>Name : </span> @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName) </div>
-                                <div class="col-md-6"> <span>Mobile : </span> @Html.DisplayFor(model => model.Phone) </div>
-                                <div class="col-md-6"> <span>Email : </span> @Html.DisplayFor(model => model.Email) </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <h4>Card Info</h4>
-                            <div class="row">
-                                <div class="col-md-6"> <span>Credit Card :</span> @Html.DisplayFor(model => model.CreditCard) </div>
-                                <div class="col-md-6"> <span>Card Type : </span> @Html.DisplayFor(model => model.CreditCardType)  </div>
-                                <div class="col-md-6"> <span>Exp Yr : </span> @Html.DisplayFor(model => model.CardExpYr) </div>
-                                <div class="col-md-6"> <span>Exp Month : </span> @Html.DisplayFor(model => model.CardExpMo) </div>
-                            </div>
+                    <div class="col-md-6">
+                        <h4><i class="fa fa-credit-card"></i> Card Info</h4>
+                        <div class="row">
+                            <div class="col-md-6"><span>Credit Card :</span></div>
+                            <div class="col-md-6">@Html.DisplayFor(model => model.CreditCard) </div>
+                            <div class="col-md-6"><span>Card Type : </span></div>
+                            <div class="col-md-6">@Html.DisplayFor(model => model.CreditCardType)  </div>
+                            <div class="col-md-6"><span>Exp Yr : </span></div>
+                            <div class="col-md-6">@Html.DisplayFor(model => model.CardExpYr) </div>
+                            <div class="col-md-6"><span>Exp Month : </span></div>
+                            <div class="col-md-6">@Html.DisplayFor(model => model.CardExpMo) </div>
                         </div>
                     </div>
                 </div>
             </div>
+            </div>
+        </div>
+    </div>
+
 
             <div>
 
@@ -112,7 +129,7 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary btn-gray" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                             </div>
                         </div>
 
@@ -128,9 +145,6 @@
         var _myTableData;
         var _CustomerID = '@Model.Id';
         $(document).ready(function () {
-
-
-
 
             _myTableData = $("#myTable").DataTable({
                 "processing": true, // for show progress bar

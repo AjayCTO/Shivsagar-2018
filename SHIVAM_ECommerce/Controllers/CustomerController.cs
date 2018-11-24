@@ -198,7 +198,7 @@ namespace SHIVAM_ECommerce.Controllers
                     emailrecord.Email_Receiver = email;
                     emailrecord.Send_Date = DateTime.Now.ToString();
                     emailrecord.Subject = subject;
-                    emailrecord.Message = "New Customer Added ";
+                    emailrecord.ContentMsg = "New Customer Added ";
                     db.EmailRecord.Add(emailrecord);
                     db.SaveChanges();
 

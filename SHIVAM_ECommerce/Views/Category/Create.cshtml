@@ -3,6 +3,13 @@
 @{
     ViewBag.Title = "Create";
 }
+
+<style>
+    textarea.form-control {
+        height: auto !important;
+        min-height: 100px;
+    }
+</style>
 <div class="row page-titles">
 
 
@@ -46,7 +53,7 @@
                                 <label class="control-label col-md-2">Parent Category</label>
                                 <div class="col-md-10">
 
-                                    @Html.DropDownList("ParentCategory", String.Empty)
+                                    @Html.DropDownList("ParentCategory",null,"---Select---")
 
                                     @Html.ValidationMessageFor(model => model.ParentCategory)
                                 </div>

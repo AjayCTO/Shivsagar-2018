@@ -39,7 +39,7 @@
                                 @Html.LabelFor(model => model.Title, new { @class = "control-label" })
                                 </div>
                             <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.Title, new { @class = "form-control  col-md-5" })
+                                @Html.TextBoxFor(model => model.Title, new { @class = "form-control  col-md-5 FeatureName" })
                                 @Html.ValidationMessageFor(model => model.Title)
                             </div>
 
@@ -97,4 +97,50 @@
 
 
     @Scripts.Render("~/bundles/jqueryval")
-    }
+
+
+
+    <script>
+            $(document).ready(function () {
+                $.validator.addMethod('FeatureName', function (value) {
+                    debugger;  
+                    var str = $.trim(value);
+                    var values = str.replace(/ {2,}/g, ' ')
+                    if (values != "") {
+                        return CheckUniqueUserName(values);
+                    }
+                    else {
+                        return true;
+                    }
+
+                }, "Please enter a different Name ! It's already exist");
+
+            });
+
+
+            function CheckUniqueUserName(value) {
+                var _x = true;
+                $.ajax({
+                    url: "/Features/UniqueFeatureNames",
+                    data: JSON.stringify({ UniqueFeatureName: value }),
+                    type: 'POST',
+                    async: false,
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    success: function (result) {
+                        _x = !result.IsAlreadyExist;
+                    },
+                    error: function (req, status, error) {
+                        alert(error);
+                    }
+                });
+
+                return _x;
+            }
+
+    </script>
+}
+
+
+
+

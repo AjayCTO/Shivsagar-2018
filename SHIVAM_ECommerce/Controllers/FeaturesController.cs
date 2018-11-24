@@ -96,6 +96,13 @@ namespace SHIVAM_ECommerce.Controllers
         {
             if (ModelState.IsValid)
             {
+                var str = features.Title;
+
+                while (str.Contains("  "))
+                {
+                    str = str.Replace("  ", " ");
+                }
+                features.Title = str;
                 features.CreatedDate = DateTime.Now;
                 features.UpdatedDate = DateTime.Now;
                 db.Features.Add(features);
@@ -138,6 +145,27 @@ namespace SHIVAM_ECommerce.Controllers
                 return RedirectToAction("Index");
             }
             return View(features);
+        }
+
+
+        // unique Feature Name
+        [HttpPost]
+        public ActionResult UniqueFeatureNames(string UniqueFeatureName)
+        {
+            try
+            {
+
+                var _user = db.Features.Where(a => a.Title == UniqueFeatureName).FirstOrDefault();
+                if (_user != null)
+                {
+                    return Json(new { Success = true, ex = "", IsAlreadyExist = true });
+                }
+                return Json(new { Success = true, ex = "", IsAlreadyExist = false });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Success = false, ex = ex.Message.ToString(), IsAlreadyExist = false });
+            }
         }
 
 

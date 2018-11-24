@@ -412,26 +412,10 @@ namespace SHIVAM_ECommerce.Controllers
             int count = 0;
             foreach (var item in row.Cells)
             {
-
-                var cellValue = row.Cells[count].Value.ToString();
-
-                if (row.Cells[0].Value.ToString().Contains("\t"))
+                if (row.Cells[count].Value.ToString() == _Column)
                 {
-                    var valuearray = row.Cells[0].Value.ToString().Split('\t');
-                    if (valuearray[count] == _Column)
-                    {
-                        return count;
-                    }
+                    return count;
                 }
-                else
-                {
-                    if (cellValue == _Column)
-                    {
-                        return count;
-                    }
-                }
-
-               
                 count = count + 1;
             }
 

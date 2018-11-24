@@ -129,8 +129,9 @@ namespace SHIVAM_ECommerce.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Adminprofile([Bind(Include = "Id,CompanyName,FirstName,LastName,Title,Address,City,State,PostalCode,Country,Phone,Email,Logo,CreatedDate")] AdminProfile adminprofile, HttpPostedFileBase file)
         {
+             var userId=User.Identity.GetUserId();
             adminprofile.UpdatedDate = DateTime.Now;
-
+            adminprofile.UserId = userId;
 
             if (ModelState.IsValid)
             {
@@ -156,19 +157,21 @@ namespace SHIVAM_ECommerce.Controllers
                 }
 
                 db.Entry(adminprofile).State = EntityState.Modified;
+
                 db.SaveChanges();
+                this.AddNotification("Profile Update successfully.", NotificationType.SUCCESS);
             }
             return View(adminprofile);
            
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Profile([Bind(Include = "Id,CompanyName,FirstName,LastName,Title,Address1,Address2,City,State,PostalCode,Country,Phone,Email,URL,Logo,SupplierType,UserID,PlanID,PlanStartDate,PlanEndDate,UserName,Password,ParentSupplierID,CreatedDate,RegisteredByID")] Supplier supplier, HttpPostedFileBase file)
+        public ActionResult Profile([Bind(Include = "Id,CompanyName,FirstName,LastName,Title,Address1,Address2,City,State,PostalCode,Country,Phone,Email,URL,Logo,SupplierType,UserID,PlanID,PlanStartDate,PlanEndDate,UserName,Password,ParentSupplierID,CreatedDate,User_Name,ProductCount,UserCount,RegisteredByID")] Supplier supplier, HttpPostedFileBase file)
         {
             //supplier.UserName = "testtestsetetsetst";
             //supplier.Password = "testtestteststeest";
             supplier.UpdatedDate = DateTime.Now;
-       
+            supplier.Sort = 33;
 
 
             if (ModelState.IsValid)

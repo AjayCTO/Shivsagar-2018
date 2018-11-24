@@ -32,7 +32,7 @@ namespace SHIVAM_ECommerce.Controllers
 
         public JsonResult AllCategories()
         {
-            var categories = _repository.GetAll().Where(p => p.IsActive == true).Select(p => new { Name = p.CategoryName, Id = p.Id });
+            var categories = _repository.GetAll().Where(p => p.IsTopCategory == true).Select(p => new { Name = p.CategoryName, Id = p.Id });
             return Json(categories.ToList(), JsonRequestBehavior.AllowGet);
 
         }

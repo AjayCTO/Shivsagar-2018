@@ -4,11 +4,12 @@
     ViewBag.Title = "Index";
     var _CurrentUser = Session["CurrentUserContext"] as SHIVAM_ECommerce.ViewModels.CurrentUserContext;
     var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
+    var _suppliers = ViewBag.Suppliers as List<SHIVAM_ECommerce.Models.Supplier>;
     serializer.MaxJsonLength = Int32.MaxValue;
     var a = ViewBag.OrderStatus as IEnumerable<SHIVAM_ECommerce.Models.OrderStatus>;
     var statuslist = a.Select(x => x.Status);
     var status = serializer.Serialize(statuslist);
-  
+    var Supplierselectedid= Session["SuppliersId"];
 }
 
 <div class="row page-titles">
@@ -37,12 +38,21 @@
                     {
 
                         <div class="row">
+                            <div class="col-md-12"><p style="position: absolute; left: 539px; top: -11px;">Select Supplier From Below Dropdown</p></div>
                             <div class="col-md-4">
 
                             </div>
                             <div class="col-md-4">
+                                <select class="form-control" style="position: absolute;top:10px;z-index:10;" id="SupplierID">
+                                    <option value="">---Select Supplier---</option>
+                                    @foreach (var _item in _suppliers)
+            {
 
-                                <input type="text" class="form-control" style="position: absolute;top: 0px;z-index:10;" name="name" id="SupplierID" placeholder="Search By Supplier" />
+                <option value="@_item.Id">@_item.FirstName  @_item.LastName  (@_item.User_Name)</option>
+            }
+                                </select>
+
+                                @*<input type="text" class="form-control" style="position: absolute;top: 0px;z-index:10;" name="name" id="SupplierID" placeholder="Search By Supplier" />*@
                             </div>
                         </div>
                     }
@@ -59,7 +69,7 @@
 
                                 <th>Total Price</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                <th id="Actions">Action</th>
                             </tr>
                         </thead>
                     </table>
@@ -80,7 +90,7 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary btn-gray" data-dismiss="modal"><i class="fa fa-times"></i>Close</button>
                         </div>
                     </div>
 
@@ -99,40 +109,35 @@
         }
     </style>
 
-
     <script>
         var _myTableData;
+      
         var _supplierID = '@_CurrentUser.SupplierID';
         debugger;
         var _allstatus = '@Html.Raw((status))';
        var ab= $.parseJSON(_allstatus);
-        console.log("ceadf");
-        console.log(_allstatus);
-        console.log(ab);
-        $(document).ready(function () {
-
-
-
-
+       $(document).ready(function () {
+      
             _myTableData = $("#myTable").DataTable({
                 "processing": true, // for show progress bar
                 "serverSide": true, // for process server side
                 "filter": true, // this is for disable filter (search box)
                 "orderMulti": false, // for disable multiple column at once
+                "order": [[3, 'desc']],
                 "ajax": {
                     "url": "/Order/LoadData",
                     "type": "POST",
                     "datatype": "json",
                     "data": function (d) {
-
-                        if ($.trim($("#SupplierID").attr("alt")) != "") {
-                            d.SupplierID = $("#SupplierID").attr("alt");
-
+                        debugger;
+                        if ($.trim($('#SupplierID :selected').val()) != "")
+                        {
+                            d.SupplierID = $('#SupplierID :selected').val();
                         }
                         else {
                             d.SupplierID = _supplierID;
                         }
-
+             
                     }
 
                 },
@@ -146,14 +151,15 @@
                      },
                       {
 
-                          "data": "OrderDate", "name": "OrderDate", "autoWidth": true, "render": function (value) {
+                          "data": "OrderDate", "name": "OrderDate", "autoWidth": true,  "render": function (value) {
                               if (value === null || value == undefined) return "";
 
                               var pattern = /Date\(([^)]+)\)/;
                               var results = pattern.exec(value);
                               var dt = new Date(parseFloat(results[1]));
 
-                              return dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear() + " " + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
+                              return dt.getDate() + "/" + (dt.getMonth() + 1) + "/" + dt.getFullYear();
+                                  //+ " " + dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
                           }
                       },
                          {
@@ -188,7 +194,7 @@
                              "data": "Status", "name": "Status", "autoWidth": true, "orderable": false,
                              render: function (data, type, row) {
                                  debugger;
-                                 var ddl = "<select size='1' id='" + row.Id + "-Status' onchange='ChangeOrderStatus(" + row.Id + ")'  name='" + row.Id + "-Status'>";
+                                 var ddl = "<select size='1' style='height:35px;width: 107px;'   id='" + row.Id + "-Status' onchange='ChangeOrderStatus(" + row.Id + ")'  name='" + row.Id + "-Status'>";
                                  for (var i = 0; i < ab.length; i++) {
                                      debugger;
                                      
@@ -208,81 +214,96 @@
                          {
                              "orderable": false,
                              "mRender": function (data, type, row) {
-                                 var _a = '<a onclick="ChangePaymentStatus(' + row.Id + ')"  class="btn btn-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" ><i class="fa fa-money"  align="center"></i></a> <a href="/Order/Details?id=' + row.Id + '"   class="btn btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Details" ><i class="fa fa-info-circle"  align="center"></i></a> ';
-                                 return _a + '<a href="#" class="btn btn-primary" onclick="GetOrderItems(' + row.Id + ')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Order Items"><i class="fa fa-list"  align="center"></i></a>  ';
+                                 var _a = '<a onclick="ChangePaymentStatus(' + row.Id + ')"  class="btn btn-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit" ><i class="fa fa-money"  align="center"></i></a> <a href="/Order/Details?id=' + row.Id + '"   class="btn btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Details" ><i class="fa fa-list"  align="center"></i></a> ';
+                                 return _a ;
                              }
+                                 
                          },
+                    
                 ]
+                   
             });
+
+
+
+
+
+              
 
             $("#SupplierID").change(function () {
                 debugger;
                 if ($(this).val() == "") {
                     $(this).attr("alt", -1);
                 }
-
+                _myTableData.clear().draw();
             });
 
        
-          
+            //$("#SupplierID").blur(function () {
+            //    _myTableData.clear().draw();
+            //    //if ($.trim($(this).attr("alt")) != "") {
+    
 
-            $("#SupplierID").blur(function () {
-                _myTableData.clear().draw();
-                //if ($.trim($(this).attr("alt")) != "") {
+      
+            //    //}
+            //});
 
-                //}
-            });
+            //$("#SupplierID").autocomplete({
 
-            $("#SupplierID").autocomplete({
+            //    source: function (request, response) {
+            //        debugger;
+            //        $(this).attr("alt", "");
 
-                source: function (request, response) {
-                    debugger;
-                    $(this).attr("alt", "");
+            //        $.ajax({
 
-                    $.ajax({
+            //            url: "/Order/SearchSupplier" + "/?SearchValue=" + this.element.val(),
+            //            type: "GET",
+            //            dataType: "json",
+            //            contentType: "application/json; charset=utf-8",
+            //            error: function () {
+            //                alert('There is a problem with the service!');
+            //            },
+            //            success: function (data) {
+            //                try {
 
-                        url: "/Order/SearchSupplier" + "/?SearchValue=" + this.element.val(),
-                        type: "GET",
-                        dataType: "json",
-                        contentType: "application/json; charset=utf-8",
-                        error: function () {
-                            alert('There is a problem with the service!');
-                        },
-                        success: function (data) {
-                            try {
+            //                    $(this).attr("alt", 0);
+            //                    response($.map(data, function (item) {
+            //                        return {
+            //                            label: item.SupplierName,  // tblLocation.lLoc
+            //                            value: item.SupplierID     // tblLocation.lID
+            //                        };
+            //                    }));
+            //                } catch (_ex) {
+            //                    alert(_ex);
+            //                }
+            //            }
+            //        });
+            //    },
+            //    select: function (event, ui) {
+            //        event.preventDefault();
 
-                                $(this).attr("alt", 0);
-                                response($.map(data, function (item) {
-                                    return {
-                                        label: item.SupplierName,  // tblLocation.lLoc
-                                        value: item.SupplierID     // tblLocation.lID
-                                    };
-                                }));
-                            } catch (_ex) {
-                                alert(_ex);
-                            }
-                        }
-                    });
-                },
-                select: function (event, ui) {
-                    event.preventDefault();
-
-                    $(this).val(ui.item.label);
-                    $(this).attr("alt", ui.item.value);
-                    $(this).trigger('change');
-                    $(this).trigger('blur');
-                },
-                delay: 250,
-                autoFocus: true,
-                focus: function (event, ui) {
-                    event.preventDefault();
-                }
-            });
+            //        $(this).val(ui.item.label);
+            //        $(this).attr("alt", ui.item.value);
+            //        $(this).trigger('change');
+            //        $(this).trigger('blur');
+            //    },
+            //    delay: 250,
+            //    autoFocus: true,
+            //    focus: function (event, ui) {
+            //        event.preventDefault();
+            //    }
+            //});
         });
+       var x = '@Supplierselectedid';
+        setTimeout(function () {
+            $('#SupplierID option[value=' + x + ']').attr('selected', 'selected');
+            _myTableData.clear().draw();
+        }, 1000)
 
         function GetOrderItems(id) {
-
+            debugger;
             $.get("/Order/GetOrderItems?orderID=" + id, function (data) {
+                debugger;
                 $("#OrderItems").find(".modal-body").html(data);
                 $("#OrderItems").modal('show');
             });
@@ -353,4 +374,11 @@
 
         }
     </script>
+
 }
+<style>
+
+    #Actions{
+        width:160.2px;
+    }
+</style>

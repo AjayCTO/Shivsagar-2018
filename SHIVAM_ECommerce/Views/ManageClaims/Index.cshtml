@@ -1,7 +1,29 @@
 ﻿@{
     ViewBag.Title = "Index";
+    var userlist = ViewBag.UserName;
+    var supplier = ViewBag.Supplier;
 
+    for (var i = 0; i < userlist.Count;i++ )
+    {
+        for (var k = 0; k < supplier.Count; k++)
+        {
+            if (userlist[i].Id == supplier[k].UserID)
+            {
+                userlist[i].FirstName = supplier[k].FirstName;
+                userlist[i].LastName = supplier[k].LastName;
+            }
+        }
+    }
 }
+
+<style>
+    #UserName {
+        position: absolute;
+        left: 413px;
+        top: 9px;
+        z-index: 10;
+    }
+</style>
 
 <div class="row page-titles">
 
@@ -18,23 +40,6 @@
 </div>
 
 
-<div class="row page-titles">
-    <div class="col-md-4 align-self-center">
-        <h4 class="">Select Name of Supplier/SupplierUser -</h4>
-    </div>
-    <div class="col-md-8 align-self-center">
-        <div class="row">
-            <div class="col-md-6">
-                @*<input type="text" class="form-control" id="Name" name="Name"/>*@
-                @Html.DropDownList("UserName", new SelectList(ViewBag.UserName, "UserName", "UserName"), new { @class = "form-control" })
-            </div>
-            <div class="col-md-6">
-                <a id="getData" class="btn btn-success" style="color:white"> <i class="fa fa-search"></i> Get Data</a>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 
 
@@ -42,8 +47,29 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <div class="card">              
+            <div class="card">   
+                <div class="col-md-12"><p style="position: absolute; left: 495px; top: -11px;">Select Users From Below Dropdown</p></div>
+                <div class="col-md-4">
 
+                </div>           
+                <div class="col-md-4">
+                    <select class="form-control"  id="UserName">
+                        <option value="">---Select User---</option>
+                        @foreach (var _item in userlist)
+                        {
+
+                            <option value="@_item.UserName">@_item.FirstName @_item.LastName (@_item.UserName)</option>
+                        }
+                    </select>
+
+
+
+                    @*@Html.DropDownList("UserName", new SelectList(ViewBag.UserName, "UserName", "UserName"), "---Select Users---", new { @class = "form-control" })*@
+                 
+                 </div>
+                <div class="col-md-4">
+                    <a id="getData" class="btn btn-success hidden" style="color:white"> <i class="fa fa-search"></i> Get Data</a>
+                </div>
                 <div class="card-body">
                     <table id="myTable" class="table table-striped table-bordered dt-responsive">
                         <thead>
@@ -88,7 +114,7 @@
                     "type": "POST",
                     "datatype": "json",
                     "data": function (d) {
-                        d.UserName = $('#UserName :selected').text();
+                        d.UserName = $('#UserName :selected').val();
                     }
                 },
                 "columns": [
@@ -119,12 +145,19 @@
 
         $(document).ready(function () {
             GetData();
+
             $("#getData").click(function () {
 
                 TableData.clear().draw();
 
             });
 
+            
+            $("#UserName").on("change", function () {
+
+                $("#getData").trigger("click");
+
+            });
 
         });
 

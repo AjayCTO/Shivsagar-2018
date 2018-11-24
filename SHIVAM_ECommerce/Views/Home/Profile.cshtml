@@ -39,8 +39,11 @@
             @Html.HiddenFor(model=>model.PlanStartDate)
             @Html.HiddenFor(model=>model.PlanEndDate)
             @Html.HiddenFor(model=>model.ParentSupplierID)
-             @Html.HiddenFor(model=>model.RegisteredByID)
-             @Html.HiddenFor(model=>model.CreatedDate)
+            @Html.HiddenFor(model=>model.RegisteredByID)
+            @Html.HiddenFor(model=>model.CreatedDate)
+            @Html.HiddenFor(model=>model.User_Name)
+            @Html.HiddenFor(model=>model.UserCount)
+            @Html.HiddenFor(model=>model.ProductCount)
             <input type="hidden" name="UserName" id="UserName" value="UserName" >
             <input type="hidden" name="Password" id="Password" value="Password123">
 
@@ -125,7 +128,8 @@
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.City, new { @class = "control-label " })
                                     <div class="">
-                                        <select id='secondlist' class="form-control"></select>
+                                        <select id='secondlist' class="form-control"><option value="">Select</option></select>
+                                     
                                         @Html.HiddenFor(model=>model.City)
                                        
                                         @Html.ValidationMessageFor(model => model.City)
@@ -140,9 +144,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                @Html.LabelFor(model => model.Phone, new { @class = "control-label " })
+                             <label>Phone<span class="stars">*</span></label>
                                 <div class="">
-                                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control requiredfield Phonenumber" })
                                     @Html.ValidationMessageFor(model => model.Phone)
                                 </div>
                             </div>
@@ -257,6 +261,12 @@
             return /^\b[A-Z0-9._%-]+@@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i.test(value);
         }, "Please enter valid email.");
 
+        $.validator.addMethod("Phonenumber", function (phone_number, element) {
+            debugger;
+            phone_number = phone_number.replace(/\s+/g, "");
+            return this.optional(element) || phone_number.length > 9 &&
+            phone_number.match(/^(\+?1-?)?(\([2-9]\d{2}\)|[0-9]\d{2})-?[0-9]\d{2}-?\d{4}$/);
+        }, "Please specify a valid phone number");
 
 
     });
@@ -277,6 +287,7 @@
 
     $("#listBox").change(function () {
         $("#State").val($(this).val());
+        $("#City").val($("#secondlist").val());
     });
 
     $("#secondlist").change(function () {
